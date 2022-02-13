@@ -38,7 +38,7 @@ interface GradientProps {
 
 const StageContainer = styled.div`
     display: grid;
-    padding: 100px 0 20px 0;
+    padding: 100px 0 50px 0;
     grid-template-columns: repeat(24, 1fr);
     background: ${({ theme }) => theme.palette.main};
     height: 75vh;
