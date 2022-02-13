@@ -5,11 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 ReactDOM.render(
     <React.StrictMode>
         <ThemeProvider theme={theme}>
-            <App />
+            <HashRouter>
+                <Routes>
+                    <Route path="/" element={<App />} />
+                </Routes>
+            </HashRouter>
         </ThemeProvider>
     </React.StrictMode>,
     document.getElementById("root")
