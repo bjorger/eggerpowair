@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ReactComponent as Logo } from "assets/eggerpowair-logo.svg";
 import { Link } from "react-router-dom";
+
 const Header: React.FC = () => {
     return (
         <HeaderContainer>
@@ -57,10 +58,12 @@ const HeaderLink = styled(Link)<HeaderLinkProps>`
         blueText ? theme.palette.blue : theme.palette.white};
     font-size: ${({ theme }) => theme.fontSizes.header.link.fontSize};
     line-height: ${({ theme }) => theme.fontSizes.header.link.lineHeight};
+    font-weight: ${({ theme }) => theme.fontSizes.header.link.fontWeight};
 `;
 
 const StyledLogo = styled(Logo)`
     position: absolute;
+    z-index: 1000;
     left: 0;
 `;
 

@@ -1,18 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import { HashRouter, Routes, Route } from "react-router-dom";
+import Header from "components/header/Header";
+import Home from "pages/Home";
 
 ReactDOM.render(
     <React.StrictMode>
         <ThemeProvider theme={theme}>
             <HashRouter>
+                <Header />
                 <Routes>
-                    <Route path="/" element={<App />} />
+                    <Route path="/" element={<Home />} />
                 </Routes>
             </HashRouter>
         </ThemeProvider>
