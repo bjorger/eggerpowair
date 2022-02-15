@@ -11,9 +11,14 @@ const HeadlineContainer = styled.div`
     grid-column: 3 / span 20;
 `;
 
-export const HeadlineMain = styled.h1`
-    font-size: ${({ theme }) => theme.fontSizes.headline.main.fontSize};
-    line-height: ${({ theme }) => theme.fontSizes.headline.main.lineHeight};
-    font-weight: ${({ theme }) => theme.fontSizes.headline.main.fontWeight};
+interface HeadlineMainProps {
+    color?: "white" | "black";
+}
+
+export const HeadlineMain = styled.h1<HeadlineMainProps>`
+    ${({ theme }) => theme.fonts.headline.main};
+
     margin: 0;
+    color: ${({ theme, color }) =>
+        color === "white" ? theme.palette.white : theme.palette.black};
 `;

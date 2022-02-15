@@ -51,14 +51,13 @@ const NavContainer = styled.div`
 `;
 
 const HeaderLink = styled(Link)<HeaderLinkProps>`
+    ${({ theme }) => theme.fonts.header.link};
+
     margin-left: 20px;
     text-decoration: none;
     text-transform: uppercase;
     color: ${({ theme, blueText }) =>
         blueText ? theme.palette.blue : theme.palette.white};
-    font-size: ${({ theme }) => theme.fontSizes.header.link.fontSize};
-    line-height: ${({ theme }) => theme.fontSizes.header.link.lineHeight};
-    font-weight: ${({ theme }) => theme.fontSizes.header.link.fontWeight};
 `;
 
 const StyledLogo = styled(Logo)`

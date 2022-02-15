@@ -1,13 +1,12 @@
 import React from "react";
-import Stage from "components/home/Stage";
-import WhatWeDo from "components/home/WhatWeDo";
-
+import { Stage, WhatWeDo, Projects } from "components/home";
 const Home: React.FC = () => {
     return (
-        <div>
+        <>
             <Stage />
             <WhatWeDo />
-        </div>
+            <Projects />
+        </>
     );
 };
 

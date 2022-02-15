@@ -42,22 +42,15 @@ const WhatWeDoItemContainer = styled.div`
 `;
 
 const Number = styled.h1`
-    font-size: ${({ theme }) => theme.fontSizes.whatWeDo.number.fontSize};
-    line-height: ${({ theme }) => theme.fontSizes.whatWeDo.number.lineHeight};
-    font-weight: ${({ theme }) => theme.fontSizes.whatWeDo.number.fontWeight};
+    ${({ theme }) => theme.fonts.whatWeDo.number};
+
     color: ${({ theme }) => theme.palette.orange};
 `;
 
 const Headline = styled.h2`
-    font-size: ${({ theme }) => theme.fontSizes.whatWeDo.headline.fontSize};
-    line-height: ${({ theme }) => theme.fontSizes.whatWeDo.headline.lineHeight};
-    font-weight: ${({ theme }) => theme.fontSizes.whatWeDo.headline.fontWeight};
+    font-size: ${({ theme }) => theme.fonts.whatWeDo.headline};
 `;
 
 const Description = styled.p`
-    font-size: ${({ theme }) => theme.fontSizes.whatWeDo.description.fontSize};
-    line-height: ${({ theme }) =>
-        theme.fontSizes.whatWeDo.description.lineHeight};
-    font-weight: ${({ theme }) =>
-        theme.fontSizes.whatWeDo.description.fontWeight};
+    font-size: ${({ theme }) => theme.fonts.whatWeDo.description};
 `;

@@ -41,7 +41,7 @@ const StageContainer = styled.div`
     padding: 100px 0 50px 0;
     grid-template-columns: repeat(24, 1fr);
     background: ${({ theme }) => theme.palette.main};
-    height: 75vh;
+    height: 72vh;
 `;
 
 const StageContent = styled.div`
@@ -71,35 +71,28 @@ const StageTextContainer = styled.div`
 `;
 
 const StageHeadlineTop = styled.h2`
-    font-size: ${({ theme }) => theme.fontSizes.stage.headlineTop.fontSize};
-    line-height: ${({ theme }) => theme.fontSizes.stage.headlineTop.lineHeight};
-    font-weight: ${({ theme }) => theme.fontSizes.stage.headlineTop.fontWeight};
+    ${({ theme }) => theme.fonts.headline.eyebrow};
+
     color: ${({ theme }) => theme.palette.white};
     margin: 5px 0;
 `;
 
 const StageHeadlineMain = styled.h1`
-    font-size: ${({ theme }) => theme.fontSizes.stage.headlineMain.fontSize};
-    line-height: ${({ theme }) =>
-        theme.fontSizes.stage.headlineMain.lineHeight};
-    font-weight: ${({ theme }) =>
-        theme.fontSizes.stage.headlineMain.fontWeight};
+    ${({ theme }) => theme.fonts.headline.main};
+
     color: ${({ theme }) => theme.palette.white};
     margin: 5px 0 5px -3px;
 `;
 
 const StageParagraph = styled.p`
-    font-size: ${({ theme }) => theme.fontSizes.stage.paragraph.fontSize};
-    line-height: ${({ theme }) => theme.fontSizes.stage.paragraph.lineHeight};
-    font-weight: ${({ theme }) => theme.fontSizes.stage.paragraph.fontWeight};
+    font-size: ${({ theme }) => theme.fonts.stage.paragraph};
+
     color: ${({ theme }) => theme.palette.white};
     max-width: 450px;
 `;
 
 const StageButton = styled.button`
-    font-size: ${({ theme }) => theme.fontSizes.stage.button.fontSize};
-    line-height: ${({ theme }) => theme.fontSizes.stage.button.lineHeight};
-    font-weight: ${({ theme }) => theme.fontSizes.stage.button.fontWeight};
+    ${({ theme }) => theme.fonts.button};
     background: ${({ theme }) => theme.palette.blue};
     border-radius: 44px;
     padding: 18px 30px;

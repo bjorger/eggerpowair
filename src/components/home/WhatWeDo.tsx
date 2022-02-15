@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Headline, HeadlineTop, HeadlineMain } from "components/headline";
+import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import WhatWeDoItems, { WhatWeDoItem } from "./WhatWeDoItems";
 
 const WhatWeDo: React.FC = () => {
@@ -47,7 +47,7 @@ const WhatWeDo: React.FC = () => {
         <WhatWeDoContainer>
             <WhatWeDoContent>
                 <Headline>
-                    <HeadlineTop text="What we do" orange={true} />
+                    <Eyebrow color="orange">What we do</Eyebrow>
                     <HeadlineMain>
                         6 gute Gründe für Egger <br />
                         PowAir Cleaning:
