@@ -1,4 +1,9 @@
-import { css, SimpleInterpolation } from "styled-components/macro";
+import {
+    css,
+    FlattenInterpolation,
+    SimpleInterpolation,
+    ThemeProps,
+} from "styled-components/macro";
 
 interface Breakpoints {
     md: number;
@@ -11,19 +16,20 @@ interface Palette {
     orange: string;
     white: string;
     black: string;
+    light: string;
 }
 
 interface Fonts {
     headline: {
-        eyebrow: SimpleInterpolation;
-        main: SimpleInterpolation;
+        eyebrow: FlattenInterpolation<ThemeProps<any>>;
+        main: FlattenInterpolation<ThemeProps<any>>;
     };
-    button: SimpleInterpolation;
+    button: FlattenInterpolation<ThemeProps<any>>;
     header: {
         link: SimpleInterpolation;
     };
     stage: {
-        paragraph: SimpleInterpolation;
+        paragraph: FlattenInterpolation<ThemeProps<any>>;
     };
     whatWeDo: {
         number: SimpleInterpolation;
@@ -40,37 +46,59 @@ interface Theme {
     breakpoints: Breakpoints;
     palette: Palette;
     fonts: Fonts;
+    borderBottom: SimpleInterpolation;
 }
 
+const breakpoints: Breakpoints = {
+    md: 960,
+    lg: 1200,
+};
+
 const theme: Theme = {
-    breakpoints: {
-        md: 960,
-        lg: 1200,
-    },
+    breakpoints,
     palette: {
         main: "#232527",
         blue: "#47BCC7",
         orange: "#FB993C",
         white: "#FFFFFF",
         black: "#000000",
+        light: "#A9A9A9",
     },
     fonts: {
         headline: {
             main: css`
-                font-size: 48px;
-                line-height: 55px;
+                font-size: 36px;
+                line-height: 36px;
                 font-weight: 700;
+
+                @media screen and (min-width: ${({ theme }) =>
+                        `${theme.breakpoints.md}px`}) {
+                    font-size: 48px;
+                    line-height: 55px;
+                }
             `,
             eyebrow: css`
-                font-size: 18px;
-                line-height: 23px;
+                font-size: 12px;
+                line-height: 24px;
                 font-weight: 600;
+
+                @media screen and (min-width: ${({ theme }) =>
+                        `${theme.breakpoints.md}px`}) {
+                    font-size: 18px;
+                    line-height: 23px;
+                }
             `,
         },
         button: css`
-            font-size: 18px;
-            line-height: 23px;
+            font-size: 12px;
+            line-height: 24px;
             font-weight: 600;
+
+            @media screen and (min-width: ${({ theme }) =>
+                    `${theme.breakpoints.md}px`}) {
+                font-size: 18px;
+                line-height: 23px;
+            }
         `,
         header: {
             link: css`
@@ -81,9 +109,15 @@ const theme: Theme = {
         },
         stage: {
             paragraph: css`
-                font-size: 19px;
-                line-height: 28px;
-                font-weight: 200;
+                font-size: 12px;
+                line-height: 24px;
+
+                @media screen and (min-width: ${({ theme }) =>
+                        `${theme.breakpoints.md}px`}) {
+                    font-size: 19px;
+                    line-height: 28px;
+                    font-weight: 200;
+                }
             `,
         },
         whatWeDo: {
@@ -116,6 +150,9 @@ const theme: Theme = {
             `,
         },
     },
+    borderBottom: css`
+        border-bottom: 1px solid #a9a9a9;
+    `,
 };
 
 export default theme;

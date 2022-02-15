@@ -10,14 +10,16 @@ import Home from "pages/Home";
 
 ReactDOM.render(
     <React.StrictMode>
-        <ThemeProvider theme={theme}>
-            <HashRouter>
-                <Header />
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                </Routes>
-            </HashRouter>
-        </ThemeProvider>
+        <div id="outer-container">
+            <ThemeProvider theme={theme}>
+                <HashRouter>
+                    <Header />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                    </Routes>
+                </HashRouter>
+            </ThemeProvider>
+        </div>
     </React.StrictMode>,
     document.getElementById("root")
 );

@@ -1,14 +1,38 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as Logo } from "assets/eggerpowair-logo.svg";
+import Logo from "assets/eggerpowair-logo.png";
 import { Link } from "react-router-dom";
+import { elastic as Menu } from "react-burger-menu";
+import mobileMenuTheme from "./MobileMenuTheme";
 
 const Header: React.FC = () => {
     return (
-        <HeaderContainer>
-            <HeaderContent>
-                <StyledLogo />
-                <NavContainer>
+        <>
+            <BrowserView>
+                <HeaderContainer>
+                    <HeaderContent>
+                        <StyledLogo src={Logo} alt="" />
+                        <NavContainer>
+                            <HeaderLink blueText={true} to="/">
+                                über uns
+                            </HeaderLink>
+                            <HeaderLink to="/">Services</HeaderLink>
+                            <HeaderLink to="/">Projekte</HeaderLink>
+                            <HeaderLink to="/">Team</HeaderLink>
+                            <HeaderLink to="/">Blog</HeaderLink>
+                            <ContactButton to="/">Kontakt</ContactButton>
+                        </NavContainer>
+                    </HeaderContent>
+                </HeaderContainer>
+            </BrowserView>
+            <MobileView>
+                <StyledLogo src={Logo} alt="" />
+                <Menu
+                    right
+                    styles={mobileMenuTheme}
+                    pageWrapId="page-wrap"
+                    outerContainerId="outer-container"
+                >
                     <HeaderLink blueText={true} to="/">
                         über uns
                     </HeaderLink>
@@ -17,9 +41,9 @@ const Header: React.FC = () => {
                     <HeaderLink to="/">Team</HeaderLink>
                     <HeaderLink to="/">Blog</HeaderLink>
                     <ContactButton to="/">Kontakt</ContactButton>
-                </NavContainer>
-            </HeaderContent>
-        </HeaderContainer>
+                </Menu>
+            </MobileView>
+        </>
     );
 };
 
@@ -28,6 +52,24 @@ export default Header;
 interface HeaderLinkProps {
     blueText?: boolean;
 }
+
+const BrowserView = styled.div`
+    display: none;
+
+    @media screen and (min-width: ${({ theme }) =>
+            `${theme.breakpoints.md}px`}) {
+        display: block;
+    }
+`;
+
+const MobileView = styled.div`
+    display: block;
+
+    @media screen and (min-width: ${({ theme }) =>
+            `${theme.breakpoints.md}px`}) {
+        display: none;
+    }
+`;
 
 const HeaderContainer = styled.header`
     height: 160px;
@@ -60,10 +102,16 @@ const HeaderLink = styled(Link)<HeaderLinkProps>`
         blueText ? theme.palette.blue : theme.palette.white};
 `;
 
-const StyledLogo = styled(Logo)`
+const StyledLogo = styled.img`
     position: absolute;
     z-index: 1000;
     left: 0;
+    width: 100px;
+
+    @media screen and (min-width: ${({ theme }) =>
+            `${theme.breakpoints.md}px`}) {
+        width: 100%;
+    }
 `;
 
 const ContactButton = styled(Link)`
@@ -74,4 +122,5 @@ const ContactButton = styled(Link)`
     text-decoration: none;
     color: ${({ theme }) => theme.palette.white};
     margin-left: 20px;
+    text-align: center;
 `;

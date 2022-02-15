@@ -15,6 +15,7 @@ const ProjectGridItem: React.FC<ItemProps> = ({
         <ProjectGridItemContainer>
             <Image src={image} alt="" />
             <Headline>{headline}</Headline>
+            <Description>{description}</Description>
         </ProjectGridItemContainer>
     );
 };
@@ -23,12 +24,23 @@ export default ProjectGridItem;
 
 const ProjectGridItemContainer = styled.div`
     display: flex;
+    flex-direction: column;
 `;
 
 const Image = styled.img`
-    border-radius: 36px; ;
+    border-radius: 36px;
+    width: 100%;
 `;
 
 const Headline = styled.h2`
-    ${({ theme }) => theme.projectItem.headline};
+    ${({ theme }) => theme.fonts.projectItem.headline};
+    ${({ theme }) => theme.borderBottom};
+    padding-bottom: 10px;
+    color: ${({ theme }) => theme.palette.white};
+`;
+
+const Description = styled.p`
+    ${({ theme }) => theme.fonts.projectItem.description};
+    margin: 0;
+    color: ${({ theme }) => theme.palette.white};
 `;

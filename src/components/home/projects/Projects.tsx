@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Headline, HeadlineMain, Eyebrow } from "components/headline";
 import DummyImage from "assets/Egger-PowAir.jpg";
+import ProjectGridItem from "./ProjectGridItem";
 
 const DummyData = [
     {
@@ -35,7 +36,16 @@ const Projects: React.FC = () => {
                     <HeadlineMain color="white">
                         Reinigung mit Trocken-Druck-Luft
                     </HeadlineMain>
-                    <ProjectGrid></ProjectGrid>
+                    <ProjectGrid>
+                        {DummyData.map((item, index) => (
+                            <ProjectGridItem
+                                image={item.img}
+                                headline={item.headline}
+                                description={item.description}
+                                key={item.headline + index.toString()}
+                            />
+                        ))}
+                    </ProjectGrid>
                 </Headline>
             </ProjectsContent>
         </ProjectsContainer>
@@ -56,6 +66,13 @@ const ProjectsContent = styled.div`
 `;
 
 const ProjectGrid = styled.div`
+    padding-top: 30px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
+    gap: 40px;
+
+    @media screen and (min-width: ${({ theme }) =>
+            `${theme.breakpoints.md}px`}) {
+        grid-template-columns: repeat(2, 1fr);
+    }
 `;

@@ -8,15 +8,13 @@ const Stage: React.FC = () => {
             <StageContent>
                 <Gradient />
                 <StageTextContainer>
-                    <StageHeadlineTop>
-                        Professional. Innovative. Reliable.
-                    </StageHeadlineTop>
-                    <StageHeadlineMain>
+                    <Eyebrow>Professional. Innovative. Reliable.</Eyebrow>
+                    <HeadlineMain>
                         Exceptional <br />
                         Service Exceeding
                         <br />
                         Expectations
-                    </StageHeadlineMain>
+                    </HeadlineMain>
                     <StageParagraph>
                         Our civil and structural team is committed to providing
                         sustainable, creative & efficient engineering solutions
@@ -38,31 +36,55 @@ interface GradientProps {
 
 const StageContainer = styled.div`
     display: grid;
-    padding: 100px 0 50px 0;
-    grid-template-columns: repeat(24, 1fr);
     background: ${({ theme }) => theme.palette.main};
-    height: 72vh;
+    padding: 120px 0 70px 0;
+    grid-template-columns: repeat(24, 1fr);
+
+    @media screen and (min-width: ${({ theme }) =>
+            `${theme.breakpoints.md}px`}) {
+        padding: 100px 0 50px 0;
+        grid-template-columns: repeat(24, 1fr);
+        height: 75vh;
+    }
 `;
 
 const StageContent = styled.div`
-    grid-column: 3 / span 20;
-    position: relative;
+    grid-column: 2 / span 22;
+
+    @media screen and (min-width: ${({ theme }) =>
+            `${theme.breakpoints.md}px`}) {
+        grid-column: 3 / span 20;
+        position: relative;
+    }
 `;
 
 const PartyBus = styled(PowairPartyBus)`
-    position: absolute;
-    right: 0;
-    bottom: 0;
+    display: none;
+
+    @media screen and (min-width: ${({ theme }) =>
+            `${theme.breakpoints.lg}px`}) {
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 60%;
+    }
 `;
 
 const Gradient = styled.div<GradientProps>`
-    background: ${({ theme, orange }) =>
-        orange ? theme.palette.orange : theme.palette.blue};
-    height: 1px;
-    width: 200px;
-    position: absolute;
-    top: 19px;
-    left: -210px;
+    display: none;
+
+    @media screen and (min-width: ${({ theme }) =>
+            `${theme.breakpoints.md}px`}) {
+        background: ${({ theme, orange }) =>
+            orange ? theme.palette.orange : theme.palette.blue};
+        height: 1px;
+        width: 200px;
+        position: absolute;
+        top: 19px;
+        left: -210px;
+        display: block;
+    }
 `;
 
 const StageTextContainer = styled.div`
@@ -70,14 +92,14 @@ const StageTextContainer = styled.div`
     flex-direction: column;
 `;
 
-const StageHeadlineTop = styled.h2`
+const Eyebrow = styled.h2`
     ${({ theme }) => theme.fonts.headline.eyebrow};
 
     color: ${({ theme }) => theme.palette.white};
     margin: 5px 0;
 `;
 
-const StageHeadlineMain = styled.h1`
+const HeadlineMain = styled.h1`
     ${({ theme }) => theme.fonts.headline.main};
 
     color: ${({ theme }) => theme.palette.white};
@@ -96,8 +118,14 @@ const StageButton = styled.button`
     background: ${({ theme }) => theme.palette.blue};
     border-radius: 44px;
     padding: 18px 30px;
+    width: 100%;
     text-transform: uppercase;
-    width: 300px;
     border: none;
-    margin-top: 30px;
+    margin-top: 15px;
+
+    @media screen and (min-width: ${({ theme }) =>
+            `${theme.breakpoints.md}px`}) {
+        width: 300px;
+        margin-top: 30px;
+    }
 `;
