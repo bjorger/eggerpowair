@@ -110,7 +110,7 @@ const StyledLogo = styled.img`
 
     @media screen and (min-width: ${({ theme }) =>
             `${theme.breakpoints.md}px`}) {
-        width: 100%;
+        width: auto;
     }
 `;
 
