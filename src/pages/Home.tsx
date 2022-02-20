@@ -1,5 +1,11 @@
 import React from "react";
-import { Stage, WhatWeDo, Projects, WhereWeWork } from "components/home";
+import {
+    Stage,
+    WhatWeDo,
+    Projects,
+    WhereWeWork,
+    WhyChoseUs,
+} from "components/home";
 const Home: React.FC = () => {
     return (
         <main id="page-wrap">
@@ -7,6 +13,7 @@ const Home: React.FC = () => {
             <WhatWeDo />
             <Projects />
             <WhereWeWork />
+            <WhyChoseUs />
         </main>
     );
 };

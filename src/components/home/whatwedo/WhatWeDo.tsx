@@ -1,10 +1,10 @@
 import React from "react";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
-import WhatWeDoItems, { WhatWeDoItem } from "./WhatWeDoItems";
 import PageWrap from "components/pageWrap";
+import { ItemProps, Grid, GridItem } from "components/Grid";
 
 const WhatWeDo: React.FC = () => {
-    const whatWeDoItems: WhatWeDoItem[] = [
+    const whatWeDoItems: ItemProps[] = [
         {
             number: "01",
             title: "Schnell & kostensparend",
@@ -46,13 +46,26 @@ const WhatWeDo: React.FC = () => {
     return (
         <PageWrap variant="light">
             <Headline>
-                <Eyebrow color="orange">What we do</Eyebrow>
+                <Eyebrow textColor="black" variant="orange">
+                    What we do
+                </Eyebrow>
                 <HeadlineMain>
                     6 gute Gründe für Egger <br />
                     PowAir Cleaning:
                 </HeadlineMain>
             </Headline>
-            <WhatWeDoItems items={whatWeDoItems} />
+            <Grid>
+                {whatWeDoItems.map((item) => (
+                    <GridItem
+                        boxShadowVariant="dark"
+                        backgroundVariant="white"
+                        headlineVariant="black"
+                        numberVariant="orange"
+                        paragraphVariant="black"
+                        item={item}
+                    />
+                ))}
+            </Grid>
         </PageWrap>
     );
 };

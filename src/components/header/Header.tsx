@@ -73,7 +73,7 @@ const MobileView = styled.div`
 
 const HeaderContainer = styled.header`
     height: 160px;
-    background: ${({ theme }) => theme.palette.main};
+    background: ${({ theme }) => theme.palette.dark};
     display: grid;
     grid-template-columns: repeat(24, 1fr);
 `;
@@ -118,7 +118,7 @@ const ContactButton = styled(Link)`
     border: ${({ theme }) => `1px solid ${theme.palette.blue}`};
     border-radius: 54px;
     padding: 18px 30px;
-    background: ${({ theme }) => theme.palette.main};
+    background: ${({ theme }) => theme.palette.dark};
     text-decoration: none;
     color: ${({ theme }) => theme.palette.white};
     margin-left: 20px;

@@ -5,14 +5,18 @@ import styled from "styled-components";
 
 import { ReactComponent as Map } from "assets/Map.svg";
 import { ReactComponent as Pins } from "assets/Pins.svg";
+import { ColoredSpan } from "./../components.sc";
 
 const WhereWeWork: React.FC = () => {
     return (
         <PageWrap variant="light">
             <Headline>
-                <Eyebrow color="orange">Where we work</Eyebrow>
+                <Eyebrow textColor="black" variant="orange">
+                    Where we work
+                </Eyebrow>
                 <HeadlineMain>
-                    Mobil in ganz EU-Europa. <OrangeSpan>24/7</OrangeSpan>
+                    Mobil in ganz EU-Europa.{" "}
+                    <ColoredSpan variant="orange">24/7</ColoredSpan>
                 </HeadlineMain>
                 <Button>Jetzt kontaktieren</Button>
                 <MapContainer>
@@ -25,10 +29,6 @@ const WhereWeWork: React.FC = () => {
 };
 
 export default WhereWeWork;
-
-const OrangeSpan = styled.span`
-    color: ${({ theme }) => theme.palette.orange};
-`;
 
 const Button = styled.button`
     position: absolute;
@@ -53,12 +53,20 @@ const Button = styled.button`
 
 const MapContainer = styled.div`
     position: relative;
+    display: none;
+
+    @media screen and (min-width: ${({ theme }) =>
+            `${theme.breakpoints.md}px`}) {
+        padding: 100px 0;
+        min-height: 100vh;
+        display: block;
+    }
 `;
 
 const StyledPins = styled(Pins)`
     position: absolute;
     right: 140px;
-    bottom: -735px;
+    bottom: 340px;
 `;
 
 const StyledMap = styled(Map)`

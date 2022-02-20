@@ -11,7 +11,7 @@ interface Breakpoints {
 }
 
 interface Palette {
-    main: string;
+    dark: string;
     blue: string;
     orange: string;
     white: string;
@@ -31,7 +31,7 @@ interface Fonts {
     stage: {
         paragraph: FlattenInterpolation<ThemeProps<any>>;
     };
-    whatWeDo: {
+    gridItem: {
         number: SimpleInterpolation;
         headline: SimpleInterpolation;
         description: SimpleInterpolation;
@@ -57,7 +57,7 @@ const breakpoints: Breakpoints = {
 const theme: Theme = {
     breakpoints,
     palette: {
-        main: "#232527",
+        dark: "#232527",
         blue: "#47BCC7",
         orange: "#FB993C",
         white: "#FFFFFF",
@@ -120,7 +120,7 @@ const theme: Theme = {
                 }
             `,
         },
-        whatWeDo: {
+        gridItem: {
             description: css`
                 font-size: 19px;
                 line-height: 28px;

@@ -2,28 +2,33 @@ import React from "react";
 import styled from "styled-components";
 
 interface EyebrowProps {
-    color?: "orange" | "blue";
+    variant: "orange" | "blue";
+    textColor: "white" | "black" | "orange" | "blue";
 }
 
-const Eyebrow: React.FC<EyebrowProps> = ({ children, color }) => {
+const Eyebrow: React.FC<EyebrowProps> = ({ children, variant, textColor }) => {
     return (
         <EyebrowContainer>
-            <Gradient color={color} />
-            <EyebrowText color={color}>{children}</EyebrowText>
+            <Gradient variant={variant} />
+            <EyebrowText color={textColor}>{children}</EyebrowText>
         </EyebrowContainer>
     );
 };
 
 export default Eyebrow;
 
-interface ColorProps {
-    color?: "orange" | "blue";
+interface EyebrowFontProps {
+    color: "white" | "black" | "orange" | "blue";
 }
 
-const Gradient = styled.div<ColorProps>`
+interface GradientProps {
+    variant: "orange" | "blue";
+}
+
+const Gradient = styled.div<GradientProps>`
     width: 50px;
-    border: ${({ color, theme }) =>
-        color === "orange"
+    border: ${({ variant, theme }) =>
+        variant === "orange"
             ? `1px solid ${theme.palette.orange}`
             : `1px solid ${theme.palette.blue}`};
 `;
@@ -34,11 +39,10 @@ const EyebrowContainer = styled.div`
     align-items: center;
 `;
 
-const EyebrowText = styled.h2<ColorProps>`
+const EyebrowText = styled.h2<EyebrowFontProps>`
     ${({ theme }) => theme.fonts.headline.eyebrow};
 
     text-transform: uppercase;
     margin-left: 10px;
-    color: ${({ color, theme }) =>
-        color === "orange" ? theme.palette.orange : theme.palette.blue};
+    color: ${({ color, theme }) => theme.palette[color]};
 `;

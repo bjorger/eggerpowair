@@ -36,7 +36,7 @@ interface GradientProps {
 
 const Container = styled.div`
     display: grid;
-    background: ${({ theme }) => theme.palette.main};
+    background: ${({ theme }) => theme.palette.dark};
     padding: 120px 0 70px 0;
     grid-template-columns: repeat(24, 1fr);
 
