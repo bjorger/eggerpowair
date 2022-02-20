@@ -4,8 +4,8 @@ import { ReactComponent as PowairPartyBus } from "assets/car-blue.svg";
 
 const Stage: React.FC = () => {
     return (
-        <StageContainer>
-            <StageContent>
+        <Container>
+            <Content>
                 <Gradient />
                 <StageTextContainer>
                     <Eyebrow>Professional. Innovative. Reliable.</Eyebrow>
@@ -23,8 +23,8 @@ const Stage: React.FC = () => {
                     <StageButton>jetzt kontaktieren</StageButton>
                 </StageTextContainer>
                 <PartyBus />
-            </StageContent>
-        </StageContainer>
+            </Content>
+        </Container>
     );
 };
 
@@ -34,7 +34,7 @@ interface GradientProps {
     orange?: boolean;
 }
 
-const StageContainer = styled.div`
+const Container = styled.div`
     display: grid;
     background: ${({ theme }) => theme.palette.main};
     padding: 120px 0 70px 0;
@@ -48,7 +48,7 @@ const StageContainer = styled.div`
     }
 `;
 
-const StageContent = styled.div`
+const Content = styled.div`
     grid-column: 2 / span 22;
 
     @media screen and (min-width: ${({ theme }) =>

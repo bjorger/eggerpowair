@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import WhatWeDoItems, { WhatWeDoItem } from "./WhatWeDoItems";
+import PageWrap from "components/pageWrap";
 
 const WhatWeDo: React.FC = () => {
     const whatWeDoItems: WhatWeDoItem[] = [
@@ -44,29 +44,17 @@ const WhatWeDo: React.FC = () => {
     ];
 
     return (
-        <WhatWeDoContainer>
-            <WhatWeDoContent>
-                <Headline>
-                    <Eyebrow color="orange">What we do</Eyebrow>
-                    <HeadlineMain>
-                        6 gute Gründe für Egger <br />
-                        PowAir Cleaning:
-                    </HeadlineMain>
-                </Headline>
-                <WhatWeDoItems items={whatWeDoItems} />
-            </WhatWeDoContent>
-        </WhatWeDoContainer>
+        <PageWrap variant="light">
+            <Headline>
+                <Eyebrow color="orange">What we do</Eyebrow>
+                <HeadlineMain>
+                    6 gute Gründe für Egger <br />
+                    PowAir Cleaning:
+                </HeadlineMain>
+            </Headline>
+            <WhatWeDoItems items={whatWeDoItems} />
+        </PageWrap>
     );
 };
 
 export default WhatWeDo;
-
-const WhatWeDoContainer = styled.div`
-    padding: 135px 0;
-    display: grid;
-    grid-template-columns: repeat(24, 1fr);
-`;
-
-const WhatWeDoContent = styled.div`
-    grid-column: 5 / span 16;
-`;
