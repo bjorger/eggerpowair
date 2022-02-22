@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ReactComponent as PowairPartyBusBlue } from "assets/car-blue.svg";
 import { ReactComponent as PowairPartyBusOrange } from "assets/car-orange.svg";
 import { useAppSelector } from "redux/hooks";
-import ThemeToggle from "components/themeToggle";
+import { ThemeToggle } from "components/themeToggle";
 import { Variants } from "components/components.sc";
 import { Button } from "components/components.sc";
 
