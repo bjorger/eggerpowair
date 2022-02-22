@@ -69,7 +69,7 @@ const Number = styled.h1<ComponentProps>`
 `;
 
 const Headline = styled.h2<ComponentProps>`
-    font-size: ${({ theme }) => theme.fonts.gridItem.headline};
+    font-size: ${({ theme }) => theme.fonts.h2};
     color: ${({ theme, variant }) => theme.palette[variant]};
 `;
 

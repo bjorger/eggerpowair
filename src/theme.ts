@@ -29,9 +29,10 @@ interface Fonts {
         link: SimpleInterpolation;
     };
     paragraph: FlattenInterpolation<ThemeProps<any>>;
+    h2: SimpleInterpolation;
+
     gridItem: {
         number: SimpleInterpolation;
-        headline: SimpleInterpolation;
     };
     projectItem: {
         headline: SimpleInterpolation;
@@ -114,12 +115,12 @@ const theme: Theme = {
                 font-weight: 200;
             }
         `,
+        h2: css`
+            font-size: 26px;
+            line-height: 31px;
+            font-weight: 700;
+        `,
         gridItem: {
-            headline: css`
-                font-size: 26px;
-                line-height: 31px;
-                font-weight: 700;
-            `,
             number: css`
                 font-size: 48px;
                 line-height: 55px;

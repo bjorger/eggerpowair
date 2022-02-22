@@ -54,7 +54,7 @@ interface GradientProps {
 const Container = styled.div`
     display: grid;
     background: ${({ theme }) => theme.palette.dark};
-    padding: 120px 0 70px 0;
+    padding: 120px 0 30px 0;
     grid-template-columns: repeat(24, 1fr);
 
     @media screen and (min-width: ${({ theme }) =>
@@ -142,12 +142,17 @@ const StageParagraph = styled.p`
 `;
 
 const ThemeToggleContainer = styled.div`
-    position: absolute;
-    bottom: -50px;
     display: flex;
     width: 100%;
     flex-direction: row;
     align-items: center;
     color: ${({ theme }) => theme.palette.white};
     justify-content: center;
+    padding-top: 30px;
+
+    @media screen and (min-width: ${({ theme }) =>
+            `${theme.breakpoints.md}px`}) {
+        position: absolute;
+        bottom: -50px;
+    }
 `;

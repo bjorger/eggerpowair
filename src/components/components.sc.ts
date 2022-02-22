@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 interface ContainerProps {
     variant: "dark" | "light";
     hideOnMobile?: boolean;
+    minHeight?: string;
+    padding?: string;
 }
 
 interface SpanProps {
@@ -27,8 +29,9 @@ export const Container = styled.div<ContainerProps>`
 
     @media screen and (min-width: ${({ theme }) =>
             `${theme.breakpoints.md}px`}) {
-        padding: 80px 0;
-        min-height: 50vh;
+        padding: ${({ padding }) => (padding ? padding : `80px 0`)};
+        min-height: ${({ minHeight }) =>
+            minHeight ? `${minHeight}vh` : `50vh`};
         display: grid;
     }
 `;

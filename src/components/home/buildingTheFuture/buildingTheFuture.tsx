@@ -7,6 +7,7 @@ import HotPowair from "assets/hot-powair.png";
 import { Grid } from "components/grid";
 import Hot from "./hot";
 import Cold from "./cold";
+import styled from "styled-components";
 
 const BuildingTheFuture: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
@@ -17,9 +18,9 @@ const BuildingTheFuture: React.FC = () => {
                 <Eyebrow textColor="black"> Building the future</Eyebrow>
                 <HeadlineMain>
                     {theme === "blue" ? (
-                        <img src={ColdPowair} alt="" />
+                        <Image src={ColdPowair} alt="" />
                     ) : (
-                        <img src={HotPowair} alt="" />
+                        <Image src={HotPowair} alt="" />
                     )}
                 </HeadlineMain>
                 <Grid>{theme === "blue" ? <Cold /> : <Hot />}</Grid>
@@ -29,3 +30,11 @@ const BuildingTheFuture: React.FC = () => {
 };
 
 export default BuildingTheFuture;
+
+const Image = styled.img`
+    width: 80%;
+    @media screen and (min-width: ${({ theme }) =>
+            `${theme.breakpoints.md}px`}) {
+        width: auto;
+    }
+`;

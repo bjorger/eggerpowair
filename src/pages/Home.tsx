@@ -40,20 +40,20 @@ interface StickyThemeToggleContainerProps {
 }
 
 const StickyThemeToggleContainer = styled.div<StickyThemeToggleContainerProps>`
-    z-index: 1000;
-    position: fixed;
-    padding: 20px;
-    border-radius: 32px;
-    background-color: ${({ theme }) => theme.palette.dark};
-    color: ${({ theme }) => theme.palette.white};
-    border: 1px solid;
-    border-color: ${({ theme, borderColor }) => theme.palette[borderColor]};
-    right: 5px;
-    bottom: 30px;
-
     display: none;
+
     @media screen and (min-width: ${({ theme }) =>
             `${theme.breakpoints.md}px`}) {
         display: block;
+        z-index: 1000;
+        position: fixed;
+        padding: 20px;
+        border-radius: 32px;
+        background-color: ${({ theme }) => theme.palette.dark};
+        color: ${({ theme }) => theme.palette.white};
+        border: 1px solid;
+        border-color: ${({ theme, borderColor }) => theme.palette[borderColor]};
+        right: 5px;
+        bottom: 30px;
     }
 `;
