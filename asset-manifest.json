@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/eggerpowair/static/css/main.86c74ea5.css",
-    "main.js": "/eggerpowair/static/js/main.9004b7e1.js",
+    "main.js": "/eggerpowair/static/js/main.2d296e7a.js",
     "static/js/787.213cadea.chunk.js": "/eggerpowair/static/js/787.213cadea.chunk.js",
     "static/media/Map.svg": "/eggerpowair/static/media/Map.5e76e19143fd0ea0eae301d4617c067f.svg",
     "static/media/car-blue.svg": "/eggerpowair/static/media/car-blue.ace0ae6bf7bc010e0ccdf826395c0169.svg",
@@ -46,11 +46,11 @@
     "index.html": "/eggerpowair/index.html",
     "static/media/Pins.svg": "/eggerpowair/static/media/Pins.c4f3a2f95e363fb5489bc2e1c49b0d25.svg",
     "main.86c74ea5.css.map": "/eggerpowair/static/css/main.86c74ea5.css.map",
-    "main.9004b7e1.js.map": "/eggerpowair/static/js/main.9004b7e1.js.map",
+    "main.2d296e7a.js.map": "/eggerpowair/static/js/main.2d296e7a.js.map",
     "787.213cadea.chunk.js.map": "/eggerpowair/static/js/787.213cadea.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.86c74ea5.css",
-    "static/js/main.9004b7e1.js"
+    "static/js/main.2d296e7a.js"
   ]
 }
