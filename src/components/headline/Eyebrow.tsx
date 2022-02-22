@@ -45,6 +45,6 @@ const EyebrowText = styled.h2<EyebrowFontProps>`
     ${({ theme }) => theme.fonts.headline.eyebrow};
 
     text-transform: uppercase;
-    margin-left: 10px;
+    margin-left: 30px;
     color: ${({ color, theme }) => theme.palette[color]};
 `;

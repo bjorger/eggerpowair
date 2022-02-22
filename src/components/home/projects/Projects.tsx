@@ -4,6 +4,7 @@ import { Headline, HeadlineMain, Eyebrow } from "components/headline";
 import DummyImage from "assets/Egger-PowAir.jpg";
 import ProjectGridItem from "./ProjectGridItem";
 import PageWrap from "./../../pageWrap/PageWrap";
+import ThemeToggle from "components/themeToggle";
 
 const DummyData = [
     {
@@ -32,7 +33,9 @@ const Projects: React.FC = () => {
     return (
         <PageWrap variant="dark">
             <Headline>
-                <Eyebrow textColor="blue">COLD POWAIR</Eyebrow>
+                <Eyebrow textColor="white">
+                    <ThemeToggle />
+                </Eyebrow>
                 <HeadlineMain color="white">
                     Reinigung mit Trocken-Druck-Luft
                 </HeadlineMain>

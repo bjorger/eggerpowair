@@ -2,17 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { ReactComponent as PowairPartyBusBlue } from "assets/car-blue.svg";
 import { ReactComponent as PowairPartyBusOrange } from "assets/car-orange.svg";
-import { useAppSelector, useAppDispatch } from "redux/hooks";
-import {
-    toggleOrange,
-    toggleBlue,
-} from "redux/features/themeToggle/themeToggle";
+import { useAppSelector } from "redux/hooks";
+import ThemeToggle from "components/themeToggle";
 import { Variants } from "components/components.sc";
 import { Button } from "components/components.sc";
 
 const Stage: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
-    const dispatch = useAppDispatch();
 
     return (
         <Container>
@@ -42,13 +38,7 @@ const Stage: React.FC = () => {
                 </StageTextContainer>
                 {theme === "orange" ? <PartyBusOrange /> : <PartyBusBlue />}
                 <ThemeToggleContainer>
-                    <Cold onClick={() => dispatch(toggleBlue())}>
-                        Cold Powair
-                    </Cold>
-                    |
-                    <Hot onClick={() => dispatch(toggleOrange())}>
-                        Hot Powair
-                    </Hot>
+                    <ThemeToggle />
                 </ThemeToggleContainer>
             </Content>
         </Container>
@@ -160,20 +150,4 @@ const ThemeToggleContainer = styled.div`
     align-items: center;
     color: ${({ theme }) => theme.palette.white};
     justify-content: center;
-`;
-
-const Hot = styled.span`
-    color: ${({ theme }) => theme.palette.orange};
-    ${({ theme }) => theme.fonts.button}
-    text-transform: uppercase;
-    cursor: pointer;
-    margin-left: 10px;
-`;
-
-const Cold = styled.span`
-    color: ${({ theme }) => theme.palette.blue};
-    ${({ theme }) => theme.fonts.button}
-    text-transform: uppercase;
-    cursor: pointer;
-    margin-right: 10px;
 `;

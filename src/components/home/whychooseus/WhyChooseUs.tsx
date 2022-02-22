@@ -3,7 +3,7 @@ import PageWrap from "components/pageWrap";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import styled from "styled-components";
 import { ColoredSpan } from "../../components.sc";
-import { Grid, GridItem, ItemProps } from "components/Grid";
+import { Grid, GridItem, ItemProps } from "components/grid";
 import { useAppSelector } from "redux/hooks";
 import { Variants } from "components/components.sc";
 

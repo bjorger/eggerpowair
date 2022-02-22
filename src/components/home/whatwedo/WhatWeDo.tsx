@@ -1,7 +1,7 @@
 import React from "react";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import PageWrap from "components/pageWrap";
-import { ItemProps, Grid, GridItem } from "components/Grid";
+import { ItemProps, Grid, GridItem } from "components/grid";
 import { useAppSelector } from "redux/hooks";
 
 const WhatWeDo: React.FC = () => {
