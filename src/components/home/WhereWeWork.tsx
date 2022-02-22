@@ -7,20 +7,21 @@ import { ReactComponent as Map } from "assets/Map.svg";
 import { ReactComponent as Pins } from "assets/Pins.svg";
 import { ColoredSpan } from "./../components.sc";
 import { Button } from "./../components.sc";
+import { useAppSelector } from "redux/hooks";
 
 const WhereWeWork: React.FC = () => {
+    const theme = useAppSelector((state) => state.themeToggle.color);
+
     return (
         <PageWrap variant="light" hideOnMobile={true}>
             <Headline>
-                <Eyebrow textColor="black" variant="orange">
-                    Where we work
-                </Eyebrow>
+                <Eyebrow textColor="black">Where we work</Eyebrow>
                 <HeadlineMain>
-                    Mobil in ganz EU-Europa.{" "}
-                    <ColoredSpan variant="orange">24/7</ColoredSpan>
+                    Mobil in ganz EU-Europa.
+                    <ColoredSpan variant={theme}>24/7</ColoredSpan>
                 </HeadlineMain>
                 <AbsoluteButton
-                    bordervariant="orange"
+                    bordervariant={theme}
                     variant="white"
                     textcolor="black"
                     to="/"

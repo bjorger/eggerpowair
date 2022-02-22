@@ -3,21 +3,22 @@ import PageWrap from "components/pageWrap";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import styled from "styled-components";
 import { Button } from "components/components.sc";
+import { useAppSelector } from "redux/hooks";
 
 const TruthInEngineering: React.FC = () => {
+    const theme = useAppSelector((state) => state.themeToggle.color);
+
     return (
         <PageWrap variant="dark">
             <HeadlineContainer>
                 <Headline>
-                    <Eyebrow textColor="white" variant="orange">
-                        Truth in Engineering
-                    </Eyebrow>
+                    <Eyebrow textColor="white">Truth in Engineering</Eyebrow>
                     <HeadlineMain color="white">
                         PowAir is in the Air
                     </HeadlineMain>
                 </Headline>
                 <Button
-                    bordervariant="orange"
+                    bordervariant={theme}
                     textcolor="white"
                     variant="dark"
                     to="/"

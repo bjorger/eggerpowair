@@ -1,15 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import { useAppSelector } from "redux/hooks";
 
 interface EyebrowProps {
-    variant: "orange" | "blue";
     textColor: "white" | "black" | "orange" | "blue";
 }
 
-const Eyebrow: React.FC<EyebrowProps> = ({ children, variant, textColor }) => {
+const Eyebrow: React.FC<EyebrowProps> = ({ children, textColor }) => {
+    const theme = useAppSelector((state) => state.themeToggle.color);
+
     return (
         <EyebrowContainer>
-            <Gradient variant={variant} />
+            <Gradient variant={theme} />
             <EyebrowText color={textColor}>{children}</EyebrowText>
         </EyebrowContainer>
     );

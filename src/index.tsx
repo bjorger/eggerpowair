@@ -7,19 +7,23 @@ import theme from "./theme";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Header from "components/header/Header";
 import Home from "pages/Home";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 ReactDOM.render(
     <React.StrictMode>
-        <div id="outer-container">
-            <ThemeProvider theme={theme}>
-                <HashRouter>
-                    <Header />
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                    </Routes>
-                </HashRouter>
-            </ThemeProvider>
-        </div>
+        <Provider store={store}>
+            <div id="outer-container">
+                <ThemeProvider theme={theme}>
+                    <HashRouter>
+                        <Header />
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                        </Routes>
+                    </HashRouter>
+                </ThemeProvider>
+            </div>
+        </Provider>
     </React.StrictMode>,
     document.getElementById("root")
 );

@@ -32,9 +32,7 @@ const Projects: React.FC = () => {
     return (
         <PageWrap variant="dark">
             <Headline>
-                <Eyebrow textColor="blue" variant="blue">
-                    COLD POWAIR
-                </Eyebrow>
+                <Eyebrow textColor="blue">COLD POWAIR</Eyebrow>
                 <HeadlineMain color="white">
                     Reinigung mit Trocken-Druck-Luft
                 </HeadlineMain>

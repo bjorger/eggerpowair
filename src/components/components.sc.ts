@@ -44,7 +44,7 @@ export const Content = styled.div`
 `;
 
 export const ColoredSpan = styled.span<SpanProps>`
-    color: ${({ theme }) => theme.palette.orange};
+    color: ${({ theme, variant }) => theme.palette[variant]};
 `;
 
 export const Button = styled(Link)<ButtonProps>`
@@ -55,12 +55,10 @@ export const Button = styled(Link)<ButtonProps>`
     color: ${({ theme, textcolor }) => theme.palette[textcolor]};
     border-radius: 44px;
     padding: 18px 30px;
-    width: 100%;
     text-transform: uppercase;
     text-decoration: none;
     text-align: center;
     width: auto;
-
     transition: 0.5s ease background;
 
     &:hover {
@@ -70,5 +68,6 @@ export const Button = styled(Link)<ButtonProps>`
 
     @media screen and (min-width: ${({ theme }) =>
             `${theme.breakpoints.md}px`}) {
+        max-width: 300px;
     }
 `;

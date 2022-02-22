@@ -4,8 +4,12 @@ import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import styled from "styled-components";
 import { ColoredSpan } from "../../components.sc";
 import { Grid, GridItem, ItemProps } from "components/Grid";
+import { useAppSelector } from "redux/hooks";
+import { Variants } from "components/components.sc";
 
 const WhyChooseUs: React.FC = () => {
+    const theme = useAppSelector((state) => state.themeToggle.color);
+
     const whyChooseUsItems: ItemProps[] = [
         {
             number: "01",
@@ -44,18 +48,14 @@ const WhyChooseUs: React.FC = () => {
             <Grid>
                 <GridItemWrap>
                     <Headline>
-                        <Eyebrow textColor="white" variant="orange">
-                            Why choose us
-                        </Eyebrow>
+                        <Eyebrow textColor="white">Why choose us</Eyebrow>
                         <HeadlineMain color="white">
-                            <ColoredSpan variant="orange">
-                                Designing
-                            </ColoredSpan>{" "}
+                            <ColoredSpan variant={theme}>Designing</ColoredSpan>{" "}
                             Future with Excellence
                         </HeadlineMain>
                     </Headline>
                     <GridItemUL>
-                        <GridItemParagraph>
+                        <GridItemParagraph variant={theme}>
                             Egger PowAir Cleaning reinigt Industrieanlagen,
                             Produktionsanlagen, Maschinen, Brücken und Bauten
                             mobil in ganz Europa.
@@ -82,11 +82,15 @@ export default WhyChooseUs;
 
 const GridItemWrap = styled.div``;
 
-const GridItemParagraph = styled.li`
+interface GrdItemParagraphProps {
+    variant: Variants;
+}
+
+const GridItemParagraph = styled.li<GrdItemParagraphProps>`
     ${({ theme }) => theme.fonts.paragraph};
     color: ${({ theme }) => theme.palette.white};
     &::marker {
-        color: ${({ theme }) => theme.palette.orange};
+        color: ${({ theme, variant }) => theme.palette[variant]};
         font-size: 20px;
     }
 `;

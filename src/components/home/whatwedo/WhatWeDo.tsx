@@ -2,8 +2,11 @@ import React from "react";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import PageWrap from "components/pageWrap";
 import { ItemProps, Grid, GridItem } from "components/Grid";
+import { useAppSelector } from "redux/hooks";
 
 const WhatWeDo: React.FC = () => {
+    const theme = useAppSelector((state) => state.themeToggle.color);
+
     const whatWeDoItems: ItemProps[] = [
         {
             number: "01",
@@ -46,9 +49,7 @@ const WhatWeDo: React.FC = () => {
     return (
         <PageWrap variant="light">
             <Headline>
-                <Eyebrow textColor="black" variant="orange">
-                    What we do
-                </Eyebrow>
+                <Eyebrow textColor="black">What we do</Eyebrow>
                 <HeadlineMain>
                     6 gute Gründe für Egger <br />
                     PowAir Cleaning:
@@ -60,7 +61,7 @@ const WhatWeDo: React.FC = () => {
                         boxShadowVariant="dark"
                         backgroundVariant="white"
                         headlineVariant="black"
-                        numberVariant="orange"
+                        numberVariant={theme}
                         paragraphVariant="black"
                         item={item}
                         key={item.number}

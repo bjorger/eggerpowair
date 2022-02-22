@@ -5,8 +5,12 @@ import { Link } from "react-router-dom";
 import { elastic as Menu } from "react-burger-menu";
 import mobileMenuTheme from "./MobileMenuTheme";
 import { Variants } from "components/components.sc";
+import { useAppSelector } from "redux/hooks";
+import { Button } from "components/components.sc";
 
 const Header: React.FC = () => {
+    const theme = useAppSelector((state) => state.themeToggle.color);
+
     return (
         <>
             <BrowserView>
@@ -14,14 +18,21 @@ const Header: React.FC = () => {
                     <HeaderContent>
                         <StyledLogo src={Logo} alt="" />
                         <NavContainer>
-                            <HeaderLink color="blue" to="/">
+                            <HeaderLink color={theme} to="/">
                                 über uns
                             </HeaderLink>
                             <HeaderLink to="/">Services</HeaderLink>
                             <HeaderLink to="/">Projekte</HeaderLink>
                             <HeaderLink to="/">Team</HeaderLink>
                             <HeaderLink to="/">Blog</HeaderLink>
-                            <ContactButton to="/">Kontakt</ContactButton>
+                            <Button
+                                bordervariant={theme}
+                                textcolor="white"
+                                variant="dark"
+                                to="/"
+                            >
+                                Kontakt
+                            </Button>
                         </NavContainer>
                     </HeaderContent>
                 </HeaderContainer>
@@ -41,7 +52,14 @@ const Header: React.FC = () => {
                     <HeaderLink to="/">Projekte</HeaderLink>
                     <HeaderLink to="/">Team</HeaderLink>
                     <HeaderLink to="/">Blog</HeaderLink>
-                    <ContactButton to="/">Kontakt</ContactButton>
+                    <Button
+                        bordervariant={theme}
+                        textcolor="white"
+                        variant="dark"
+                        to="/"
+                    >
+                        Kontakt
+                    </Button>
                 </Menu>
             </MobileView>
         </>
@@ -96,7 +114,7 @@ const NavContainer = styled.div`
 const HeaderLink = styled(Link)<HeaderLinkProps>`
     ${({ theme }) => theme.fonts.header.link};
 
-    margin-left: 20px;
+    margin: 0 20px;
     text-decoration: none;
     text-transform: uppercase;
     color: ${({ theme, color }) =>
@@ -113,15 +131,4 @@ const StyledLogo = styled.img`
             `${theme.breakpoints.md}px`}) {
         width: auto;
     }
-`;
-
-const ContactButton = styled(Link)`
-    border: ${({ theme }) => `1px solid ${theme.palette.blue}`};
-    border-radius: 54px;
-    padding: 18px 30px;
-    background: ${({ theme }) => theme.palette.dark};
-    text-decoration: none;
-    color: ${({ theme }) => theme.palette.white};
-    margin-left: 20px;
-    text-align: center;
 `;

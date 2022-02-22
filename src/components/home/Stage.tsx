@@ -1,12 +1,23 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as PowairPartyBus } from "assets/car-blue.svg";
+import { ReactComponent as PowairPartyBusBlue } from "assets/car-blue.svg";
+import { ReactComponent as PowairPartyBusOrange } from "assets/car-orange.svg";
+import { useAppSelector, useAppDispatch } from "redux/hooks";
+import {
+    toggleOrange,
+    toggleBlue,
+} from "redux/features/themeToggle/themeToggle";
+import { Variants } from "components/components.sc";
+import { Button } from "components/components.sc";
 
 const Stage: React.FC = () => {
+    const theme = useAppSelector((state) => state.themeToggle.color);
+    const dispatch = useAppDispatch();
+
     return (
         <Container>
             <Content>
-                <Gradient />
+                <Gradient color={theme} />
                 <StageTextContainer>
                     <Eyebrow>Professional. Innovative. Reliable.</Eyebrow>
                     <HeadlineMain>
@@ -20,9 +31,25 @@ const Stage: React.FC = () => {
                         sustainable, creative & efficient engineering solutions
                         for our communities
                     </StageParagraph>
-                    <StageButton>jetzt kontaktieren</StageButton>
+                    <Button
+                        bordervariant={theme}
+                        textcolor="white"
+                        to="/"
+                        variant={theme}
+                    >
+                        jetzt kontaktieren
+                    </Button>
                 </StageTextContainer>
-                <PartyBus />
+                {theme === "orange" ? <PartyBusOrange /> : <PartyBusBlue />}
+                <ThemeToggleContainer>
+                    <Cold onClick={() => dispatch(toggleBlue())}>
+                        Cold Powair
+                    </Cold>
+                    |
+                    <Hot onClick={() => dispatch(toggleOrange())}>
+                        Hot Powair
+                    </Hot>
+                </ThemeToggleContainer>
             </Content>
         </Container>
     );
@@ -31,7 +58,7 @@ const Stage: React.FC = () => {
 export default Stage;
 
 interface GradientProps {
-    orange?: boolean;
+    color: Variants;
 }
 
 const Container = styled.div`
@@ -42,7 +69,7 @@ const Container = styled.div`
 
     @media screen and (min-width: ${({ theme }) =>
             `${theme.breakpoints.md}px`}) {
-        padding: 100px 0 50px 0;
+        padding: 100px 0;
         grid-template-columns: repeat(24, 1fr);
         height: 75vh;
     }
@@ -58,7 +85,20 @@ const Content = styled.div`
     }
 `;
 
-const PartyBus = styled(PowairPartyBus)`
+const PartyBusBlue = styled(PowairPartyBusBlue)`
+    display: none;
+
+    @media screen and (min-width: ${({ theme }) =>
+            `${theme.breakpoints.lg}px`}) {
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 60%;
+    }
+`;
+
+const PartyBusOrange = styled(PowairPartyBusOrange)`
     display: none;
 
     @media screen and (min-width: ${({ theme }) =>
@@ -76,8 +116,7 @@ const Gradient = styled.div<GradientProps>`
 
     @media screen and (min-width: ${({ theme }) =>
             `${theme.breakpoints.md}px`}) {
-        background: ${({ theme, orange }) =>
-            orange ? theme.palette.orange : theme.palette.blue};
+        background: ${({ theme, color }) => theme.palette[color]};
         height: 1px;
         width: 200px;
         position: absolute;
@@ -112,19 +151,29 @@ const StageParagraph = styled.p`
     max-width: 450px;
 `;
 
-const StageButton = styled.button`
-    ${({ theme }) => theme.fonts.button};
-    background: ${({ theme }) => theme.palette.blue};
-    border-radius: 44px;
-    padding: 18px 30px;
+const ThemeToggleContainer = styled.div`
+    position: absolute;
+    bottom: -50px;
+    display: flex;
     width: 100%;
-    text-transform: uppercase;
-    border: none;
-    margin-top: 15px;
+    flex-direction: row;
+    align-items: center;
+    color: ${({ theme }) => theme.palette.white};
+    justify-content: center;
+`;
 
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.md}px`}) {
-        width: 300px;
-        margin-top: 30px;
-    }
+const Hot = styled.span`
+    color: ${({ theme }) => theme.palette.orange};
+    ${({ theme }) => theme.fonts.button}
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-left: 10px;
+`;
+
+const Cold = styled.span`
+    color: ${({ theme }) => theme.palette.blue};
+    ${({ theme }) => theme.fonts.button}
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-right: 10px;
 `;
