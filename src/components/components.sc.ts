@@ -28,7 +28,7 @@ export const Container = styled.div<ContainerProps>`
     @media screen and (min-width: ${({ theme }) =>
             `${theme.breakpoints.md}px`}) {
         padding: 80px 0;
-        min-height: 100vh;
+        min-height: 50vh;
         display: grid;
     }
 `;

@@ -55,7 +55,7 @@ const MapContainer = styled.div`
 const StyledPins = styled(Pins)`
     position: absolute;
     right: 240px;
-    bottom: 180px;
+    bottom: 225px;
 `;
 
 const StyledMap = styled(Map)`

@@ -40,7 +40,7 @@ const Headline = styled.h2`
 `;
 
 const Description = styled.p`
-    ${({ theme }) => theme.fonts.projectItem.description};
+    ${({ theme }) => theme.fonts.paragraph};
     margin: 0;
     color: ${({ theme }) => theme.palette.white};
 `;

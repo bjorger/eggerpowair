@@ -35,7 +35,6 @@ interface Fonts {
     };
     projectItem: {
         headline: SimpleInterpolation;
-        description: SimpleInterpolation;
     };
 }
 
@@ -128,11 +127,6 @@ const theme: Theme = {
             `,
         },
         projectItem: {
-            description: css`
-                font-size: 19px;
-                line-height: 28px;
-                font-weight: 400;
-            `,
             headline: css`
                 font-size: 30px;
                 line-height: 40px;
