@@ -63,6 +63,7 @@ const WhatWeDo: React.FC = () => {
                         numberVariant="orange"
                         paragraphVariant="black"
                         item={item}
+                        key={item.number}
                     />
                 ))}
             </Grid>

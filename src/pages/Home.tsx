@@ -4,7 +4,8 @@ import {
     WhatWeDo,
     Projects,
     WhereWeWork,
-    WhyChoseUs,
+    WhyChooseUs,
+    TruthInEngineering,
 } from "components/home";
 const Home: React.FC = () => {
     return (
@@ -13,7 +14,8 @@ const Home: React.FC = () => {
             <WhatWeDo />
             <Projects />
             <WhereWeWork />
-            <WhyChoseUs />
+            <WhyChooseUs />
+            <TruthInEngineering />
         </main>
     );
 };

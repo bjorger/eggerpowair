@@ -107,8 +107,7 @@ const HeadlineMain = styled.h1`
 `;
 
 const StageParagraph = styled.p`
-    font-size: ${({ theme }) => theme.fonts.stage.paragraph};
-
+    ${({ theme }) => theme.fonts.paragraph};
     color: ${({ theme }) => theme.palette.white};
     max-width: 450px;
 `;

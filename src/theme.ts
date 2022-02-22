@@ -28,13 +28,10 @@ interface Fonts {
     header: {
         link: SimpleInterpolation;
     };
-    stage: {
-        paragraph: FlattenInterpolation<ThemeProps<any>>;
-    };
+    paragraph: FlattenInterpolation<ThemeProps<any>>;
     gridItem: {
         number: SimpleInterpolation;
         headline: SimpleInterpolation;
-        description: SimpleInterpolation;
     };
     projectItem: {
         headline: SimpleInterpolation;
@@ -107,25 +104,18 @@ const theme: Theme = {
                 font-weight: 600;
             `,
         },
-        stage: {
-            paragraph: css`
-                font-size: 12px;
-                line-height: 24px;
+        paragraph: css`
+            font-size: 12px;
+            line-height: 24px;
 
-                @media screen and (min-width: ${({ theme }) =>
-                        `${theme.breakpoints.md}px`}) {
-                    font-size: 19px;
-                    line-height: 28px;
-                    font-weight: 200;
-                }
-            `,
-        },
-        gridItem: {
-            description: css`
+            @media screen and (min-width: ${({ theme }) =>
+                    `${theme.breakpoints.md}px`}) {
                 font-size: 19px;
                 line-height: 28px;
-                font-weight: 400;
-            `,
+                font-weight: 200;
+            }
+        `,
+        gridItem: {
             headline: css`
                 font-size: 26px;
                 line-height: 31px;

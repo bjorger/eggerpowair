@@ -4,6 +4,7 @@ import Logo from "assets/eggerpowair-logo.png";
 import { Link } from "react-router-dom";
 import { elastic as Menu } from "react-burger-menu";
 import mobileMenuTheme from "./MobileMenuTheme";
+import { Variants } from "components/components.sc";
 
 const Header: React.FC = () => {
     return (
@@ -13,7 +14,7 @@ const Header: React.FC = () => {
                     <HeaderContent>
                         <StyledLogo src={Logo} alt="" />
                         <NavContainer>
-                            <HeaderLink blueText={true} to="/">
+                            <HeaderLink color="blue" to="/">
                                 über uns
                             </HeaderLink>
                             <HeaderLink to="/">Services</HeaderLink>
@@ -33,7 +34,7 @@ const Header: React.FC = () => {
                     pageWrapId="page-wrap"
                     outerContainerId="outer-container"
                 >
-                    <HeaderLink blueText={true} to="/">
+                    <HeaderLink color="blue" to="/">
                         über uns
                     </HeaderLink>
                     <HeaderLink to="/">Services</HeaderLink>
@@ -50,7 +51,7 @@ const Header: React.FC = () => {
 export default Header;
 
 interface HeaderLinkProps {
-    blueText?: boolean;
+    color?: Variants;
 }
 
 const BrowserView = styled.div`
@@ -98,8 +99,8 @@ const HeaderLink = styled(Link)<HeaderLinkProps>`
     margin-left: 20px;
     text-decoration: none;
     text-transform: uppercase;
-    color: ${({ theme, blueText }) =>
-        blueText ? theme.palette.blue : theme.palette.white};
+    color: ${({ theme, color }) =>
+        color ? theme.palette[color] : theme.palette.white};
 `;
 
 const StyledLogo = styled.img`

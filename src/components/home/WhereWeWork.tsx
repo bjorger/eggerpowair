@@ -6,10 +6,11 @@ import styled from "styled-components";
 import { ReactComponent as Map } from "assets/Map.svg";
 import { ReactComponent as Pins } from "assets/Pins.svg";
 import { ColoredSpan } from "./../components.sc";
+import { Button } from "./../components.sc";
 
 const WhereWeWork: React.FC = () => {
     return (
-        <PageWrap variant="light">
+        <PageWrap variant="light" hideOnMobile={true}>
             <Headline>
                 <Eyebrow textColor="black" variant="orange">
                     Where we work
@@ -18,7 +19,14 @@ const WhereWeWork: React.FC = () => {
                     Mobil in ganz EU-Europa.{" "}
                     <ColoredSpan variant="orange">24/7</ColoredSpan>
                 </HeadlineMain>
-                <Button>Jetzt kontaktieren</Button>
+                <AbsoluteButton
+                    bordervariant="orange"
+                    variant="white"
+                    textcolor="black"
+                    to="/"
+                >
+                    Jetzt kontaktieren
+                </AbsoluteButton>
                 <MapContainer>
                     <StyledMap />
                     <StyledPins />
@@ -30,30 +38,10 @@ const WhereWeWork: React.FC = () => {
 
 export default WhereWeWork;
 
-const Button = styled.button`
-    position: absolute;
-    bottom: 0;
-    left: 0;
-
-    ${({ theme }) => theme.fonts.button};
-    border: ${({ theme }) => `2px solid ${theme.palette.orange}`};
-    background: transparent;
-    border-radius: 44px;
-    padding: 18px 30px;
-    width: 100%;
-    text-transform: uppercase;
-    margin-top: 15px;
-
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.md}px`}) {
-        width: 300px;
-        margin-top: 30px;
-    }
-`;
-
 const MapContainer = styled.div`
     position: relative;
     display: none;
+    pointer-events: none;
 
     @media screen and (min-width: ${({ theme }) =>
             `${theme.breakpoints.md}px`}) {
@@ -73,4 +61,11 @@ const StyledMap = styled(Map)`
     position: absolute;
     right: 100px;
     top: -75px;
+`;
+
+const AbsoluteButton = styled(Button)`
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300px;
 `;

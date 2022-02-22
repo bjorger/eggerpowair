@@ -74,6 +74,6 @@ const Headline = styled.h2<ComponentProps>`
 `;
 
 const Description = styled.p<ComponentProps>`
-    font-size: ${({ theme }) => theme.fonts.gridItem.description};
+    ${({ theme }) => theme.fonts.paragraph};
     color: ${({ theme, variant }) => theme.palette[variant]};
 `;

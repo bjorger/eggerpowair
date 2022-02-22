@@ -2,10 +2,10 @@ import React from "react";
 import PageWrap from "components/pageWrap";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import styled from "styled-components";
-import { ColoredSpan } from "./../components.sc";
+import { ColoredSpan } from "../../components.sc";
 import { Grid, GridItem, ItemProps } from "components/Grid";
 
-const WhyChoseUs: React.FC = () => {
+const WhyChooseUs: React.FC = () => {
     const whyChooseUsItems: ItemProps[] = [
         {
             number: "01",
@@ -70,6 +70,7 @@ const WhyChoseUs: React.FC = () => {
                         numberVariant="light"
                         paragraphVariant="white"
                         item={item}
+                        key={item.title}
                     />
                 ))}
             </Grid>
@@ -77,12 +78,12 @@ const WhyChoseUs: React.FC = () => {
     );
 };
 
-export default WhyChoseUs;
+export default WhyChooseUs;
 
 const GridItemWrap = styled.div``;
 
 const GridItemParagraph = styled.li`
-    font-size: ${({ theme }) => theme.fonts.gridItem.description};
+    ${({ theme }) => theme.fonts.paragraph};
     color: ${({ theme }) => theme.palette.white};
     &::marker {
         color: ${({ theme }) => theme.palette.orange};
