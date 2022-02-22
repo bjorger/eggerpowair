@@ -1,11 +1,12 @@
 {
   "files": {
     "main.css": "/eggerpowair/static/css/main.86c74ea5.css",
-    "main.js": "/eggerpowair/static/js/main.94720d63.js",
+    "main.js": "/eggerpowair/static/js/main.9004b7e1.js",
     "static/js/787.213cadea.chunk.js": "/eggerpowair/static/js/787.213cadea.chunk.js",
     "static/media/Map.svg": "/eggerpowair/static/media/Map.5e76e19143fd0ea0eae301d4617c067f.svg",
     "static/media/car-blue.svg": "/eggerpowair/static/media/car-blue.ace0ae6bf7bc010e0ccdf826395c0169.svg",
     "static/media/Egger-PowAir.jpg": "/eggerpowair/static/media/Egger-PowAir.eb0f7975b2a8d7597608.jpg",
+    "static/media/car-orange.svg": "/eggerpowair/static/media/car-orange.906d746c8424a38e7dd28086413d72cf.svg",
     "static/media/archivo-v9-latin-800italic.woff": "/eggerpowair/static/media/archivo-v9-latin-800italic.bcfb603c8eb0b2c26603.woff",
     "static/media/archivo-v9-latin-700italic.woff": "/eggerpowair/static/media/archivo-v9-latin-700italic.639e0ff9bae6af1f1376.woff",
     "static/media/archivo-v9-latin-200italic.woff": "/eggerpowair/static/media/archivo-v9-latin-200italic.d5c0b2437932ca0aef8e.woff",
@@ -45,11 +46,11 @@
     "index.html": "/eggerpowair/index.html",
     "static/media/Pins.svg": "/eggerpowair/static/media/Pins.c4f3a2f95e363fb5489bc2e1c49b0d25.svg",
     "main.86c74ea5.css.map": "/eggerpowair/static/css/main.86c74ea5.css.map",
-    "main.94720d63.js.map": "/eggerpowair/static/js/main.94720d63.js.map",
+    "main.9004b7e1.js.map": "/eggerpowair/static/js/main.9004b7e1.js.map",
     "787.213cadea.chunk.js.map": "/eggerpowair/static/js/787.213cadea.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.86c74ea5.css",
-    "static/js/main.94720d63.js"
+    "static/js/main.9004b7e1.js"
   ]
 }
