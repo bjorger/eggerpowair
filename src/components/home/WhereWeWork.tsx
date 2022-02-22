@@ -58,18 +58,19 @@ const MapContainer = styled.div`
     @media screen and (min-width: ${({ theme }) =>
             `${theme.breakpoints.md}px`}) {
         padding: 100px 0;
-        min-height: 100vh;
         display: block;
+        min-height: 70vh;
     }
 `;
 
 const StyledPins = styled(Pins)`
     position: absolute;
-    right: 140px;
-    bottom: 340px;
+    right: 240px;
+    bottom: 180px;
 `;
 
 const StyledMap = styled(Map)`
     position: absolute;
-    right: 0;
+    right: 100px;
+    top: -75px;
 `;
