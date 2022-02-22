@@ -21,7 +21,7 @@ const StickyThemeToggle: React.FC = () => {
 
     return (
         <StickyThemeToggleContainer variant={theme} onClick={toggleTheme}>
-            {theme === "blue" ? "B" : "H"}
+            {theme === "blue" ? "C" : "H"}
         </StickyThemeToggleContainer>
     );
 };
