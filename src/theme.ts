@@ -1,9 +1,4 @@
-import {
-    css,
-    FlattenInterpolation,
-    SimpleInterpolation,
-    ThemeProps,
-} from "styled-components/macro";
+import { css, FlattenInterpolation, SimpleInterpolation, ThemeProps } from "styled-components/macro";
 
 interface Breakpoints {
     md: number;
@@ -37,6 +32,9 @@ interface Fonts {
     projectItem: {
         headline: SimpleInterpolation;
     };
+    footer: {
+        paragraph: FlattenInterpolation<ThemeProps<any>>;
+    };
 }
 
 interface Theme {
@@ -68,8 +66,7 @@ const theme: Theme = {
                 line-height: 36px;
                 font-weight: 700;
 
-                @media screen and (min-width: ${({ theme }) =>
-                        `${theme.breakpoints.md}px`}) {
+                @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
                     font-size: 48px;
                     line-height: 55px;
                 }
@@ -79,8 +76,7 @@ const theme: Theme = {
                 line-height: 24px;
                 font-weight: 600;
 
-                @media screen and (min-width: ${({ theme }) =>
-                        `${theme.breakpoints.md}px`}) {
+                @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
                     font-size: 18px;
                     line-height: 23px;
                 }
@@ -91,8 +87,7 @@ const theme: Theme = {
             line-height: 24px;
             font-weight: 600;
 
-            @media screen and (min-width: ${({ theme }) =>
-                    `${theme.breakpoints.md}px`}) {
+            @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
                 font-size: 18px;
                 line-height: 23px;
             }
@@ -108,8 +103,7 @@ const theme: Theme = {
             font-size: 12px;
             line-height: 24px;
 
-            @media screen and (min-width: ${({ theme }) =>
-                    `${theme.breakpoints.md}px`}) {
+            @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
                 font-size: 19px;
                 line-height: 28px;
                 font-weight: 200;
@@ -132,6 +126,18 @@ const theme: Theme = {
                 font-size: 30px;
                 line-height: 40px;
                 font-weight: 700;
+            `,
+        },
+        footer: {
+            paragraph: css`
+                font-size: 12px;
+                line-height: 24px;
+                font-weight: 400;
+
+                @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+                    font-size: 16px;
+                    line-height: 23px;
+                }
             `,
         },
     },

@@ -20,19 +20,14 @@ const hotSteps = [
     {
         img: Step3,
         title: "Schritt 3",
-        description:
-            "...und „reibt“ durch das Egger PowAir Granulate die Oberflächenmaterialien, Ablagerungen, Lacke... kraftvoll ab.",
+        description: "...und „reibt“ durch das Egger PowAir Granulate die Oberflächenmaterialien, Ablagerungen, Lacke... kraftvoll ab.",
     },
 ];
 const Hot: React.FC = () => {
     return (
         <>
             {hotSteps.map((step) => (
-                <Step
-                    img={step.img}
-                    title={step.title}
-                    description={step.description}
-                />
+                <Step key={step.img} img={step.img} title={step.title} description={step.description} />
             ))}
         </>
     );

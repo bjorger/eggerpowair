@@ -17,7 +17,6 @@ export const themeSlice = createSlice({
     initialState,
     reducers: {
         toggleBlue: (state) => {
-            console.log("blue");
             state.color = "blue";
         },
         toggleOrange: (state) => {

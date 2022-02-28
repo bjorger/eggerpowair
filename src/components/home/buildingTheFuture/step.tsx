@@ -24,15 +24,15 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
 
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.md}px`}) {
-        display: block;
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 `;
 const Image = styled.img`
     width: 40%;
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.md}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         width: 80%;
     }
 `;
@@ -42,8 +42,7 @@ const Title = styled.h2`
 const Description = styled.p`
     ${({ theme }) => theme.fonts.paragraph};
     text-align: center;
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.md}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         text-align: left;
     }
 `;

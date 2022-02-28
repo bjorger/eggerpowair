@@ -16,13 +16,7 @@ const BuildingTheFuture: React.FC = () => {
         <PageWrap variant="light">
             <Headline>
                 <Eyebrow textColor="black"> Building the future</Eyebrow>
-                <HeadlineMain>
-                    {theme === "blue" ? (
-                        <Image src={ColdPowair} alt="" />
-                    ) : (
-                        <Image src={HotPowair} alt="" />
-                    )}
-                </HeadlineMain>
+                <HeadlineMain>{theme === "blue" ? <Image src={ColdPowair} alt="" /> : <Image src={HotPowair} alt="" />}</HeadlineMain>
                 <Grid>{theme === "blue" ? <Cold /> : <Hot />}</Grid>
             </Headline>
         </PageWrap>
@@ -33,8 +27,7 @@ export default BuildingTheFuture;
 
 const Image = styled.img`
     width: 80%;
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.md}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         width: auto;
     }
 `;

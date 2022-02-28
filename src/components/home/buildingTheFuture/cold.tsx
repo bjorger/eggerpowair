@@ -8,14 +8,12 @@ const coldSteps = [
     {
         img: Step1,
         title: "Schritt 1",
-        description:
-            "Die KALTE TROCKENDRUCKLUFT (KDL) dringt durch MIKRO-RISSE in die Verunreinigung ein...",
+        description: "Die KALTE TROCKENDRUCKLUFT (KDL) dringt durch MIKRO-RISSE in die Verunreinigung ein...",
     },
     {
         img: Step2,
         title: "Schritt 2",
-        description:
-            "...dehnt sich durch Erwärmung an der Luft spontan um ein vielfaches aus...",
+        description: "...dehnt sich durch Erwärmung an der Luft spontan um ein vielfaches aus...",
     },
     {
         img: Step3,
@@ -27,11 +25,7 @@ const Cold: React.FC = () => {
     return (
         <>
             {coldSteps.map((step) => (
-                <Step
-                    img={step.img}
-                    title={step.title}
-                    description={step.description}
-                />
+                <Step key={step.img} img={step.img} title={step.title} description={step.description} />
             ))}
         </>
     );

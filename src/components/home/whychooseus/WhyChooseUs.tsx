@@ -14,32 +14,27 @@ const WhyChooseUs: React.FC = () => {
         {
             number: "01",
             title: "Schnell & kostensparend",
-            description:
-                "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
         },
         {
             number: "02",
             title: "Genial umweltfreundlich",
-            description:
-                "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
         },
         {
             number: "03",
             title: "Mobil in ganz Europa",
-            description:
-                "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
         },
         {
             number: "04",
             title: "Technik-Profi-Reinigung",
-            description:
-                "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
         },
         {
             number: "05",
             title: "Für uns ist kein Auftrag zu klein...",
-            description:
-                "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
         },
     ];
 
@@ -50,15 +45,12 @@ const WhyChooseUs: React.FC = () => {
                     <Headline>
                         <Eyebrow textColor="white">Why choose us</Eyebrow>
                         <HeadlineMain color="white">
-                            <ColoredSpan variant={theme}>Designing</ColoredSpan>{" "}
-                            Future with Excellence
+                            <ColoredSpan variant={theme}>Designing</ColoredSpan> Future with Excellence
                         </HeadlineMain>
                     </Headline>
                     <GridItemUL>
                         <GridItemParagraph variant={theme}>
-                            Egger PowAir Cleaning reinigt Industrieanlagen,
-                            Produktionsanlagen, Maschinen, Brücken und Bauten
-                            mobil in ganz Europa.
+                            Egger PowAir Cleaning reinigt Industrieanlagen, Produktionsanlagen, Maschinen, Brücken und Bauten mobil in ganz Europa.
                         </GridItemParagraph>
                     </GridItemUL>
                 </GridItemWrap>

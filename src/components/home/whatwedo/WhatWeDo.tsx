@@ -11,38 +11,32 @@ const WhatWeDo: React.FC = () => {
         {
             number: "01",
             title: "Schnell & kostensparend",
-            description:
-                "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
         },
         {
             number: "02",
             title: "Genial umweltfreundlich",
-            description:
-                "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
         },
         {
             number: "03",
             title: "Mobil in ganz Europa",
-            description:
-                "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
         },
         {
             number: "04",
             title: "Technik-Profi-Reinigung",
-            description:
-                "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
         },
         {
             number: "05",
             title: "Für uns ist kein Auftrag zu klein...",
-            description:
-                "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
         },
         {
             number: "06",
             title: "Schulung & Support",
-            description:
-                "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
         },
     ];
 
