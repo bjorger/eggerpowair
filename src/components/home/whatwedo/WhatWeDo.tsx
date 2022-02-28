@@ -3,6 +3,13 @@ import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import PageWrap from "components/pageWrap";
 import { ItemProps, Grid, GridItem } from "components/grid";
 import { useAppSelector } from "redux/hooks";
+import { BrowserView, MobileView, Variants } from "components/components.sc";
+import "swiper/css";
+import "swiper/css/pagination";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper";
+import styled from "styled-components";
 
 const WhatWeDo: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
@@ -41,7 +48,7 @@ const WhatWeDo: React.FC = () => {
     ];
 
     return (
-        <PageWrap variant="light">
+        <PageWrap variant="white">
             <Headline>
                 <Eyebrow textColor="black">What we do</Eyebrow>
                 <HeadlineMain>
@@ -49,21 +56,74 @@ const WhatWeDo: React.FC = () => {
                     PowAir Cleaning:
                 </HeadlineMain>
             </Headline>
-            <Grid>
-                {whatWeDoItems.map((item) => (
-                    <GridItem
-                        boxShadowVariant="dark"
-                        backgroundVariant="white"
-                        headlineVariant="black"
-                        numberVariant={theme}
-                        paragraphVariant="black"
-                        item={item}
-                        key={item.number}
-                    />
-                ))}
-            </Grid>
+            <BrowserView>
+                <Grid>
+                    {whatWeDoItems.map((item) => (
+                        <GridItem
+                            boxShadowVariant="dark"
+                            backgroundVariant="white"
+                            headlineVariant="black"
+                            numberVariant={theme}
+                            paragraphVariant="black"
+                            item={item}
+                            key={item.number}
+                        />
+                    ))}
+                </Grid>
+            </BrowserView>
+            <MobileView>
+                <CustomSwiper
+                    variant={theme}
+                    pagination={{
+                        dynamicBullets: false,
+                    }}
+                    modules={[Pagination]}
+                    slidesPerView={"auto"}
+                    spaceBetween={30}
+                >
+                    {whatWeDoItems.map((item) => (
+                        <SwiperSlide>
+                            <GridItem
+                                boxShadowVariant="dark"
+                                backgroundVariant="white"
+                                headlineVariant="black"
+                                numberVariant={theme}
+                                paragraphVariant="black"
+                                item={item}
+                                key={item.number}
+                            />
+                        </SwiperSlide>
+                    ))}
+                </CustomSwiper>
+            </MobileView>
         </PageWrap>
     );
 };
 
 export default WhatWeDo;
+
+interface CustomSwiperProps {
+    variant: Variants;
+}
+
+const CustomSwiper = styled(Swiper)<CustomSwiperProps>`
+    position: relative;
+
+    .swiper-pagination-bullet-active {
+        background-color: ${({ theme, variant }) => theme.palette[variant]} !important;
+    }
+
+    .swiper-pagination-bullet {
+        border: 2px solid;
+        border-color: ${({ theme, variant }) => theme.palette[variant]};
+        background-color: transparent;
+    }
+
+    .swiper-slide {
+        padding: 50px 0;
+    }
+`;
+
+const CustomSlide = styled(SwiperSlide)`
+    padding: 0 20px;
+`;

@@ -7,13 +7,11 @@ export const Grid = styled.div`
     row-gap: 54px;
     column-gap: 49px;
 
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.md}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.sm}px`}) {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.lg}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         grid-template-columns: repeat(3, 1fr);
     }
 `;

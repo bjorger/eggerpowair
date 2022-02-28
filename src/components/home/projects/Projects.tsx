@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
-import { Variants } from "components/components.sc";
+import { BrowserView, MobileView, Variants } from "components/components.sc";
 import { useAppSelector } from "redux/hooks";
 
 const DummyData = [
@@ -46,42 +46,66 @@ const Projects: React.FC = () => {
                 <Eyebrow textColor="white">
                     <ThemeToggle />
                 </Eyebrow>
-                <HeadlineMain color="white">
-                    Reinigung mit Trocken-Druck-Luft
-                </HeadlineMain>
-                <CustomSwiper
-                    variant={theme}
-                    pagination={{
-                        dynamicBullets: false,
-                    }}
-                    modules={[Pagination]}
-                    slidesPerView={1}
-                >
-                    <SwiperSlide>
-                        <ProjectGrid>
-                            {DummyData.map((item, index) => (
+                <HeadlineMain color="white">Reinigung mit Trocken-Druck-Luft</HeadlineMain>
+                <BrowserView>
+                    <CustomSwiper
+                        variant={theme}
+                        pagination={{
+                            dynamicBullets: false,
+                        }}
+                        modules={[Pagination]}
+                        slidesPerView={1}
+                        spaceBetween={30}
+                    >
+                        <SwiperSlide>
+                            <ProjectGrid>
+                                {DummyData.map((item, index) => (
+                                    <ProjectGridItem
+                                        image={item.img}
+                                        headline={item.headline}
+                                        description={item.description}
+                                        key={item.headline + index.toString()}
+                                    />
+                                ))}
+                            </ProjectGrid>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <ProjectGrid>
+                                {DummyData.map((item, index) => (
+                                    <ProjectGridItem
+                                        image={item.img}
+                                        headline={item.headline}
+                                        description={item.description}
+                                        key={item.headline + index.toString()}
+                                    />
+                                ))}
+                            </ProjectGrid>
+                        </SwiperSlide>
+                    </CustomSwiper>
+                </BrowserView>
+
+                <MobileView>
+                    <CustomSwiper
+                        variant={theme}
+                        pagination={{
+                            dynamicBullets: false,
+                        }}
+                        modules={[Pagination]}
+                        slidesPerView={1}
+                        spaceBetween={30}
+                    >
+                        {DummyData.map((item, index) => (
+                            <SwiperSlide>
                                 <ProjectGridItem
                                     image={item.img}
                                     headline={item.headline}
                                     description={item.description}
                                     key={item.headline + index.toString()}
                                 />
-                            ))}
-                        </ProjectGrid>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <ProjectGrid>
-                            {DummyData.map((item, index) => (
-                                <ProjectGridItem
-                                    image={item.img}
-                                    headline={item.headline}
-                                    description={item.description}
-                                    key={item.headline + index.toString()}
-                                />
-                            ))}
-                        </ProjectGrid>
-                    </SwiperSlide>
-                </CustomSwiper>
+                            </SwiperSlide>
+                        ))}
+                    </CustomSwiper>
+                </MobileView>
             </Headline>
         </PageWrap>
     );
@@ -99,8 +123,7 @@ const ProjectGrid = styled.div`
     grid-template-columns: repeat(1, 1fr);
     gap: 40px;
 
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.md}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         grid-template-columns: repeat(2, 1fr);
     }
 `;
@@ -109,8 +132,7 @@ const CustomSwiper = styled(Swiper)<CustomSwiperProps>`
     position: relative;
 
     .swiper-pagination-bullet-active {
-        background-color: ${({ theme, variant }) =>
-            theme.palette[variant]} !important;
+        background-color: ${({ theme, variant }) => theme.palette[variant]} !important;
     }
 
     .swiper-pagination-bullet {

@@ -1,6 +1,7 @@
 import { css, FlattenInterpolation, SimpleInterpolation, ThemeProps } from "styled-components/macro";
 
 interface Breakpoints {
+    sm: number;
     md: number;
     lg: number;
 }
@@ -27,7 +28,7 @@ interface Fonts {
     h2: SimpleInterpolation;
 
     gridItem: {
-        number: SimpleInterpolation;
+        number: FlattenInterpolation<ThemeProps<any>>;
     };
     projectItem: {
         headline: SimpleInterpolation;
@@ -45,6 +46,7 @@ interface Theme {
 }
 
 const breakpoints: Breakpoints = {
+    sm: 600,
     md: 960,
     lg: 1200,
 };
@@ -116,9 +118,14 @@ const theme: Theme = {
         `,
         gridItem: {
             number: css`
-                font-size: 48px;
-                line-height: 55px;
+                font-size: 20px
+                line-height: 12px;
                 font-weight: 800;
+
+                @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+                    font-size: 48px;
+                    line-height: 55px;
+                }
             `,
         },
         projectItem: {

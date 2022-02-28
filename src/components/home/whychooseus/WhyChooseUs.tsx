@@ -2,7 +2,7 @@ import React from "react";
 import PageWrap from "components/pageWrap";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import styled from "styled-components";
-import { ColoredSpan } from "../../components.sc";
+import { ColoredSpan, MobileView, BrowserView } from "../../components.sc";
 import { Grid, GridItem, ItemProps } from "components/grid";
 import { useAppSelector } from "redux/hooks";
 import { Variants } from "components/components.sc";
@@ -39,32 +39,40 @@ const WhyChooseUs: React.FC = () => {
     ];
 
     return (
-        <PageWrap variant="dark">
+        <PageWrap variant="dark" mobileVariant="white">
             <Grid>
                 <GridItemWrap>
                     <Headline>
-                        <Eyebrow textColor="white">Why choose us</Eyebrow>
-                        <HeadlineMain color="white">
+                        <Eyebrow textColor="white" textColorMobile="black">
+                            Why choose us
+                        </Eyebrow>
+                        <HeadlineMain color="white" mobileColor="black">
                             <ColoredSpan variant={theme}>Designing</ColoredSpan> Future with Excellence
                         </HeadlineMain>
                     </Headline>
-                    <GridItemUL>
-                        <GridItemParagraph variant={theme}>
-                            Egger PowAir Cleaning reinigt Industrieanlagen, Produktionsanlagen, Maschinen, Brücken und Bauten mobil in ganz Europa.
-                        </GridItemParagraph>
-                    </GridItemUL>
+                    <BrowserView>
+                        <GridItemUL>
+                            <GridItemParagraph variant={theme}>
+                                Egger PowAir Cleaning reinigt Industrieanlagen, Produktionsanlagen, Maschinen, Brücken und Bauten mobil in ganz
+                                Europa.
+                            </GridItemParagraph>
+                        </GridItemUL>
+                    </BrowserView>
                 </GridItemWrap>
-                {whyChooseUsItems.map((item) => (
-                    <GridItem
-                        backgroundVariant="dark"
-                        boxShadowVariant="white"
-                        headlineVariant="white"
-                        numberVariant="light"
-                        paragraphVariant="white"
-                        item={item}
-                        key={item.title}
-                    />
-                ))}
+                <BrowserView>
+                    {whyChooseUsItems.map((item) => (
+                        <GridItem
+                            backgroundVariant="dark"
+                            boxShadowVariant="white"
+                            headlineVariant="white"
+                            numberVariant="light"
+                            paragraphVariant="white"
+                            item={item}
+                            key={item.title}
+                        />
+                    ))}
+                </BrowserView>
+                <MobileView></MobileView>
             </Grid>
         </PageWrap>
     );

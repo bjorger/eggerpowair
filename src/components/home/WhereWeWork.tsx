@@ -13,19 +13,14 @@ const WhereWeWork: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
 
     return (
-        <PageWrap variant="light" hideOnMobile={true}>
+        <PageWrap variant="white" hideOnMobile={true}>
             <Headline>
                 <Eyebrow textColor="black">Where we work</Eyebrow>
                 <HeadlineMain>
                     Mobil in ganz EU-Europa.
                     <ColoredSpan variant={theme}>24/7</ColoredSpan>
                 </HeadlineMain>
-                <AbsoluteButton
-                    bordervariant={theme}
-                    variant="white"
-                    textcolor="black"
-                    to="/"
-                >
+                <AbsoluteButton bordervariant={theme} variant="white" textcolor="black" to="/">
                     Jetzt kontaktieren
                 </AbsoluteButton>
                 <MapContainer>
@@ -44,8 +39,7 @@ const MapContainer = styled.div`
     display: none;
     pointer-events: none;
 
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.md}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         padding: 100px 0;
         display: block;
         min-height: 70vh;

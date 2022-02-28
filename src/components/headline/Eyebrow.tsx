@@ -1,18 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import { useAppSelector } from "redux/hooks";
+import { Variants } from "components/components.sc";
 
 interface EyebrowProps {
-    textColor: "white" | "black" | "orange" | "blue";
+    textColor: Variants;
+    textColorMobile?: Variants;
 }
 
-const Eyebrow: React.FC<EyebrowProps> = ({ children, textColor }) => {
+const Eyebrow: React.FC<EyebrowProps> = ({ children, textColor, textColorMobile }) => {
     const theme = useAppSelector((state) => state.themeToggle.color);
 
     return (
         <EyebrowContainer>
             <Gradient variant={theme} />
-            <EyebrowText color={textColor}>{children}</EyebrowText>
+            <EyebrowText color={textColor} mobileColor={textColorMobile}>
+                {children}
+            </EyebrowText>
         </EyebrowContainer>
     );
 };
@@ -20,7 +24,8 @@ const Eyebrow: React.FC<EyebrowProps> = ({ children, textColor }) => {
 export default Eyebrow;
 
 interface EyebrowFontProps {
-    color: "white" | "black" | "orange" | "blue";
+    color: Variants;
+    mobileColor?: Variants;
 }
 
 interface GradientProps {
@@ -29,10 +34,7 @@ interface GradientProps {
 
 const Gradient = styled.div<GradientProps>`
     width: 50px;
-    border: ${({ variant, theme }) =>
-        variant === "orange"
-            ? `1px solid ${theme.palette.orange}`
-            : `1px solid ${theme.palette.blue}`};
+    border: ${({ variant, theme }) => (variant === "orange" ? `1px solid ${theme.palette.orange}` : `1px solid ${theme.palette.blue}`)};
 `;
 
 const EyebrowContainer = styled.div`
@@ -46,5 +48,9 @@ const EyebrowText = styled.h2<EyebrowFontProps>`
 
     text-transform: uppercase;
     margin-left: 30px;
-    color: ${({ color, theme }) => theme.palette[color]};
+    color: ${({ color, mobileColor, theme }) => (mobileColor ? theme.palette[mobileColor] : theme.palette[color])};
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        color: ${({ color, theme }) => theme.palette[color]};
+    }
 `;

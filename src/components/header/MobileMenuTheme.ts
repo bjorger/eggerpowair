@@ -3,11 +3,11 @@ const mobileMenuTheme = {
         position: "absolute",
         width: "36px",
         height: "25px",
-        right: "28px",
+        left: "28px",
         top: "28px",
     },
     bmBurgerBars: {
-        background: "#FFFFFF",
+        background: "#47BCC7",
     },
     bmBurgerBarsHover: {
         background: "#a90000",

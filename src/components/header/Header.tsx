@@ -4,7 +4,7 @@ import Logo from "assets/eggerpowair-logo.png";
 import { Link } from "react-router-dom";
 import { elastic as Menu } from "react-burger-menu";
 import mobileMenuTheme from "./MobileMenuTheme";
-import { Variants } from "components/components.sc";
+import { BrowserView, MobileView, Variants } from "components/components.sc";
 import { useAppSelector } from "redux/hooks";
 import { Button } from "components/components.sc";
 
@@ -25,12 +25,7 @@ const Header: React.FC = () => {
                             <HeaderLink to="/">Projekte</HeaderLink>
                             <HeaderLink to="/">Team</HeaderLink>
                             <HeaderLink to="/">Blog</HeaderLink>
-                            <Button
-                                bordervariant={theme}
-                                textcolor="white"
-                                variant="dark"
-                                to="/"
-                            >
+                            <Button bordervariant={theme} textcolor="white" variant="dark" to="/">
                                 Kontakt
                             </Button>
                         </NavContainer>
@@ -39,12 +34,7 @@ const Header: React.FC = () => {
             </BrowserView>
             <MobileView>
                 <StyledLogo src={Logo} alt="" />
-                <Menu
-                    right
-                    styles={mobileMenuTheme}
-                    pageWrapId="page-wrap"
-                    outerContainerId="outer-container"
-                >
+                <Menu right styles={mobileMenuTheme} pageWrapId="page-wrap" outerContainerId="outer-container">
                     <HeaderLink color="blue" to="/">
                         über uns
                     </HeaderLink>
@@ -52,12 +42,7 @@ const Header: React.FC = () => {
                     <HeaderLink to="/">Projekte</HeaderLink>
                     <HeaderLink to="/">Team</HeaderLink>
                     <HeaderLink to="/">Blog</HeaderLink>
-                    <Button
-                        bordervariant={theme}
-                        textcolor="white"
-                        variant="dark"
-                        to="/"
-                    >
+                    <Button bordervariant={theme} textcolor="white" variant="dark" to="/">
                         Kontakt
                     </Button>
                 </Menu>
@@ -71,24 +56,6 @@ export default Header;
 interface HeaderLinkProps {
     color?: Variants;
 }
-
-const BrowserView = styled.div`
-    display: none;
-
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.md}px`}) {
-        display: block;
-    }
-`;
-
-const MobileView = styled.div`
-    display: block;
-
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.md}px`}) {
-        display: none;
-    }
-`;
 
 const HeaderContainer = styled.header`
     height: 160px;
@@ -117,18 +84,18 @@ const HeaderLink = styled(Link)<HeaderLinkProps>`
     margin: 0 20px;
     text-decoration: none;
     text-transform: uppercase;
-    color: ${({ theme, color }) =>
-        color ? theme.palette[color] : theme.palette.white};
+    color: ${({ theme, color }) => (color ? theme.palette[color] : theme.palette.white)};
 `;
 
 const StyledLogo = styled.img`
     position: absolute;
     z-index: 1000;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100px;
 
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.md}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         width: auto;
+        left: 0;
     }
 `;

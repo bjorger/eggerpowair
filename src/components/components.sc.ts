@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
 interface ContainerProps {
-    variant: "dark" | "light";
+    variant: "dark" | "white";
+    mobileVariant?: "dark" | "white";
     hideOnMobile?: boolean;
     minHeight?: string;
     padding?: string;
@@ -24,12 +26,14 @@ export const Container = styled.div<ContainerProps>`
     display: ${({ hideOnMobile }) => (hideOnMobile ? "none" : "grid")};
     grid-template-columns: repeat(24, 1fr);
     padding: ${({ paddingMobile }) => (paddingMobile ? paddingMobile : `50px 0`)};
-    background-color: ${({ variant, theme }) => (variant === "dark" ? theme.palette.dark : theme.palette.white)};
+    background-color: ${({ variant, mobileVariant, theme }) => (mobileVariant ? theme.palette[mobileVariant] : theme.palette[variant])};
     min-height: 20vh;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         padding: ${({ padding }) => (padding ? padding : `80px 0`)};
         min-height: ${({ minHeight }) => (minHeight ? `${minHeight}vh` : `50vh`)};
+        background-color: ${({ variant, theme }) => (variant === "dark" ? theme.palette.dark : theme.palette.white)};
+
         display: grid;
     }
 `;
@@ -66,5 +70,21 @@ export const Button = styled(Link)<ButtonProps>`
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         max-width: 300px;
+    }
+`;
+
+export const BrowserView = styled.div`
+    display: none;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        display: block;
+    }
+`;
+
+export const MobileView = styled.div`
+    display: block;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        display: none;
     }
 `;

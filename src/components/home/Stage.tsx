@@ -23,16 +23,10 @@ const Stage: React.FC = () => {
                         Expectations
                     </HeadlineMain>
                     <StageParagraph>
-                        Our civil and structural team is committed to providing
-                        sustainable, creative & efficient engineering solutions
-                        for our communities
+                        Our civil and structural team is committed to providing sustainable, creative & efficient engineering solutions for our
+                        communities
                     </StageParagraph>
-                    <Button
-                        bordervariant={theme}
-                        textcolor="white"
-                        to="/"
-                        variant={theme}
-                    >
+                    <Button bordervariant={theme} textcolor="white" to="/" variant={theme}>
                         jetzt kontaktieren
                     </Button>
                 </StageTextContainer>
@@ -57,8 +51,7 @@ const Container = styled.div`
     padding: 120px 0 30px 0;
     grid-template-columns: repeat(24, 1fr);
 
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.md}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         padding: 100px 0;
         grid-template-columns: repeat(24, 1fr);
         height: 75vh;
@@ -68,8 +61,7 @@ const Container = styled.div`
 const Content = styled.div`
     grid-column: 2 / span 22;
 
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.md}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         grid-column: 3 / span 20;
         position: relative;
     }
@@ -78,8 +70,7 @@ const Content = styled.div`
 const PartyBusBlue = styled(PowairPartyBusBlue)`
     display: none;
 
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.lg}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         display: block;
         position: absolute;
         right: 0;
@@ -91,8 +82,7 @@ const PartyBusBlue = styled(PowairPartyBusBlue)`
 const PartyBusOrange = styled(PowairPartyBusOrange)`
     display: none;
 
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.lg}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         display: block;
         position: absolute;
         right: 0;
@@ -104,8 +94,7 @@ const PartyBusOrange = styled(PowairPartyBusOrange)`
 const Gradient = styled.div<GradientProps>`
     display: none;
 
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.md}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         background: ${({ theme, color }) => theme.palette[color]};
         height: 1px;
         width: 200px;
@@ -139,6 +128,7 @@ const StageParagraph = styled.p`
     ${({ theme }) => theme.fonts.paragraph};
     color: ${({ theme }) => theme.palette.white};
     max-width: 450px;
+    margin: 30px 0;
 `;
 
 const ThemeToggleContainer = styled.div`
@@ -150,8 +140,7 @@ const ThemeToggleContainer = styled.div`
     justify-content: center;
     padding-top: 30px;
 
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.md}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         position: absolute;
         bottom: -50px;
     }

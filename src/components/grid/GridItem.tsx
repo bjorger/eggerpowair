@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Variants } from "components/components.sc";
+import { BrowserView, MobileView, Variants } from "components/components.sc";
 
 export interface ItemProps {
     number: string;
@@ -17,25 +17,21 @@ interface GridItemProps {
     boxShadowVariant: "dark" | "white";
 }
 
-const GridItem: React.FC<GridItemProps> = ({
-    item,
-    numberVariant,
-    headlineVariant,
-    paragraphVariant,
-    backgroundVariant,
-    boxShadowVariant,
-}) => {
+const GridItem: React.FC<GridItemProps> = ({ item, numberVariant, headlineVariant, paragraphVariant, backgroundVariant, boxShadowVariant }) => {
     return (
-        <ItemContainer
-            boxShadowVariant={boxShadowVariant}
-            backgroundVariant={backgroundVariant}
-            key={item.number}
-        >
-            <Number variant={numberVariant}>{item.number}</Number>
-            <Headline variant={headlineVariant}>{item.title}</Headline>
-            <Description variant={paragraphVariant}>
-                {item.description}
-            </Description>
+        <ItemContainer boxShadowVariant={boxShadowVariant} backgroundVariant={backgroundVariant} key={item.number}>
+            <BrowserView>
+                <Number variant={numberVariant}>{item.number}</Number>
+                <Headline variant={headlineVariant}>{item.title}</Headline>
+                <Description variant={paragraphVariant}>{item.description}</Description>
+            </BrowserView>
+            <MobileView>
+                <HeadlineContainer>
+                    <Number variant={numberVariant}>{item.number}</Number>
+                    <Headline variant={headlineVariant}>{item.title}</Headline>
+                </HeadlineContainer>
+                <Description variant={paragraphVariant}>{item.description}</Description>
+            </MobileView>
         </ItemContainer>
     );
 };
@@ -52,20 +48,34 @@ interface ComponentProps {
 }
 
 const ItemContainer = styled.div<ContainerProps>`
-    padding: 40px 50px;
-    border-radius: 36px;
+    padding: 20px;
+    border-radius: 10px;
     box-shadow: ${({ theme, boxShadowVariant }) =>
-        boxShadowVariant === "dark"
-            ? `5px 5px 27px rgba(0, 0, 0, 0.2)`
-            : `5px 5px 27px ${theme.palette[boxShadowVariant]}`};
-    background: ${({ backgroundVariant, theme }) =>
-        theme.palette[backgroundVariant]};
+        boxShadowVariant === "dark" ? `5px 5px 10px rgba(0, 0, 0, 0.2)` : `5px 5px 27px ${theme.palette[boxShadowVariant]}`};
+    background: ${({ backgroundVariant, theme }) => theme.palette[backgroundVariant]};
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
+        padding: 40px 50px;
+        border-radius: 36px;
+        box-shadow: ${({ theme, boxShadowVariant }) =>
+            boxShadowVariant === "dark" ? `5px 5px 27px rgba(0, 0, 0, 0.2)` : `5px 5px 27px ${theme.palette[boxShadowVariant]}`};
+    }
+`;
+
+const HeadlineContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 `;
 
 const Number = styled.h1<ComponentProps>`
     ${({ theme }) => theme.fonts.gridItem.number};
-
+    margin-right: 20px;
     color: ${({ theme, variant }) => theme.palette[variant]};
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
+        padding: 0;
+    }
 `;
 
 const Headline = styled.h2<ComponentProps>`

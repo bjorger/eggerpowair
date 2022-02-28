@@ -13,7 +13,7 @@ const BuildingTheFuture: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
 
     return (
-        <PageWrap variant="light">
+        <PageWrap variant="white">
             <Headline>
                 <Eyebrow textColor="black"> Building the future</Eyebrow>
                 <HeadlineMain>{theme === "blue" ? <Image src={ColdPowair} alt="" /> : <Image src={HotPowair} alt="" />}</HeadlineMain>
