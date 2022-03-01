@@ -1,19 +1,10 @@
 import React from "react";
-import {
-    Stage,
-    WhatWeDo,
-    Projects,
-    WhereWeWork,
-    WhyChooseUs,
-    TruthInEngineering,
-    BuildingTheFuture,
-} from "components/home";
-
-import StickyThemeToggle from "components/themeToggle/stickyThemeToggle";
+import { Stage, WhatWeDo, Projects, WhereWeWork, WhyChooseUs, TruthInEngineering, BuildingTheFuture } from "components/home";
+import { PageContainer } from "components/page";
 
 const Home: React.FC = () => {
     return (
-        <main style={{ position: "relative" }} id="page-wrap">
+        <PageContainer hideDefaultStage={true}>
             <Stage />
             <WhatWeDo />
             <Projects />
@@ -21,8 +12,7 @@ const Home: React.FC = () => {
             <WhyChooseUs />
             <TruthInEngineering />
             <BuildingTheFuture />
-            <StickyThemeToggle />
-        </main>
+        </PageContainer>
     );
 };
 

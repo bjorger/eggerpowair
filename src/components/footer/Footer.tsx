@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Logo from "assets/eggerpowair-logo.png";
-import PageWrap from "components/pageWrap";
+import { PageWrap } from "components/page";
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, LinkedIn } from "@mui/icons-material";
 import { useAppSelector } from "redux/hooks";

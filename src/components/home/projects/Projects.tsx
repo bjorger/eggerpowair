@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Headline, HeadlineMain, Eyebrow } from "components/headline";
 import DummyImage from "assets/Egger-PowAir.jpg";
 import ProjectGridItem from "./ProjectGridItem";
-import PageWrap from "./../../pageWrap/PageWrap";
+import { PageWrap } from "components/page";
 import { ThemeToggle } from "components/themeToggle";
 
 import "swiper/css";

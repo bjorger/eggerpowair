@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Logo from "assets/eggerpowair-logo.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { elastic as Menu } from "react-burger-menu";
 import mobileMenuTheme from "./MobileMenuTheme";
 import { BrowserView, MobileView, Variants } from "components/components.sc";
@@ -16,16 +16,23 @@ const Header: React.FC = () => {
             <BrowserView>
                 <HeaderContainer>
                     <HeaderContent>
-                        <StyledLogo src={Logo} alt="" />
+                        <HeaderNavLink style={{ margin: 0 }} activecolor={theme} to="/">
+                            <StyledLogo src={Logo} alt="" />
+                        </HeaderNavLink>
                         <NavContainer>
-                            <HeaderLink color={theme} to="/">
+                            <HeaderNavLink activecolor={theme} to="/">
                                 über uns
-                            </HeaderLink>
-                            <HeaderLink to="/">Services</HeaderLink>
-                            <HeaderLink to="/">Projekte</HeaderLink>
-                            <HeaderLink to="/">Team</HeaderLink>
-                            <HeaderLink to="/">Blog</HeaderLink>
-                            <Button bordervariant={theme} textcolor="white" variant="dark" to="/">
+                            </HeaderNavLink>
+                            <HeaderNavLink activecolor={theme} to="/projects">
+                                Projekte
+                            </HeaderNavLink>
+                            <HeaderNavLink activecolor={theme} to="/team">
+                                Team
+                            </HeaderNavLink>
+                            <HeaderNavLink activecolor={theme} to="/news">
+                                News
+                            </HeaderNavLink>
+                            <Button bordervariant={theme} textcolor="white" variant="dark" to="/contact">
                                 Kontakt
                             </Button>
                         </NavContainer>
@@ -33,16 +40,23 @@ const Header: React.FC = () => {
                 </HeaderContainer>
             </BrowserView>
             <MobileView>
-                <StyledLogo src={Logo} alt="" />
+                <MobileLink to="/">
+                    <StyledLogo src={Logo} alt="" />
+                </MobileLink>
                 <Menu right styles={mobileMenuTheme} pageWrapId="page-wrap" outerContainerId="outer-container">
-                    <HeaderLink color="blue" to="/">
+                    <HeaderNavLink activecolor={theme} to="/">
                         über uns
-                    </HeaderLink>
-                    <HeaderLink to="/">Services</HeaderLink>
-                    <HeaderLink to="/">Projekte</HeaderLink>
-                    <HeaderLink to="/">Team</HeaderLink>
-                    <HeaderLink to="/">Blog</HeaderLink>
-                    <Button bordervariant={theme} textcolor="white" variant="dark" to="/">
+                    </HeaderNavLink>
+                    <HeaderNavLink activecolor={theme} to="/projects">
+                        Projekte
+                    </HeaderNavLink>
+                    <HeaderNavLink activecolor={theme} to="/team">
+                        Team
+                    </HeaderNavLink>
+                    <HeaderNavLink activecolor={theme} to="/news">
+                        News
+                    </HeaderNavLink>
+                    <Button bordervariant={theme} textcolor="white" variant="dark" to="/contact">
                         Kontakt
                     </Button>
                 </Menu>
@@ -53,8 +67,8 @@ const Header: React.FC = () => {
 
 export default Header;
 
-interface HeaderLinkProps {
-    color?: Variants;
+interface HeaderNavLinkProps {
+    activecolor: Variants;
 }
 
 const HeaderContainer = styled.header`
@@ -68,7 +82,7 @@ const HeaderContent = styled.div`
     grid-column: 3 / span 20;
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: space-between;
     position: relative;
 `;
 
@@ -78,13 +92,32 @@ const NavContainer = styled.div`
     align-items: center;
 `;
 
-const HeaderLink = styled(Link)<HeaderLinkProps>`
+const MobileLink = styled(Link)`
+    position: absolute;
+    z-index: 1000;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+`;
+
+const HeaderNavLink = styled(NavLink)<HeaderNavLinkProps>`
     ${({ theme }) => theme.fonts.header.link};
 
-    margin: 0 20px;
+    margin: 0 40px 0 0;
     text-decoration: none;
     text-transform: uppercase;
     color: ${({ theme, color }) => (color ? theme.palette[color] : theme.palette.white)};
+
+    &.active {
+        color: ${({ theme, activecolor: activeColor }) => theme.palette[activeColor]};
+    }
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        margin: 0 20px;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: ${({ theme, color }) => (color ? theme.palette[color] : theme.palette.white)};
+    }
 `;
 
 const StyledLogo = styled.img`
@@ -95,7 +128,9 @@ const StyledLogo = styled.img`
     width: 100px;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        width: auto;
+        position: relative;
+        width: 200px;
         left: 0;
+        transform: translateX(0);
     }
 `;

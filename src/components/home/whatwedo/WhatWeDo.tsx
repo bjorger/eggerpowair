@@ -1,6 +1,6 @@
 import React from "react";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
-import PageWrap from "components/pageWrap";
+import { PageWrap } from "components/page";
 import { ItemProps, Grid, GridItem } from "components/grid";
 import { useAppSelector } from "redux/hooks";
 import { BrowserView, MobileView, Variants } from "components/components.sc";
@@ -66,7 +66,7 @@ const WhatWeDo: React.FC = () => {
                             numberVariant={theme}
                             paragraphVariant="black"
                             item={item}
-                            key={item.number}
+                            key={item.number + item.title}
                         />
                     ))}
                 </Grid>
@@ -90,7 +90,7 @@ const WhatWeDo: React.FC = () => {
                                 numberVariant={theme}
                                 paragraphVariant="black"
                                 item={item}
-                                key={item.number}
+                                key={item.title + item.number}
                             />
                         </SwiperSlide>
                     ))}
@@ -122,8 +122,4 @@ const CustomSwiper = styled(Swiper)<CustomSwiperProps>`
     .swiper-slide {
         padding: 50px 0;
     }
-`;
-
-const CustomSlide = styled(SwiperSlide)`
-    padding: 0 20px;
 `;

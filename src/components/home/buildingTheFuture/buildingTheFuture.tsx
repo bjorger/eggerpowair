@@ -1,5 +1,5 @@
 import React from "react";
-import PageWrap from "components/pageWrap";
+import { PageWrap } from "components/page";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import { useAppSelector } from "redux/hooks";
 import ColdPowair from "assets/cold-powair.png";

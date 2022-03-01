@@ -1,5 +1,5 @@
 import React from "react";
-import PageWrap from "components/pageWrap";
+import { PageWrap } from "components/page";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import styled from "styled-components";
 import { Button } from "components/components.sc";
@@ -13,32 +13,19 @@ const TruthInEngineering: React.FC = () => {
             <HeadlineContainer>
                 <Headline>
                     <Eyebrow textColor="white">Truth in Engineering</Eyebrow>
-                    <HeadlineMain color="white">
-                        PowAir is in the Air
-                    </HeadlineMain>
+                    <HeadlineMain color="white">PowAir is in the Air</HeadlineMain>
                 </Headline>
-                <Button
-                    bordervariant={theme}
-                    textcolor="white"
-                    variant="dark"
-                    to="/"
-                >
+                <Button bordervariant={theme} textcolor="white" variant="dark" to="/">
                     Kontakt
                 </Button>
             </HeadlineContainer>
             <VideoContainer>
-                <Video
-                    title="youtube"
-                    src="https://www.youtube.com/embed/tgbNymZ7vqY"
-                ></Video>
+                <Video title="youtube" src="https://www.youtube.com/embed/tgbNymZ7vqY"></Video>
             </VideoContainer>
             <Paragraph>
-                Leo in vitae turpis massa sed elementum tempus egestas sed. Sed
-                sed risus pretium quam vulputate dignissim suspendisse in.
-                Placerat orci nulla pellentesque dignissim enim. Tortor pretium
-                viverra suspendisse potenti nullam augue. Vestibulum lorem sed
-                risus ultricies tristique nulla. Erat velit scelerisque in
-                dictum non consectetur
+                Leo in vitae turpis massa sed elementum tempus egestas sed. Sed sed risus pretium quam vulputate dignissim suspendisse in. Placerat
+                orci nulla pellentesque dignissim enim. Tortor pretium viverra suspendisse potenti nullam augue. Vestibulum lorem sed risus ultricies
+                tristique nulla. Erat velit scelerisque in dictum non consectetur
             </Paragraph>
         </PageWrap>
     );
@@ -75,8 +62,7 @@ const Paragraph = styled.p`
     color: ${({ theme }) => theme.palette.white};
     width: 100%;
 
-    @media screen and (min-width: ${({ theme }) =>
-            `${theme.breakpoints.md}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         width: 50%;
     }
 `;

@@ -1,4 +1,4 @@
-import ThemeToggle from "./themeToggle";
-import StickyThemeToggle from "./stickyThemeToggle";
+import ThemeToggle from "./ThemeToggle";
+import StickyThemeToggle from "./StickyThemeToggle";
 
 export { ThemeToggle, StickyThemeToggle };

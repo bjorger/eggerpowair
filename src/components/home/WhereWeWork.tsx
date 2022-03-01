@@ -1,6 +1,6 @@
 import React from "react";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
-import PageWrap from "components/pageWrap";
+import { PageWrap } from "components/page";
 import styled from "styled-components";
 
 import { ReactComponent as Map } from "assets/Map.svg";

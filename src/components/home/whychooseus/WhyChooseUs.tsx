@@ -1,5 +1,5 @@
 import React from "react";
-import PageWrap from "components/pageWrap";
+import { PageWrap } from "components/page";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import styled from "styled-components";
 import { ColoredSpan, MobileView, BrowserView } from "../../components.sc";
@@ -40,26 +40,26 @@ const WhyChooseUs: React.FC = () => {
 
     return (
         <PageWrap variant="dark" mobileVariant="white">
-            <Grid>
-                <GridItemWrap>
-                    <Headline>
-                        <Eyebrow textColor="white" textColorMobile="black">
-                            Why choose us
-                        </Eyebrow>
-                        <HeadlineMain color="white" mobileColor="black">
-                            <ColoredSpan variant={theme}>Designing</ColoredSpan> Future with Excellence
-                        </HeadlineMain>
-                    </Headline>
-                    <BrowserView>
-                        <GridItemUL>
-                            <GridItemParagraph variant={theme}>
-                                Egger PowAir Cleaning reinigt Industrieanlagen, Produktionsanlagen, Maschinen, Brücken und Bauten mobil in ganz
-                                Europa.
-                            </GridItemParagraph>
-                        </GridItemUL>
-                    </BrowserView>
-                </GridItemWrap>
-                <BrowserView>
+            <BrowserView>
+                <Grid>
+                    <GridItemWrap>
+                        <Headline>
+                            <Eyebrow textColor="white" textColorMobile="black">
+                                Why choose us
+                            </Eyebrow>
+                            <HeadlineMain color="white" mobileColor="black">
+                                <ColoredSpan variant={theme}>Designing</ColoredSpan> Future with Excellence
+                            </HeadlineMain>
+                        </Headline>
+                        <BrowserView>
+                            <GridItemUL>
+                                <GridItemParagraph variant={theme}>
+                                    Egger PowAir Cleaning reinigt Industrieanlagen, Produktionsanlagen, Maschinen, Brücken und Bauten mobil in ganz
+                                    Europa.
+                                </GridItemParagraph>
+                            </GridItemUL>
+                        </BrowserView>
+                    </GridItemWrap>
                     {whyChooseUsItems.map((item) => (
                         <GridItem
                             backgroundVariant="dark"
@@ -71,9 +71,9 @@ const WhyChooseUs: React.FC = () => {
                             key={item.title}
                         />
                     ))}
-                </BrowserView>
-                <MobileView></MobileView>
-            </Grid>
+                </Grid>
+            </BrowserView>
+            <MobileView></MobileView>
         </PageWrap>
     );
 };
