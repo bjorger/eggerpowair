@@ -8,9 +8,15 @@ export enum NewsCategories {
     generators = "Generatoren",
     conveyor_systems = "Förderanlagen",
 }
+
+interface Image {
+    filename: string;
+    alt: string;
+}
+
 export interface NewsArticleType {
     id: number;
-    image: { filename: string; alt: string };
+    image: Image;
     author: string;
     date: string;
     headline: string;
@@ -31,6 +37,19 @@ export interface RichtextType {
 interface PaginatedResponse {
     total: number;
     articles: Array<NewsArticleType>;
+}
+
+export interface TeamMember {
+    image: Image;
+    name: string;
+    position: string;
+    linkedIn: string;
+}
+
+export interface Job {
+    title: string;
+    description: RichtextType;
+    skills: Array<{ title: string }>;
 }
 
 let Storyblok = new StoryblokClient({
@@ -81,6 +100,30 @@ export const getNewsArticleById = async (id: string): Promise<NewsArticleType> =
         });
 
         return stories.data.story.content;
+    } catch (e) {
+        throw new Error("Couldn't load story");
+    }
+};
+
+export const getTeamMembers = async (): Promise<Array<TeamMember>> => {
+    try {
+        const stories = await Storyblok.get(`cdn/stories/team`, {
+            version: "published",
+        });
+
+        return stories.data.story.content.members;
+    } catch (e) {
+        throw new Error("Couldn't load story");
+    }
+};
+
+export const getJobs = async (): Promise<Array<Job>> => {
+    try {
+        const stories = await Storyblok.get(`cdn/stories/jobs`, {
+            version: "published",
+        });
+
+        return stories.data.story.content.jobs;
     } catch (e) {
         throw new Error("Couldn't load story");
     }
