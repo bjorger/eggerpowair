@@ -15,9 +15,9 @@ const TruthInEngineering: React.FC = () => {
                     <Eyebrow textColor="white">Truth in Engineering</Eyebrow>
                     <HeadlineMain color="white">PowAir is in the Air</HeadlineMain>
                 </Headline>
-                <Button bordervariant={theme} textcolor="white" variant="dark" to="/">
+                <CustomButton bordervariant={theme} textcolor="white" variant="dark" to="/">
                     Kontakt
-                </Button>
+                </CustomButton>
             </HeadlineContainer>
             <VideoContainer>
                 <Video title="youtube" src="https://www.youtube.com/embed/tgbNymZ7vqY"></Video>
@@ -64,5 +64,13 @@ const Paragraph = styled.p`
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         width: 50%;
+    }
+`;
+
+const CustomButton = styled(Button)`
+    display: none;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        display: block;
     }
 `;

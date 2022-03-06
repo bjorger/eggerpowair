@@ -49,6 +49,8 @@ interface ComponentProps {
 
 const ItemContainer = styled.div<ContainerProps>`
     padding: 20px;
+    width: 75vw;
+    margin-left: 10px;
     border-radius: 10px;
     box-shadow: ${({ theme, boxShadowVariant }) =>
         boxShadowVariant === "dark" ? `5px 5px 10px rgba(0, 0, 0, 0.2)` : `5px 5px 27px ${theme.palette[boxShadowVariant]}`};
@@ -57,6 +59,7 @@ const ItemContainer = styled.div<ContainerProps>`
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         padding: 40px 50px;
         border-radius: 36px;
+        width: auto;
         box-shadow: ${({ theme, boxShadowVariant }) =>
             boxShadowVariant === "dark" ? `5px 5px 27px rgba(0, 0, 0, 0.2)` : `5px 5px 27px ${theme.palette[boxShadowVariant]}`};
     }

@@ -37,6 +37,11 @@ interface Fonts {
     footer: {
         paragraph: FlattenInterpolation<ThemeProps<any>>;
     };
+    mobileTile: {
+        number: SimpleInterpolation;
+        headline: SimpleInterpolation;
+        paragraph: SimpleInterpolation;
+    };
 }
 
 interface Theme {
@@ -149,9 +154,23 @@ const theme: Theme = {
                 }
             `,
         },
+        mobileTile: {
+            number: css`
+                font-size: 20px;
+                line-height: 12px;
+            `,
+            headline: css`
+                font-size: 14px;
+                line-height: 14px;
+            `,
+            paragraph: css`
+                font-size: 12px;
+                line-height: 12px;
+            `,
+        },
     },
     borderBottom: css`
-        border-bottom: 1px solid #a9a9a9;
+        border-bottom: 1px solid #a7a7a7;
     `,
 };
 

@@ -2,10 +2,11 @@ import React from "react";
 import { PageWrap } from "components/page";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import styled from "styled-components";
-import { ColoredSpan, MobileView, BrowserView } from "../../components.sc";
+import { ColoredSpan, MobileView, BrowserView, Container } from "../../components.sc";
 import { Grid, GridItem, ItemProps } from "components/grid";
 import { useAppSelector } from "redux/hooks";
 import { Variants } from "components/components.sc";
+import MobileTile, { Container as MobileTileContainer } from "./MobileTile";
 
 const WhyChooseUs: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
@@ -73,7 +74,19 @@ const WhyChooseUs: React.FC = () => {
                     ))}
                 </Grid>
             </BrowserView>
-            <MobileView></MobileView>
+            <MobileView>
+                <Headline>
+                    <Eyebrow textColor="black">Why choose us</Eyebrow>
+                    <HeadlineMain color="black">
+                        <ColoredSpan variant={theme}>Designing</ColoredSpan> Future with Excellence
+                    </HeadlineMain>
+                </Headline>
+                <MobileContainer>
+                    {whyChooseUsItems.map((item) => (
+                        <MobileTile key={item.number} number={item.number} headline={item.title} paragraph={item.description} />
+                    ))}
+                </MobileContainer>
+            </MobileView>
         </PageWrap>
     );
 };
@@ -97,4 +110,14 @@ const GridItemParagraph = styled.li<GrdItemParagraphProps>`
 
 const GridItemUL = styled.ul`
     padding: 30px 50px;
+`;
+
+const MobileContainer = styled.div`
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+
+    ${MobileTileContainer}:not(:last-of-type) {
+        ${({ theme }) => theme.borderBottom};
+    }
 `;
