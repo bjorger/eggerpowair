@@ -42,19 +42,19 @@ const Footer: React.FC = () => {
                             <FooterLink to="/">Über uns</FooterLink>
                         </li>
                         <li>
-                            <FooterLink to="/">Services</FooterLink>
+                            <FooterLink to="/services">Services</FooterLink>
                         </li>
                         <li>
-                            <FooterLink to="/">Projekte</FooterLink>
+                            <FooterLink to="/projects">Projekte</FooterLink>
                         </li>
                         <li>
-                            <FooterLink to="/">Team</FooterLink>
+                            <FooterLink to="/team">Team</FooterLink>
                         </li>
                         <li>
-                            <FooterLink to="/">Blog</FooterLink>
+                            <FooterLink to="/news">News</FooterLink>
                         </li>
                         <li>
-                            <FooterLink to="/">Kontakt</FooterLink>
+                            <FooterLink to="/contact">Kontakt</FooterLink>
                         </li>
                     </FooterUL>
                 </InnerContainer>

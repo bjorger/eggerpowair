@@ -8,8 +8,9 @@ export enum NewsCategories {
     generators = "Generatoren",
     conveyor_systems = "Förderanlagen",
 }
-export interface NewsArticle {
-    preview_image: { filename: string; alt: string };
+export interface NewsArticleType {
+    id: number;
+    image: { filename: string; alt: string };
     author: string;
     date: string;
     headline: string;
@@ -18,12 +19,18 @@ export interface NewsArticle {
 }
 
 interface Story {
-    content: NewsArticle;
+    id: number;
+    content: NewsArticleType;
 }
 
 export interface RichtextType {
     type: string;
     content: Array<{ text: string; type: string }>;
+}
+
+interface PaginatedResponse {
+    total: number;
+    articles: Array<NewsArticleType>;
 }
 
 let Storyblok = new StoryblokClient({
@@ -34,24 +41,25 @@ let Storyblok = new StoryblokClient({
     },
 });
 
-export const getPaginatedNewsArticles = async (category: string = "", page: number = 1, per_page: number = 12): Promise<Array<NewsArticle>> => {
+export const getPaginatedNewsArticles = async (category: string = "", page: number = 1, per_page: number = 12): Promise<PaginatedResponse> => {
     try {
         const stories = await Storyblok.get("cdn/stories/", {
             version: "published",
             per_page,
             page,
             starts_with: `news_articles/${category}`,
+            sort_by: "first_published_at:desc",
         });
 
-        console.log(stories);
+        const total = Math.ceil(stories.headers.total / per_page);
+        const articles: NewsArticleType[] = [];
 
-        const articles: NewsArticle[] = [];
-
-        stories.data.stories.forEach(({ content }: Story) => {
-            const { preview_image, author, date, headline, preview_text, text } = content;
+        stories.data.stories.forEach(({ id, content }: Story) => {
+            const { image, author, date, headline, preview_text, text } = content;
 
             articles.push({
-                preview_image,
+                id,
+                image,
                 author,
                 date,
                 headline,
@@ -60,7 +68,19 @@ export const getPaginatedNewsArticles = async (category: string = "", page: numb
             });
         });
 
-        return articles;
+        return { total, articles };
+    } catch (e) {
+        throw new Error("Couldn't load story");
+    }
+};
+
+export const getNewsArticleById = async (id: string): Promise<NewsArticleType> => {
+    try {
+        const stories = await Storyblok.get(`cdn/stories/${id}`, {
+            version: "published",
+        });
+
+        return stories.data.story.content;
     } catch (e) {
         throw new Error("Couldn't load story");
     }

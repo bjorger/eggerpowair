@@ -13,6 +13,7 @@ interface Palette {
     white: string;
     black: string;
     light: string;
+    grey: string;
 }
 
 interface Fonts {
@@ -60,6 +61,7 @@ const theme: Theme = {
         white: "#FFFFFF",
         black: "#000000",
         light: "#A9A9A9",
+        grey: "#979797",
     },
     fonts: {
         headline: {
