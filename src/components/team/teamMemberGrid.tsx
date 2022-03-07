@@ -28,6 +28,11 @@ export default TeamMemberGrid;
 
 const Grid = styled.div`
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 50px;
+    }
 `;
