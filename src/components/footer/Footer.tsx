@@ -42,9 +42,6 @@ const Footer: React.FC = () => {
                             <FooterLink to="/">Über uns</FooterLink>
                         </li>
                         <li>
-                            <FooterLink to="/services">Services</FooterLink>
-                        </li>
-                        <li>
                             <FooterLink to="/projects">Projekte</FooterLink>
                         </li>
                         <li>
