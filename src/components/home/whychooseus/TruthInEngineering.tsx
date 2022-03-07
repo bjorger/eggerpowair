@@ -15,7 +15,7 @@ const TruthInEngineering: React.FC = () => {
                     <Eyebrow textColor="white">Truth in Engineering</Eyebrow>
                     <HeadlineMain color="white">PowAir is in the Air</HeadlineMain>
                 </Headline>
-                <CustomButton bordervariant={theme} textcolor="white" variant="dark" to="/">
+                <CustomButton bordervariant={theme} textcolor="white" variant="dark" to="/contact">
                     Kontakt
                 </CustomButton>
             </HeadlineContainer>

@@ -26,7 +26,7 @@ const Stage: React.FC = () => {
                         Our civil and structural team is committed to providing sustainable, creative & efficient engineering solutions for our
                         communities
                     </StageParagraph>
-                    <Button bordervariant={theme} textcolor="white" to="/" variant={theme}>
+                    <Button bordervariant={theme} textcolor="white" to="/contact" variant={theme}>
                         jetzt kontaktieren
                     </Button>
                 </StageTextContainer>

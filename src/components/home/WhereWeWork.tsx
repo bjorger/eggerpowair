@@ -20,7 +20,7 @@ const WhereWeWork: React.FC = () => {
                     Mobil in ganz EU-Europa.
                     <ColoredSpan variant={theme}>24/7</ColoredSpan>
                 </HeadlineMain>
-                <AbsoluteButton bordervariant={theme} variant="white" textcolor="black" to="/">
+                <AbsoluteButton bordervariant={theme} variant="white" textcolor="black" to="/contact">
                     Jetzt kontaktieren
                 </AbsoluteButton>
                 <MapContainer>

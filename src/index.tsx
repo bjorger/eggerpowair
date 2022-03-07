@@ -11,6 +11,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import Footer from "./components/footer";
 import NewsArticle from "components/news/NewsArticle";
+import ScrollToTop from "utility/ScrollToTop";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -19,14 +20,16 @@ ReactDOM.render(
                 <ThemeProvider theme={theme}>
                     <HashRouter>
                         <Header />
-                        <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/projects" element={<Projects />} />
-                            <Route path="/team" element={<Team />} />
-                            <Route path="/news" element={<News />} />
-                            <Route path="/contact" element={<Contact />} />
-                            <Route path="/news-article" element={<NewsArticle />} />
-                        </Routes>
+                        <ScrollToTop>
+                            <Routes>
+                                <Route path="/" element={<Home />} />
+                                <Route path="/projects" element={<Projects />} />
+                                <Route path="/team" element={<Team />} />
+                                <Route path="/news" element={<News />} />
+                                <Route path="/contact" element={<Contact />} />
+                                <Route path="/news-article" element={<NewsArticle />} />
+                            </Routes>
+                        </ScrollToTop>
                         <Footer />
                     </HashRouter>
                 </ThemeProvider>
