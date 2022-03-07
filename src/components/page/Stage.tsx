@@ -86,7 +86,7 @@ const Gradient = styled.div<GradientProps>`
         height: 1px;
         width: 200px;
         position: absolute;
-        top: 19px;
+        top: 15px;
         left: -210px;
         display: block;
     }
