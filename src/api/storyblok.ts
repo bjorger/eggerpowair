@@ -43,7 +43,15 @@ export interface TeamMember {
     image: Image;
     name: string;
     position: string;
-    linkedIn: string;
+    linkedIn: Link;
+}
+
+interface Link {
+    cached_url: string;
+    fieldtype: string;
+    id: string;
+    linktype: string;
+    url: string;
 }
 
 export interface Job {
@@ -110,6 +118,8 @@ export const getTeamMembers = async (): Promise<Array<TeamMember>> => {
         const stories = await Storyblok.get(`cdn/stories/team`, {
             version: "published",
         });
+
+        console.log(stories);
 
         return stories.data.story.content.members;
     } catch (e) {

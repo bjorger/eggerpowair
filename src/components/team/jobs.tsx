@@ -32,10 +32,8 @@ const Jobs: React.FC = () => {
                 <JobContainer key={job.title}>
                     <JobDesc>
                         <Headline>
-                            <Eyebrow textColor="white" textColorMobile="black">
-                                Powair jobs
-                            </Eyebrow>
-                            <HeadlineMain color="white" mobileColor="black">
+                            <Eyebrow textColor="white">Powair jobs</Eyebrow>
+                            <HeadlineMain color="white">
                                 Mitarbeiter*in für <ColoredSpan variant={theme}>{job.title}</ColoredSpan> m / w / d
                             </HeadlineMain>
                         </Headline>
@@ -63,8 +61,12 @@ interface GrdItemParagraphProps {
 
 const JobContainer = styled.div`
     display: flex;
-    flex-direction: row;
-    justify-content: space-between; ;
+    flex-direction: column;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 `;
 
 const JobDesc = styled.div`
@@ -82,11 +84,16 @@ const SkillContainer = styled.div`
     border: 1px solid #232527;
     box-shadow: 5px 5px 27px rgba(255, 254, 254, 0.45);
     border-radius: 36px;
-    padding: 40px;
+    padding: 20px;
     max-height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-top: 50px;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        padding: 40px;
+    }
 `;
 
 const SkillHeadline = styled.h2`

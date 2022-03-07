@@ -16,13 +16,13 @@ const TeamMemberGridItem: React.FC<TeamMemberGridItemProps> = ({ member }) => {
         <Container>
             <Image imageUrl={member.image.filename} />
             <Informations>
-                <div>
+                <TeamInformationContainer>
                     <Name>{member.name}</Name>
                     <Position variant={theme}>{member.position}</Position>
-                </div>
+                </TeamInformationContainer>
                 {member.linkedIn && (
                     <LinkedInContainer variant={theme}>
-                        <a href={member.linkedIn ? member.linkedIn : "/"}>
+                        <a href={member.linkedIn && member.linkedIn.url}>
                             <LinkedIn />
                         </a>
                     </LinkedInContainer>
@@ -52,27 +52,51 @@ const Container = styled.div`
     overflow: hidden;
 `;
 
+const TeamInformationContainer = styled.div`
+    p {
+        text-align: center;
+        @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+            text-align: left;
+        }
+    }
+`;
+
 const Image = styled.div<ImageProps>`
     background: url(${({ imageUrl }) => imageUrl});
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 300px;
+    height: 150px;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        height: 300px;
+    }
 `;
 
 const Informations = styled.div`
-    height: 120px;
-    padding: 20px 60px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        padding: 20px 60px;
+        height: 120px;
+    }
 `;
 
 const Name = styled.p`
     ${({ theme }) => theme.fonts.paragraph};
     margin: 0;
     padding: 0;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        padding: 20px 60px;
+        height: 120px;
+        margin-bottom: 10px;
+        margin-top: 0;
+    }
 `;
 
 const Position = styled.p<PositionProps>`
