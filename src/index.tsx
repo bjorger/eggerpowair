@@ -4,7 +4,7 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Header from "components/header/Header";
 import { News, Contact, Home, Projects, Team } from "pages";
 import { Provider } from "react-redux";
@@ -17,7 +17,7 @@ ReactDOM.render(
         <Provider store={store}>
             <div id="outer-container">
                 <ThemeProvider theme={theme}>
-                    <BrowserRouter>
+                    <HashRouter>
                         <Header />
                         <Routes>
                             <Route path="/" element={<Home />} />
@@ -28,7 +28,7 @@ ReactDOM.render(
                             <Route path="/news-article" element={<NewsArticle />} />
                         </Routes>
                         <Footer />
-                    </BrowserRouter>
+                    </HashRouter>
                 </ThemeProvider>
             </div>
         </Provider>
