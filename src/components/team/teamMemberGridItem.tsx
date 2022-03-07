@@ -92,9 +92,6 @@ const Name = styled.p`
     margin-top: 10px;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        padding: 20px 60px;
-        height: 120px;
-        margin-bottom: 10px;
         margin-top: 0;
     }
 `;
@@ -113,5 +110,6 @@ const LinkedInContainer = styled.div<LinkedInContainerProps>`
 
     svg {
         color: ${({ theme, variant }) => theme.palette[variant]};
+        font-size: 40px !important;
     }
 `;
