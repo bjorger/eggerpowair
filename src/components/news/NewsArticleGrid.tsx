@@ -131,6 +131,7 @@ const Categories = styled.div`
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         width: 100%;
+        overflow-x: auto;
     }
 `;
 

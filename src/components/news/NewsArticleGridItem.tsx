@@ -57,7 +57,7 @@ const Image = styled.div<ImageProps>`
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         width: 400px;
-        height: 400px;
+        height: 300px;
         border-radius: 36px;
     }
 `;
