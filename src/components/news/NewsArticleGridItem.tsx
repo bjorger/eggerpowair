@@ -27,7 +27,15 @@ const NewsArticleGridItem: React.FC<NewsArticleGridItemProps> = ({ item }) => {
 
 export default NewsArticleGridItem;
 
-const Container = styled.div``;
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        display: block;
+    }
+`;
 
 interface ImageProps {
     imageUrl: string;
@@ -38,33 +46,51 @@ interface ContinueReadingProps {
 }
 
 const Image = styled.div<ImageProps>`
-    border-radius: 36px;
-    width: 400px;
-    height: 400px;
+    border-radius: 20px;
+    height: 120px;
+    width: 100%;
     margin-bottom: 10px;
     background: url(${({ imageUrl }) => imageUrl});
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        width: 400px;
+        height: 400px;
+        border-radius: 36px;
+    }
 `;
 
 const Headline = styled.h2`
     ${({ theme }) => theme.fonts.h2}
-    margin: 20px 0 10px;
+    margin: 10px 0 0 0;
     padding: 0;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        margin: 20px 0 10px;
+    }
 `;
 
 const Date = styled.span`
     ${({ theme }) => theme.fonts.paragraph};
     color: ${({ theme }) => theme.palette.grey};
     padding: 0;
-    margin: 10px 0;
+    margin: 0;
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        margin: 10px 0;
+    }
 `;
 
 const PreviewText = styled.p`
-    ${({ theme }) => theme.fonts.h2};
-    padding: 0;
-    margin: 10px 0;
+    display: none;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        ${({ theme }) => theme.fonts.h2};
+        padding: 0;
+        margin: 10px 0;
+        display: block;
+    }
 `;
 
 const ContinueReading = styled(Link)<ContinueReadingProps>`

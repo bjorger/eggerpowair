@@ -126,15 +126,24 @@ const Categories = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
+    max-width: 100vw;
+    overflow-x: scroll;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        width: 100%;
+    }
 `;
 
 const Category = styled.button<CategoryProps>`
     border: none;
     background: transparent;
     text-transform: uppercase;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     cursor: pointer;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        padding-bottom: 10px;
+    }
 
     ${({ theme }) => theme.fonts.button}
 
@@ -145,11 +154,17 @@ const Category = styled.button<CategoryProps>`
 `;
 
 const NewsArticleItemGrid = styled.div`
-    margin-top: 100px;
+    margin-top: 50px;
     margin-bottom: 50px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 65px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        margin-top: 100px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 65px;
+    }
 `;
 
 interface PageCountIndicatorContainerProps {
