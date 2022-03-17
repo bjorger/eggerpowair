@@ -61,8 +61,13 @@ const ContactUs: React.FC = () => {
 export default ContactUs;
 
 const ContactWrapper = styled.div`
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+    }
 `;
 
 const LeftArea = styled.div`
@@ -76,9 +81,13 @@ const RightArea = styled.div`
 
 const CallUsCard = styled.div`
     border-radius: 36px;
-    padding: 48px 64px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
     margin: 30px 0;
+    padding: 18px 32px;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
+        padding: 48px 64px;
+    }
 `;
 
 const Headline = styled.h2`
@@ -92,14 +101,19 @@ const Paragraph = styled.p`
 const Form = styled(Paper)`
     box-shadow: none !important;
     margin-top: 30px;
-    display: grid;
-    gap: 36px;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-        "top1 top2"
-        "mid1 mid1"
-        "mid2 mid2"
-        "bottom bottom";
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
+        display: grid;
+        gap: 36px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "top1 top2"
+            "mid1 mid1"
+            "mid2 mid2"
+            "bottom bottom";
+    }
 `;
 
 interface FormInputProps {
@@ -109,7 +123,12 @@ interface FormInputProps {
 const FormInput = styled(TextField)<FormInputProps>`
     grid-area: ${({ gridarea }) => gridarea};
     padding: 12px 24px;
+    margin: 10px 0 !important;
     background: ${({ theme }) => theme.palette.grey2};
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
+        margin: 0 !important;
+    }
 `;
 
 const FormButton = styled(Button)<FormInputProps>`
