@@ -119,8 +119,6 @@ export const getTeamMembers = async (): Promise<Array<TeamMember>> => {
             version: "published",
         });
 
-        console.log(stories);
-
         return stories.data.story.content.members;
     } catch (e) {
         throw new Error("Couldn't load story");

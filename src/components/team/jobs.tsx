@@ -24,8 +24,6 @@ const Jobs: React.FC = () => {
         })();
     }, []);
 
-    console.log(jobs);
-
     return (
         <PageWrap variant="dark">
             {jobs?.map((job) => (

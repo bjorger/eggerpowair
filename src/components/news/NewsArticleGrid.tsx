@@ -128,6 +128,7 @@ const Categories = styled.div`
     justify-content: space-between;
     max-width: 100vw;
     overflow-x: scroll;
+    color: ${({ theme }) => theme.palette.black};
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         width: 100%;

@@ -7,7 +7,7 @@ export const Grid = styled.div`
     row-gap: 54px;
     column-gap: 49px;
 
-    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.sm}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         grid-template-columns: repeat(2, 1fr);
     }
 

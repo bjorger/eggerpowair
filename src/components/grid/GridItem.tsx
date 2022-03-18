@@ -49,7 +49,7 @@ interface ComponentProps {
 
 const ItemContainer = styled.div<ContainerProps>`
     padding: 20px;
-    width: 75vw;
+    max-width: 75vw;
     margin-left: 10px;
     border-radius: 10px;
     box-shadow: ${({ theme, boxShadowVariant }) =>

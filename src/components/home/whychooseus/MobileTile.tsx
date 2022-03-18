@@ -15,7 +15,7 @@ const MobileTile: React.FC<MobileTileProps> = ({ number, headline, paragraph }) 
 
     const expandContainer = (event: React.MouseEvent<HTMLDivElement>) => {
         const target = event.currentTarget as HTMLDivElement;
-        console.log(target);
+
         if (target.classList.contains("expand")) {
             target.classList.remove("expand");
         } else {
