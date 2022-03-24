@@ -31,10 +31,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
-    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        display: block;
-    }
+    width: 100%;
 `;
 
 interface ImageProps {
@@ -56,13 +53,19 @@ const Image = styled.div<ImageProps>`
     background-repeat: no-repeat;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        width: 300px;
+        height: 200px;
+        border-radius: 36px;
+    }
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.xl}px`}) {
         width: 400px;
         height: 300px;
         border-radius: 36px;
     }
 `;
 
-const Headline = styled.h2`
+const Headline = styled.span`
     ${({ theme }) => theme.fonts.h2}
     margin: 10px 0 0 0;
     padding: 0;
@@ -77,6 +80,7 @@ const Date = styled.span`
     color: ${({ theme }) => theme.palette.grey};
     padding: 0;
     margin: 0;
+
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         margin: 10px 0;
     }
@@ -85,7 +89,7 @@ const Date = styled.span`
 const PreviewText = styled.p`
     display: none;
 
-    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         ${({ theme }) => theme.fonts.h2};
         padding: 0;
         margin: 10px 0;

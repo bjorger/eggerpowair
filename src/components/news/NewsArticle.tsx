@@ -16,7 +16,7 @@ const NewsArticle: React.FC = () => {
     function RichText(document: RichtextType) {
         // document is the rich text object you receive from Storyblok,
         // in the form { type: "doc", content: [ ... ] }
-        return <Paragraph>{render(document)}</Paragraph>;
+        return <ParagraphWrapper>{render(document)}</ParagraphWrapper>;
     }
 
     React.useEffect(() => {
@@ -47,7 +47,7 @@ const NewsArticle: React.FC = () => {
                     <ReadMoreHeadline>Read More</ReadMoreHeadline>
                     <ReadMoreGrid>
                         {readMoreContent?.map((item) => (
-                            <NewsArticleGridItem item={item} />
+                            <NewsArticleGridItem key={item.id} item={item} />
                         ))}
                     </ReadMoreGrid>
                 </Wrapper>
@@ -84,7 +84,7 @@ const SubHeadline = styled.h3`
     color: ${({ theme }) => theme.palette.grey};
 `;
 
-const Paragraph = styled.p`
+const ParagraphWrapper = styled.div`
     ${({ theme }) => theme.fonts.paragraph}
 `;
 

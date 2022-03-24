@@ -57,7 +57,7 @@ const Content = styled.div`
 const PartyBusBlue = styled(PowairPartyBusBlue)`
     display: none;
 
-    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         display: block;
         position: absolute;
         right: 0;
@@ -69,7 +69,7 @@ const PartyBusBlue = styled(PowairPartyBusBlue)`
 const PartyBusOrange = styled(PowairPartyBusOrange)`
     display: none;
 
-    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         display: block;
         position: absolute;
         right: 0;

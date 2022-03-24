@@ -130,6 +130,40 @@ const Categories = styled.div`
     overflow-x: scroll;
     color: ${({ theme }) => theme.palette.black};
 
+    ::-webkit-scrollbar {
+        width: 3px;
+        height: 3px;
+    }
+    ::-webkit-scrollbar-button {
+        width: 0px;
+        height: 0px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #787878;
+        border: 0px none #ffffff;
+        border-radius: 50px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #787878;
+    }
+    ::-webkit-scrollbar-thumb:active {
+        background: #787878;
+    }
+    ::-webkit-scrollbar-track {
+        background: #ffffff;
+        border: 0px none #ffffff;
+        border-radius: 50px;
+    }
+    ::-webkit-scrollbar-track:hover {
+        background: #ffffff;
+    }
+    ::-webkit-scrollbar-track:active {
+        background: #ffffff;
+    }
+    ::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         width: 100%;
         overflow-x: auto;
@@ -141,7 +175,9 @@ const Category = styled.button<CategoryProps>`
     background: transparent;
     text-transform: uppercase;
     padding-bottom: 5px;
+    margin: 0px 10px;
     cursor: pointer;
+    color: ${({ theme }) => theme.palette.black};
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         padding-bottom: 10px;
@@ -161,11 +197,13 @@ const NewsArticleItemGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+    place-items: center;
 
-    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         margin-top: 100px;
         grid-template-columns: repeat(3, 1fr);
         gap: 65px;
+        place-items: start;
     }
 `;
 
