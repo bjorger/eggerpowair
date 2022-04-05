@@ -20,13 +20,9 @@ const TruthInEngineering: React.FC = () => {
                 </CustomButton>
             </HeadlineContainer>
             <VideoContainer>
-                <Video title="youtube" src="https://www.youtube.com/embed/tgbNymZ7vqY"></Video>
+                <Video title="youtube" src="https://www.youtube.com/embed/1G0P8L4t-Wo"></Video>
             </VideoContainer>
-            <Paragraph>
-                Leo in vitae turpis massa sed elementum tempus egestas sed. Sed sed risus pretium quam vulputate dignissim suspendisse in. Placerat
-                orci nulla pellentesque dignissim enim. Tortor pretium viverra suspendisse potenti nullam augue. Vestibulum lorem sed risus ultricies
-                tristique nulla. Erat velit scelerisque in dictum non consectetur
-            </Paragraph>
+            <Paragraph>Ein Einblick in die PowAir Reinigungsmethoden.</Paragraph>
         </PageWrap>
     );
 };
