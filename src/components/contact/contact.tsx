@@ -38,9 +38,7 @@ const ContactUs: React.FC = () => {
         formState: { errors },
     } = useForm();
 
-    const onChange = async (value: any) => {
-        console.log(value);
-    };
+    const onChange = async (value: any) => {};
     //const onSubmit = (data) => console.log(data);
 
     return (

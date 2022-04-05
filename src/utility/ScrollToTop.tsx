@@ -5,7 +5,6 @@ const ScrollToTop: React.FC = ({ children }) => {
     const location = useLocation();
 
     useEffect(() => {
-        console.log(window.location);
         if (window.location.hash.includes("category") || window.location.hash.includes("news-article")) {
             window.scrollTo(0, 700);
         } else {
