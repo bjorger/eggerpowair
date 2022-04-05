@@ -6,9 +6,31 @@ import { useForm } from "react-hook-form";
 import { TextField, Button, Paper } from "@mui/material";
 import { useAppSelector } from "redux/hooks";
 import { Variants } from "components/components.sc";
+import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from "@react-google-maps/api";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const ContactUs: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
+    const { isLoaded } = useJsApiLoader({
+        id: "google-map-script",
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY ? process.env.REACT_APP_GOOGLE_API_KEY : "",
+    });
+    const [marker, setMarker] = React.useState<boolean>(false);
+    const [, setMap] = React.useState(null);
+
+    const onUnmount = React.useCallback(function callback(map) {
+        setMap(null);
+    }, []);
+
+    const containerStyle = {
+        width: "100vw",
+        height: "532px",
+    };
+
+    const center = {
+        lat: 47.855397349780475,
+        lng: 13.117275467746438,
+    };
 
     const {
         register,
@@ -16,10 +38,58 @@ const ContactUs: React.FC = () => {
         formState: { errors },
     } = useForm();
 
+    const onChange = async (value: any) => {
+        console.log("Captcha value:", value);
+        const isHuman = await fetch(`https://www.google.com/recaptcha/api/siteverify`, {
+            method: "post",
+            headers: {
+                Accept: "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+            },
+            body: `secret=${process.env.REACT_APP_RECAPTCHA_SERVER_KEY}&response=${value}`,
+        });
+
+        console.log(isHuman);
+    };
     //const onSubmit = (data) => console.log(data);
 
+    console.log(process.env.REACT_APP_RECAPTCHA_SITE_KEY);
+
     return (
-        <PageWrap variant="white">
+        <PageWrap variant="white" padding="0">
+            <div style={{ position: "absolute", left: "-13vw" }}>
+                {isLoaded ? (
+                    <GoogleMap
+                        mapContainerStyle={containerStyle}
+                        center={center}
+                        zoom={13}
+                        onUnmount={onUnmount}
+                        options={{
+                            fullscreenControl: false,
+                            clickableIcons: false,
+                            streetViewControl: false,
+                            panControl: false,
+                            mapTypeControl: false,
+                        }}
+                    >
+                        <Marker position={center} onClick={() => setMarker(!marker)}>
+                            {marker && (
+                                <InfoWindow onCloseClick={() => setMarker(!marker)}>
+                                    <InfoWindowContent>
+                                        <h3>Egger PowAir Cleaning GmBH</h3>
+                                        <p>Pebering Straß 21</p>
+                                        <p>5301 Eugendorf bei Salzburg</p>
+                                    </InfoWindowContent>
+                                </InfoWindow>
+                            )}
+                        </Marker>
+                        <></>
+                    </GoogleMap>
+                ) : (
+                    <></>
+                )}
+            </div>
             <ContactWrapper>
                 <LeftArea>
                     <CallUsCard>
@@ -52,6 +122,10 @@ const ContactUs: React.FC = () => {
                             <FormInput gridarea="top2" label="E-Mail" />
                             <FormInput gridarea="mid1" label="Thema" />
                             <FormInput multiline gridarea="mid2" placeholder="Nachricht" rows={7} />
+                            <ReCAPTCHA
+                                sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY ? process.env.REACT_APP_RECAPTCHA_SITE_KEY : ""}
+                                onChange={onChange}
+                            />
                             <FormButton colors={theme} gridarea="bottom">
                                 Absenden
                             </FormButton>
@@ -72,6 +146,8 @@ const ContactWrapper = styled.div`
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
+        padding-top: 560px;
+        padding-bottom: 50px;
     }
 `;
 
@@ -147,4 +223,13 @@ const FormButton = styled(Button)<ButtonProps>`
     background: ${({ theme, colors }) => theme.palette[colors]} !important;
     color: ${({ theme }) => theme.palette.white} !important;
     border-radius: 4px;
+`;
+
+const InfoWindowContent = styled.div`
+    h3 {
+        margin: 0;
+    }
+    p {
+        margin: 0;
+    }
 `;

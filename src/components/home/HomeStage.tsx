@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as PowairPartyBusBlue } from "assets/car-blue.svg";
-import { ReactComponent as PowairPartyBusOrange } from "assets/car-orange.svg";
+import PowairPartyBusBlue from "assets/car-blue.png";
+import PowairPartyBusOrange from "assets/car-orange.png";
 import { useAppSelector } from "redux/hooks";
 import { ThemeToggle } from "components/themeToggle";
 import { Variants } from "components/components.sc";
@@ -30,7 +30,7 @@ const Stage: React.FC = () => {
                         jetzt kontaktieren
                     </Button>
                 </StageTextContainer>
-                {theme === "orange" ? <PartyBusOrange /> : <PartyBusBlue />}
+                <PartyBus alt="Eggerpowair Bus" src={theme === "orange" ? PowairPartyBusOrange : PowairPartyBusBlue} />
                 <ThemeToggleContainer>
                     <ThemeToggle />
                 </ThemeToggleContainer>
@@ -45,6 +45,19 @@ interface GradientProps {
     color: Variants;
 }
 
+const PartyBus = styled.img`
+    display: none;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        position: absolute;
+        width: 70%;
+        right: -20px;
+        top: -100px;
+        pointer-events: none;
+        display: block;
+    }
+`;
+
 const Container = styled.div`
     display: grid;
     background: ${({ theme }) => theme.palette.dark};
@@ -54,7 +67,7 @@ const Container = styled.div`
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         padding: 100px 0;
         grid-template-columns: repeat(24, 1fr);
-        height: 75vh;
+        height: 50vh;
     }
 `;
 
@@ -64,30 +77,6 @@ const Content = styled.div`
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         grid-column: 3 / span 20;
         position: relative;
-    }
-`;
-
-const PartyBusBlue = styled(PowairPartyBusBlue)`
-    display: none;
-
-    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
-        display: block;
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 60%;
-    }
-`;
-
-const PartyBusOrange = styled(PowairPartyBusOrange)`
-    display: none;
-
-    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
-        display: block;
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 60%;
     }
 `;
 

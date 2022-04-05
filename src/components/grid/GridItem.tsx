@@ -60,6 +60,7 @@ const ItemContainer = styled.div<ContainerProps>`
         padding: 20px 30px;
         border-radius: 36px;
         width: 300px;
+        max-height: 300px;
         box-shadow: ${({ theme, boxShadowVariant }) =>
             boxShadowVariant === "dark" ? `5px 5px 27px rgba(0, 0, 0, 0.2)` : `5px 5px 27px ${theme.palette[boxShadowVariant]}`};
     }

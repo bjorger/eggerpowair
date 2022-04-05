@@ -39,7 +39,7 @@ const MapContainer = styled.div`
     display: none;
     pointer-events: none;
 
-    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         padding: 100px 0;
         display: block;
         min-height: 70vh;

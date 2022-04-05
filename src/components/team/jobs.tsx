@@ -60,7 +60,11 @@ interface GrdItemParagraphProps {
 const JobContainer = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 50px 0;
+    padding: 50px 0;
+
+    &:not(:last-child) {
+        ${({ theme }) => theme.borderBottom};
+    }
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         flex-direction: row;

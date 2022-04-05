@@ -2,7 +2,7 @@ import React from "react";
 import { PageWrap } from "components/page";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import styled from "styled-components";
-import { ColoredSpan, MobileView, BrowserView, Container } from "../../components.sc";
+import { ColoredSpan, MobileView, BrowserView } from "../../components.sc";
 import { Grid, GridItem, ItemProps } from "components/grid";
 import { useAppSelector } from "redux/hooks";
 import { Variants } from "components/components.sc";

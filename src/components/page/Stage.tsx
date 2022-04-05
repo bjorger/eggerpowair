@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as PowairPartyBusBlue } from "assets/car-blue.svg";
-import { ReactComponent as PowairPartyBusOrange } from "assets/car-orange.svg";
+import PowairPartyBusBlue from "assets/car-blue.png";
+import PowairPartyBusOrange from "assets/car-orange.png";
 import { useAppSelector } from "redux/hooks";
 import { Variants } from "components/components.sc";
 
@@ -21,7 +21,7 @@ const Stage: React.FC<StageProps> = ({ eyebrow, title }) => {
                     <Eyebrow>{eyebrow}</Eyebrow>
                     <HeadlineMain>{title}</HeadlineMain>
                 </StageTextContainer>
-                {theme === "orange" ? <PartyBusOrange /> : <PartyBusBlue />}
+                <PartyBus alt="Eggerpowair Bus" src={theme === "orange" ? PowairPartyBusOrange : PowairPartyBusBlue} />
             </Content>
         </Container>
     );
@@ -32,6 +32,14 @@ export default Stage;
 interface GradientProps {
     color: Variants;
 }
+
+const PartyBus = styled.img`
+    position: absolute;
+    width: 1200px;
+    right: -20px;
+    top: -200px;
+    pointer-events: none;
+`;
 
 const Container = styled.div`
     display: grid;
@@ -51,30 +59,6 @@ const Content = styled.div`
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         grid-column: 3 / span 20;
         position: relative;
-    }
-`;
-
-const PartyBusBlue = styled(PowairPartyBusBlue)`
-    display: none;
-
-    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        display: block;
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 40%;
-    }
-`;
-
-const PartyBusOrange = styled(PowairPartyBusOrange)`
-    display: none;
-
-    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        display: block;
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 40%;
     }
 `;
 

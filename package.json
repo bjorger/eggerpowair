@@ -10,6 +10,7 @@
         "@mui/icons-material": "^5.4.2",
         "@mui/material": "^5.5.2",
         "@mui/styled-engine-sc": "^5.5.2",
+        "@react-google-maps/api": "^2.8.1",
         "@reduxjs/toolkit": "^1.7.2",
         "@testing-library/jest-dom": "^5.16.2",
         "@testing-library/react": "^12.1.2",
@@ -23,6 +24,8 @@
         "react": "^17.0.2",
         "react-burger-menu": "^3.0.6",
         "react-dom": "^17.0.2",
+        "react-google-recaptcha": "^2.1.0",
+        "react-grecaptcha": "^1.2.5",
         "react-hook-form": "^7.28.0",
         "react-redux": "^7.2.6",
         "react-router-dom": "^6.2.1",
@@ -62,10 +65,12 @@
     },
     "devDependencies": {
         "@types/react-burger-menu": "^2.8.3",
+        "@types/react-google-recaptcha": "^2.1.5",
         "@types/styled-components": "^5.1.22",
         "babel-plugin-styled-components": "^2.0.2",
         "customize-cra": "^1.0.0",
         "gh-pages": "^3.2.3",
-        "react-app-rewired": "^2.2.1"
+        "react-app-rewired": "^2.2.1",
+        "react-recaptcha-google": "^1.1.1"
     }
 }

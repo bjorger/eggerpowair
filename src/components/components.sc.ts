@@ -36,7 +36,9 @@ export const Container = styled.div<ContainerProps>`
         padding: ${({ padding }) => (padding ? padding : `80px 0`)};
         min-height: ${({ minHeight }) => (minHeight ? `${minHeight}vh` : `50vh`)};
         background-color: ${({ variant, theme }) => (variant === "dark" ? theme.palette.dark : theme.palette.white)};
+    }
 
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         display: grid;
     }
 `;
