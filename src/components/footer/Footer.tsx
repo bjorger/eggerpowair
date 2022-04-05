@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
 
     return (
-        <PageWrap minHeight="30" variant="dark" padding="0 0 30px 0" paddingMobile="0">
+        <PageWrap borderTop={true} minHeight="30" variant="dark" padding="0 0 30px 0" paddingMobile="0">
             <Container>
                 <InnerContainer gridArea="logo" flexOrderMobile="1">
                     <StyledLogo src={Logo} alt="" />
