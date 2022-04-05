@@ -39,18 +39,7 @@ const ContactUs: React.FC = () => {
     } = useForm();
 
     const onChange = async (value: any) => {
-        console.log("Captcha value:", value);
-        const isHuman = await fetch(`https://www.google.com/recaptcha/api/siteverify`, {
-            method: "post",
-            headers: {
-                Accept: "application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
-            },
-            body: `secret=${process.env.REACT_APP_RECAPTCHA_SERVER_KEY}&response=${value}`,
-        });
-
-        console.log(isHuman);
+        console.log(value);
     };
     //const onSubmit = (data) => console.log(data);
 
