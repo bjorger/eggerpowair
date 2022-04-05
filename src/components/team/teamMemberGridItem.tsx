@@ -22,7 +22,7 @@ const TeamMemberGridItem: React.FC<TeamMemberGridItemProps> = ({ member }) => {
                 </TeamInformationContainer>
                 {member.linkedIn && (
                     <LinkedInContainer variant={theme}>
-                        <a href={member.linkedIn && member.linkedIn.url}>
+                        <a target="_blank" rel="noopener noreferrer" href={member.linkedIn && member.linkedIn.url}>
                             <LinkedIn />
                         </a>
                     </LinkedInContainer>
@@ -63,13 +63,13 @@ const TeamInformationContainer = styled.div`
 
 const Image = styled.div<ImageProps>`
     background: url(${({ imageUrl }) => imageUrl});
-    background-position: center;
     background-size: cover;
+    background-position: center 0px;
     background-repeat: no-repeat;
-    height: 150px;
+    height: 200px;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        height: 300px;
+        height: 381px;
     }
 `;
 
