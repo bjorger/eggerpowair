@@ -13,6 +13,7 @@ interface LogoContainerProps {
 
 interface InnerContainerProps {
     flexOrderMobile?: string;
+    gridArea?: string;
     hideOnMobile?: boolean;
 }
 
@@ -22,10 +23,10 @@ const Footer: React.FC = () => {
     return (
         <PageWrap minHeight="30" variant="dark" padding="0 0 30px 0" paddingMobile="0">
             <Container>
-                <InnerContainer flexOrderMobile="1">
+                <InnerContainer gridArea="logo" flexOrderMobile="1">
                     <StyledLogo src={Logo} alt="" />
                 </InnerContainer>
-                <InnerContainer flexOrderMobile="3">
+                <InnerContainer gridArea="contact" flexOrderMobile="3">
                     <FooterHeadline>Kontakt</FooterHeadline>
                     <ContactParagraph>
                         +43- 12345 - 67890 <br />
@@ -85,18 +86,25 @@ const Footer: React.FC = () => {
 export default Footer;
 
 const Container = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     position: relative;
     width: 100%;
     padding-bottom: 30px;
+    display: grid;
+    grid-template-areas: "logo social social" "logo contact contact";
+    place-items: start;
 
     ${({ theme }) => theme.borderBottom};
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 `;
 
 const StyledLogo = styled.img`
     width: 70px;
+    grid-area: "logo";
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         width: 200px;
@@ -106,6 +114,8 @@ const StyledLogo = styled.img`
 const InnerContainer = styled.div<InnerContainerProps>`
     order: ${({ flexOrderMobile }) => (flexOrderMobile ? flexOrderMobile : "unset")};
     display: ${({ hideOnMobile }) => (hideOnMobile ? "none" : "block")};
+    grid-area: ${({ gridArea }) => (gridArea ? gridArea : "none")};
+
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         display: block;
         order: unset;
@@ -115,12 +125,10 @@ const InnerContainer = styled.div<InnerContainerProps>`
 const FooterHeadline = styled.h2`
     ${({ theme }) => theme.fonts.h2};
     color: ${({ theme }) => theme.palette.white};
-    margin-top: 20px;
-    text-align: right;
+    margin-top: 0px;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         margin-top: 50px;
-        text-align: left;
     }
 `;
 
@@ -130,9 +138,11 @@ const LogoContainer = styled.div<LogoContainerProps>`
     align-items: center;
     justify-content: center;
     order: 2;
+    grid-area: "logo";
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         order: unset;
+        place-self: center;
     }
 
     svg {
@@ -140,13 +150,22 @@ const LogoContainer = styled.div<LogoContainerProps>`
         padding: 10px;
         font-size: 30px;
         cursor: pointer;
+
+        &:first-child {
+            padding-left: 0;
+        }
     }
 `;
 
 const ContactParagraph = styled.p`
-    text-align: right;
+    text-align: left;
     ${({ theme }) => theme.fonts.footer.paragraph};
     color: ${({ theme }) => theme.palette.white};
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        order: unset;
+        text-align: right;
+    }
 `;
 
 const FooterLink = styled(Link)`

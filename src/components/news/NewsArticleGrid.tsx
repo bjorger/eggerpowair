@@ -197,7 +197,7 @@ const NewsArticleItemGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    place-items: center;
+    place-items: top center;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         margin-top: 100px;

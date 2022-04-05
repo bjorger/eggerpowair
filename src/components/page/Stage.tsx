@@ -40,7 +40,7 @@ const Container = styled.div`
     grid-template-columns: repeat(24, 1fr);
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        padding: 100px 0;
+        padding: 75px 0;
         height: 30vh;
     }
 `;

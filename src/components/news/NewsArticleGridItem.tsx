@@ -54,13 +54,13 @@ const Image = styled.div<ImageProps>`
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         width: 300px;
-        height: 200px;
+        height: 300px;
         border-radius: 36px;
     }
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.xl}px`}) {
         width: 400px;
-        height: 300px;
+        height: 400px;
         border-radius: 36px;
     }
 `;
@@ -91,6 +91,7 @@ const PreviewText = styled.p`
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         ${({ theme }) => theme.fonts.h2};
+        font-weight: normal;
         padding: 0;
         margin: 10px 0;
         display: block;

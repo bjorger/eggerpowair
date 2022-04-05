@@ -51,6 +51,7 @@ interface Theme {
     palette: Palette;
     fonts: Fonts;
     borderBottom: SimpleInterpolation;
+    borderTop: SimpleInterpolation;
 }
 
 const breakpoints: Breakpoints = {
@@ -134,7 +135,7 @@ const theme: Theme = {
         `,
         gridItem: {
             number: css`
-                font-size: 20px
+                font-size: 20px;
                 line-height: 12px;
                 font-weight: 800;
 
@@ -180,6 +181,9 @@ const theme: Theme = {
     },
     borderBottom: css`
         border-bottom: 1px solid #a7a7a7;
+    `,
+    borderTop: css`
+        border-top: 1px solid #a7a7a7;
     `,
 };
 

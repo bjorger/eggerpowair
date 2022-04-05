@@ -60,8 +60,9 @@ interface GrdItemParagraphProps {
 const JobContainer = styled.div`
     display: flex;
     flex-direction: column;
+    margin: 50px 0;
 
-    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         flex-direction: row;
         justify-content: space-between;
     }
@@ -75,27 +76,31 @@ const Paragraph = styled.p`
     margin-top: 40px;
     ${({ theme }) => theme.fonts.paragraph}
     color: ${({ theme }) => theme.palette.white};
+
+    p {
+        margin: 0;
+    }
 `;
 
-const SkillContainer = styled.div`
+const SkillContainer = styled.span`
     background: #232527;
     border: 1px solid #232527;
     box-shadow: 5px 5px 27px rgba(255, 254, 254, 0.45);
     border-radius: 36px;
     padding: 20px;
-    max-height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    height: 150px;
+    width: 200px;
     margin-top: 50px;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         padding: 40px;
+        height: 200px;
+        width: auto;
     }
 `;
 
 const SkillHeadline = styled.h2`
-    ${({ theme }) => theme.fonts.headline.main};
+    ${({ theme }) => theme.fonts.h2};
     color: ${({ theme }) => theme.palette.white};
     padding: 0;
     margin: 0;

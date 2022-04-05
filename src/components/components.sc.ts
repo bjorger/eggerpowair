@@ -8,6 +8,7 @@ interface ContainerProps {
     minHeight?: string;
     padding?: string;
     paddingMobile?: string;
+    borderTop?: boolean;
 }
 
 interface SpanProps {
@@ -28,6 +29,8 @@ export const Container = styled.div<ContainerProps>`
     padding: ${({ paddingMobile }) => (paddingMobile ? paddingMobile : `50px 0`)};
     background-color: ${({ variant, mobileVariant, theme }) => (mobileVariant ? theme.palette[mobileVariant] : theme.palette[variant])};
     min-height: 20vh;
+
+    ${({ theme, borderTop }) => (borderTop ? theme.borderTop : "")};
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         padding: ${({ padding }) => (padding ? padding : `80px 0`)};

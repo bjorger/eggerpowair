@@ -8,9 +8,10 @@ interface PageWrapProps {
     minHeight?: string;
     padding?: string;
     paddingMobile?: string;
+    borderTop?: boolean;
 }
 
-const PageWrap: React.FC<PageWrapProps> = ({ variant, mobileVariant, children, hideOnMobile, minHeight, padding, paddingMobile }) => {
+const PageWrap: React.FC<PageWrapProps> = ({ variant, mobileVariant, children, hideOnMobile, minHeight, padding, paddingMobile, borderTop }) => {
     return (
         <SC.Container
             variant={variant}
@@ -19,6 +20,7 @@ const PageWrap: React.FC<PageWrapProps> = ({ variant, mobileVariant, children, h
             hideOnMobile={hideOnMobile}
             padding={padding}
             paddingMobile={paddingMobile}
+            borderTop={borderTop}
         >
             <SC.Content>{children}</SC.Content>
         </SC.Container>

@@ -36,11 +36,10 @@ const ContactUs: React.FC = () => {
                     </CallUsCard>
                     <CallUsCard>
                         <Headline>Reinigungszeiten</Headline>
-                        <Paragraph>
-                            24 Stunden am Tag, 7 Tage die <br /> Woche (24/7)
-                        </Paragraph>
+                        <Paragraph>24 Stunden am Tag, 7 Tage die Wochen (24/7) in ganz Europa mobil</Paragraph>
                         <Headline>Adresse</Headline>
                         <Paragraph>
+                            Europazentrale <br />
                             Egger PowAir Cleaning GmbH <br /> Pebering-Straß 21 5301 Eugendorf / <br /> Salzburg Österreich
                         </Paragraph>
                     </CallUsCard>
