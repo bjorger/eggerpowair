@@ -43,11 +43,9 @@ const ContactUs: React.FC = () => {
     };
     //const onSubmit = (data) => console.log(data);
 
-    console.log(process.env.REACT_APP_RECAPTCHA_SITE_KEY);
-
     return (
-        <PageWrap variant="white" padding="0">
-            <div style={{ position: "absolute", left: "-13vw" }}>
+        <PageWrap variant="white" padding="0" paddingMobile="0">
+            <MapsWrapper>
                 {isLoaded ? (
                     <GoogleMap
                         mapContainerStyle={containerStyle}
@@ -78,7 +76,7 @@ const ContactUs: React.FC = () => {
                 ) : (
                     <></>
                 )}
-            </div>
+            </MapsWrapper>
             <ContactWrapper>
                 <LeftArea>
                     <CallUsCard>
@@ -112,6 +110,9 @@ const ContactUs: React.FC = () => {
                             <FormInput gridarea="mid1" label="Thema" />
                             <FormInput multiline gridarea="mid2" placeholder="Nachricht" rows={7} />
                             <ReCAPTCHA
+                                style={{
+                                    gridArea: "captcha",
+                                }}
                                 sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY ? process.env.REACT_APP_RECAPTCHA_SITE_KEY : ""}
                                 onChange={onChange}
                             />
@@ -128,9 +129,19 @@ const ContactUs: React.FC = () => {
 
 export default ContactUs;
 
+const MapsWrapper = styled.div`
+    position: absolute;
+    left: -5vw;
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
+        left: -13vw;
+    }
+`;
+
 const ContactWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    padding-top: 0;
+    padding-top: 560px;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         display: grid;
@@ -147,6 +158,7 @@ const LeftArea = styled.div`
 const RightArea = styled.div`
     align-self: center;
     grid-column: 7 / span 6;
+    width: 100%;
 `;
 
 const CallUsCard = styled.div`
@@ -182,6 +194,7 @@ const Form = styled(Paper)`
             "top1 top2"
             "mid1 mid1"
             "mid2 mid2"
+            "captcha captcha"
             "bottom bottom";
     }
 `;

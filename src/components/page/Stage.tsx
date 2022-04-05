@@ -34,11 +34,16 @@ interface GradientProps {
 }
 
 const PartyBus = styled.img`
-    position: absolute;
-    width: 1200px;
-    right: -20px;
-    top: -200px;
-    pointer-events: none;
+    display: none;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        position: absolute;
+        width: 1200px;
+        right: -20px;
+        top: -200px;
+        pointer-events: none;
+        display: block;
+    }
 `;
 
 const Container = styled.div`
