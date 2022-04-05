@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
                 </InnerContainer>
                 <InnerContainer hideOnMobile={true}>
                     <FooterHeadline>Menü</FooterHeadline>
-                    <FooterUL>
+                    <FooterUL color={theme}>
                         <li>
                             <FooterLink to="/">Über uns</FooterLink>
                         </li>
@@ -156,12 +156,16 @@ const FooterLink = styled(Link)`
     text-decoration: none;
 `;
 
-const FooterUL = styled.ul`
+interface FooterULProps {
+    color: Variants;
+}
+
+const FooterUL = styled.ul<FooterULProps>`
     padding-left: 20px;
     li {
         padding: 4px 0;
         &::marker {
-            color: ${({ theme }) => theme.palette.blue};
+            color: ${({ theme, color }) => theme.palette[color]};
         }
     }
 `;

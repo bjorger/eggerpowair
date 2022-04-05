@@ -4,8 +4,12 @@ import styled from "styled-components";
 import { HeadlineMain } from "components/headline";
 import { useForm } from "react-hook-form";
 import { TextField, Button, Paper } from "@mui/material";
+import { useAppSelector } from "redux/hooks";
+import { Variants } from "components/components.sc";
 
 const ContactUs: React.FC = () => {
+    const theme = useAppSelector((state) => state.themeToggle.color);
+
     const {
         register,
         handleSubmit,
@@ -43,13 +47,15 @@ const ContactUs: React.FC = () => {
                 </LeftArea>
                 <RightArea>
                     <CallUsCard>
-                        <HeadlineMain color="orange">Trete mit uns in Kontakt</HeadlineMain>
+                        <HeadlineMain color={theme}>Trete mit uns in Kontakt</HeadlineMain>
                         <Form>
                             <FormInput gridarea="top1" label="Name" />
                             <FormInput gridarea="top2" label="E-Mail" />
                             <FormInput gridarea="mid1" label="Thema" />
                             <FormInput multiline gridarea="mid2" placeholder="Nachricht" rows={7} />
-                            <FormButton gridarea="bottom">Absenden</FormButton>
+                            <FormButton colors={theme} gridarea="bottom">
+                                Absenden
+                            </FormButton>
                         </Form>
                     </CallUsCard>
                 </RightArea>
@@ -131,10 +137,15 @@ const FormInput = styled(TextField)<FormInputProps>`
     }
 `;
 
-const FormButton = styled(Button)<FormInputProps>`
+interface ButtonProps {
+    gridarea: string;
+    colors: Variants;
+}
+
+const FormButton = styled(Button)<ButtonProps>`
     grid-area: ${({ gridarea }) => gridarea};
     ${({ theme }) => theme.fonts.button};
-    background: ${({ theme }) => theme.palette.orange} !important;
+    background: ${({ theme, colors }) => theme.palette[colors]} !important;
     color: ${({ theme }) => theme.palette.white} !important;
     border-radius: 4px;
 `;
