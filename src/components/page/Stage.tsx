@@ -3,7 +3,15 @@ import styled from "styled-components";
 import PowairPartyBusBlue from "assets/car-blue.png";
 import PowairPartyBusOrange from "assets/car-orange.png";
 import { useAppSelector } from "redux/hooks";
-import { Variants } from "components/components.sc";
+import { BrowserView, MobileView, Variants } from "components/components.sc";
+
+import "swiper/css";
+import "swiper/css/autoplay";
+import SwiperCore, { Autoplay } from "swiper";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+SwiperCore.use([Autoplay]);
 
 interface StageProps {
     eyebrow: string;
@@ -16,12 +24,31 @@ const Stage: React.FC<StageProps> = ({ eyebrow, title }) => {
     return (
         <Container>
             <Content>
-                <Gradient color={theme} />
-                <StageTextContainer>
-                    <Eyebrow>{eyebrow}</Eyebrow>
-                    <HeadlineMain>{title}</HeadlineMain>
-                </StageTextContainer>
-                <PartyBus alt="Eggerpowair Bus" src={theme === "orange" ? PowairPartyBusOrange : PowairPartyBusBlue} />
+                <BrowserView>
+                    <Gradient color={theme} />
+                    <StageTextContainer>
+                        <Eyebrow>{eyebrow}</Eyebrow>
+                        <HeadlineMain>{title}</HeadlineMain>
+                    </StageTextContainer>
+                    <PartyBus alt="Eggerpowair Bus" src={theme === "orange" ? PowairPartyBusOrange : PowairPartyBusBlue} />
+                </BrowserView>
+                <MobileView>
+                    <Swiper
+                        autoplay={{
+                            delay: 2000,
+                        }}
+                    >
+                        <SwiperSlide>
+                            <StageTextContainer style={{ marginTop: "50px" }}>
+                                <Eyebrow>{eyebrow}</Eyebrow>
+                                <HeadlineMain>{title}</HeadlineMain>
+                            </StageTextContainer>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <PartyBus alt="Eggerpowair Bus" src={theme === "orange" ? PowairPartyBusOrange : PowairPartyBusBlue} />
+                        </SwiperSlide>
+                    </Swiper>
+                </MobileView>
             </Content>
         </Container>
     );
@@ -34,13 +61,13 @@ interface GradientProps {
 }
 
 const PartyBus = styled.img`
-    display: none;
-
+    width: 100%;
+    margin-top: 0px;
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         position: absolute;
-        width: 1200px;
+        width: 70%;
         right: -150px;
-        top: -200px;
+        top: -100px;
         pointer-events: none;
         display: block;
     }
