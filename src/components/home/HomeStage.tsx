@@ -4,8 +4,16 @@ import PowairPartyBusBlue from "assets/car-blue.png";
 import PowairPartyBusOrange from "assets/car-orange.png";
 import { useAppSelector } from "redux/hooks";
 import { ThemeToggle } from "components/themeToggle";
-import { Variants } from "components/components.sc";
+import { BrowserView, MobileView, Variants } from "components/components.sc";
 import { Button } from "components/components.sc";
+
+import "swiper/css";
+import "swiper/css/autoplay";
+import SwiperCore, { Autoplay } from "swiper";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+SwiperCore.use([Autoplay]);
 
 const Stage: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
@@ -14,26 +22,56 @@ const Stage: React.FC = () => {
         <Container>
             <Content>
                 <Gradient color={theme} />
-                <StageTextContainer>
-                    <Eyebrow>Professional. Innovative. Reliable.</Eyebrow>
-                    <HeadlineMain>
-                        Exceptional <br />
-                        Service Exceeding
-                        <br />
-                        Expectations
-                    </HeadlineMain>
-                    <StageParagraph>
-                        Our civil and structural team is committed to providing sustainable, creative & efficient engineering solutions for our
-                        communities
-                    </StageParagraph>
-                    <Button bordervariant={theme} textcolor="white" to="/contact" variant={theme}>
-                        jetzt kontaktieren
-                    </Button>
-                </StageTextContainer>
-                <PartyBus alt="Eggerpowair Bus" src={theme === "orange" ? PowairPartyBusOrange : PowairPartyBusBlue} />
-                <ThemeToggleContainer>
-                    <ThemeToggle />
-                </ThemeToggleContainer>
+                <BrowserView>
+                    <StageTextContainer>
+                        <Eyebrow>Professional. Innovative. Reliable.</Eyebrow>
+                        <HeadlineMain>
+                            Exceptional <br />
+                            Service Exceeding
+                            <br />
+                            Expectations
+                        </HeadlineMain>
+                        <StageParagraph>
+                            Our civil and structural team is committed to providing sustainable, creative & efficient engineering solutions for our
+                            communities
+                        </StageParagraph>
+                        <Button bordervariant={theme} textcolor="white" to="/contact" variant={theme}>
+                            jetzt kontaktieren
+                        </Button>
+                    </StageTextContainer>
+                    <PartyBus alt="Eggerpowair Bus" src={theme === "orange" ? PowairPartyBusOrange : PowairPartyBusBlue} />
+                    <ThemeToggleContainer>
+                        <ThemeToggle />
+                    </ThemeToggleContainer>
+                </BrowserView>
+                <MobileView>
+                    <Swiper
+                        autoplay={{
+                            delay: 2000,
+                        }}
+                    >
+                        <SwiperSlide>
+                            <StageTextContainer>
+                                <Eyebrow>Professional. Innovative. Reliable.</Eyebrow>
+                                <HeadlineMain>
+                                    Exceptional <br />
+                                    Service Exceeding
+                                    <br />
+                                    Expectations
+                                </HeadlineMain>
+                                <Button style={{ marginTop: "20px" }} bordervariant={theme} textcolor="white" to="/contact" variant={theme}>
+                                    jetzt kontaktieren
+                                </Button>
+                            </StageTextContainer>
+                            <ThemeToggleContainer>
+                                <ThemeToggle />
+                            </ThemeToggleContainer>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <PartyBus alt="Eggerpowair Bus" src={theme === "orange" ? PowairPartyBusOrange : PowairPartyBusBlue} />
+                        </SwiperSlide>
+                    </Swiper>
+                </MobileView>
             </Content>
         </Container>
     );
@@ -46,8 +84,8 @@ interface GradientProps {
 }
 
 const PartyBus = styled.img`
-    display: none;
-
+    width: 100%;
+    margin-top: 50px;
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         position: absolute;
         width: 70%;

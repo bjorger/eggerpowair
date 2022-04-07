@@ -107,13 +107,13 @@ const ContactUs: React.FC = () => {
                             <FormInput gridarea="top2" label="E-Mail" />
                             <FormInput gridarea="mid1" label="Thema" />
                             <FormInput multiline gridarea="mid2" placeholder="Nachricht" rows={7} />
-                            <ReCAPTCHA
+                            {/*<ReCAPTCHA
                                 style={{
                                     gridArea: "captcha",
                                 }}
                                 sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY ? process.env.REACT_APP_RECAPTCHA_SITE_KEY : ""}
                                 onChange={onChange}
-                            />
+                            />*/}
                             <FormButton colors={theme} gridarea="bottom">
                                 Absenden
                             </FormButton>
