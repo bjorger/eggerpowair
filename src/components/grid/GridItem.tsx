@@ -60,7 +60,7 @@ const ItemContainer = styled.div<ContainerProps>`
         padding: 20px 30px;
         border-radius: 36px;
         width: 300px;
-        max-height: 300px;
+        max-height: 280px;
         box-shadow: ${({ theme, boxShadowVariant }) =>
             boxShadowVariant === "dark" ? `5px 5px 27px rgba(0, 0, 0, 0.2)` : `5px 5px 27px ${theme.palette[boxShadowVariant]}`};
     }
@@ -74,9 +74,8 @@ const HeadlineContainer = styled.div`
 
 const Number = styled.h1<ComponentProps>`
     ${({ theme }) => theme.fonts.gridItem.number};
-    margin-right: 20px;
     color: ${({ theme, variant }) => theme.palette[variant]};
-
+    margin: 10px 10px 10px 0;
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         padding: 0;
     }

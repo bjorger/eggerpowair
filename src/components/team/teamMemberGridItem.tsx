@@ -2,7 +2,7 @@ import { TeamMember } from "api/storyblok";
 import React from "react";
 import styled from "styled-components";
 import { LinkedIn } from "@mui/icons-material";
-import { Variants } from "components/components.sc";
+import { BrowserView, Variants } from "components/components.sc";
 import { useAppSelector } from "redux/hooks";
 
 interface TeamMemberGridItemProps {
@@ -19,6 +19,10 @@ const TeamMemberGridItem: React.FC<TeamMemberGridItemProps> = ({ member }) => {
                 <TeamInformationContainer>
                     <Name>{member.name}</Name>
                     <Position variant={theme}>{member.position}</Position>
+                    <BrowserView>
+                        <Contact>{member.email}</Contact>
+                        <Contact>{member.phone}</Contact>
+                    </BrowserView>
                 </TeamInformationContainer>
                 {member.linkedIn && (
                     <LinkedInContainer variant={theme}>
@@ -53,6 +57,7 @@ const Container = styled.div`
 `;
 
 const TeamInformationContainer = styled.div`
+    padding: 10px;
     p {
         text-align: center;
         @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
@@ -74,13 +79,14 @@ const Image = styled.div<ImageProps>`
 `;
 
 const Informations = styled.div`
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
+    height: 150px;
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        padding: 20px 60px;
-        height: 120px;
+        padding: 20px 30px;
+        height: 200px;
     }
 `;
 
@@ -104,6 +110,10 @@ const Position = styled.p<PositionProps>`
 `;
 
 const LinkedInContainer = styled.div<LinkedInContainerProps>`
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -112,4 +122,9 @@ const LinkedInContainer = styled.div<LinkedInContainerProps>`
         color: ${({ theme, variant }) => theme.palette[variant]};
         font-size: 40px !important;
     }
+`;
+
+const Contact = styled.p`
+    ${({ theme }) => theme.fonts.paragraphSmall};
+    margin: 0;
 `;

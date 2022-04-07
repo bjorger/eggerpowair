@@ -31,6 +31,7 @@ const Footer: React.FC = () => {
                     <ContactParagraph>
                         +43- 12345 - 67890 <br />
                         +43- 12345 - 67891 <br />
+                        Europazentrale <br />
                         Egger PowAir Cleaning GmbH <br /> Pebering-Straß 21 <br />
                         5301 Eugendorf <br />
                         Salzburg Österreich

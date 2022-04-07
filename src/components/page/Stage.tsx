@@ -39,7 +39,7 @@ const PartyBus = styled.img`
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         position: absolute;
         width: 1200px;
-        right: -20px;
+        right: -150px;
         top: -200px;
         pointer-events: none;
         display: block;

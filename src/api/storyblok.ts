@@ -44,6 +44,8 @@ export interface TeamMember {
     name: string;
     position: string;
     linkedIn: Link;
+    email: string;
+    phone: string;
 }
 
 interface Link {

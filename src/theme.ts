@@ -28,6 +28,7 @@ interface Fonts {
         link: SimpleInterpolation;
     };
     paragraph: FlattenInterpolation<ThemeProps<any>>;
+    paragraphSmall: FlattenInterpolation<ThemeProps<any>>;
     h2: FlattenInterpolation<ThemeProps<any>>;
 
     gridItem: {
@@ -120,6 +121,16 @@ const theme: Theme = {
             @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
                 font-size: 19px;
                 line-height: 28px;
+                font-weight: 200;
+            }
+        `,
+        paragraphSmall: css`
+            font-size: 10px;
+            line-height: 20px;
+
+            @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+                font-size: 14px;
+                line-height: 23px;
                 font-weight: 200;
             }
         `,
