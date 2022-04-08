@@ -1,8 +1,8 @@
 import { PageContainer } from "components/page";
 import React from "react";
-import CoC from "components/CoC/coc";
+import CoC from "../components/CoC/coc";
 
-const Contact: React.FC = () => {
+const CodeOfConduct: React.FC = () => {
     return (
         <PageContainer eyebrow="Verhalten" title="Code of Conduct">
             <CoC />
@@ -10,4 +10,4 @@ const Contact: React.FC = () => {
     );
 };
 
-export default Contact;
+export default CodeOfConduct;

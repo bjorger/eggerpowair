@@ -56,6 +56,9 @@ const Header: React.FC = () => {
                     <HeaderNavLink activecolor={theme} to="/news">
                         News
                     </HeaderNavLink>
+                    <HeaderNavLink activecolor={theme} to="/coc">
+                        Code of Conduct
+                    </HeaderNavLink>
                     <Button bordervariant={theme} textcolor="white" variant="dark" to="/contact">
                         Kontakt
                     </Button>

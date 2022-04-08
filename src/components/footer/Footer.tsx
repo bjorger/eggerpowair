@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
                 <InnerContainer>
                     <FooterBottomContainer>
                         <FooterLink to="/">AGB</FooterLink>
-                        <FooterLink to="/">Code of Conduct</FooterLink>
+                        <FooterLink to="/coc">Code of Conduct</FooterLink>
                         <FooterLink to="/">Deutsch</FooterLink>
                     </FooterBottomContainer>
                 </InnerContainer>

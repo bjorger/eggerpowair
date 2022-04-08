@@ -67,7 +67,7 @@ const PartyBus = styled.img`
         position: absolute;
         width: 70%;
         right: -150px;
-        top: -100px;
+        top: -150px;
         pointer-events: none;
         display: block;
     }

@@ -9,6 +9,7 @@ interface PageWrapProps {
     padding?: string;
     paddingMobile?: string;
     borderTop?: boolean;
+    hidePartyBus?: boolean;
 }
 
 const PageWrap: React.FC<PageWrapProps> = ({ variant, mobileVariant, children, hideOnMobile, minHeight, padding, paddingMobile, borderTop }) => {

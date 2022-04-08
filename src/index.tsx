@@ -12,6 +12,8 @@ import store from "./redux/store";
 import Footer from "./components/footer";
 import NewsArticle from "components/news/NewsArticle";
 import ScrollToTop from "utility/ScrollToTop";
+import CoC from "components/CoC/coc";
+import CodeOfConduct from "pages/CoC";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -28,6 +30,7 @@ ReactDOM.render(
                                 <Route path="/news" element={<News />} />
                                 <Route path="/contact" element={<Contact />} />
                                 <Route path="/news-article" element={<NewsArticle />} />
+                                <Route path="/coc" element={<CodeOfConduct />} />
                             </Routes>
                         </ScrollToTop>
                         <Footer />
