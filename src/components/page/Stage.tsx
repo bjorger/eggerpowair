@@ -8,7 +8,6 @@ import { BrowserView, MobileView, Variants } from "components/components.sc";
 import "swiper/css";
 import "swiper/css/autoplay";
 import SwiperCore, { Autoplay, Pagination } from "swiper";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 
 SwiperCore.use([Autoplay]);
@@ -17,10 +16,12 @@ interface StageProps {
     eyebrow: string;
     title: string;
     hidePartyBus?: boolean;
+    customImage?: string;
 }
 
-const Stage: React.FC<StageProps> = ({ eyebrow, title, hidePartyBus }) => {
+const Stage: React.FC<StageProps> = ({ eyebrow, title, hidePartyBus, customImage }) => {
     const theme = useAppSelector((state) => state.themeToggle.color);
+    const image = customImage ? customImage : theme === "orange" ? PowairPartyBusOrange : PowairPartyBusBlue;
 
     return (
         <Container isBusHidden={hidePartyBus}>
@@ -31,7 +32,7 @@ const Stage: React.FC<StageProps> = ({ eyebrow, title, hidePartyBus }) => {
                         <Eyebrow>{eyebrow}</Eyebrow>
                         <HeadlineMain>{title}</HeadlineMain>
                     </StageTextContainer>
-                    {!hidePartyBus && <PartyBus alt="Eggerpowair Bus" src={theme === "orange" ? PowairPartyBusOrange : PowairPartyBusBlue} />}
+                    {!hidePartyBus && <PartyBus alt="Eggerpowair Bus" src={image} />}
                 </BrowserView>
                 <MobileView>
                     <CustomSwiper

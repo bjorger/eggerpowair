@@ -9,7 +9,7 @@ const TruthInEngineering: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
 
     return (
-        <PageWrap variant="dark">
+        <PageWrap variant="dark" paddingMobile="30px 0">
             <HeadlineContainer>
                 <Headline>
                     <Eyebrow textColor="white">Truth in Engineering</Eyebrow>
@@ -22,7 +22,6 @@ const TruthInEngineering: React.FC = () => {
             <VideoContainer>
                 <Video title="youtube" src="https://www.youtube.com/embed/1G0P8L4t-Wo"></Video>
             </VideoContainer>
-            <Paragraph>Ein Einblick in die PowAir Reinigungsmethoden.</Paragraph>
         </PageWrap>
     );
 };
@@ -37,7 +36,7 @@ const HeadlineContainer = styled.div`
 `;
 
 const VideoContainer = styled.div`
-    margin: 80px 0;
+    margin: 20px 0;
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
     height: 0;
@@ -51,16 +50,6 @@ const Video = styled.iframe`
     left: 0;
     width: 100%;
     height: 100%;
-`;
-
-const Paragraph = styled.p`
-    ${({ theme }) => theme.fonts.paragraph};
-    color: ${({ theme }) => theme.palette.white};
-    width: 100%;
-
-    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        width: 50%;
-    }
 `;
 
 const CustomButton = styled(Button)`
