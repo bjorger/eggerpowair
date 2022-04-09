@@ -1,21 +1,20 @@
 import React from "react";
 import { PageWrap } from "components/page";
-import { getPaginatedNewsArticles, NewsCategories } from "api/storyblok";
+import { getPaginatedProjects, NewsCategories, ProjectType } from "api/storyblok";
 import { NewsArticleType } from "api/storyblok";
 import styled from "styled-components";
-import NewsArticleGridItem from "./NewsArticleGridItem";
 import { useAppSelector } from "redux/hooks";
 import { Variants } from "components/components.sc";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { useSearchParams } from "react-router-dom";
 
-const NewsArticleGrid: React.FC = () => {
+const ProjectGrid: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
     const [searchParams, setSearchParams] = useSearchParams();
     const [totalPages, setTotalPages] = React.useState<number>(1);
     const [currentPage, setCurrentPage] = React.useState<number>(1);
     const [currentCategory, setCurrentCategory] = React.useState<string>();
-    const [content, setContent] = React.useState<Array<NewsArticleType>>();
+    const [content, setContent] = React.useState<Array<ProjectType>>();
 
     React.useEffect(() => {
         (async () => {
@@ -30,10 +29,10 @@ const NewsArticleGrid: React.FC = () => {
                 setCurrentCategory(_category);
             }
 
-            const { total, items: articles } = await getPaginatedNewsArticles(_category ? _category : "", _currentPage ? parseInt(_currentPage) : 1);
+            const { total, items } = await getPaginatedProjects(_category ? _category : "", _currentPage ? parseInt(_currentPage) : 1);
 
             setTotalPages(total);
-            setContent(articles as NewsArticleType[]);
+            setContent(items as ProjectType[]);
         })();
     }, [searchParams]);
 
@@ -43,9 +42,9 @@ const NewsArticleGrid: React.FC = () => {
         document.querySelectorAll(".active").forEach((item) => item.classList.remove("active"));
         const target = event.target as HTMLButtonElement;
         target.classList.add("active");
-        const { total, items: articles } = await getPaginatedNewsArticles(category);
+        const { total, items } = await getPaginatedProjects(category);
         setTotalPages(total);
-        setContent(articles as NewsArticleType[]);
+        setContent(items as ProjectType[]);
         searchParams.set("category", category);
         searchParams.set("currentPage", "1");
         setSearchParams(searchParams);
@@ -64,8 +63,8 @@ const NewsArticleGrid: React.FC = () => {
             }
         }
 
-        const { items: articles } = await getPaginatedNewsArticles(currentCategory, currentPage + direction);
-        setContent(articles as NewsArticleType[]);
+        const { items } = await getPaginatedProjects(currentCategory, currentPage + direction);
+        setContent(items as ProjectType[]);
         setCurrentPage(currentPage + direction);
         searchParams.set("currentPage", (currentPage + direction).toString());
         setSearchParams(searchParams);
@@ -100,11 +99,11 @@ const NewsArticleGrid: React.FC = () => {
                     }
                 })}
             </Categories>
-            <NewsArticleItemGrid>
+            <ProjectItemGrid>
                 {content?.map((item, index) => (
-                    <NewsArticleGridItem item={item} key={item.author + item.date + index} />
+                    <ProjectItem gridArea={`project${index}`}></ProjectItem>
                 ))}
-            </NewsArticleItemGrid>
+            </ProjectItemGrid>
             {totalPages > 0 && (
                 <PageCountIndicatorContainer variant={theme}>
                     <ArrowBack onClick={() => loadNewArticles(-1)} />
@@ -118,7 +117,7 @@ const NewsArticleGrid: React.FC = () => {
     );
 };
 
-export default NewsArticleGrid;
+export default ProjectGrid;
 
 interface CategoryProps {
     variant: Variants;
@@ -193,20 +192,32 @@ const Category = styled.button<CategoryProps>`
     }
 `;
 
-const NewsArticleItemGrid = styled.div`
+const ProjectItemGrid = styled.div`
     margin-top: 50px;
     margin-bottom: 50px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    place-items: top center;
+    grid-template-areas:
+        "project1 project2"
+        "project1 project3"
+        "project4 project5"
+        "project6 project5"
+        "project7 project8"
+        "project7 project9";
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         margin-top: 100px;
-        grid-template-columns: repeat(3, 1fr);
         gap: 65px;
         place-items: start;
     }
+`;
+
+interface ProjectItemProps {
+    gridArea: string;
+}
+
+const ProjectItem = styled.div<ProjectItemProps>`
+    grid-area: ${({ gridArea }) => gridArea};
 `;
 
 interface PageCountIndicatorContainerProps {

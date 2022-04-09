@@ -24,6 +24,12 @@ export interface NewsArticleType {
     text: RichtextType;
 }
 
+export interface ProjectType {
+    id: number;
+    image: Image;
+    preview_text: string;
+}
+
 interface Story {
     id: number;
     content: NewsArticleType;
@@ -36,7 +42,7 @@ export interface RichtextType {
 
 interface PaginatedResponse {
     total: number;
-    articles: Array<NewsArticleType>;
+    items: Array<NewsArticleType | ProjectType>;
 }
 
 export interface TeamMember {
@@ -97,7 +103,40 @@ export const getPaginatedNewsArticles = async (category: string = "", page: numb
             });
         });
 
-        return { total, articles };
+        return { total, items: articles };
+    } catch (e) {
+        throw new Error("Couldn't load story");
+    }
+};
+
+export const getPaginatedProjects = async (category: string = "", page: number = 1, per_page: number = 12): Promise<PaginatedResponse> => {
+    try {
+        const stories = await Storyblok.get("cdn/stories/", {
+            version: "published",
+            per_page,
+            page,
+            starts_with: `projects/${category}`,
+            sort_by: "first_published_at:desc",
+        });
+
+        const total = Math.ceil(stories.headers.total / per_page);
+        const articles: NewsArticleType[] = [];
+
+        stories.data.stories.forEach(({ id, content }: Story) => {
+            const { image, author, date, headline, preview_text, text } = content;
+
+            articles.push({
+                id,
+                image,
+                author,
+                date,
+                headline,
+                preview_text,
+                text,
+            });
+        });
+
+        return { total, items: articles };
     } catch (e) {
         throw new Error("Couldn't load story");
     }

@@ -105,6 +105,40 @@ const WhereWeWork: React.FC = () => {
                 </HeadlineMain>
             </Headline>
             <Content>
+                <MapContainer>
+                    {isLoaded ? (
+                        <GoogleMap
+                            mapContainerStyle={containerStyle}
+                            center={currentLocation.latLng}
+                            zoom={13}
+                            onUnmount={onUnmount}
+                            options={{
+                                fullscreenControl: false,
+                                clickableIcons: false,
+                                streetViewControl: false,
+                                panControl: false,
+                                mapTypeControl: false,
+                            }}
+                        >
+                            <Marker position={currentLocation.latLng} onClick={() => setMarker(!marker)}>
+                                {marker && (
+                                    <InfoWindow onCloseClick={() => setMarker(!marker)}>
+                                        <InfoWindowContent>
+                                            <h3>Egger PowAir Cleaning GmBH</h3>
+                                            <p>{currentLocation.street}</p>
+                                            <p>{currentLocation.city}</p>
+                                            <p>{currentLocation.zip}</p>
+                                            <p>{currentLocation.state}</p>
+                                        </InfoWindowContent>
+                                    </InfoWindow>
+                                )}
+                            </Marker>
+                            <></>
+                        </GoogleMap>
+                    ) : (
+                        <></>
+                    )}
+                </MapContainer>
                 <CustomSwiper
                     variant={theme}
                     autoplay={{
@@ -132,40 +166,7 @@ const WhereWeWork: React.FC = () => {
                     ))}
                 </CustomSwiper>
             </Content>
-            <MapContainer>
-                {isLoaded ? (
-                    <GoogleMap
-                        mapContainerStyle={containerStyle}
-                        center={currentLocation.latLng}
-                        zoom={13}
-                        onUnmount={onUnmount}
-                        options={{
-                            fullscreenControl: false,
-                            clickableIcons: false,
-                            streetViewControl: false,
-                            panControl: false,
-                            mapTypeControl: false,
-                        }}
-                    >
-                        <Marker position={currentLocation.latLng} onClick={() => setMarker(!marker)}>
-                            {marker && (
-                                <InfoWindow onCloseClick={() => setMarker(!marker)}>
-                                    <InfoWindowContent>
-                                        <h3>Egger PowAir Cleaning GmBH</h3>
-                                        <p>{currentLocation.street}</p>
-                                        <p>{currentLocation.city}</p>
-                                        <p>{currentLocation.zip}</p>
-                                        <p>{currentLocation.state}</p>
-                                    </InfoWindowContent>
-                                </InfoWindow>
-                            )}
-                        </Marker>
-                        <></>
-                    </GoogleMap>
-                ) : (
-                    <></>
-                )}
-            </MapContainer>
+
             <Button bordervariant={theme} variant="white" textcolor="black" to="/contact">
                 Jetzt kontaktieren
             </Button>
@@ -174,11 +175,37 @@ const WhereWeWork: React.FC = () => {
 };
 
 export default WhereWeWork;
+
 interface CustomSwiperProps {
     variant: Variants;
 }
 
-const Content = styled.div``;
+const CustomSwiper = styled(Swiper)<CustomSwiperProps>`
+    position: relative;
+
+    .swiper-pagination-bullet-active {
+        background-color: ${({ theme, variant }) => theme.palette[variant]} !important;
+    }
+
+    .swiper-pagination-bullet {
+        border: 2px solid;
+        border-color: ${({ theme, variant }) => theme.palette[variant]};
+        background-color: transparent;
+    }
+
+    .swiper-slide {
+        padding: 0 0 30px 0;
+    }
+`;
+
+const Content = styled.div`
+    margin: 50px 0;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        display: flex;
+        flex-direction: row;
+    }
+`;
 
 const InfoWindowContent = styled.div`
     h3 {
@@ -218,22 +245,9 @@ const AddressHeadline = styled.h3<HeadlineProps>`
 
 const MapContainer = styled.div`
     margin: 0 0 50px 0;
-`;
+    width: 100%;
 
-const CustomSwiper = styled(Swiper)<CustomSwiperProps>`
-    position: relative;
-
-    .swiper-pagination-bullet-active {
-        background-color: ${({ theme, variant }) => theme.palette[variant]} !important;
-    }
-
-    .swiper-pagination-bullet {
-        border: 2px solid;
-        border-color: ${({ theme, variant }) => theme.palette[variant]};
-        background-color: transparent;
-    }
-
-    .swiper-slide {
-        padding: 0 0 30px 0;
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        width: 100vw;
     }
 `;

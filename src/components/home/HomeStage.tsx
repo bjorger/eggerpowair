@@ -9,7 +9,7 @@ import { Button } from "components/components.sc";
 
 import "swiper/css";
 import "swiper/css/autoplay";
-import SwiperCore, { Autoplay } from "swiper";
+import SwiperCore, { Autoplay, Pagination } from "swiper";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -45,10 +45,15 @@ const Stage: React.FC = () => {
                     </ThemeToggleContainer>
                 </BrowserView>
                 <MobileView>
-                    <Swiper
+                    <CustomSwiper
+                        variant={theme}
                         autoplay={{
                             delay: 2000,
                         }}
+                        pagination={{
+                            dynamicBullets: false,
+                        }}
+                        modules={[Pagination]}
                     >
                         <SwiperSlide>
                             <StageTextContainer>
@@ -70,7 +75,7 @@ const Stage: React.FC = () => {
                         <SwiperSlide>
                             <PartyBus alt="Eggerpowair Bus" src={theme === "orange" ? PowairPartyBusOrange : PowairPartyBusBlue} />
                         </SwiperSlide>
-                    </Swiper>
+                    </CustomSwiper>
                 </MobileView>
             </Content>
         </Container>
@@ -171,5 +176,27 @@ const ThemeToggleContainer = styled.div`
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         position: absolute;
         bottom: -50px;
+    }
+`;
+interface CustomSwiperProps {
+    variant: Variants;
+}
+
+const CustomSwiper = styled(Swiper)<CustomSwiperProps>`
+    position: relative;
+
+    .swiper-pagination-bullet-active {
+        background-color: ${({ theme, variant }) => theme.palette[variant]} !important;
+    }
+
+    .swiper-pagination-bullet {
+        border: 2px solid;
+        border-color: ${({ theme, variant }) => theme.palette[variant]};
+        background-color: transparent;
+    }
+
+    .swiper-slide {
+        padding: 0 0 30px 0;
+        margin-bottom: 20px;
     }
 `;

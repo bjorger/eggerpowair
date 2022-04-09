@@ -6,9 +6,6 @@ const mobileMenuTheme = {
         left: "28px",
         top: "28px",
     },
-    bmBurgerBars: {
-        background: "#47BCC7",
-    },
     bmBurgerBarsHover: {
         background: "#a90000",
     },

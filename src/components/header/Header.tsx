@@ -43,7 +43,16 @@ const Header: React.FC = () => {
                 <MobileLink to="/">
                     <StyledLogo src={Logo} alt="" />
                 </MobileLink>
-                <Menu right styles={mobileMenuTheme} pageWrapId="page-wrap" outerContainerId="outer-container">
+                <Menu
+                    right
+                    styles={Object.assign(mobileMenuTheme, {
+                        bmBurgerBars: {
+                            background: theme === "blue" ? "#47BCC7" : "#FB993C",
+                        },
+                    })}
+                    pageWrapId="page-wrap"
+                    outerContainerId="outer-container"
+                >
                     <HeaderNavLink activecolor={theme} to="/">
                         über uns
                     </HeaderNavLink>
@@ -65,6 +74,7 @@ const Header: React.FC = () => {
                     <Button bordervariant={theme} textcolor="white" variant="dark" to="/contact">
                         Kontakt
                     </Button>
+                    <img style={{ marginTop: "20px" }} src={Logo} alt="EggerpowAir" />
                 </Menu>
             </MobileView>
         </>

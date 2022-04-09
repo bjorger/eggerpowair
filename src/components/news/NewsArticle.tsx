@@ -26,9 +26,9 @@ const NewsArticle: React.FC = () => {
                 setContent(await getNewsArticleById(newsArticleId));
             }
 
-            const { articles } = await getPaginatedNewsArticles("", 1, 3);
+            const { items: articles } = await getPaginatedNewsArticles("", 1, 3);
 
-            setReadMoreContent(articles);
+            setReadMoreContent(articles as NewsArticleType[]);
         })();
     }, [searchParams]);
 

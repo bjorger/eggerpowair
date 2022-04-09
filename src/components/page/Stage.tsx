@@ -7,7 +7,7 @@ import { BrowserView, MobileView, Variants } from "components/components.sc";
 
 import "swiper/css";
 import "swiper/css/autoplay";
-import SwiperCore, { Autoplay } from "swiper";
+import SwiperCore, { Autoplay, Pagination } from "swiper";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -34,10 +34,15 @@ const Stage: React.FC<StageProps> = ({ eyebrow, title, hidePartyBus }) => {
                     {!hidePartyBus && <PartyBus alt="Eggerpowair Bus" src={theme === "orange" ? PowairPartyBusOrange : PowairPartyBusBlue} />}
                 </BrowserView>
                 <MobileView>
-                    <Swiper
+                    <CustomSwiper
+                        variant={theme}
                         autoplay={{
                             delay: 2000,
                         }}
+                        pagination={{
+                            dynamicBullets: false,
+                        }}
+                        modules={[Pagination]}
                     >
                         <SwiperSlide>
                             <StageTextContainer style={{ marginTop: "50px" }}>
@@ -48,7 +53,7 @@ const Stage: React.FC<StageProps> = ({ eyebrow, title, hidePartyBus }) => {
                         <SwiperSlide>
                             <PartyBus alt="Eggerpowair Bus" src={theme === "orange" ? PowairPartyBusOrange : PowairPartyBusBlue} />
                         </SwiperSlide>
-                    </Swiper>
+                    </CustomSwiper>
                 </MobileView>
             </Content>
         </Container>
@@ -131,4 +136,26 @@ const HeadlineMain = styled.h1`
 
     color: ${({ theme }) => theme.palette.white};
     margin: 5px 0 5px -3px;
+`;
+
+interface CustomSwiperProps {
+    variant: Variants;
+}
+
+const CustomSwiper = styled(Swiper)<CustomSwiperProps>`
+    position: relative;
+
+    .swiper-pagination-bullet-active {
+        background-color: ${({ theme, variant }) => theme.palette[variant]} !important;
+    }
+
+    .swiper-pagination-bullet {
+        border: 2px solid;
+        border-color: ${({ theme, variant }) => theme.palette[variant]};
+        background-color: transparent;
+    }
+
+    .swiper-slide {
+        padding: 0 0 30px 0;
+    }
 `;
