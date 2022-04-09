@@ -6,12 +6,13 @@ interface PageContainerProps {
     eyebrow?: string;
     title?: string;
     hideDefaultStage?: boolean;
+    hidePartyBus?: boolean;
 }
 
-const PageContainer: React.FC<PageContainerProps> = ({ children, eyebrow, title, hideDefaultStage }) => {
+const PageContainer: React.FC<PageContainerProps> = ({ children, eyebrow, title, hideDefaultStage, hidePartyBus }) => {
     return (
         <main style={{ position: "relative" }} id="page-wrap">
-            {!hideDefaultStage && <Stage eyebrow={eyebrow || ""} title={title || ""} />}
+            {!hideDefaultStage && <Stage hidePartyBus={hidePartyBus} eyebrow={eyebrow || ""} title={title || ""} />}
             {children}
             <StickyThemeToggle />
         </main>

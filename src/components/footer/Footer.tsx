@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
                 <InnerContainer>Copyright 2022</InnerContainer>
                 <InnerContainer>
                     <FooterBottomContainer>
-                        <FooterLink to="/">AGB</FooterLink>
+                        <FooterLink to="/agb">AGB</FooterLink>
                         <FooterLink to="/coc">Code of Conduct</FooterLink>
                         <FooterLink to="/">Deutsch</FooterLink>
                     </FooterBottomContainer>

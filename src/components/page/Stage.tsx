@@ -16,13 +16,14 @@ SwiperCore.use([Autoplay]);
 interface StageProps {
     eyebrow: string;
     title: string;
+    hidePartyBus?: boolean;
 }
 
-const Stage: React.FC<StageProps> = ({ eyebrow, title }) => {
+const Stage: React.FC<StageProps> = ({ eyebrow, title, hidePartyBus }) => {
     const theme = useAppSelector((state) => state.themeToggle.color);
 
     return (
-        <Container>
+        <Container isBusHidden={hidePartyBus}>
             <Content>
                 <BrowserView>
                     <Gradient color={theme} />
@@ -30,7 +31,7 @@ const Stage: React.FC<StageProps> = ({ eyebrow, title }) => {
                         <Eyebrow>{eyebrow}</Eyebrow>
                         <HeadlineMain>{title}</HeadlineMain>
                     </StageTextContainer>
-                    <PartyBus alt="Eggerpowair Bus" src={theme === "orange" ? PowairPartyBusOrange : PowairPartyBusBlue} />
+                    {!hidePartyBus && <PartyBus alt="Eggerpowair Bus" src={theme === "orange" ? PowairPartyBusOrange : PowairPartyBusBlue} />}
                 </BrowserView>
                 <MobileView>
                     <Swiper
@@ -73,7 +74,11 @@ const PartyBus = styled.img`
     }
 `;
 
-const Container = styled.div`
+interface ContainerProps {
+    isBusHidden?: boolean;
+}
+
+const Container = styled.div<ContainerProps>`
     display: grid;
     background: ${({ theme }) => theme.palette.dark};
     padding: 120px 0 30px 0;
@@ -81,7 +86,7 @@ const Container = styled.div`
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         padding: 75px 0;
-        height: 30vh;
+        height: ${({ isBusHidden }) => (isBusHidden ? "100px" : "30vh")};
         overflow: hidden;
     }
 `;
