@@ -1,7 +1,6 @@
 import React from "react";
 import { PageWrap } from "components/page";
 import { getPaginatedProjects, NewsCategories, ProjectType } from "api/storyblok";
-import { NewsArticleType } from "api/storyblok";
 import styled from "styled-components";
 import { useAppSelector } from "redux/hooks";
 import { Variants } from "components/components.sc";
@@ -101,7 +100,9 @@ const ProjectGrid: React.FC = () => {
             </Categories>
             <ProjectItemGrid>
                 {content?.map((item, index) => (
-                    <ProjectItem gridArea={`project${index}`}></ProjectItem>
+                    <ProjectItem key={`projectImage${index + 1}`} gridArea={`project${index + 1}`}>
+                        <img style={{ height: "auto" }} src={item.image.filename} alt={item.image.alt} />
+                    </ProjectItem>
                 ))}
             </ProjectItemGrid>
             {totalPages > 0 && (

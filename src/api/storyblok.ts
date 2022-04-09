@@ -27,12 +27,13 @@ export interface NewsArticleType {
 export interface ProjectType {
     id: number;
     image: Image;
-    preview_text: string;
+    text: string;
+    company: string;
 }
 
 interface Story {
     id: number;
-    content: NewsArticleType;
+    content: NewsArticleType | ProjectType;
 }
 
 export interface RichtextType {
@@ -90,7 +91,7 @@ export const getPaginatedNewsArticles = async (category: string = "", page: numb
         const articles: NewsArticleType[] = [];
 
         stories.data.stories.forEach(({ id, content }: Story) => {
-            const { image, author, date, headline, preview_text, text } = content;
+            const { image, author, date, headline, preview_text, text } = content as NewsArticleType;
 
             articles.push({
                 id,
@@ -120,23 +121,20 @@ export const getPaginatedProjects = async (category: string = "", page: number =
         });
 
         const total = Math.ceil(stories.headers.total / per_page);
-        const articles: NewsArticleType[] = [];
+        const items: ProjectType[] = [];
 
         stories.data.stories.forEach(({ id, content }: Story) => {
-            const { image, author, date, headline, preview_text, text } = content;
+            const { image, text, company } = content as ProjectType;
 
-            articles.push({
+            items.push({
                 id,
                 image,
-                author,
-                date,
-                headline,
-                preview_text,
                 text,
+                company,
             });
         });
 
-        return { total, items: articles };
+        return { total, items };
     } catch (e) {
         throw new Error("Couldn't load story");
     }
