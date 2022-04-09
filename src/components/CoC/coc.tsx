@@ -1,13 +1,12 @@
 import React from "react";
 import { PageWrap } from "components/page";
 import styled from "styled-components";
-import { Button, Variants } from "components/components.sc";
+import { Variants } from "components/components.sc";
 import { useAppSelector } from "redux/hooks";
+import CodeOfConductPDF from "assets/CodeOfConduct.pdf";
 
 const CoC: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
-
-    const downloadPDF = () => {};
 
     return (
         <PageWrap variant="white" padding="0" paddingMobile="0">
@@ -35,7 +34,9 @@ const CoC: React.FC = () => {
                 <br /> Gründer/Geschäftsführer
             </Paragraph>
             <ButtonContainer>
-                <DownloadButton variant={theme}>Download Code of Conduct</DownloadButton>
+                <DownloadButton download="CodeOfConduct.pdf" href={CodeOfConductPDF} variant={theme}>
+                    Code of Conduct herunterladen
+                </DownloadButton>
             </ButtonContainer>
         </PageWrap>
     );
@@ -58,6 +59,7 @@ const AuthorInformation = styled.p`
 
 const Paragraph = styled.p`
     ${({ theme }) => theme.fonts.paragraph};
+    margin: 0;
 `;
 
 const ButtonContainer = styled.div`
@@ -65,13 +67,14 @@ const ButtonContainer = styled.div`
     align-items: center;
     justify-content: center;
     margin-bottom: 50px;
+    margin-top: 30px;
 `;
 
 interface ButtonProps {
     variant: Variants;
 }
 
-const DownloadButton = styled.button<ButtonProps>`
+const DownloadButton = styled.a<ButtonProps>`
     ${({ theme }) => theme.fonts.button};
     border: none;
     background: ${({ theme, variant }) => theme.palette[variant]};
@@ -83,8 +86,6 @@ const DownloadButton = styled.button<ButtonProps>`
     text-align: center;
     width: auto;
     transition: 0.5s ease background;
-
-    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        max-width: 300px;
-    }
+    cursor: pointer;
+    text-decoration: none;
 `;

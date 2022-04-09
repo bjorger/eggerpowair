@@ -40,7 +40,7 @@ const WhyChooseUs: React.FC = () => {
     ];
 
     return (
-        <PageWrap variant="dark" mobileVariant="white">
+        <PageWrap variant="dark" paddingMobile="0 0 50px 0">
             <BrowserView>
                 <Grid>
                     <GridItemWrap>

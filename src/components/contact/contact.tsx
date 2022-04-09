@@ -166,7 +166,7 @@ const CallUsCard = styled.div`
     padding: 18px 32px;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
-        padding: 48px 64px;
+        padding: 20px 40px;
     }
 `;
 

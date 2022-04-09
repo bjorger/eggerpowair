@@ -106,6 +106,7 @@ const Container = styled.div`
         padding: 100px 0;
         grid-template-columns: repeat(24, 1fr);
         height: 50vh;
+        overflow: hidden;
     }
 `;
 
