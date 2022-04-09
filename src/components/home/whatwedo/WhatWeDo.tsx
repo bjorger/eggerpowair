@@ -83,15 +83,17 @@ const WhatWeDo: React.FC = () => {
                 >
                     {whatWeDoItems.map((item) => (
                         <SwiperSlide>
-                            <GridItem
-                                boxShadowVariant="dark"
-                                backgroundVariant="white"
-                                headlineVariant="black"
-                                numberVariant={theme}
-                                paragraphVariant="black"
-                                item={item}
-                                key={item.title + item.number}
-                            />
+                            <MobileSlidecontainer>
+                                <GridItem
+                                    boxShadowVariant="dark"
+                                    backgroundVariant="white"
+                                    headlineVariant="black"
+                                    numberVariant={theme}
+                                    paragraphVariant="black"
+                                    item={item}
+                                    key={item.title + item.number}
+                                />
+                            </MobileSlidecontainer>
                         </SwiperSlide>
                     ))}
                 </CustomSwiper>
@@ -122,4 +124,11 @@ const CustomSwiper = styled(Swiper)<CustomSwiperProps>`
     .swiper-slide {
         padding: 50px 0;
     }
+`;
+
+const MobileSlidecontainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `;

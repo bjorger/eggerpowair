@@ -67,6 +67,7 @@ export const Button = styled(Link)<ButtonProps>`
     text-align: center;
     width: auto;
     transition: 0.5s ease background;
+    display: block;
 
     &:hover {
         background: ${({ theme, bordervariant }) => theme.palette[bordervariant]};

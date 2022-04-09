@@ -10,6 +10,7 @@ import { InfoWindow, Marker, GoogleMap, useJsApiLoader } from "@react-google-map
 import "swiper/css";
 import "swiper/css/autoplay";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper";
 
 interface Location {
     street: string;
@@ -104,11 +105,16 @@ const WhereWeWork: React.FC = () => {
                 </HeadlineMain>
             </Headline>
             <Content>
-                <Swiper
+                <CustomSwiper
+                    variant={theme}
                     autoplay={{
                         delay: 5000,
                         disableOnInteraction: true,
                     }}
+                    pagination={{
+                        dynamicBullets: false,
+                    }}
+                    modules={[Pagination]}
                     onSlideChange={({ activeIndex }) => onSlideChange(activeIndex)}
                 >
                     {locations.map((location) => (
@@ -124,7 +130,7 @@ const WhereWeWork: React.FC = () => {
                             </AddressSlide>
                         </SwiperSlide>
                     ))}
-                </Swiper>
+                </CustomSwiper>
             </Content>
             <MapContainer>
                 {isLoaded ? (
@@ -168,6 +174,9 @@ const WhereWeWork: React.FC = () => {
 };
 
 export default WhereWeWork;
+interface CustomSwiperProps {
+    variant: Variants;
+}
 
 const Content = styled.div``;
 
@@ -185,14 +194,18 @@ const AddressSlide = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 30px;
+    padding: 30px 30px 15px 30px;
 `;
 
 const AddressSlideContent = styled.div`
     border-radius: 10px;
-    max-width: 200px;
-    box-shadow: ${({ theme }) => `5px 5px 27px ${theme.palette.grey}`};
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     padding: 10px 20px;
+    width: 85%;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        max-width: 200px;
+    }
 `;
 
 interface HeadlineProps {
@@ -205,4 +218,22 @@ const AddressHeadline = styled.h3<HeadlineProps>`
 
 const MapContainer = styled.div`
     margin: 0 0 50px 0;
+`;
+
+const CustomSwiper = styled(Swiper)<CustomSwiperProps>`
+    position: relative;
+
+    .swiper-pagination-bullet-active {
+        background-color: ${({ theme, variant }) => theme.palette[variant]} !important;
+    }
+
+    .swiper-pagination-bullet {
+        border: 2px solid;
+        border-color: ${({ theme, variant }) => theme.palette[variant]};
+        background-color: transparent;
+    }
+
+    .swiper-slide {
+        padding: 0 0 30px 0;
+    }
 `;
