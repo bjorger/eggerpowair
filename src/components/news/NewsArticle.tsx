@@ -95,6 +95,7 @@ const ReadMoreHeadline = styled.h2`
 `;
 
 const ReadMoreGrid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    div {
+        margin: 30px 0;
+    }
 `;
