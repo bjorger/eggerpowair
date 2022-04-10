@@ -3,7 +3,6 @@ import { PageWrap } from "components/page";
 import { getPaginatedProjects, NewsCategories, ProjectType } from "api/storyblok";
 import styled from "styled-components";
 import { useAppSelector } from "redux/hooks";
-import { Variants } from "components/components.sc";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { useSearchParams } from "react-router-dom";
 import { Categories, Category, PageCountIndicatorContainer, PageIndicatorText } from "components/news/NewsArticleGrid";
