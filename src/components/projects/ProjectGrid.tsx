@@ -206,4 +206,9 @@ const Description = styled.p`
 const Company = styled.h2`
     ${({ theme }) => theme.fonts.headline.eyebrow};
     color: ${({ theme }) => theme.palette.yellow};
+    margin: 0 0 10px 0;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        margin: 20px 0;
+    }
 `;
