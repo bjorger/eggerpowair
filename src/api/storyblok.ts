@@ -110,7 +110,7 @@ export const getPaginatedNewsArticles = async (category: string = "", page: numb
     }
 };
 
-export const getPaginatedProjects = async (category: string = "", page: number = 1, per_page: number = 12): Promise<PaginatedResponse> => {
+export const getPaginatedProjects = async (category: string = "", page: number = 1, per_page: number = 9): Promise<PaginatedResponse> => {
     try {
         const stories = await Storyblok.get("cdn/stories/", {
             version: "published",

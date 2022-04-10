@@ -6,6 +6,7 @@ import { useAppSelector } from "redux/hooks";
 import { Variants } from "components/components.sc";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { useSearchParams } from "react-router-dom";
+import { Categories, Category, PageCountIndicatorContainer, PageIndicatorText } from "components/news/NewsArticleGrid";
 
 const ProjectGrid: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
@@ -100,8 +101,13 @@ const ProjectGrid: React.FC = () => {
             </Categories>
             <ProjectItemGrid>
                 {content?.map((item, index) => (
-                    <ProjectItem key={`projectImage${index + 1}`} gridArea={`project${index + 1}`}>
-                        <img style={{ height: "auto" }} src={item.image.filename} alt={item.image.alt} />
+                    <ProjectItem imageUrl={item.image.filename} key={`projectImage${index + 1}`} gridArea={index + 1}>
+                        <ProjectItemOverlay>
+                            <Text>
+                                <Description>{item.text}</Description>
+                                <Company>{item.company}</Company>
+                            </Text>
+                        </ProjectItemOverlay>
                     </ProjectItem>
                 ))}
             </ProjectItemGrid>
@@ -120,79 +126,6 @@ const ProjectGrid: React.FC = () => {
 
 export default ProjectGrid;
 
-interface CategoryProps {
-    variant: Variants;
-}
-
-const Categories = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    max-width: 100vw;
-    overflow-x: scroll;
-    color: ${({ theme }) => theme.palette.black};
-
-    ::-webkit-scrollbar {
-        width: 3px;
-        height: 3px;
-    }
-    ::-webkit-scrollbar-button {
-        width: 0px;
-        height: 0px;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: #787878;
-        border: 0px none #ffffff;
-        border-radius: 50px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-        background: #787878;
-    }
-    ::-webkit-scrollbar-thumb:active {
-        background: #787878;
-    }
-    ::-webkit-scrollbar-track {
-        background: #ffffff;
-        border: 0px none #ffffff;
-        border-radius: 50px;
-    }
-    ::-webkit-scrollbar-track:hover {
-        background: #ffffff;
-    }
-    ::-webkit-scrollbar-track:active {
-        background: #ffffff;
-    }
-    ::-webkit-scrollbar-corner {
-        background: transparent;
-    }
-
-    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        width: 100%;
-        overflow-x: auto;
-    }
-`;
-
-const Category = styled.button<CategoryProps>`
-    border: none;
-    background: transparent;
-    text-transform: uppercase;
-    padding-bottom: 5px;
-    margin: 0px 10px;
-    cursor: pointer;
-    color: ${({ theme }) => theme.palette.black};
-
-    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        padding-bottom: 10px;
-    }
-
-    ${({ theme }) => theme.fonts.button}
-
-    &.active {
-        color: ${({ theme, variant }) => theme.palette[variant]};
-        border-bottom: 1px solid ${({ theme, variant }) => theme.palette[variant]};
-    }
-`;
-
 const ProjectItemGrid = styled.div`
     margin-top: 50px;
     margin-bottom: 50px;
@@ -201,42 +134,77 @@ const ProjectItemGrid = styled.div`
     grid-template-areas:
         "project1 project2"
         "project1 project3"
-        "project4 project5"
-        "project6 project5"
+        "project4 project6"
+        "project5 project6"
         "project7 project8"
         "project7 project9";
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         margin-top: 100px;
-        gap: 65px;
         place-items: start;
     }
 `;
 
 interface ProjectItemProps {
-    gridArea: string;
+    gridArea: number;
+    imageUrl: string;
 }
 
 const ProjectItem = styled.div<ProjectItemProps>`
-    grid-area: ${({ gridArea }) => gridArea};
-`;
+    grid-area: ${({ gridArea }) => `project${gridArea}`};
+    background: url(${({ imageUrl }) => imageUrl});
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: ${({ gridArea }) => (gridArea === 1 || gridArea === 6 || gridArea === 7 ? "200px" : "90px")};
+    border-radius: 20px;
+    position: relative;
 
-interface PageCountIndicatorContainerProps {
-    variant: Variants;
-}
+    &:hover {
+        div {
+            display: flex;
+        }
+    }
 
-const PageCountIndicatorContainer = styled.div<PageCountIndicatorContainerProps>`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-
-    svg {
-        color: ${({ theme, variant }) => theme.palette[variant]};
-        cursor: pointer;
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        height: ${({ gridArea }) => (gridArea === 1 || gridArea === 6 || gridArea === 7 ? "500px" : "240px")};
+        border-radius: 36px;
     }
 `;
 
-const PageIndicatorText = styled.span`
-    margin: 0 10px;
+const ProjectItemOverlay = styled.div`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000000b5;
+    border-radius: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    display: none;
+    border-radius: 20px;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        border-radius: 36px;
+    }
+`;
+
+const Text = styled.span`
+    margin: 0 20px;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        margin: 0 40px;
+    }
+`;
+
+const Description = styled.p`
+    color: ${({ theme }) => theme.palette.white};
+    ${({ theme }) => theme.fonts.h2};
+    margin: 0;
+`;
+
+const Company = styled.h2`
+    ${({ theme }) => theme.fonts.headline.eyebrow};
+    color: ${({ theme }) => theme.palette.yellow};
 `;

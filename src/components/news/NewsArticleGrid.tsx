@@ -124,7 +124,7 @@ interface CategoryProps {
     variant: Variants;
 }
 
-const Categories = styled.div`
+export const Categories = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -172,7 +172,7 @@ const Categories = styled.div`
     }
 `;
 
-const Category = styled.button<CategoryProps>`
+export const Category = styled.button<CategoryProps>`
     border: none;
     background: transparent;
     text-transform: uppercase;
@@ -213,7 +213,7 @@ interface PageCountIndicatorContainerProps {
     variant: Variants;
 }
 
-const PageCountIndicatorContainer = styled.div<PageCountIndicatorContainerProps>`
+export const PageCountIndicatorContainer = styled.div<PageCountIndicatorContainerProps>`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -225,6 +225,6 @@ const PageCountIndicatorContainer = styled.div<PageCountIndicatorContainerProps>
     }
 `;
 
-const PageIndicatorText = styled.span`
+export const PageIndicatorText = styled.span`
     margin: 0 10px;
 `;
