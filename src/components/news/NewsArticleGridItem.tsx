@@ -32,6 +32,10 @@ const Container = styled.div`
     flex-direction: column;
     align-items: flex-start;
     width: 43vw;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        width: 100%;
+    }
 `;
 
 interface ImageProps {
