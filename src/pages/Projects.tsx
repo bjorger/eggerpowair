@@ -1,10 +1,11 @@
 import { PageContainer } from "components/page";
 import ProjectGrid from "components/projects";
 import React from "react";
+import CustomPartyBus from "assets/TriplePartyTruck.png";
 
 const Projects: React.FC = () => {
     return (
-        <PageContainer eyebrow="Erfahrung" title="Unsere Projekte">
+        <PageContainer eyebrow="Erfahrung" title="Unsere Projekte" customPartyBus={CustomPartyBus}>
             <ProjectGrid />
         </PageContainer>
     );

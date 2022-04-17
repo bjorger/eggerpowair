@@ -52,7 +52,7 @@ const Stage: React.FC<StageProps> = ({ eyebrow, title, hidePartyBus, customImage
                             </StageTextContainer>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <PartyBus alt="Eggerpowair Bus" src={theme === "orange" ? PowairPartyBusOrange : PowairPartyBusBlue} />
+                            <PartyBus alt="Eggerpowair Bus" src={image} />
                         </SwiperSlide>
                     </CustomSwiper>
                 </MobileView>

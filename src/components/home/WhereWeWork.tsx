@@ -96,7 +96,7 @@ const WhereWeWork: React.FC = () => {
     };
 
     return (
-        <PageWrap variant="white" paddingMobile="50px 0 0 0">
+        <PageWrap variant="white" paddingMobile="50px 0 0 0" padding="320px 0 50px 0">
             <Headline>
                 <Eyebrow textColor="black">Where we work</Eyebrow>
                 <HeadlineMain>
@@ -246,8 +246,12 @@ const AddressHeadline = styled.h3<HeadlineProps>`
 const MapContainer = styled.div`
     margin: 0 0 50px 0;
     width: 100%;
+    position: relative;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        width: 100vw;
+        width: 99.8vw;
+        position: absolute;
+        left: -13vw;
+        top: -320px;
     }
 `;

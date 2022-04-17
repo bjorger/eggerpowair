@@ -86,20 +86,20 @@ const Paragraph = styled.p`
     }
 `;
 
-const SkillContainer = styled.span`
+const SkillContainer = styled.p`
     background: #232527;
     border: 1px solid #232527;
     box-shadow: 5px 5px 27px rgba(255, 254, 254, 0.45);
     border-radius: 36px;
     padding: 20px;
-    height: 150px;
     width: 200px;
     margin-top: 50px;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         padding: 40px;
-        height: 200px;
-        width: auto;
+        width: 300px;
+        border: none;
+        box-shadow: none;
     }
 `;
 
@@ -114,6 +114,7 @@ const GridItemParagraph = styled.li<GrdItemParagraphProps>`
     ${({ theme }) => theme.fonts.paragraph};
     color: ${({ theme }) => theme.palette.white};
     margin: 10px 0;
+
     &::marker {
         color: ${({ theme, variant }) => theme.palette[variant]};
         font-size: 20px;
