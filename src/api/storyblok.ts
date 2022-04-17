@@ -69,6 +69,11 @@ export interface Job {
     skills: Array<{ title: string }>;
 }
 
+export interface Customer {
+    name: string;
+    image: Image;
+}
+
 let Storyblok = new StoryblokClient({
     accessToken: process.env.REACT_APP_STORYBLOK_API_KEY,
     cache: {
@@ -171,6 +176,18 @@ export const getJobs = async (): Promise<Array<Job>> => {
         });
 
         return stories.data.story.content.jobs;
+    } catch (e) {
+        throw new Error("Couldn't load story");
+    }
+};
+
+export const getCustomers = async (): Promise<Array<Customer>> => {
+    try {
+        const stories = await Storyblok.get(`cdn/stories/customers`, {
+            version: "published",
+        });
+
+        return stories.data.story.content.body;
     } catch (e) {
         throw new Error("Couldn't load story");
     }

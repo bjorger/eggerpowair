@@ -177,7 +177,6 @@ const ProjectItemOverlay = styled.div`
     width: 100%;
     height: 100%;
     background: #000000b5;
-    border-radius: 36px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;

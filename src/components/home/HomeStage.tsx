@@ -10,7 +10,6 @@ import { Button } from "components/components.sc";
 import "swiper/css";
 import "swiper/css/autoplay";
 import SwiperCore, { Autoplay, Pagination } from "swiper";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 
 SwiperCore.use([Autoplay]);
@@ -180,9 +179,11 @@ const ThemeToggleContainer = styled.div`
 `;
 interface CustomSwiperProps {
     variant: Variants;
+    padding?: string;
+    margin?: string;
 }
 
-const CustomSwiper = styled(Swiper)<CustomSwiperProps>`
+export const CustomSwiper = styled(Swiper)<CustomSwiperProps>`
     position: relative;
 
     .swiper-pagination-bullet-active {
@@ -196,7 +197,7 @@ const CustomSwiper = styled(Swiper)<CustomSwiperProps>`
     }
 
     .swiper-slide {
-        padding: 0 0 30px 0;
-        margin-bottom: 20px;
+        padding: ${({ padding }) => (padding ? padding : "0 0 30px 0")};
+        margin-bottom: ${({ margin }) => (margin ? margin : "20px")};
     }
 `;

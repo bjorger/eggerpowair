@@ -159,13 +159,11 @@ const LogoContainer = styled.div<LogoContainerProps>`
 `;
 
 const ContactParagraph = styled.p`
-    text-align: left;
     ${({ theme }) => theme.fonts.footer.paragraph};
     color: ${({ theme }) => theme.palette.white};
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         order: unset;
-        text-align: right;
     }
 `;
 
