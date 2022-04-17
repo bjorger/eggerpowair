@@ -1,10 +1,11 @@
 {
   "files": {
     "main.css": "/eggerpowair/static/css/main.e9a39cc7.css",
-    "main.js": "/eggerpowair/static/js/main.93e6bfbc.js",
+    "main.js": "/eggerpowair/static/js/main.e92b4705.js",
     "static/js/787.213cadea.chunk.js": "/eggerpowair/static/js/787.213cadea.chunk.js",
     "static/media/car-blue.png": "/eggerpowair/static/media/car-blue.76db5fd96c32381195c9.png",
     "static/media/car-orange.png": "/eggerpowair/static/media/car-orange.660d17d409a31a13b3b6.png",
+    "static/media/TriplePartyTruck.png": "/eggerpowair/static/media/TriplePartyTruck.5a2433bcc9c4119ec7cd.png",
     "static/media/CodeOfConduct.pdf": "/eggerpowair/static/media/CodeOfConduct.97e124c04fa1c8d20b8f.pdf",
     "static/media/cold-step1.png": "/eggerpowair/static/media/cold-step1.ffea6c5fe01248b00d13.png",
     "static/media/cold-step3.png": "/eggerpowair/static/media/cold-step3.135384c74afc9ce40c93.png",
@@ -53,11 +54,11 @@
     "static/media/archivo-v9-latin-900.woff2": "/eggerpowair/static/media/archivo-v9-latin-900.3eb83d0da0ee5eb03057.woff2",
     "index.html": "/eggerpowair/index.html",
     "main.e9a39cc7.css.map": "/eggerpowair/static/css/main.e9a39cc7.css.map",
-    "main.93e6bfbc.js.map": "/eggerpowair/static/js/main.93e6bfbc.js.map",
+    "main.e92b4705.js.map": "/eggerpowair/static/js/main.e92b4705.js.map",
     "787.213cadea.chunk.js.map": "/eggerpowair/static/js/787.213cadea.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e9a39cc7.css",
-    "static/js/main.93e6bfbc.js"
+    "static/js/main.e92b4705.js"
   ]
 }
