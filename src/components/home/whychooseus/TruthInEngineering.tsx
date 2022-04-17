@@ -20,7 +20,7 @@ const TruthInEngineering: React.FC = () => {
                 </CustomButton>
             </HeadlineContainer>
             <VideoContainer>
-                <Video title="youtube" src="https://www.youtube.com/embed/1G0P8L4t-Wo"></Video>
+                <Video title="youtube" src="https://www.youtube.com/embed/rqGfzrmkVSo"></Video>
             </VideoContainer>
         </PageWrap>
     );
