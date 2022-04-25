@@ -19,18 +19,18 @@ const TeamMemberGridItem: React.FC<TeamMemberGridItemProps> = ({ member }) => {
                 <TeamInformationContainer>
                     <Name>{member.name}</Name>
                     <Position variant={theme}>{member.position}</Position>
-                    <BrowserView>
-                        <Contact>{member.email}</Contact>
-                        <Contact>{member.phone}</Contact>
-                    </BrowserView>
+                    <Contact>{member.email}</Contact>
+                    <Contact>{member.phone}</Contact>
                 </TeamInformationContainer>
-                {member.linkedIn && (
-                    <LinkedInContainer variant={theme}>
-                        <a target="_blank" rel="noopener noreferrer" href={member.linkedIn && member.linkedIn.url}>
-                            <LinkedIn />
-                        </a>
-                    </LinkedInContainer>
-                )}
+                <BrowserView>
+                    {member.linkedIn && (
+                        <LinkedInContainer variant={theme}>
+                            <a target="_blank" rel="noopener noreferrer" href={member.linkedIn && member.linkedIn.url}>
+                                <LinkedIn />
+                            </a>
+                        </LinkedInContainer>
+                    )}
+                </BrowserView>
             </Informations>
         </Container>
     );
@@ -127,4 +127,5 @@ const LinkedInContainer = styled.div<LinkedInContainerProps>`
 const Contact = styled.p`
     ${({ theme }) => theme.fonts.paragraphSmall};
     margin: 0;
+    word-wrap: break-word;
 `;

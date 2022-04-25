@@ -3,19 +3,13 @@ import styled from "styled-components";
 interface ItemProps {
     image: string;
     headline: string;
-    description: string;
 }
 
-const ProjectGridItem: React.FC<ItemProps> = ({
-    image,
-    headline,
-    description,
-}) => {
+const ProjectGridItem: React.FC<ItemProps> = ({ image, headline }) => {
     return (
         <ProjectGridItemContainer>
             <Image src={image} alt="" />
             <Headline>{headline}</Headline>
-            <Description>{description}</Description>
         </ProjectGridItemContainer>
     );
 };

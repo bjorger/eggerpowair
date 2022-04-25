@@ -44,7 +44,7 @@ interface ComponentProps {
 }
 
 export const Container = styled.div`
-    max-height: 40px;
+    max-height: 50px;
     overflow: hidden;
     padding: 5px 20px 0;
     transition: 1s ease max-height;

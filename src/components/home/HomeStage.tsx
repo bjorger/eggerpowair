@@ -23,16 +23,16 @@ const Stage: React.FC = () => {
                 <Gradient color={theme} />
                 <BrowserView>
                     <StageTextContainer>
-                        <Eyebrow>Professional. Innovative. Reliable.</Eyebrow>
+                        <Eyebrow>Mobil in ganz Europa. 24/7.</Eyebrow>
                         <HeadlineMain>
-                            Exceptional <br />
-                            Service Exceeding
-                            <br />
-                            Expectations
+                            {theme === "orange"
+                                ? "Sandstrahlen war gestern- Egger Cold PowAir Cleaning ist heute Stand der Technik"
+                                : "Exceptional Service Exceeding Expectations"}
                         </HeadlineMain>
                         <StageParagraph>
-                            Our civil and structural team is committed to providing sustainable, creative & efficient engineering solutions for our
-                            communities
+                            {theme === "orange"
+                                ? "Abrasiv reinigen mit heißer Druckluft und PowAir-Granulate. Ohne Sand, ohne Staub, 100% Umweltfreundlich."
+                                : "COLD PowAir Reinigung mit kalter Druckluft und sonst nichts. Non abrasiv, schnell und effizient, ohne Sekundär-Abfälle!"}
                         </StageParagraph>
                         <Button bordervariant={theme} textcolor="white" to="/contact" variant={theme}>
                             jetzt kontaktieren
@@ -151,9 +151,9 @@ const Eyebrow = styled.h2`
 
 const HeadlineMain = styled.h1`
     ${({ theme }) => theme.fonts.headline.main};
-
     color: ${({ theme }) => theme.palette.white};
     margin: 5px 0 5px -3px;
+    max-width: 50%;
 `;
 
 const StageParagraph = styled.p`

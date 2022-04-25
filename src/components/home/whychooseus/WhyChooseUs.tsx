@@ -14,53 +14,43 @@ const WhyChooseUs: React.FC = () => {
     const whyChooseUsItems: ItemProps[] = [
         {
             number: "01",
-            title: "Schnell & kostensparend",
-            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            title: "Reinigung mit Hilfe von Trockeneispellets",
+            description: "Zur Reinigung von härteren Verschmutzungen wie Beton oder Bitumen und zur Entfernung von dicken Lackschichten.",
         },
         {
             number: "02",
-            title: "Genial umweltfreundlich",
-            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            title: "Reinigung mit Egger PowAir Glasspearls",
+            description: "Zum reinigen, glätten, verdichten und veredeln von Oberflächen, kommen unsere mit Swarovski-Glaspearls zum Einsatz.",
         },
         {
             number: "03",
-            title: "Mobil in ganz Europa",
-            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
-        },
-        {
-            number: "04",
-            title: "Technik-Profi-Reinigung",
-            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
-        },
-        {
-            number: "05",
-            title: "Für uns ist kein Auftrag zu klein...",
-            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            title: "Reinigung mit Egger PowAir Granulaten",
+            description: "Für besonders widerstandsfähige Verhärtungen eignen sich unsere PowAir Granulate hervorragend.",
         },
     ];
 
     return (
         <PageWrap variant="dark" mobileVariant="white" paddingMobile="20px 0 50px 0">
             <BrowserView>
+                <>
+                    <Headline>
+                        <Eyebrow textColor="white" textColorMobile="black">
+                            Why choose us
+                        </Eyebrow>
+                        <HeadlineMain color="white" mobileColor="black">
+                            <ColoredSpan variant={theme}>Designing</ColoredSpan> Future with Excellence
+                        </HeadlineMain>
+                    </Headline>
+                    <BrowserView>
+                        <GridItemUL>
+                            <GridItemParagraph variant={theme}>
+                                Egger PowAir Cleaning reinigt Industrieanlagen, Produktionsanlagen, Maschinen, Brücken und Bauten mobil in ganz
+                                Europa.
+                            </GridItemParagraph>
+                        </GridItemUL>
+                    </BrowserView>
+                </>
                 <Grid>
-                    <GridItemWrap>
-                        <Headline>
-                            <Eyebrow textColor="white" textColorMobile="black">
-                                Why choose us
-                            </Eyebrow>
-                            <HeadlineMain color="white" mobileColor="black">
-                                <ColoredSpan variant={theme}>Designing</ColoredSpan> Future with Excellence
-                            </HeadlineMain>
-                        </Headline>
-                        <BrowserView>
-                            <GridItemUL>
-                                <GridItemParagraph variant={theme}>
-                                    Egger PowAir Cleaning reinigt Industrieanlagen, Produktionsanlagen, Maschinen, Brücken und Bauten mobil in ganz
-                                    Europa.
-                                </GridItemParagraph>
-                            </GridItemUL>
-                        </BrowserView>
-                    </GridItemWrap>
                     {whyChooseUsItems.map((item) => (
                         <GridItem
                             backgroundVariant="dark"
@@ -93,8 +83,6 @@ const WhyChooseUs: React.FC = () => {
 
 export default WhyChooseUs;
 
-const GridItemWrap = styled.div``;
-
 interface GrdItemParagraphProps {
     variant: Variants;
 }
@@ -109,7 +97,8 @@ const GridItemParagraph = styled.li<GrdItemParagraphProps>`
 `;
 
 const GridItemUL = styled.ul`
-    padding: 30px 50px;
+    padding: 15px 0 0 30px;
+    max-width: 500px;
 `;
 
 const MobileContainer = styled.div`

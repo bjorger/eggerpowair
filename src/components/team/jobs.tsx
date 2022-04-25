@@ -81,6 +81,10 @@ const Paragraph = styled.p`
     ${({ theme }) => theme.fonts.paragraph}
     color: ${({ theme }) => theme.palette.white};
 
+    a {
+        color: ${({ theme }) => theme.palette.white};
+    }
+
     p {
         margin: 0;
     }

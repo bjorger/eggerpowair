@@ -9,6 +9,7 @@ interface ContainerProps {
     padding?: string;
     paddingMobile?: string;
     borderTop?: boolean;
+    margin?: string;
 }
 
 interface SpanProps {
@@ -30,6 +31,7 @@ export const Container = styled.div<ContainerProps>`
     background-color: ${({ variant, mobileVariant, theme }) => (mobileVariant ? theme.palette[mobileVariant] : theme.palette[variant])};
     min-height: 20vh;
     ${({ theme, borderTop }) => (borderTop ? theme.borderTop : "")};
+    margin: ${({ margin }) => (margin ? margin : "0")};
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         padding: ${({ padding }) => (padding ? padding : `80px 0`)};

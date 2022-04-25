@@ -9,18 +9,18 @@ const TruthInEngineering: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
 
     return (
-        <PageWrap variant="dark" paddingMobile="30px 0">
+        <PageWrap variant="dark" paddingMobile="30px 0" padding="0 0 50px 0">
             <HeadlineContainer>
                 <Headline>
                     <Eyebrow textColor="white">Truth in Engineering</Eyebrow>
-                    <HeadlineMain color="white">PowAir is in the Air</HeadlineMain>
+                    <HeadlineMain color="white">PowAir macht's vor</HeadlineMain>
                 </Headline>
                 <CustomButton bordervariant={theme} textcolor="white" variant="dark" to="/contact">
                     Kontakt
                 </CustomButton>
             </HeadlineContainer>
             <VideoContainer>
-                <Video title="youtube" src="https://www.youtube.com/embed/rqGfzrmkVSo"></Video>
+                <Video title="youtube-1" src="https://www.youtube.com/embed/1G0P8L4t-Wo"></Video>
             </VideoContainer>
         </PageWrap>
     );
@@ -28,21 +28,20 @@ const TruthInEngineering: React.FC = () => {
 
 export default TruthInEngineering;
 
-const HeadlineContainer = styled.div`
+export const HeadlineContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 `;
 
-const VideoContainer = styled.div`
+export const VideoContainer = styled.div`
     margin: 20px 0;
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
-    height: 0;
 `;
 
-const Video = styled.iframe`
+export const Video = styled.iframe`
     border-radius: 32px;
     border: none;
     position: absolute;

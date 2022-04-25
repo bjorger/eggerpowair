@@ -22,6 +22,7 @@ export interface NewsArticleType {
     headline: string;
     preview_text: string;
     text: RichtextType;
+    videoID?: string;
 }
 
 export interface ProjectType {
@@ -96,7 +97,7 @@ export const getPaginatedNewsArticles = async (category: string = "", page: numb
         const articles: NewsArticleType[] = [];
 
         stories.data.stories.forEach(({ id, content }: Story) => {
-            const { image, author, date, headline, preview_text, text } = content as NewsArticleType;
+            const { image, author, date, headline, preview_text, text, videoID } = content as NewsArticleType;
 
             articles.push({
                 id,
@@ -106,6 +107,7 @@ export const getPaginatedNewsArticles = async (category: string = "", page: numb
                 headline,
                 preview_text,
                 text,
+                videoID,
             });
         });
 

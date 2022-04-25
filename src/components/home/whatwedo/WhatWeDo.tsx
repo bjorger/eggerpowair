@@ -18,32 +18,36 @@ const WhatWeDo: React.FC = () => {
         {
             number: "01",
             title: "Schnell & kostensparend",
-            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            description: "Unsere Reinigungsmethoden sind universell einsetzbar und das in Bestzeit und daher kostensparend.",
         },
         {
             number: "02",
             title: "Genial umweltfreundlich",
-            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            description: "Für unsere Trockenreinigungsverfahren werden zu 100% umweltfreundlich Stoffe eingesetzt.",
         },
         {
             number: "03",
             title: "Mobil in ganz Europa",
-            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            description:
+                "Egger PowAir Cleaning reinigt in ganz Europa, 24/7. Anruf oder E-Mail genügt: 00800-2538 64 64 (kostenfrei aus ganz Europa) oder office(a)eggerpowair.com.",
         },
         {
             number: "04",
             title: "Technik-Profi-Reinigung",
-            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            description:
+                "Für unsere Reinigungsmethoden kommen modernste Strahlmittel zum Einsatz: keimfreie, trockene, ölfreie Druckluft, kalte Trockendruckluft, Trockeneispellets, PowAir Glasspearls und PowAir Granulate. ",
         },
         {
             number: "05",
             title: "Für uns ist kein Auftrag zu klein...",
-            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            description:
+                "Von der Briefmarke, über Treppen-, oder Fassadenreinigung bis hin zu Kraftwerken und Lebensmittelproduktionen reinigen wir alles professionell und rückstandslos.",
         },
         {
             number: "06",
             title: "Schulung & Support",
-            description: "Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin",
+            description:
+                "Wie bieten unsere Reinigungssysteme zum Leasing oder Kauf an. Wir schulen nach Bedarf in Ihrem Unternehmen den richtigen Umgang mit den Geräten für die Reinigung.",
         },
     ];
 

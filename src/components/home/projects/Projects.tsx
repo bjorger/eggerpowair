@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Headline, HeadlineMain, Eyebrow } from "components/headline";
-import DummyImage from "assets/Egger-PowAir.jpg";
 import ProjectGridItem from "./ProjectGridItem";
 import { PageWrap } from "components/page";
 import { ThemeToggle } from "components/themeToggle";
@@ -14,26 +13,47 @@ import { Pagination } from "swiper";
 import { BrowserView, MobileView, Variants } from "components/components.sc";
 import { useAppSelector } from "redux/hooks";
 
+import Unterboden from "assets/projects/Unterboden.png";
+import Umspannwerke from "assets/projects/Umspannwerke.png";
+import Kuehlhaeuser from "assets/projects/Kuehlhaeuser.png";
+import Ziegelgewölbe from "assets/projects/Ziegelgewölbe.png";
+import Baumaschinen from "assets/projects/Baumaschinen.png";
+import Kraftwerksanlagen from "assets/projects/Kraftwerksanlagen.png";
+import Steuerungstechnik from "assets/projects/Stuerungstechnik.png";
+import Schaltschraenke from "assets/projects/Schaltschränke.png";
+
 const DummyData = [
     {
-        img: DummyImage,
-        headline: "Baumaschinen",
-        description: "100 Sunrise Ct Hamel, Minnesota(MN)",
+        img: Unterboden,
+        headline: "Unterboden Reinigung",
     },
     {
-        img: DummyImage,
-        headline: "Baumaschinen",
-        description: "100 Sunrise Ct Hamel, Minnesota(MN)",
+        img: Umspannwerke,
+        headline: "Umspannwerke",
     },
     {
-        img: DummyImage,
-        headline: "Baumaschinen",
-        description: "100 Sunrise Ct Hamel, Minnesota(MN)",
+        img: Kuehlhaeuser,
+        headline: "Kühlhäuser",
     },
     {
-        img: DummyImage,
+        img: Ziegelgewölbe,
+        headline: "Ziegelgewölbe",
+    },
+    {
+        img: Baumaschinen,
         headline: "Baumaschinen",
-        description: "100 Sunrise Ct Hamel, Minnesota(MN)",
+    },
+    {
+        img: Kraftwerksanlagen,
+        headline: "Kraftwerksanlagen",
+    },
+    {
+        img: Steuerungstechnik,
+        headline: "Railjet Steuerungstechnik",
+    },
+    {
+        img: Schaltschraenke,
+        headline: "Schaltschränke",
     },
 ];
 
@@ -59,31 +79,20 @@ const Projects: React.FC = () => {
                     >
                         <SwiperSlide>
                             <ProjectGrid>
-                                {DummyData.map((item, index) => (
-                                    <ProjectGridItem
-                                        image={item.img}
-                                        headline={item.headline}
-                                        description={item.description}
-                                        key={item.headline + index.toString()}
-                                    />
+                                {DummyData.filter((item, index) => index < 4).map((item, index) => (
+                                    <ProjectGridItem image={item.img} headline={item.headline} key={item.headline + index.toString()} />
                                 ))}
                             </ProjectGrid>
                         </SwiperSlide>
                         <SwiperSlide>
                             <ProjectGrid>
-                                {DummyData.map((item, index) => (
-                                    <ProjectGridItem
-                                        image={item.img}
-                                        headline={item.headline}
-                                        description={item.description}
-                                        key={item.headline + index.toString()}
-                                    />
+                                {DummyData.filter((item, index) => index >= 4).map((item, index) => (
+                                    <ProjectGridItem image={item.img} headline={item.headline} key={item.headline + index.toString()} />
                                 ))}
                             </ProjectGrid>
                         </SwiperSlide>
                     </CustomSwiper>
                 </BrowserView>
-
                 <MobileView>
                     <CustomSwiper
                         variant={theme}
@@ -96,12 +105,7 @@ const Projects: React.FC = () => {
                     >
                         {DummyData.map((item, index) => (
                             <SwiperSlide>
-                                <ProjectGridItem
-                                    image={item.img}
-                                    headline={item.headline}
-                                    description={item.description}
-                                    key={item.headline + index.toString()}
-                                />
+                                <ProjectGridItem image={item.img} headline={item.headline} key={item.headline + index.toString() + "mobile"} />
                             </SwiperSlide>
                         ))}
                     </CustomSwiper>

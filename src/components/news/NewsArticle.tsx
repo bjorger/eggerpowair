@@ -5,13 +5,20 @@ import styled from "styled-components";
 import { getPaginatedNewsArticles, NewsArticleType, RichtextType } from "api/storyblok";
 import { render } from "storyblok-rich-text-react-renderer";
 import { useSearchParams } from "react-router-dom";
-import { getNewsArticleById } from "../../api/storyblok";
+import { getNewsArticleById } from "api/storyblok";
 import NewsArticleGridItem from "./NewsArticleGridItem";
+import { useAppSelector } from "redux/hooks";
+import { Facebook } from "@mui/icons-material";
+import { Instagram } from "@mui/icons-material";
+import { LinkedIn } from "@mui/icons-material";
+import { Variants } from "components/components.sc";
+import { Video } from "../home/whychooseus/TruthInEngineering";
 
 const NewsArticle: React.FC = () => {
     const [searchParams] = useSearchParams();
     const [content, setContent] = React.useState<NewsArticleType>();
     const [readMoreContent, setReadMoreContent] = React.useState<Array<NewsArticleType>>();
+    const theme = useAppSelector((state) => state.themeToggle.color);
 
     function RichText(document: RichtextType) {
         // document is the rich text object you receive from Storyblok,
@@ -36,13 +43,29 @@ const NewsArticle: React.FC = () => {
         <PageContainer eyebrow="Erfahrung" title="News">
             <PageWrap variant="white">
                 <Wrapper>
-                    <Image src={content?.image.filename} alt={content?.image.alt} />
+                    {content?.videoID ? (
+                        <NewsVideo title="youtube-1" src={`https://www.youtube.com/embed/${content.videoID}`}></NewsVideo>
+                    ) : (
+                        <Image src={content?.image.filename} alt={content?.image.alt} />
+                    )}
                     <Headline>{content?.headline}</Headline>
                     <SubHeadline>
                         {content?.date} | Geschrieben von {content?.author}
                     </SubHeadline>
                 </Wrapper>
                 {content && RichText(content?.text)}
+                <SocialMedia variant={theme}>
+                    <a href="google.com" target="_blank">
+                        <Facebook />
+                    </a>
+                    <a href="google.com">
+                        <Instagram />
+                    </a>
+                    <a href="google.com">
+                        <LinkedIn />
+                    </a>
+                </SocialMedia>
+
                 <Wrapper>
                     <ReadMoreHeadline>Read More</ReadMoreHeadline>
                     <ReadMoreGrid>
@@ -97,5 +120,35 @@ const ReadMoreHeadline = styled.h2`
 const ReadMoreGrid = styled.div`
     div {
         margin: 30px 0;
+    }
+`;
+
+interface SocialMediaProps {
+    variant: Variants;
+}
+
+const SocialMedia = styled.div<SocialMediaProps>`
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    svg {
+        color: ${({ theme, variant }) => theme.palette[variant]};
+        padding: 10px;
+        font-size: 30px;
+        cursor: pointer;
+
+        &:first-child {
+            padding-left: 0;
+        }
+    }
+`;
+
+const NewsVideo = styled(Video)`
+    height: 300px;
+    position: relative;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        height: 500px;
     }
 `;

@@ -30,24 +30,29 @@ interface StickyThemeToggleContainerProps {
 }
 
 const StickyThemeToggleContainer = styled.div<StickyThemeToggleContainerProps>`
-    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    position: fixed;
+    height: 57px;
+    width: 57px;
+    border-radius: 100%;
+    background-color: ${({ theme, variant }) => theme.palette[variant]};
+    color: ${({ theme }) => theme.palette.white};
+    right: 15px;
+    bottom: 30px;
     ${({ theme }) => theme.fonts.button};
     cursor: pointer;
     user-select: none;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
-        position: fixed;
         height: 98px;
         width: 98px;
         border-radius: 100%;
         background-color: ${({ theme, variant }) => theme.palette[variant]};
         color: ${({ theme }) => theme.palette.white};
         right: 30px;
-        bottom: 30px;
     }
 `;

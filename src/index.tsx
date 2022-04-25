@@ -11,7 +11,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import Footer from "./components/footer";
 import NewsArticle from "components/news/NewsArticle";
-import ScrollToTop from "utility/ScrollToTop";
+import ScrollToTop from "utils/ScrollToTop";
 import CodeOfConduct from "pages/CodeOfConduct";
 import AGB from "pages/AGB";
 
