@@ -84,8 +84,8 @@ const theme: Theme = {
                 font-weight: 700;
 
                 @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-                    font-size: 48px;
-                    line-height: 55px;
+                    font-size: 40px;
+                    line-height: 50px;
                 }
             `,
             eyebrow: css`

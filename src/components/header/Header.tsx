@@ -10,6 +10,7 @@ import { Button } from "components/components.sc";
 
 const Header: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
+    const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
 
     return (
         <>
@@ -44,6 +45,8 @@ const Header: React.FC = () => {
                     <StyledLogo src={Logo} alt="" />
                 </MobileLink>
                 <Menu
+                    isOpen={isMenuOpen}
+                    onOpen={() => setIsMenuOpen(true)}
                     right
                     styles={Object.assign(mobileMenuTheme, {
                         bmBurgerBars: {
@@ -53,28 +56,28 @@ const Header: React.FC = () => {
                     pageWrapId="page-wrap"
                     outerContainerId="outer-container"
                 >
-                    <HeaderNavLink activecolor={theme} to="/">
+                    <HeaderNavLink activecolor={theme} onClick={() => setIsMenuOpen(false)} to="/">
                         über uns
                     </HeaderNavLink>
-                    <HeaderNavLink activecolor={theme} to="/projects">
+                    <HeaderNavLink activecolor={theme} onClick={() => setIsMenuOpen(false)} to="/projects">
                         Projekte
                     </HeaderNavLink>
-                    <HeaderNavLink activecolor={theme} to="/team">
+                    <HeaderNavLink activecolor={theme} onClick={() => setIsMenuOpen(false)} to="/team">
                         Team
                     </HeaderNavLink>
-                    <HeaderNavLink activecolor={theme} to="/news">
+                    <HeaderNavLink activecolor={theme} onClick={() => setIsMenuOpen(false)} to="/news">
                         News
                     </HeaderNavLink>
-                    <HeaderNavLink activecolor={theme} to="/coc">
+                    <HeaderNavLink activecolor={theme} onClick={() => setIsMenuOpen(false)} to="/coc">
                         Code of Conduct
                     </HeaderNavLink>
-                    <HeaderNavLink activecolor={theme} to="/agb">
+                    <HeaderNavLink activecolor={theme} onClick={() => setIsMenuOpen(false)} to="/agb">
                         AGB
                     </HeaderNavLink>
-                    <HeaderNavLink activecolor={theme} to="/impressum">
+                    <HeaderNavLink activecolor={theme} onClick={() => setIsMenuOpen(false)} to="/impressum">
                         Impressum
                     </HeaderNavLink>
-                    <Button bordervariant={theme} textcolor="white" variant="dark" to="/contact">
+                    <Button bordervariant={theme} onClick={() => setIsMenuOpen(false)} textcolor="white" variant="dark" to="/contact">
                         Kontakt
                     </Button>
                     <img style={{ marginTop: "20px" }} src={Logo} alt="EggerpowAir" />
