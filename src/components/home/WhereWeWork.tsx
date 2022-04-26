@@ -125,7 +125,11 @@ const WhereWeWork: React.FC = () => {
                             <BrowserView>
                                 {locations.map((location, index) => {
                                     return (
-                                        <Marker position={location.latLng} onClick={() => onDesktopMarkerChange(index)}>
+                                        <Marker
+                                            position={location.latLng}
+                                            onClick={() => onDesktopMarkerChange(index)}
+                                            key={`${location.city}_${index}`}
+                                        >
                                             {desktopMarkers[index] === true && (
                                                 <InfoWindow onCloseClick={() => onDesktopMarkerChange(index)}>
                                                     <InfoWindowContent>

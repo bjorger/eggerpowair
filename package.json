@@ -30,6 +30,7 @@
         "react-google-recaptcha": "^2.1.0",
         "react-grecaptcha": "^1.2.5",
         "react-hook-form": "^7.28.0",
+        "react-optimized-image": "^0.4.1",
         "react-redux": "^7.2.6",
         "react-router-dom": "^6.2.1",
         "react-scripts": "5.0.0",

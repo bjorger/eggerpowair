@@ -80,14 +80,14 @@ const Projects: React.FC = () => {
                         <SwiperSlide>
                             <ProjectGrid>
                                 {DummyData.filter((item, index) => index < 4).map((item, index) => (
-                                    <ProjectGridItem image={item.img} headline={item.headline} key={item.headline + index.toString()} />
+                                    <ProjectGridItem image={item.img} headline={item.headline} key={`${item.headline}_${index}`} />
                                 ))}
                             </ProjectGrid>
                         </SwiperSlide>
                         <SwiperSlide>
                             <ProjectGrid>
                                 {DummyData.filter((item, index) => index >= 4).map((item, index) => (
-                                    <ProjectGridItem image={item.img} headline={item.headline} key={item.headline + index.toString()} />
+                                    <ProjectGridItem image={item.img} headline={item.headline} key={`${item.headline}_${index}`} />
                                 ))}
                             </ProjectGrid>
                         </SwiperSlide>
@@ -104,8 +104,8 @@ const Projects: React.FC = () => {
                         spaceBetween={30}
                     >
                         {DummyData.map((item, index) => (
-                            <SwiperSlide>
-                                <ProjectGridItem image={item.img} headline={item.headline} key={item.headline + index.toString() + "mobile"} />
+                            <SwiperSlide key={`${item.headline}_${index}_mobile`}>
+                                <ProjectGridItem image={item.img} headline={item.headline} />
                             </SwiperSlide>
                         ))}
                     </CustomSwiper>

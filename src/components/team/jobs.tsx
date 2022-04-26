@@ -40,8 +40,10 @@ const Jobs: React.FC = () => {
                     <SkillContainer>
                         <SkillHeadline>Skills:</SkillHeadline>
                         <GridItemUL>
-                            {job.skills.map((skill) => (
-                                <GridItemParagraph variant={theme}>{skill.title}</GridItemParagraph>
+                            {job.skills.map((skill, index) => (
+                                <GridItemParagraph key={`${skill.title}__${index}`} variant={theme}>
+                                    {skill.title}
+                                </GridItemParagraph>
                             ))}
                         </GridItemUL>
                     </SkillContainer>
@@ -76,9 +78,9 @@ const JobDesc = styled.div`
     max-width: 600px;
 `;
 
-const Paragraph = styled.p`
-    margin-top: 40px;
-    ${({ theme }) => theme.fonts.paragraph}
+const Paragraph = styled.div`
+    padding: 20px 0;
+    ${({ theme }) => theme.fonts.paragraph};
     color: ${({ theme }) => theme.palette.white};
 
     a {
@@ -90,7 +92,7 @@ const Paragraph = styled.p`
     }
 `;
 
-const SkillContainer = styled.p`
+const SkillContainer = styled.div`
     background: #232527;
     border: 1px solid #232527;
     box-shadow: 5px 5px 27px rgba(255, 254, 254, 0.45);

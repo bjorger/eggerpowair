@@ -70,7 +70,7 @@ const WhatWeDo: React.FC = () => {
                             numberVariant={theme}
                             paragraphVariant="black"
                             item={item}
-                            key={item.number + item.title}
+                            key={`${item.number}_${item.title}`}
                         />
                     ))}
                 </Grid>
@@ -85,8 +85,8 @@ const WhatWeDo: React.FC = () => {
                     slidesPerView={"auto"}
                     spaceBetween={30}
                 >
-                    {whatWeDoItems.map((item) => (
-                        <SwiperSlide>
+                    {whatWeDoItems.map((item, index) => (
+                        <SwiperSlide key={`${item.number}_${item.title}_mobile`}>
                             <MobileSlidecontainer>
                                 <GridItem
                                     boxShadowVariant="dark"
@@ -95,7 +95,6 @@ const WhatWeDo: React.FC = () => {
                                     numberVariant={theme}
                                     paragraphVariant="black"
                                     item={item}
-                                    key={item.title + item.number}
                                 />
                             </MobileSlidecontainer>
                         </SwiperSlide>

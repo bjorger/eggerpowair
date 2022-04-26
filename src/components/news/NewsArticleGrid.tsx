@@ -198,7 +198,8 @@ const NewsArticleItemGrid = styled.div`
     margin-bottom: 50px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    column-gap: 10px;
+    row-gap: 20px;
     place-items: top center;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {

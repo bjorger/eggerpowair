@@ -31,7 +31,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 43vw;
+    width: 100%;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         width: 100%;
@@ -57,12 +57,12 @@ const Image = styled.div<ImageProps>`
     background-repeat: no-repeat;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        height: 300px;
+        height: 200px;
         border-radius: 36px;
     }
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.xl}px`}) {
-        height: 400px;
+        height: 200px;
     }
 `;
 
@@ -91,7 +91,7 @@ const PreviewText = styled.p`
     display: none;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
-        ${({ theme }) => theme.fonts.h2};
+        ${({ theme }) => theme.fonts.paragraph};
         font-weight: normal;
         padding: 0;
         margin: 10px 0;
