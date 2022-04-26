@@ -17,9 +17,10 @@ interface StageProps {
     title: string;
     hidePartyBus?: boolean;
     customImage?: string;
+    hideSwipeOnMobile?: boolean;
 }
 
-const Stage: React.FC<StageProps> = ({ eyebrow, title, hidePartyBus, customImage }) => {
+const Stage: React.FC<StageProps> = ({ eyebrow, title, hidePartyBus, customImage, hideSwipeOnMobile }) => {
     const theme = useAppSelector((state) => state.themeToggle.color);
     const image = customImage ? customImage : theme === "orange" ? PowairPartyBusOrange : PowairPartyBusBlue;
 
@@ -35,26 +36,33 @@ const Stage: React.FC<StageProps> = ({ eyebrow, title, hidePartyBus, customImage
                     {!hidePartyBus && <PartyBus alt="Eggerpowair Bus" src={image} />}
                 </BrowserView>
                 <MobileView>
-                    <CustomSwiper
-                        variant={theme}
-                        autoplay={{
-                            delay: 2000,
-                        }}
-                        pagination={{
-                            dynamicBullets: false,
-                        }}
-                        modules={[Pagination]}
-                    >
-                        <SwiperSlide>
-                            <StageTextContainer style={{ marginTop: "50px" }}>
-                                <Eyebrow>{eyebrow}</Eyebrow>
-                                <HeadlineMain>{title}</HeadlineMain>
-                            </StageTextContainer>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <PartyBus alt="Eggerpowair Bus" src={image} />
-                        </SwiperSlide>
-                    </CustomSwiper>
+                    {hideSwipeOnMobile ? (
+                        <StageTextContainer style={{ marginTop: "50px" }}>
+                            <Eyebrow>{eyebrow}</Eyebrow>
+                            <HeadlineMain>{title}</HeadlineMain>
+                        </StageTextContainer>
+                    ) : (
+                        <CustomSwiper
+                            variant={theme}
+                            autoplay={{
+                                delay: 2000,
+                            }}
+                            pagination={{
+                                dynamicBullets: false,
+                            }}
+                            modules={[Pagination]}
+                        >
+                            <SwiperSlide>
+                                <StageTextContainer style={{ marginTop: "50px" }}>
+                                    <Eyebrow>{eyebrow}</Eyebrow>
+                                    <HeadlineMain>{title}</HeadlineMain>
+                                </StageTextContainer>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <PartyBus alt="Eggerpowair Bus" src={image} />
+                            </SwiperSlide>
+                        </CustomSwiper>
+                    )}
                 </MobileView>
             </Content>
         </Container>

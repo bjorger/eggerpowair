@@ -11,7 +11,7 @@ import MobileTile, { Container as MobileTileContainer } from "./MobileTile";
 const WhyChooseUs: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
 
-    const whyChooseUsItems: ItemProps[] = [
+    const hotPowAir: ItemProps[] = [
         {
             number: "01",
             title: "Reinigung mit Hilfe von Trockeneispellets",
@@ -35,10 +35,10 @@ const WhyChooseUs: React.FC = () => {
                 <>
                     <Headline>
                         <Eyebrow textColor="white" textColorMobile="black">
-                            Why choose us
+                            How we work
                         </Eyebrow>
                         <HeadlineMain color="white" mobileColor="black">
-                            <ColoredSpan variant={theme}>Designing</ColoredSpan> Future with Excellence
+                            <ColoredSpan variant={theme}>Unsere</ColoredSpan> Reinigungsmethoden
                         </HeadlineMain>
                     </Headline>
                     <BrowserView>
@@ -51,7 +51,7 @@ const WhyChooseUs: React.FC = () => {
                     </BrowserView>
                 </>
                 <Grid>
-                    {whyChooseUsItems.map((item) => (
+                    {hotPowAir.map((item) => (
                         <GridItem
                             backgroundVariant="dark"
                             boxShadowVariant="white"
@@ -72,7 +72,7 @@ const WhyChooseUs: React.FC = () => {
                     </HeadlineMain>
                 </Headline>
                 <MobileContainer>
-                    {whyChooseUsItems.map((item) => (
+                    {hotPowAir.map((item) => (
                         <MobileTile key={item.number} number={item.number} headline={item.title} paragraph={item.description} />
                     ))}
                 </MobileContainer>

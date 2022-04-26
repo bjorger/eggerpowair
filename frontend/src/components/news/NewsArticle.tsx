@@ -40,7 +40,7 @@ const NewsArticle: React.FC = () => {
     }, [searchParams]);
 
     return (
-        <PageContainer eyebrow="Erfahrung" title="News">
+        <PageContainer hideSwipeOnMobile={true} eyebrow="Erfahrung" title="News">
             <PageWrap variant="white">
                 <Wrapper>
                     {content?.videoID ? (
@@ -55,13 +55,13 @@ const NewsArticle: React.FC = () => {
                 </Wrapper>
                 {content && RichText(content?.text)}
                 <SocialMedia variant={theme}>
-                    <a href="google.com" target="_blank">
+                    <a href="https://www.facebook.com/EggerPowAir/" target="_blank" rel="noreferrer">
                         <Facebook />
                     </a>
-                    <a href="google.com">
+                    <a href="https://www.instagram.com/egger_powair_cleaning_gmbh" target="_blank" rel="noreferrer">
                         <Instagram />
                     </a>
-                    <a href="google.com">
+                    <a href="https://www.linkedin.com/company/egger-powair-cleaning-gmbh/" target="_blank" rel="noreferrer">
                         <LinkedIn />
                     </a>
                 </SocialMedia>

@@ -4,7 +4,7 @@ import NewsArticleGrid from "components/news/NewsArticleGrid";
 
 const News: React.FC = () => {
     return (
-        <PageContainer eyebrow="Erfahrung" title="News">
+        <PageContainer hideSwipeOnMobile={true} eyebrow="Erfahrung" title="News">
             <NewsArticleGrid />
         </PageContainer>
     );

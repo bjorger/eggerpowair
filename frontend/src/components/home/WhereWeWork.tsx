@@ -2,7 +2,7 @@ import React from "react";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import { PageWrap } from "components/page";
 import styled from "styled-components";
-import { ColoredSpan, Variants } from "./../components.sc";
+import { BrowserView, ColoredSpan, MobileView, Variants } from "./../components.sc";
 import { Button } from "./../components.sc";
 import { useAppSelector } from "redux/hooks";
 import { InfoWindow, Marker, GoogleMap, useJsApiLoader } from "@react-google-maps/api";
@@ -37,25 +37,25 @@ const locations: Location[] = [
         },
     },
     {
-        street: "Kirchham 84",
-        zip: "4891",
-        city: "Pöndorf",
-        state: "Oberösterreich",
-        country: "Österreich",
+        street: "Hanauer Landstraße 291 B",
+        zip: "60314",
+        city: "Frankfurt am Main",
+        state: "Hessen",
+        country: "Deutschland",
         latLng: {
-            lat: 47.99865510863441,
-            lng: 13.367644128920887,
+            lat: 50.11684831215999,
+            lng: 8.726012229103372,
         },
     },
     {
-        street: "Favoritenstraße 89",
-        zip: "1100",
-        city: "Wien",
-        state: "Wien",
-        country: "Österreich",
+        street: "Flughafenstraße 118",
+        zip: "90411",
+        city: "Nürnberg",
+        state: "Bayern",
+        country: "Deutschland",
         latLng: {
-            lat: 47.855397349780475,
-            lng: 13.117275467746438,
+            lat: 49.49409847096356,
+            lng: 11.071268542580121,
         },
     },
 ];
@@ -66,37 +66,39 @@ const WhereWeWork: React.FC = () => {
         id: "google-map-script",
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY ? process.env.REACT_APP_GOOGLE_API_KEY : "",
     });
-
-    const [currentLocation, setCurrentLocation] = React.useState<Location>({
-        street: "Pebering-Straß 21",
-        zip: "5301",
-        city: "Eugendorf",
-        state: "Salzburg",
-        country: "Österreich",
-        latLng: {
-            lat: 47.855397349780475,
-            lng: 13.117275467746438,
-        },
-    });
-
+    const breakpointMD = 960;
+    const [currentLocation, setCurrentLocation] = React.useState<Location>(locations[0]);
     const [marker, setMarker] = React.useState<boolean>(false);
+    const [desktopMarkers, setDesktopMarkers] = React.useState<boolean[]>(new Array(locations.length).fill(false));
+    const [currentWindowWith, setCurrentWindowWith] = React.useState<number>(window.innerWidth);
     const [, setMap] = React.useState(null);
 
     const onUnmount = React.useCallback(function callback(map) {
         setMap(null);
     }, []);
 
-    const onSlideChange = (index: number) => {
-        setCurrentLocation(locations[index]);
+    const onSlideChange = (index: number): void => {
+        if (window.innerWidth < breakpointMD) {
+            setCurrentLocation(locations[index]);
+        }
+    };
+
+    const onDesktopMarkerChange = (index: number): void => {
+        desktopMarkers[index] = !desktopMarkers[index];
+        setDesktopMarkers(Object.assign([], desktopMarkers));
     };
 
     const containerStyle = {
         width: "100%",
-        height: "300px",
+        height: "400px",
     };
 
+    React.useEffect(() => {
+        window.addEventListener("resize", () => setCurrentWindowWith(window.innerWidth));
+    }, []);
+
     return (
-        <PageWrap variant="white" paddingMobile="50px 0 0 0" padding="320px 0 50px 0">
+        <PageWrap variant="white" paddingMobile="50px 0 0 0" padding="50px 0">
             <Headline>
                 <Eyebrow textColor="black">Where we work</Eyebrow>
                 <HeadlineMain>
@@ -110,7 +112,7 @@ const WhereWeWork: React.FC = () => {
                         <GoogleMap
                             mapContainerStyle={containerStyle}
                             center={currentLocation.latLng}
-                            zoom={13}
+                            zoom={currentWindowWith >= breakpointMD ? 5 : 13}
                             onUnmount={onUnmount}
                             options={{
                                 fullscreenControl: false,
@@ -120,56 +122,81 @@ const WhereWeWork: React.FC = () => {
                                 mapTypeControl: false,
                             }}
                         >
-                            <Marker position={currentLocation.latLng} onClick={() => setMarker(!marker)}>
-                                {marker && (
-                                    <InfoWindow onCloseClick={() => setMarker(!marker)}>
-                                        <InfoWindowContent>
-                                            <h3>Egger PowAir Cleaning GmBH</h3>
-                                            <p>{currentLocation.street}</p>
-                                            <p>{currentLocation.city}</p>
-                                            <p>{currentLocation.zip}</p>
-                                            <p>{currentLocation.state}</p>
-                                        </InfoWindowContent>
-                                    </InfoWindow>
-                                )}
-                            </Marker>
+                            <BrowserView>
+                                {locations.map((location, index) => {
+                                    return (
+                                        <Marker position={location.latLng} onClick={() => onDesktopMarkerChange(index)}>
+                                            {desktopMarkers[index] === true && (
+                                                <InfoWindow onCloseClick={() => onDesktopMarkerChange(index)}>
+                                                    <InfoWindowContent>
+                                                        <h3>Egger PowAir Cleaning GmBH</h3>
+                                                        <p>{location.street}</p>
+                                                        <p>{location.city}</p>
+                                                        <p>{location.zip}</p>
+                                                        <p>{location.state}</p>
+                                                    </InfoWindowContent>
+                                                </InfoWindow>
+                                            )}
+                                        </Marker>
+                                    );
+                                })}
+                            </BrowserView>
+                            <MobileView>
+                                <Marker position={currentLocation.latLng} onClick={() => setMarker(!marker)}>
+                                    {marker && (
+                                        <InfoWindow onCloseClick={() => setMarker(!marker)}>
+                                            <InfoWindowContent>
+                                                <h3>Egger PowAir Cleaning GmBH</h3>
+                                                <p>{currentLocation.street}</p>
+                                                <p>{currentLocation.city}</p>
+                                                <p>{currentLocation.zip}</p>
+                                                <p>{currentLocation.state}</p>
+                                            </InfoWindowContent>
+                                        </InfoWindow>
+                                    )}
+                                </Marker>
+                            </MobileView>
+
                             <></>
                         </GoogleMap>
                     ) : (
                         <></>
                     )}
                 </MapContainer>
-                <CustomSwiper
-                    variant={theme}
-                    autoplay={{
-                        delay: 5000,
-                        disableOnInteraction: true,
-                    }}
-                    pagination={{
-                        dynamicBullets: false,
-                    }}
-                    modules={[Pagination]}
-                    onSlideChange={({ activeIndex }) => onSlideChange(activeIndex)}
-                >
-                    {locations.map((location) => (
-                        <SwiperSlide key={location.zip}>
-                            <AddressSlide>
-                                <AddressSlideContent>
-                                    <AddressHeadline color={theme}>Egger PowAir Cleaning GmBH</AddressHeadline>
-                                    <p>{location.street}</p>
-                                    <p>{location.city}</p>
-                                    <p>{location.zip}</p>
-                                    <p>{location.state}</p>
-                                </AddressSlideContent>
-                            </AddressSlide>
-                        </SwiperSlide>
-                    ))}
-                </CustomSwiper>
+                <MobileView>
+                    <CustomSwiper
+                        variant={theme}
+                        autoplay={{
+                            delay: 5000,
+                            disableOnInteraction: true,
+                        }}
+                        pagination={{
+                            dynamicBullets: false,
+                        }}
+                        modules={[Pagination]}
+                        onSlideChange={({ activeIndex }) => onSlideChange(activeIndex)}
+                    >
+                        {locations.map((location) => (
+                            <SwiperSlide key={location.zip}>
+                                <AddressSlide>
+                                    <AddressSlideContent>
+                                        <AddressHeadline color={theme}>Egger PowAir Cleaning GmBH</AddressHeadline>
+                                        <p>{location.street}</p>
+                                        <p>{location.city}</p>
+                                        <p>{location.zip}</p>
+                                        <p>{location.state}</p>
+                                    </AddressSlideContent>
+                                </AddressSlide>
+                            </SwiperSlide>
+                        ))}
+                    </CustomSwiper>
+                </MobileView>
             </Content>
-
-            <Button bordervariant={theme} variant="white" textcolor="black" to="/contact">
-                Jetzt kontaktieren
-            </Button>
+            <MobileView>
+                <Button bordervariant={theme} variant="white" textcolor="black" to="/contact">
+                    Jetzt kontaktieren
+                </Button>
+            </MobileView>
         </PageWrap>
     );
 };
@@ -252,6 +279,6 @@ const MapContainer = styled.div`
         width: 99.8vw;
         position: absolute;
         left: -13vw;
-        top: -320px;
+        top: 155px;
     }
 `;

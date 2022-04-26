@@ -66,7 +66,7 @@ const Projects: React.FC = () => {
                 <Eyebrow textColor="white">
                     <ThemeToggle />
                 </Eyebrow>
-                <HeadlineMain color="white">Reinigung mit Trocken-Druck-Luft</HeadlineMain>
+                <HeadlineMain color="white">Anwendungen</HeadlineMain>
                 <BrowserView>
                     <CustomSwiper
                         variant={theme}

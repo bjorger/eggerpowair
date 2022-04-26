@@ -5,7 +5,7 @@ import CustomPartyBus from "assets/TriplePartyTruck.png";
 
 const Projects: React.FC = () => {
     return (
-        <PageContainer eyebrow="Erfahrung" title="Unsere Projekte" customPartyBus={CustomPartyBus}>
+        <PageContainer hideSwipeOnMobile={true} eyebrow="Erfahrung" title="Unsere Projekte" customPartyBus={CustomPartyBus}>
             <ProjectGrid />
         </PageContainer>
     );
