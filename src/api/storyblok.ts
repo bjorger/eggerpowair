@@ -83,13 +83,18 @@ let Storyblok = new StoryblokClient({
     },
 });
 
-export const getPaginatedNewsArticles = async (category: string = "", page: number = 1, per_page: number = 12): Promise<PaginatedResponse> => {
+const getPaginatedContent = async (
+    contentType: string,
+    category: string = "",
+    page: number = 1,
+    per_page: number = 12,
+): Promise<PaginatedResponse> => {
     try {
         const stories = await Storyblok.get("cdn/stories/", {
             version: "published",
             per_page,
             page,
-            starts_with: `news_articles/${category}`,
+            starts_with: `${contentType}/${category}`,
             sort_by: "first_published_at:desc",
         });
 
@@ -117,31 +122,21 @@ export const getPaginatedNewsArticles = async (category: string = "", page: numb
     }
 };
 
+export const getPaginatedNewsArticles = async (category: string = "", page: number = 1, per_page: number = 12): Promise<PaginatedResponse> => {
+    try {
+        const res = await getPaginatedContent("news_articles", category, page, per_page);
+
+        return res;
+    } catch (e) {
+        throw new Error("Couldn't load story");
+    }
+};
+
 export const getPaginatedProjects = async (category: string = "", page: number = 1, per_page: number = 9): Promise<PaginatedResponse> => {
     try {
-        const stories = await Storyblok.get("cdn/stories/", {
-            version: "published",
-            per_page,
-            page,
-            starts_with: `projects/${category}`,
-            sort_by: "first_published_at:desc",
-        });
+        const res = await getPaginatedContent("projects", category, page, per_page);
 
-        const total = Math.ceil(stories.headers.total / per_page);
-        const items: ProjectType[] = [];
-
-        stories.data.stories.forEach(({ id, content }: Story) => {
-            const { image, text, company } = content as ProjectType;
-
-            items.push({
-                id,
-                image,
-                text,
-                company,
-            });
-        });
-
-        return { total, items };
+        return res;
     } catch (e) {
         throw new Error("Couldn't load story");
     }
@@ -159,9 +154,9 @@ export const getNewsArticleById = async (id: string): Promise<NewsArticleType> =
     }
 };
 
-export const getTeamMembers = async (): Promise<Array<TeamMember>> => {
+const getStoriesByType = async (type: string): Promise<Array<TeamMember | Job | Customer>> => {
     try {
-        const stories = await Storyblok.get(`cdn/stories/team`, {
+        const stories = await Storyblok.get(`cdn/stories/${type}`, {
             version: "published",
         });
 
@@ -171,13 +166,21 @@ export const getTeamMembers = async (): Promise<Array<TeamMember>> => {
     }
 };
 
+export const getTeamMembers = async (): Promise<Array<TeamMember>> => {
+    try {
+        const stories = await getStoriesByType("team");
+
+        return stories as Array<TeamMember>;
+    } catch (e) {
+        throw new Error("Couldn't load story");
+    }
+};
+
 export const getJobs = async (): Promise<Array<Job>> => {
     try {
-        const stories = await Storyblok.get(`cdn/stories/jobs`, {
-            version: "published",
-        });
+        const stories = await getStoriesByType("jobs");
 
-        return stories.data.story.content.jobs;
+        return stories as Array<Job>;
     } catch (e) {
         throw new Error("Couldn't load story");
     }
@@ -185,11 +188,9 @@ export const getJobs = async (): Promise<Array<Job>> => {
 
 export const getCustomers = async (): Promise<Array<Customer>> => {
     try {
-        const stories = await Storyblok.get(`cdn/stories/customers`, {
-            version: "published",
-        });
+        const stories = await getStoriesByType("customers");
 
-        return stories.data.story.content.body;
+        return stories as Array<Customer>;
     } catch (e) {
         throw new Error("Couldn't load story");
     }

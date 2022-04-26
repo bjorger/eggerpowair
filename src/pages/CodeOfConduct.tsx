@@ -1,6 +1,6 @@
 import { PageContainer } from "components/page";
 import React from "react";
-import CoC from "components/CoC";
+import CoC from "components/codeOfConduct";
 
 const CodeOfConduct: React.FC = () => {
     return (

@@ -31,7 +31,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 100%;
+    max-width: 40vw;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         width: 100%;
@@ -70,6 +70,8 @@ const Headline = styled.span`
     ${({ theme }) => theme.fonts.h2}
     margin: 10px 0 0 0;
     padding: 0;
+    word-wrap: break-word;
+    max-width: 40vw;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         margin: 20px 0 10px;

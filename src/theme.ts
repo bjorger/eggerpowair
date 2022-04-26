@@ -58,7 +58,7 @@ interface Theme {
 
 const breakpoints: Breakpoints = {
     sm: 600,
-    md: 960,
+    md: 1200,
     lg: 1460,
     xl: 1600,
 };

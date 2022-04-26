@@ -15,7 +15,7 @@ import ScrollToTop from "utils/ScrollToTop";
 import CodeOfConduct from "pages/CodeOfConduct";
 import AGB from "pages/AGB";
 import ImpressumPage from "pages/Impressum";
-import CookieBanner from "components/CookieBanner/CookieBanner";
+import CookieBanner from "components/cookieBanner/CookieBanner";
 
 ReactDOM.render(
     <React.StrictMode>
