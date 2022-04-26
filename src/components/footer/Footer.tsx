@@ -140,10 +140,12 @@ const LogoContainer = styled.div<LogoContainerProps>`
     justify-content: center;
     order: 2;
     grid-area: "logo";
+    margin-top: 10px;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         order: unset;
         place-self: center;
+        margin-top: 0;
     }
 
     svg {
