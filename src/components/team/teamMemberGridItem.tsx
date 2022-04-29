@@ -1,7 +1,7 @@
 import { TeamMember } from "api/storyblok";
 import React from "react";
 import styled from "styled-components";
-import { LinkedIn } from "@mui/icons-material";
+import { LinkedIn, Mail, Phone } from "@mui/icons-material";
 import { BrowserView, Variants } from "components/components.sc";
 import { useAppSelector } from "redux/hooks";
 
@@ -19,18 +19,30 @@ const TeamMemberGridItem: React.FC<TeamMemberGridItemProps> = ({ member }) => {
                 <TeamInformationContainer>
                     <Name>{member.name}</Name>
                     <Position variant={theme}>{member.position}</Position>
-                    <Contact>{member.email}</Contact>
-                    <Contact>{member.phone}</Contact>
                 </TeamInformationContainer>
-                <BrowserView>
+                <Contacts>
+                    {member.email && (
+                        <ContactsContainer variant={theme}>
+                            <a target="_blank" rel="noopener noreferrer" href={`mailto:${member.email}`}>
+                                <Mail />
+                            </a>
+                        </ContactsContainer>
+                    )}
+                    {member.phone && (
+                        <ContactsContainer variant={theme}>
+                            <a target="_blank" rel="noopener noreferrer" href={`tel:${member.phone}`}>
+                                <Phone />
+                            </a>
+                        </ContactsContainer>
+                    )}
                     {member.linkedIn && (
-                        <LinkedInContainer variant={theme}>
+                        <ContactsContainer variant={theme}>
                             <a target="_blank" rel="noopener noreferrer" href={member.linkedIn && member.linkedIn.url}>
                                 <LinkedIn />
                             </a>
-                        </LinkedInContainer>
+                        </ContactsContainer>
                     )}
-                </BrowserView>
+                </Contacts>
             </Informations>
         </Container>
     );
@@ -54,10 +66,16 @@ const Container = styled.div`
     border-radius: 36px;
     box-shadow: 5px 5px 27px rgba(0, 0, 0, 0.45);
     overflow: hidden;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        width: 400px;
+    }
 `;
 
 const TeamInformationContainer = styled.div`
-    padding: 10px;
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        padding: 10px;
+    }
     p {
         text-align: center;
         @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
@@ -83,10 +101,12 @@ const Informations = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 150px;
+    height: 100px;
+    padding: 0px;
+
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         padding: 20px 30px;
-        height: 200px;
+        height: 150px;
     }
 `;
 
@@ -109,23 +129,24 @@ const Position = styled.p<PositionProps>`
     color: ${({ theme, variant }) => theme.palette[variant]};
 `;
 
-const LinkedInContainer = styled.div<LinkedInContainerProps>`
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+const ContactsContainer = styled.div<LinkedInContainerProps>`
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        margin: 0 10px;
+    }
 
     svg {
         color: ${({ theme, variant }) => theme.palette[variant]};
-        font-size: 40px !important;
+        font-size: 30px !important;
+
+        @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+            font-size: 40px !important;
+        }
     }
 `;
 
-const Contact = styled.p`
-    ${({ theme }) => theme.fonts.paragraphSmall};
-    margin: 0;
-    word-wrap: break-word;
+const Contacts = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 `;

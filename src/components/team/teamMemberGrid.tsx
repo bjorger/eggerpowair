@@ -32,7 +32,7 @@ const Grid = styled.div`
     gap: 20px;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        grid-template-columns: repeat(3, 1fr);
         gap: 50px;
+        justify-items: center;
     }
 `;
