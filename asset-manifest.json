@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/eggerpowair/static/css/main.2311d6d8.css",
-    "main.js": "/eggerpowair/static/js/main.c1f3405f.js",
+    "main.js": "/eggerpowair/static/js/main.bfae55d6.js",
     "static/js/787.213cadea.chunk.js": "/eggerpowair/static/js/787.213cadea.chunk.js",
     "static/media/car-blue.png": "/eggerpowair/static/media/car-blue.76db5fd96c32381195c9.png",
     "static/media/car-orange.png": "/eggerpowair/static/media/car-orange.660d17d409a31a13b3b6.png",
@@ -61,11 +61,11 @@
     "static/media/archivo-v9-latin-900.woff2": "/eggerpowair/static/media/archivo-v9-latin-900.3eb83d0da0ee5eb03057.woff2",
     "index.html": "/eggerpowair/index.html",
     "main.2311d6d8.css.map": "/eggerpowair/static/css/main.2311d6d8.css.map",
-    "main.c1f3405f.js.map": "/eggerpowair/static/js/main.c1f3405f.js.map",
+    "main.bfae55d6.js.map": "/eggerpowair/static/js/main.bfae55d6.js.map",
     "787.213cadea.chunk.js.map": "/eggerpowair/static/js/787.213cadea.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2311d6d8.css",
-    "static/js/main.c1f3405f.js"
+    "static/js/main.bfae55d6.js"
   ]
 }
