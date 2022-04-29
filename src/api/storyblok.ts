@@ -160,8 +160,6 @@ const getStoriesByType = async (type: string): Promise<Array<TeamMember | Job | 
             version: "published",
         });
 
-        console.log(stories);
-
         return stories.data.story.content.body;
     } catch (e) {
         throw new Error("Couldn't load story");

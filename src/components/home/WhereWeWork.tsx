@@ -11,6 +11,7 @@ import "swiper/css";
 import "swiper/css/autoplay";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
+import haversine from "haversine-distance";
 
 interface Location {
     street: string;
@@ -72,6 +73,10 @@ const WhereWeWork: React.FC = () => {
     const [desktopMarkers, setDesktopMarkers] = React.useState<boolean[]>(new Array(locations.length).fill(false));
     const [currentWindowWith, setCurrentWindowWith] = React.useState<number>(window.innerWidth);
     const [, setMap] = React.useState(null);
+    const [userPosition, setUserPosition] = React.useState<{ lat: number; lng: number }>({
+        lat: Infinity,
+        lng: Infinity,
+    });
 
     const onUnmount = React.useCallback(function callback(map) {
         setMap(null);
@@ -95,6 +100,24 @@ const WhereWeWork: React.FC = () => {
 
     React.useEffect(() => {
         window.addEventListener("resize", () => setCurrentWindowWith(window.innerWidth));
+
+        navigator.geolocation.getCurrentPosition((position) => {
+            setUserPosition({
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+            });
+
+            let shortestDistance = Infinity;
+
+            locations.forEach((location) => {
+                const distance = haversine(position.coords, location.latLng);
+
+                if (distance < shortestDistance) {
+                    shortestDistance = distance;
+                    setUserPosition(location.latLng);
+                }
+            });
+        });
     }, []);
 
     return (
@@ -111,8 +134,8 @@ const WhereWeWork: React.FC = () => {
                     {isLoaded ? (
                         <GoogleMap
                             mapContainerStyle={containerStyle}
-                            center={currentLocation.latLng}
-                            zoom={currentWindowWith >= breakpointMD ? 5 : 13}
+                            center={currentWindowWith >= breakpointMD ? userPosition : currentLocation.latLng}
+                            zoom={13}
                             onUnmount={onUnmount}
                             options={{
                                 fullscreenControl: false,
