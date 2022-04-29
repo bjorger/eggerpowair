@@ -2,7 +2,7 @@ import { TeamMember } from "api/storyblok";
 import React from "react";
 import styled from "styled-components";
 import { LinkedIn, Mail, Phone } from "@mui/icons-material";
-import { BrowserView, Variants } from "components/components.sc";
+import { Variants } from "components/components.sc";
 import { useAppSelector } from "redux/hooks";
 
 interface TeamMemberGridItemProps {
