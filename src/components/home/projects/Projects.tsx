@@ -22,7 +22,7 @@ import Kraftwerksanlagen from "assets/projects/Kraftwerksanlagen.png";
 import Steuerungstechnik from "assets/projects/Stuerungstechnik.png";
 import Schaltschraenke from "assets/projects/Schaltschränke.png";
 
-const DummyData = [
+const projects = [
     {
         img: Unterboden,
         headline: "Unterboden Reinigung",
@@ -76,19 +76,26 @@ const Projects: React.FC = () => {
                         modules={[Pagination]}
                         slidesPerView={1}
                         spaceBetween={30}
+                        autoplay={{
+                            delay: 2000,
+                        }}
                     >
                         <SwiperSlide>
                             <ProjectGrid>
-                                {DummyData.filter((item, index) => index < 4).map((item, index) => (
-                                    <ProjectGridItem image={item.img} headline={item.headline} key={`${item.headline}_${index}`} />
-                                ))}
+                                {projects
+                                    .filter((item, index) => index < 4)
+                                    .map((item, index) => (
+                                        <ProjectGridItem image={item.img} headline={item.headline} key={`${item.headline}_${index}`} />
+                                    ))}
                             </ProjectGrid>
                         </SwiperSlide>
                         <SwiperSlide>
                             <ProjectGrid>
-                                {DummyData.filter((item, index) => index >= 4).map((item, index) => (
-                                    <ProjectGridItem image={item.img} headline={item.headline} key={`${item.headline}_${index}`} />
-                                ))}
+                                {projects
+                                    .filter((item, index) => index >= 4)
+                                    .map((item, index) => (
+                                        <ProjectGridItem image={item.img} headline={item.headline} key={`${item.headline}_${index}`} />
+                                    ))}
                             </ProjectGrid>
                         </SwiperSlide>
                     </CustomSwiper>
@@ -103,7 +110,7 @@ const Projects: React.FC = () => {
                         slidesPerView={1}
                         spaceBetween={30}
                     >
-                        {DummyData.map((item, index) => (
+                        {projects.map((item, index) => (
                             <SwiperSlide key={`${item.headline}_${index}_mobile`}>
                                 <ProjectGridItem image={item.img} headline={item.headline} />
                             </SwiperSlide>

@@ -67,14 +67,14 @@ const Stage: React.FC = () => {
                                     jetzt kontaktieren
                                 </Button>
                             </StageTextContainer>
-                            <ThemeToggleContainer>
-                                <ThemeToggle />
-                            </ThemeToggleContainer>
                         </SwiperSlide>
                         <SwiperSlide>
                             <PartyBus alt="Eggerpowair Bus" src={theme === "orange" ? PowairPartyBusOrange : PowairPartyBusBlue} />
                         </SwiperSlide>
                     </CustomSwiper>
+                    <ThemeToggleContainer>
+                        <ThemeToggle />
+                    </ThemeToggleContainer>
                 </MobileView>
             </Content>
         </Container>

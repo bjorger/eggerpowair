@@ -46,6 +46,7 @@ const Impressum: React.FC = () => {
                 <br />
                 <br /> Seela - Design und Strategie
                 <br /> Entwicklung: Robin Braumann
+                <br /> Kontakt: robin.braumann@gmail.com
                 <br />
                 <br /> www.seela.at <br />
                 <br />

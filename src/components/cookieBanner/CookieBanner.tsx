@@ -9,6 +9,7 @@ const CookieBanner: React.FC = () => {
             contentClasses="cookieContent"
             buttonClasses="cookieButtons"
         >
+            <h3>Cookie - Einstellungen</h3>
             <p>
                 Diese Website verwendet Cookies für Analysen. Indem Sie unsere Website nutzen, gehen wir davon aus, dass Sie mit dieser Verwendung
                 einverstanden sind. Eine einmal erklärte Zustimmung zur Speicherung der Cookies kann von Ihnen jederzeit durch Löschung der Cookies
