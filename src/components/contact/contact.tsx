@@ -35,6 +35,10 @@ const ContactUs: React.FC = () => {
         lng: 13.117275467746438,
     };
 
+    React.useEffect(() => {
+        window.addEventListener("resize", () => setCurrentWindowWith(window.innerWidth));
+    }, []);
+
     const {
         register,
         handleSubmit,
@@ -44,8 +48,8 @@ const ContactUs: React.FC = () => {
 
     const onSubmit = async (data: FieldValues) => {
         await emailjs.send(
-            "service_2sf7b6l",
-            "template_0s3gx8o",
+            process.env.REACT_APP_EMAILJS_SERVICE_ID || "",
+            process.env.REACT_APP_EMAILJS_TEMPLATE_ID || "",
             {
                 subject: data["topic"],
                 from_name: data["name"],
@@ -54,7 +58,7 @@ const ContactUs: React.FC = () => {
                 from_email: data["email"],
                 "g-recaptcha-response": captchaValue,
             },
-            "cfbzN-oZJZIA-CTUo",
+            process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "",
         );
         reset({ topic: "", name: "", message: "", email: "" });
     };

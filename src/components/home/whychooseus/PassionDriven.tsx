@@ -5,7 +5,7 @@ import { HeadlineContainer, Video, VideoContainer } from "./TruthInEngineering";
 
 const PassionDriven: React.FC = () => {
     return (
-        <PageWrap variant="dark" paddingMobile="30px 0" padding="50px 0 0 0" margin="30px 0 0 0">
+        <PageWrap variant="dark" paddingMobile="30px 0" padding="50px 0 0 0" margin="0">
             <HeadlineContainer>
                 <Headline>
                     <Eyebrow textColor="white">Passion Driven</Eyebrow>

@@ -1,6 +1,5 @@
 import React from "react";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
-import { PageWrap } from "components/page";
 import styled from "styled-components";
 import { BrowserView, ColoredSpan, MobileView, Variants } from "./../components.sc";
 import { Button } from "./../components.sc";
@@ -121,14 +120,16 @@ const WhereWeWork: React.FC = () => {
     }, []);
 
     return (
-        <PageWrap variant="white" paddingMobile="50px 0 0 0" padding="50px 0">
-            <Headline>
-                <Eyebrow textColor="black">Where we work</Eyebrow>
-                <HeadlineMain>
-                    Mobil in ganz EU-Europa.
-                    <ColoredSpan variant={theme}>24/7</ColoredSpan>
-                </HeadlineMain>
-            </Headline>
+        <PageContainer>
+            <HeadlineContainer>
+                <Headline>
+                    <Eyebrow textColor="black">Where we work</Eyebrow>
+                    <HeadlineMain>
+                        Mobil in ganz EU-Europa.
+                        <ColoredSpan variant={theme}>24/7</ColoredSpan>
+                    </HeadlineMain>
+                </Headline>
+            </HeadlineContainer>
             <Content>
                 <MapContainer>
                     {isLoaded ? (
@@ -220,11 +221,13 @@ const WhereWeWork: React.FC = () => {
                 </MobileView>
             </Content>
             <MobileView>
-                <Button bordervariant={theme} variant="white" textcolor="black" to="/contact">
-                    Jetzt kontaktieren
-                </Button>
+                <ButtonContainer>
+                    <Button bordervariant={theme} variant="white" textcolor="black" to="/contact">
+                        Jetzt kontaktieren
+                    </Button>
+                </ButtonContainer>
             </MobileView>
-        </PageWrap>
+        </PageContainer>
     );
 };
 
@@ -233,6 +236,10 @@ export default WhereWeWork;
 interface CustomSwiperProps {
     variant: Variants;
 }
+
+const PageContainer = styled.div`
+    margin: 50px 0 0 0;
+`;
 
 const CustomSwiper = styled(Swiper)<CustomSwiperProps>`
     position: relative;
@@ -253,7 +260,7 @@ const CustomSwiper = styled(Swiper)<CustomSwiperProps>`
 `;
 
 const Content = styled.div`
-    margin: 50px 0;
+    margin: 50px 0 0 0;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         display: flex;
@@ -298,14 +305,19 @@ const AddressHeadline = styled.h3<HeadlineProps>`
 `;
 
 const MapContainer = styled.div`
-    margin: 0 0 50px 0;
     width: 100%;
     position: relative;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        width: 99.8vw;
-        position: absolute;
-        left: -13vw;
-        top: 155px;
+        width: 100%;
     }
+`;
+
+const HeadlineContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+`;
+
+const ButtonContainer = styled.div`
+    margin: 0 20px 30px 20px;
 `;
