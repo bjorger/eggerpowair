@@ -22,9 +22,11 @@ const ContactUs: React.FC = () => {
     const onUnmount = React.useCallback(function callback() {
         setMap(null);
     }, []);
+    const [currentWindowWith, setCurrentWindowWith] = React.useState<number>(window.innerWidth);
+    const breakpointMD = 960;
 
     const containerStyle = {
-        width: "99.8vw",
+        width: currentWindowWith >= breakpointMD ? "99.8vw" : "97.5vw",
         height: "532px",
     };
 

@@ -2,16 +2,13 @@ import { Customer } from "api/storyblok";
 import React from "react";
 import { getCustomers } from "../../api/storyblok";
 import styled from "styled-components";
-import "swiper/css";
-import "swiper/css/autoplay";
-import SwiperCore, { Autoplay } from "swiper";
-
-import { SwiperSlide } from "swiper/react";
-import { CustomSwiper } from "./HomeStage";
 import { useAppSelector } from "redux/hooks";
 import { Variants } from "components/components.sc";
 
-SwiperCore.use([Autoplay]);
+import "swiper/css";
+import "swiper/css/autoplay";
+import { SwiperSlide } from "swiper/react";
+import { CustomSwiper } from "./HomeStage";
 
 export const Customers: React.FC = () => {
     const [customers, setCustomers] = React.useState<Customer[]>([]);

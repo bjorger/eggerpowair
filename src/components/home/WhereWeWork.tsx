@@ -67,11 +67,11 @@ const WhereWeWork: React.FC = () => {
         id: "google-map-script",
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY ? process.env.REACT_APP_GOOGLE_API_KEY : "",
     });
-    const breakpointMD = 960;
     const [currentLocation, setCurrentLocation] = React.useState<Location>(locations[0]);
     const [marker, setMarker] = React.useState<boolean>(false);
     const [desktopMarkers, setDesktopMarkers] = React.useState<boolean[]>(new Array(locations.length).fill(false));
     const [currentWindowWith, setCurrentWindowWith] = React.useState<number>(window.innerWidth);
+    const breakpointMD = 960;
     const [, setMap] = React.useState(null);
     const [userPosition, setUserPosition] = React.useState<{ lat: number; lng: number }>({
         lat: Infinity,

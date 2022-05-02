@@ -68,7 +68,8 @@ const Container = styled.div`
     overflow: hidden;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        width: 400px;
+        width: 300px;
+        margin: 50px 0 50px 25px;
     }
 `;
 
