@@ -11,7 +11,7 @@ import MobileTile, { Container as MobileTileContainer } from "./MobileTile";
 const WhyChooseUs: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
 
-    const hotPowAir: ItemProps[] = [
+    const coldPowAir: ItemProps[] = [
         {
             number: "01",
             title: "Reinigung mit Hilfe von Trockeneispellets",
@@ -28,6 +28,27 @@ const WhyChooseUs: React.FC = () => {
             description: "Für besonders widerstandsfähige Verhärtungen eignen sich unsere PowAir Granulate hervorragend.",
         },
     ];
+
+    const hotPowAir: ItemProps[] = [
+        {
+            number: "01",
+            title: "Reinigung mit Egger PowAir Glasspearls",
+            description:
+                "Um Oberflächen nicht nur zu reinigen sondern zu glätten, verdichten und zu veredeln, kommen unsere mit Swarovski zusammen entwickelten Glaspearls zum Einsatz. ",
+        },
+        {
+            number: "02",
+            title: "Reinigung mit Egger PowAir Granulaten",
+            description: "Für besonders widerstandsfähige Verhärtungen eignen sich unsere PowAir Granulate hervorragend.",
+        },
+        {
+            number: "03",
+            title: "HOT PowAir Steam",
+            description: "Mit Trockendampf können wir gezielt Oberflächen von Fetten und Ölen befreien.",
+        },
+    ];
+
+    const itemsToShow: ItemProps[] = theme === "orange" ? hotPowAir : coldPowAir;
 
     return (
         <PageWrap variant="dark" mobileVariant="white" paddingMobile="20px 0 50px 0">
@@ -51,7 +72,7 @@ const WhyChooseUs: React.FC = () => {
                     </BrowserView>
                 </>
                 <Grid>
-                    {hotPowAir.map((item) => (
+                    {itemsToShow.map((item) => (
                         <GridItem
                             backgroundVariant="dark"
                             boxShadowVariant="white"
@@ -72,7 +93,7 @@ const WhyChooseUs: React.FC = () => {
                     </HeadlineMain>
                 </Headline>
                 <MobileContainer>
-                    {hotPowAir.map((item) => (
+                    {coldPowAir.map((item) => (
                         <MobileTile key={item.number} number={item.number} headline={item.title} paragraph={item.description} />
                     ))}
                 </MobileContainer>
