@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PowairPartyBusBlue from "assets/car-blue.png";
 import PowairPartyBusOrange from "assets/car-orange.png";
 import { useAppSelector } from "redux/hooks";
-import { BrowserView, MobileView, Variants } from "components/components.sc";
+import { BrowserView, MobileView, Variants } from "components/Components.sc";
 
 import "swiper/css";
 import "swiper/css/autoplay";

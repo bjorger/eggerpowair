@@ -5,7 +5,7 @@ import { PageWrap } from "components/page";
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, LinkedIn } from "@mui/icons-material";
 import { useAppSelector } from "redux/hooks";
-import { Variants } from "components/components.sc";
+import { Variants } from "components/Components.sc";
 
 interface LogoContainerProps {
     variant: Variants;

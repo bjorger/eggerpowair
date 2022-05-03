@@ -1,3 +1,4 @@
+import { Paragraph } from "components/Components.sc";
 import React from "react";
 import styled from "styled-components";
 
@@ -39,9 +40,9 @@ const Image = styled.img`
 const Title = styled.h2`
     ${({ theme }) => theme.fonts.h2};
 `;
-const Description = styled.p`
-    ${({ theme }) => theme.fonts.paragraph};
+const Description = styled(Paragraph)`
     text-align: center;
+
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         text-align: left;
     }

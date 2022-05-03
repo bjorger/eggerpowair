@@ -1,7 +1,7 @@
 import { PageContainer } from "components/page";
 import React from "react";
-import TeamMemberGrid from "components/team/teamMemberGrid";
-import Jobs from "components/team/jobs";
+import TeamMemberGrid from "components/team/TeamMemberGrid";
+import Jobs from "components/team/Jobs";
 
 const Team: React.FC = () => {
     return (

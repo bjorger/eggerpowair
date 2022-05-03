@@ -11,7 +11,7 @@ import { useAppSelector } from "redux/hooks";
 import { Facebook } from "@mui/icons-material";
 import { Instagram } from "@mui/icons-material";
 import { LinkedIn } from "@mui/icons-material";
-import { Variants } from "components/components.sc";
+import { Variants } from "components/Components.sc";
 import { Video } from "../home/whychooseus/TruthInEngineering";
 
 const NewsArticle: React.FC = () => {

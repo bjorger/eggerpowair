@@ -1,8 +1,8 @@
 import React from "react";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import styled from "styled-components";
-import { BrowserView, ColoredSpan, MobileView, Variants } from "./../components.sc";
-import { Button } from "./../components.sc";
+import { BrowserView, ColoredSpan, MobileView, Variants } from "../Components.sc";
+import { Button } from "../Components.sc";
 import { useAppSelector } from "redux/hooks";
 import { InfoWindow, Marker, GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 

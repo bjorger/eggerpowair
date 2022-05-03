@@ -22,7 +22,7 @@ interface ButtonProps {
     bordervariant: Variants;
 }
 
-export type Variants = "orange" | "blue" | "white" | "black" | "light" | "dark";
+export type Variants = "orange" | "blue" | "white" | "black" | "light" | "dark" | "grey";
 
 export const Container = styled.div<ContainerProps>`
     display: ${({ hideOnMobile }) => (hideOnMobile ? "none" : "grid")};
@@ -94,4 +94,19 @@ export const MobileView = styled.div`
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         display: none;
     }
+`;
+
+interface ParagraphProps {
+    margin?: string;
+    color?: Variants;
+    textAlign?: "left" | "center" | "right";
+    padding?: string;
+}
+
+export const Paragraph = styled.p<ParagraphProps>`
+    ${({ theme }) => theme.fonts.paragraph};
+    margin: ${({ margin }) => (margin ? margin : "auto")};
+    color: ${({ theme, color }) => (color ? theme.palette[color] : theme.palette.black)};
+    text-align: ${({ textAlign }) => (textAlign ? textAlign : "left")};
+    padding: ${({ padding }) => (padding ? padding : "auto")};
 `;

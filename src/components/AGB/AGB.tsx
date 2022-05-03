@@ -1,12 +1,15 @@
 import React from "react";
 import { PageWrap } from "components/page";
 import styled from "styled-components";
+import { Paragraph } from "components/Components.sc";
 
 const AGB: React.FC = () => {
     return (
         <PageWrap variant="white" padding="0" paddingMobile="0">
             <Headline>Präambel / Vorwort</Headline>
-            <AuthorInformation>05. April 2022 I Geschrieben von Gründer und Geschäftsführer Robert Egger</AuthorInformation>
+            <Paragraph margin="30px 0" textAlign="center">
+                05. April 2022 I Geschrieben von Gründer und Geschäftsführer Robert Egger
+            </Paragraph>
             <Paragraph>
                 Egger PowAir Cleaning GmbH, Salzburg, nachstehend kurz Egger PowAir. <br />
                 <br />
@@ -324,16 +327,4 @@ const Headline = styled.h2`
     margin-top: 50px;
     ${({ theme }) => theme.fonts.h2};
     text-align: center;
-`;
-
-const AuthorInformation = styled.p`
-    text-align: center;
-    ${({ theme }) => theme.fonts.paragraph};
-    color: ${({ theme }) => theme.palette.grey};
-    margin: 30px 0;
-`;
-
-const Paragraph = styled.p`
-    ${({ theme }) => theme.fonts.paragraph};
-    margin: 0;
 `;

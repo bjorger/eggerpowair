@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Variants } from "components/components.sc";
+import { Variants } from "components/Components.sc";
 
 const Headline: React.FC = ({ children }) => {
     return <HeadlineContainer>{children}</HeadlineContainer>;

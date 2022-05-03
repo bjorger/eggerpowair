@@ -1,7 +1,7 @@
 import React from "react";
 import { PageWrap } from "components/page/";
 import { Eyebrow, Headline, HeadlineMain } from "components/headline";
-import { ColoredSpan, Variants } from "components/components.sc";
+import { ColoredSpan, Variants } from "components/Components.sc";
 import { useAppSelector } from "redux/hooks";
 import styled from "styled-components";
 import { render } from "storyblok-rich-text-react-renderer";

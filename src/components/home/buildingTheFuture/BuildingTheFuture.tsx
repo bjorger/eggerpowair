@@ -5,8 +5,8 @@ import { useAppSelector } from "redux/hooks";
 import ColdPowair from "assets/cold-powair.png";
 import HotPowair from "assets/hot-powair.png";
 import { Grid } from "components/grid";
-import Hot from "./hot";
-import Cold from "./cold";
+import Hot from "./Hot";
+import Cold from "./Cold";
 import styled from "styled-components";
 
 const BuildingTheFuture: React.FC = () => {

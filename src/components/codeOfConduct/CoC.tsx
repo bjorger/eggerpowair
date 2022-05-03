@@ -1,7 +1,7 @@
 import React from "react";
 import { PageWrap } from "components/page";
 import styled from "styled-components";
-import { Variants } from "components/components.sc";
+import { Paragraph, Variants } from "components/Components.sc";
 import { useAppSelector } from "redux/hooks";
 import CodeOfConductPDF from "assets/CodeOfConduct.pdf";
 
@@ -11,9 +11,9 @@ const CoC: React.FC = () => {
     return (
         <PageWrap variant="white" padding="0" paddingMobile="0">
             <Headline>Präambel / Vorwort</Headline>
-            <AuthorInformation>
+            <Paragraph margin="30px 0" textAlign="center">
                 01.August 2019 I Geschrieben von Gründer und Geschäftsführer <br /> Robert Egger
-            </AuthorInformation>
+            </Paragraph>
             <Paragraph>
                 Als ich nach mehreren Jahren der Forschung und Entwicklung in meiner Garage in Oberhofen, Tirol, Österreich, am 04. Juli 2014 die
                 Firma Egger PowAir Cleaning GmbH mit Sitz in Eugendorf bei Salzburg gegründet habe, war dies für mich ein riesiger Schritt. <br />
@@ -48,18 +48,6 @@ const Headline = styled.h2`
     margin-top: 50px;
     ${({ theme }) => theme.fonts.h2};
     text-align: center;
-`;
-
-const AuthorInformation = styled.p`
-    text-align: center;
-    ${({ theme }) => theme.fonts.paragraph};
-    color: ${({ theme }) => theme.palette.grey};
-    margin: 30px 0;
-`;
-
-const Paragraph = styled.p`
-    ${({ theme }) => theme.fonts.paragraph};
-    margin: 0;
 `;
 
 const ButtonContainer = styled.div`

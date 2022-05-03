@@ -4,8 +4,8 @@ import PowairPartyBusBlue from "assets/car-blue.png";
 import PowairPartyBusOrange from "assets/car-orange.png";
 import { useAppSelector } from "redux/hooks";
 import { ThemeToggle } from "components/themeToggle";
-import { BrowserView, MobileView, Variants } from "components/components.sc";
-import { Button } from "components/components.sc";
+import { BrowserView, MobileView, Paragraph, Variants } from "components/Components.sc";
+import { Button } from "components/Components.sc";
 
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -27,7 +27,7 @@ const Stage: React.FC = () => {
                                 ? "Sandstrahlen war gestern- Egger Cold PowAir Cleaning ist heute Stand der Technik"
                                 : "Exceptional Service Exceeding Expectations"}
                         </HeadlineMain>
-                        <StageParagraph>
+                        <StageParagraph color="white">
                             {theme === "orange"
                                 ? "Abrasiv reinigen mit heißer Druckluft und PowAir-Granulate. Ohne Sand, ohne Staub, 100% Umweltfreundlich."
                                 : "COLD PowAir Reinigung mit kalter Druckluft und sonst nichts. Non abrasiv, schnell und effizient, ohne Sekundär-Abfälle!"}
@@ -154,9 +154,7 @@ const HeadlineMain = styled.h1`
     max-width: 50%;
 `;
 
-const StageParagraph = styled.p`
-    ${({ theme }) => theme.fonts.paragraph};
-    color: ${({ theme }) => theme.palette.white};
+const StageParagraph = styled(Paragraph)`
     max-width: 450px;
     margin: 30px 0;
 `;

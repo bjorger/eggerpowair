@@ -3,7 +3,7 @@ import React from "react";
 import { getCustomers } from "../../api/storyblok";
 import styled from "styled-components";
 import { useAppSelector } from "redux/hooks";
-import { Variants } from "components/components.sc";
+import { Paragraph, Variants } from "components/Components.sc";
 
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -125,7 +125,6 @@ const OverlayContentHeadline = styled.div`
     flex-direction: row;
 `;
 
-const OverlayParagraph = styled.p`
-    ${({ theme }) => theme.fonts.paragraph};
+const OverlayParagraph = styled(Paragraph)`
     font-weight: 700 !important;
 `;

@@ -16,6 +16,8 @@ import CodeOfConduct from "pages/CodeOfConduct";
 import AGB from "pages/AGB";
 import ImpressumPage from "pages/Impressum";
 import CookieBanner from "components/cookieBanner/CookieBanner";
+import DataSecurityPage from "pages/DataSecurity";
+import GA4React from "ga-4-react";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -35,6 +37,7 @@ ReactDOM.render(
                                 <Route path="/coc" element={<CodeOfConduct />} />
                                 <Route path="/agb" element={<AGB />} />
                                 <Route path="/impressum" element={<ImpressumPage />} />
+                                <Route path="/datasecurity" element={<DataSecurityPage />} />
                             </Routes>
                         </ScrollToTop>
                         <Footer />
@@ -46,6 +49,9 @@ ReactDOM.render(
     </React.StrictMode>,
     document.getElementById("root"),
 );
+
+const ga4react = new GA4React(process.env.REACT_APP_GA4_TRACKING_ID || "");
+ga4react.initialize().then().catch();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -1,6 +1,12 @@
 import CookieConsent from "react-cookie-consent";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { Variants } from "components/Components.sc";
+import { useAppSelector } from "redux/hooks";
 
 const CookieBanner: React.FC = () => {
+    const theme = useAppSelector((state) => state.themeToggle.color);
+
     return (
         <CookieConsent
             buttonText="Akzeptieren"
@@ -17,8 +23,19 @@ const CookieBanner: React.FC = () => {
                 erfolgten Verarbeitung nicht berührt.nhalte dieser Website sind nur unentgeltlich und unter der Voraussetzung gestattet, dass sowohl
                 die Quelle als auch die Internet-Adresse genannt und verlinkt werden.
             </p>
+            <StyledLink variant={theme} to="/datasecurity">
+                Datenschutzerklärung
+            </StyledLink>
         </CookieConsent>
     );
 };
 
 export default CookieBanner;
+
+interface StyledLinkProps {
+    variant: Variants;
+}
+
+const StyledLink = styled(Link)<StyledLinkProps>`
+    color: ${({ theme, variant }) => theme.palette[variant]};
+`;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Variants } from "components/components.sc";
+import { Variants } from "components/Components.sc";
 import { useAppSelector } from "redux/hooks";
 import { ArrowBackIos } from "@mui/icons-material";
 

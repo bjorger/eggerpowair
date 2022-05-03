@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
-import { BrowserView, MobileView, Variants } from "components/components.sc";
+import { BrowserView, MobileView, Variants } from "components/Components.sc";
 import { useAppSelector } from "redux/hooks";
 
 import Unterboden from "assets/projects/Unterboden.png";

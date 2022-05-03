@@ -4,9 +4,9 @@ import Logo from "assets/eggerpowair-logo.png";
 import { Link, NavLink } from "react-router-dom";
 import { elastic as Menu } from "react-burger-menu";
 import mobileMenuTheme from "./MobileMenuTheme";
-import { BrowserView, MobileView, Variants } from "components/components.sc";
+import { BrowserView, MobileView, Variants } from "components/Components.sc";
 import { useAppSelector } from "redux/hooks";
-import { Button } from "components/components.sc";
+import { Button } from "components/Components.sc";
 
 const Header: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);

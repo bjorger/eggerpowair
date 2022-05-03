@@ -2,10 +2,10 @@ import React from "react";
 import { PageWrap } from "components/page";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import styled from "styled-components";
-import { ColoredSpan, MobileView, BrowserView } from "../../components.sc";
+import { ColoredSpan, MobileView, BrowserView } from "../../Components.sc";
 import { Grid, GridItem, ItemProps } from "components/grid";
 import { useAppSelector } from "redux/hooks";
-import { Variants } from "components/components.sc";
+import { Variants } from "components/Components.sc";
 import MobileTile, { Container as MobileTileContainer } from "./MobileTile";
 
 const WhyChooseUs: React.FC = () => {
@@ -33,8 +33,7 @@ const WhyChooseUs: React.FC = () => {
         {
             number: "01",
             title: "Reinigung mit Egger PowAir Glasspearls",
-            description:
-                "Um Oberflächen nicht nur zu reinigen sondern zu glätten, verdichten und zu veredeln, kommen unsere mit Swarovski zusammen entwickelten Glaspearls zum Einsatz. ",
+            description: "Zum reinigen, glätten, verdichten und veredeln von Oberflächen, kommen unsere mit Swarovski-Glaspearls zum Einsatz.",
         },
         {
             number: "02",
@@ -111,6 +110,7 @@ interface GrdItemParagraphProps {
 const GridItemParagraph = styled.li<GrdItemParagraphProps>`
     ${({ theme }) => theme.fonts.paragraph};
     color: ${({ theme }) => theme.palette.white};
+
     &::marker {
         color: ${({ theme, variant }) => theme.palette[variant]};
         font-size: 20px;

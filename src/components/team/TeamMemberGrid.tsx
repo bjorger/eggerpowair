@@ -2,7 +2,7 @@ import { getTeamMembers, TeamMember } from "api/storyblok";
 import { PageWrap } from "components/page";
 import React from "react";
 import styled from "styled-components";
-import TeamMemberGridItem from "./teamMemberGridItem";
+import TeamMemberGridItem from "./TeamMemberGridItem";
 
 const TeamMemberGrid: React.FC = () => {
     const [teamMembers, setTeamMembers] = React.useState<Array<TeamMember>>();

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { BrowserView, MobileView, Variants } from "components/components.sc";
+import { BrowserView, MobileView, Paragraph, Variants } from "components/Components.sc";
 
 export interface ItemProps {
     number: string;
@@ -23,14 +23,14 @@ const GridItem: React.FC<GridItemProps> = ({ item, numberVariant, headlineVarian
             <BrowserView>
                 <Number variant={numberVariant}>{item.number}</Number>
                 <Headline variant={headlineVariant}>{item.title}</Headline>
-                <Description variant={paragraphVariant}>{item.description}</Description>
+                <Paragraph color={paragraphVariant}>{item.description}</Paragraph>
             </BrowserView>
             <MobileView>
                 <HeadlineContainer>
                     <Number variant={numberVariant}>{item.number}</Number>
                     <Headline variant={headlineVariant}>{item.title}</Headline>
                 </HeadlineContainer>
-                <Description variant={paragraphVariant}>{item.description}</Description>
+                <Paragraph color={paragraphVariant}>{item.description}</Paragraph>
             </MobileView>
         </ItemContainer>
     );
@@ -84,10 +84,5 @@ const Number = styled.h1<ComponentProps>`
 
 const Headline = styled.h2<ComponentProps>`
     font-size: ${({ theme }) => theme.fonts.h2};
-    color: ${({ theme, variant }) => theme.palette[variant]};
-`;
-
-const Description = styled.p<ComponentProps>`
-    ${({ theme }) => theme.fonts.paragraph};
     color: ${({ theme, variant }) => theme.palette[variant]};
 `;

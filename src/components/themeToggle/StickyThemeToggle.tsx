@@ -1,5 +1,5 @@
 import React from "react";
-import { Variants } from "components/components.sc";
+import { Variants } from "components/Components.sc";
 import styled from "styled-components";
 import { useAppSelector, useAppDispatch } from "redux/hooks";
 import { toggleOrange, toggleBlue } from "redux/features/themeToggle/themeToggle";

@@ -3,7 +3,7 @@ import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import { PageWrap } from "components/page";
 import { ItemProps, Grid, GridItem } from "components/grid";
 import { useAppSelector } from "redux/hooks";
-import { BrowserView, MobileView, Variants } from "components/components.sc";
+import { BrowserView, MobileView, Variants } from "components/Components.sc";
 import "swiper/css";
 import "swiper/css/pagination";
 

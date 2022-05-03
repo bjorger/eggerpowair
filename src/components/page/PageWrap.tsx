@@ -1,5 +1,5 @@
 import React from "react";
-import * as SC from "components/components.sc";
+import * as SC from "components/Components.sc";
 
 interface PageWrapProps {
     variant: "dark" | "white";

@@ -5,7 +5,7 @@ import { HeadlineMain } from "components/headline";
 import { FieldValues, useForm } from "react-hook-form";
 import { TextField, Button } from "@mui/material";
 import { useAppSelector } from "redux/hooks";
-import { Variants } from "components/components.sc";
+import { Paragraph, Variants } from "components/Components.sc";
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from "@react-google-maps/api";
 import ReCAPTCHA from "react-google-recaptcha";
 import emailjs from "@emailjs/browser";
@@ -196,10 +196,6 @@ const CallUsCard = styled.div`
 
 const Headline = styled.h2`
     ${({ theme }) => theme.fonts.h2}
-`;
-
-const Paragraph = styled.p`
-    ${({ theme }) => theme.fonts.paragraph}
 `;
 
 const Form = styled.form`

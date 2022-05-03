@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { NewsArticleType } from "api/storyblok";
 import { useAppSelector } from "redux/hooks";
-import { Variants } from "components/components.sc";
+import { Paragraph, Variants } from "components/Components.sc";
 import { Link } from "react-router-dom";
 
 interface NewsArticleGridItemProps {
@@ -16,8 +16,10 @@ const NewsArticleGridItem: React.FC<NewsArticleGridItemProps> = ({ item }) => {
         <Container>
             <Image imageUrl={item.image.filename} />
             <Headline>{item.headline}</Headline>
-            <Date>{item.date}</Date>
-            <PreviewText>{item.preview_text}</PreviewText>
+            <Date color="grey">{item.date}</Date>
+            <PreviewText margin="10px 0" padding="0">
+                {item.preview_text}
+            </PreviewText>
             <ContinueReading to={`/news-article?id=${item.id}`} variant={theme}>
                 Weiterlesen
             </ContinueReading>
@@ -78,9 +80,7 @@ const Headline = styled.span`
     }
 `;
 
-const Date = styled.span`
-    ${({ theme }) => theme.fonts.paragraph};
-    color: ${({ theme }) => theme.palette.grey};
+const Date = styled(Paragraph)`
     padding: 0;
     margin: 0;
 
@@ -89,14 +89,10 @@ const Date = styled.span`
     }
 `;
 
-const PreviewText = styled.p`
+const PreviewText = styled(Paragraph)`
     display: none;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
-        ${({ theme }) => theme.fonts.paragraph};
-        font-weight: normal;
-        padding: 0;
-        margin: 10px 0;
         display: block;
     }
 `;

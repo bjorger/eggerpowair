@@ -1,3 +1,3 @@
-import BuildingTheFuture from "./buildingTheFuture";
+import BuildingTheFuture from "./BuildingTheFuture";
 
 export default BuildingTheFuture;

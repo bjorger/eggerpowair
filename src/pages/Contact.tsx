@@ -1,6 +1,6 @@
 import { PageContainer } from "components/page";
 import React from "react";
-import ContactUs from "components/contact/contact";
+import ContactUs from "components/contact/Contact";
 
 const Contact: React.FC = () => {
     return (

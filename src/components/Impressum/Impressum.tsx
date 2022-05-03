@@ -1,11 +1,11 @@
 import React from "react";
 import { PageWrap } from "components/page";
-import styled from "styled-components";
+import { Paragraph } from "components/Components.sc";
 
 const Impressum: React.FC = () => {
     return (
         <PageWrap variant="white">
-            <Paragraph>
+            <Paragraph margin="0">
                 <b>Egger PowAir Cleaning GmbH</b>
                 <br />
                 <br /> Telefon: +43 (0) 6225 28810
@@ -123,8 +123,3 @@ const Impressum: React.FC = () => {
 };
 
 export default Impressum;
-
-const Paragraph = styled.p`
-    ${({ theme }) => theme.fonts.paragraph};
-    margin: 0;
-`;

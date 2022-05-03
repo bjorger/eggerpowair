@@ -2,7 +2,7 @@ import { TeamMember } from "api/storyblok";
 import React from "react";
 import styled from "styled-components";
 import { LinkedIn, Mail, Phone } from "@mui/icons-material";
-import { Variants } from "components/components.sc";
+import { Paragraph, Variants } from "components/Components.sc";
 import { useAppSelector } from "redux/hooks";
 
 interface TeamMemberGridItemProps {
@@ -17,7 +17,9 @@ const TeamMemberGridItem: React.FC<TeamMemberGridItemProps> = ({ member }) => {
             <Image imageUrl={member.image.filename} />
             <Informations>
                 <TeamInformationContainer>
-                    <Name>{member.name}</Name>
+                    <Name padding="0" margin="0">
+                        {member.name}
+                    </Name>
                     <Position variant={theme}>{member.position}</Position>
                 </TeamInformationContainer>
                 <Contacts>
@@ -111,13 +113,7 @@ const Informations = styled.div`
     }
 `;
 
-const Name = styled.p`
-    ${({ theme }) => theme.fonts.paragraph};
-    margin: 0;
-    padding: 0;
-    margin-bottom: 0px;
-    margin-top: 10px;
-
+const Name = styled(Paragraph)`
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         margin-top: 0;
     }

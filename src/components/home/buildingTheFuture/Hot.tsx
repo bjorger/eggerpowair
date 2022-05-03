@@ -2,7 +2,7 @@ import React from "react";
 import Step1 from "assets/hot-step1.png";
 import Step2 from "assets/hot-step2.png";
 import Step3 from "assets/hot-step3.png";
-import Step from "./step";
+import Step from "./Step";
 
 const hotSteps = [
     {

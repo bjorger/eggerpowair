@@ -5,7 +5,7 @@ import { NewsArticleType } from "api/storyblok";
 import styled from "styled-components";
 import NewsArticleGridItem from "./NewsArticleGridItem";
 import { useAppSelector } from "redux/hooks";
-import { Variants } from "components/components.sc";
+import { Variants } from "components/Components.sc";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { useSearchParams } from "react-router-dom";
 

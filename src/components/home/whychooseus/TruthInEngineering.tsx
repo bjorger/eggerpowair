@@ -2,7 +2,7 @@ import React from "react";
 import { PageWrap } from "components/page";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import styled from "styled-components";
-import { Button } from "components/components.sc";
+import { Button } from "components/Components.sc";
 import { useAppSelector } from "redux/hooks";
 
 const TruthInEngineering: React.FC = () => {
