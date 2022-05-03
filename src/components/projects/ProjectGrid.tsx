@@ -6,6 +6,8 @@ import { useAppSelector } from "redux/hooks";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { useSearchParams } from "react-router-dom";
 import { Categories, Category, PageCountIndicatorContainer, PageIndicatorText } from "components/news/NewsArticleGrid";
+import { FormControl, InputLabel, MenuItem, SelectChangeEvent, Select } from "@mui/material";
+import { BrowserView, MobileView } from "components/Components.sc";
 
 const ProjectGrid: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
@@ -35,18 +37,27 @@ const ProjectGrid: React.FC = () => {
         })();
     }, [searchParams]);
 
-    const filterByCategory = async (event: React.MouseEvent<HTMLButtonElement>, category: string) => {
+    const filterByCategory = async (category: string) => {
+        const _category = category === "all" ? "" : category;
         setCurrentPage(1);
         setCurrentCategory(category);
-        document.querySelectorAll(".active").forEach((item) => item.classList.remove("active"));
-        const target = event.target as HTMLButtonElement;
-        target.classList.add("active");
         const { total, items } = await getPaginatedProjects(category);
         setTotalPages(total);
         setContent(items as ProjectType[]);
-        searchParams.set("category", category);
+        searchParams.set("category", _category);
         searchParams.set("currentPage", "1");
         setSearchParams(searchParams);
+    };
+
+    const onCategoryClick = async (event: React.MouseEvent<HTMLButtonElement>, category: string) => {
+        document.querySelectorAll(".active").forEach((item) => item.classList.remove("active"));
+        const target = event.target as HTMLButtonElement;
+        target.classList.add("active");
+        filterByCategory(category);
+    };
+
+    const onDropdownSelect = async (event: SelectChangeEvent): Promise<void> => {
+        filterByCategory(event.target.value as string);
     };
 
     const loadNewArticles = async (direction: number = 1) => {
@@ -71,33 +82,64 @@ const ProjectGrid: React.FC = () => {
 
     return (
         <PageWrap variant="white">
-            <Categories>
-                {Object.keys(NewsCategories).map((key: string) => {
-                    if (key === "all") {
-                        return (
-                            <Category
-                                variant={theme}
-                                key={key}
-                                className={"" === currentCategory || !currentCategory ? "active" : ""}
-                                onClick={(event) => filterByCategory(event, "")}
-                            >
-                                Alle
-                            </Category>
-                        );
-                    } else {
-                        return (
-                            <Category
-                                variant={theme}
-                                key={key}
-                                className={key === currentCategory ? "active" : ""}
-                                onClick={(event) => filterByCategory(event, key)}
-                            >
-                                {NewsCategories[key as keyof typeof NewsCategories]}
-                            </Category>
-                        );
-                    }
-                })}
-            </Categories>
+            <BrowserView>
+                <Categories>
+                    {Object.keys(NewsCategories).map((key: string) => {
+                        if (key === "all") {
+                            return (
+                                <Category
+                                    variant={theme}
+                                    key={key}
+                                    className={"" === currentCategory || !currentCategory ? "active" : ""}
+                                    onClick={(event) => onCategoryClick(event, "")}
+                                >
+                                    Alle
+                                </Category>
+                            );
+                        } else {
+                            return (
+                                <Category
+                                    variant={theme}
+                                    key={key}
+                                    className={key === currentCategory ? "active" : ""}
+                                    onClick={(event) => onCategoryClick(event, key)}
+                                >
+                                    {NewsCategories[key as keyof typeof NewsCategories]}
+                                </Category>
+                            );
+                        }
+                    })}
+                </Categories>
+            </BrowserView>
+
+            <MobileView>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Kategorie</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={currentCategory}
+                        label="category"
+                        onChange={onDropdownSelect}
+                    >
+                        {Object.keys(NewsCategories).map((key: string) => {
+                            if (key === "all") {
+                                return (
+                                    <MenuItem value={key} key={`${key}_mobile`}>
+                                        Alle
+                                    </MenuItem>
+                                );
+                            } else {
+                                return (
+                                    <MenuItem value={key} key={`${key}_mobile`}>
+                                        {NewsCategories[key as keyof typeof NewsCategories]}
+                                    </MenuItem>
+                                );
+                            }
+                        })}
+                    </Select>
+                </FormControl>
+            </MobileView>
             <ProjectItemGrid>
                 {content?.map((item, index) => (
                     <ProjectItem imageUrl={item.image.filename} key={`projectImage${index + 1}`} gridArea={index + 1}>
