@@ -27,7 +27,7 @@ const ContactUs: React.FC = () => {
 
     const containerStyle = {
         width: currentWindowWith >= breakpointMD ? "99.8vw" : "100%",
-        height: "532px",
+        height: currentWindowWith >= breakpointMD ? "532px" : "400px",
     };
 
     const center = {
@@ -153,6 +153,7 @@ export default ContactUs;
 
 const MapsWrapper = styled.div`
     position: relative;
+    padding-top: 20px;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         position: absolute;
