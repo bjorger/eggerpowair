@@ -26,7 +26,7 @@ const ContactUs: React.FC = () => {
     const breakpointMD = 960;
 
     const containerStyle = {
-        width: currentWindowWith >= breakpointMD ? "99.8vw" : "97.5vw",
+        width: currentWindowWith >= breakpointMD ? "99.8vw" : "100%",
         height: "532px",
     };
 
@@ -152,9 +152,10 @@ const ContactUs: React.FC = () => {
 export default ContactUs;
 
 const MapsWrapper = styled.div`
-    position: absolute;
-    left: -5vw;
+    position: relative;
+
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        position: absolute;
         left: -13vw;
     }
 `;
@@ -163,7 +164,6 @@ const ContactWrapper = styled.div`
     display: flex;
     flex-direction: column;
     padding-top: 0;
-    padding-top: 560px;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         display: grid;
