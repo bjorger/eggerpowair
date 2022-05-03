@@ -76,6 +76,7 @@ const Footer: React.FC = () => {
                         <FooterLink to="/agb">AGB</FooterLink>
                         <FooterLink to="/coc">Code of Conduct</FooterLink>
                         <FooterLink to="/impressum">Impressum</FooterLink>
+                        <FooterLink to="/datasecurity">Datenschutz</FooterLink>
                     </FooterBottomContainer>
                 </InnerContainer>
                 <InnerContainer></InnerContainer>

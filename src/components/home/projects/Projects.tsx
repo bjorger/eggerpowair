@@ -8,11 +8,6 @@ import { ThemeToggle } from "components/themeToggle";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
-import { BrowserView, MobileView, Variants } from "components/Components.sc";
-import { useAppSelector } from "redux/hooks";
-
 import Unterboden from "assets/projects/Unterboden.png";
 import Umspannwerke from "assets/projects/Umspannwerke.png";
 import Kuehlhaeuser from "assets/projects/Kuehlhaeuser.png";
@@ -21,6 +16,13 @@ import Baumaschinen from "assets/projects/Baumaschinen.png";
 import Kraftwerksanlagen from "assets/projects/Kraftwerksanlagen.png";
 import Steuerungstechnik from "assets/projects/Stuerungstechnik.png";
 import Schaltschraenke from "assets/projects/Schaltschränke.png";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { BrowserView, MobileView, Variants } from "components/Components.sc";
+import { useAppSelector } from "redux/hooks";
+import SwiperCore, { Autoplay, Pagination } from "swiper";
+
+SwiperCore.use([Autoplay]);
 
 const projects = [
     {

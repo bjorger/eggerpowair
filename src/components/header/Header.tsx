@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Logo from "assets/eggerpowair-logo.png";
 import { Link, NavLink } from "react-router-dom";
-import { elastic as Menu } from "react-burger-menu";
+import { slide as Menu } from "react-burger-menu";
 import mobileMenuTheme from "./MobileMenuTheme";
 import { BrowserView, MobileView, Variants } from "components/Components.sc";
 import { useAppSelector } from "redux/hooks";
@@ -47,6 +47,7 @@ const Header: React.FC = () => {
                 <Menu
                     isOpen={isMenuOpen}
                     onOpen={() => setIsMenuOpen(true)}
+                    onClose={() => setIsMenuOpen(false)}
                     right
                     styles={Object.assign(mobileMenuTheme, {
                         bmBurgerBars: {
@@ -68,6 +69,9 @@ const Header: React.FC = () => {
                     <HeaderNavLink activecolor={theme} onClick={() => setIsMenuOpen(false)} to="/news">
                         News
                     </HeaderNavLink>
+                    <Button bordervariant={theme} onClick={() => setIsMenuOpen(false)} textcolor="white" variant="dark" to="/contact">
+                        Kontakt
+                    </Button>
                     <HeaderNavLink activecolor={theme} onClick={() => setIsMenuOpen(false)} to="/coc">
                         Code of Conduct
                     </HeaderNavLink>
@@ -77,9 +81,9 @@ const Header: React.FC = () => {
                     <HeaderNavLink activecolor={theme} onClick={() => setIsMenuOpen(false)} to="/impressum">
                         Impressum
                     </HeaderNavLink>
-                    <Button bordervariant={theme} onClick={() => setIsMenuOpen(false)} textcolor="white" variant="dark" to="/contact">
-                        Kontakt
-                    </Button>
+                    <HeaderNavLink activecolor={theme} onClick={() => setIsMenuOpen(false)} to="/datasecurity">
+                        Datenschutz
+                    </HeaderNavLink>
                     <img style={{ marginTop: "20px" }} src={Logo} alt="EggerpowAir" />
                 </Menu>
             </MobileView>

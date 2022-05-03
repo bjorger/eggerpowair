@@ -5,12 +5,14 @@ import { BrowserView, ColoredSpan, MobileView, Variants } from "../Components.sc
 import { Button } from "../Components.sc";
 import { useAppSelector } from "redux/hooks";
 import { InfoWindow, Marker, GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import haversine from "haversine-distance";
 
 import "swiper/css";
 import "swiper/css/autoplay";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
-import haversine from "haversine-distance";
+import SwiperCore, { Autoplay, Pagination } from "swiper";
+
+SwiperCore.use([Autoplay]);
 
 interface Location {
     street: string;

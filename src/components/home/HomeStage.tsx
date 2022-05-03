@@ -9,8 +9,10 @@ import { Button } from "components/Components.sc";
 
 import "swiper/css";
 import "swiper/css/autoplay";
-import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay, Pagination } from "swiper";
+
+SwiperCore.use([Autoplay]);
 
 const Stage: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);

@@ -29,7 +29,11 @@ body {
 
 @media only screen and (max-width: 600px) {
     .cookieContent {
-        max-height: 250px;
+        max-height: 350px;
+    }
+
+    .cookieButtons {
+        width: 300px;
     }
 }
 

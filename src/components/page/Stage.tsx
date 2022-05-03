@@ -7,8 +7,8 @@ import { BrowserView, MobileView, Variants } from "components/Components.sc";
 
 import "swiper/css";
 import "swiper/css/autoplay";
-import SwiperCore, { Autoplay, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay, Pagination } from "swiper";
 
 SwiperCore.use([Autoplay]);
 
