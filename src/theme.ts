@@ -21,25 +21,25 @@ interface Palette {
 
 interface Fonts {
     headline: {
-        eyebrow: FlattenInterpolation<ThemeProps<any>>;
-        main: FlattenInterpolation<ThemeProps<any>>;
+        eyebrow: FlattenInterpolation<ThemeProps<unknown>>;
+        main: FlattenInterpolation<ThemeProps<unknown>>;
     };
-    button: FlattenInterpolation<ThemeProps<any>>;
+    button: FlattenInterpolation<ThemeProps<unknown>>;
     header: {
         link: SimpleInterpolation;
     };
-    paragraph: FlattenInterpolation<ThemeProps<any>>;
-    paragraphSmall: FlattenInterpolation<ThemeProps<any>>;
-    h2: FlattenInterpolation<ThemeProps<any>>;
+    paragraph: FlattenInterpolation<ThemeProps<unknown>>;
+    paragraphSmall: FlattenInterpolation<ThemeProps<unknown>>;
+    h2: FlattenInterpolation<ThemeProps<unknown>>;
 
     gridItem: {
-        number: FlattenInterpolation<ThemeProps<any>>;
+        number: FlattenInterpolation<ThemeProps<unknown>>;
     };
     projectItem: {
         headline: SimpleInterpolation;
     };
     footer: {
-        paragraph: FlattenInterpolation<ThemeProps<any>>;
+        paragraph: FlattenInterpolation<ThemeProps<unknown>>;
     };
     mobileTile: {
         number: SimpleInterpolation;
