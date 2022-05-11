@@ -47,7 +47,7 @@ const WhatWeDo: React.FC = () => {
             number: "06",
             title: "Schulung & Support",
             description:
-                "Wie bieten unsere Reinigungssysteme zum Leasing oder Kauf an. Wir schulen nach Bedarf in Ihrem Unternehmen den richtigen Umgang mit den Geräten für die Reinigung.",
+                "Wir bieten unsere Reinigungssysteme zum Leasing oder Kauf an. Wir schulen nach Bedarf in Ihrem Unternehmen den richtigen Umgang mit den Geräten für die Reinigung.",
         },
     ];
 
