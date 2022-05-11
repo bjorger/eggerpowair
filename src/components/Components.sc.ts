@@ -105,8 +105,8 @@ interface ParagraphProps {
 
 export const Paragraph = styled.p<ParagraphProps>`
     ${({ theme }) => theme.fonts.paragraph};
-    margin: ${({ margin }) => (margin ? margin : "auto")};
+    margin: ${({ margin }) => (margin ? margin : "10px 0")};
     color: ${({ theme, color }) => (color ? theme.palette[color] : theme.palette.black)};
     text-align: ${({ textAlign }) => (textAlign ? textAlign : "left")};
-    padding: ${({ padding }) => (padding ? padding : "auto")};
+    padding: ${({ padding }) => (padding ? padding : "inherit")};
 `;

@@ -16,7 +16,9 @@ const BuildingTheFuture: React.FC = () => {
         <PageWrap variant="white">
             <Headline>
                 <Eyebrow textColor="black"> Building the future</Eyebrow>
-                <HeadlineMain>{theme === "blue" ? <Image src={ColdPowair} alt="" /> : <Image src={HotPowair} alt="" />}</HeadlineMain>
+                <HeadlineMain>
+                    <Image loading="lazy" src={theme === "blue" ? ColdPowair : HotPowair} alt="" />
+                </HeadlineMain>
                 <Grid>{theme === "blue" ? <Cold /> : <Hot />}</Grid>
             </Headline>
         </PageWrap>

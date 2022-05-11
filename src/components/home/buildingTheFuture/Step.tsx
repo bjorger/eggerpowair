@@ -11,7 +11,7 @@ interface StepProps {
 const Step: React.FC<StepProps> = ({ img, title, description }) => {
     return (
         <Container>
-            <Image src={img} alt="" />
+            <Image loading="lazy" src={img} alt="" />
             <Title>{title}</Title>
             <Description>{description}</Description>
         </Container>

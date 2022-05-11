@@ -8,7 +8,7 @@ interface ItemProps {
 const ProjectGridItem: React.FC<ItemProps> = ({ image, headline }) => {
     return (
         <ProjectGridItemContainer>
-            <Image src={image} alt="" />
+            <Image loading="lazy" src={image} alt="" />
             <Headline>{headline}</Headline>
         </ProjectGridItemContainer>
     );

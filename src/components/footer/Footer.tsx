@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
         <PageWrap borderTop={true} minHeight="30" variant="dark" padding="0 0 30px 0" paddingMobile="0">
             <Container>
                 <InnerContainer gridArea="logo" flexOrderMobile="1">
-                    <StyledLogo src={Logo} alt="" />
+                    <StyledLogo loading="lazy" src={Logo} alt="" />
                 </InnerContainer>
                 <InnerContainer gridArea="contact" flexOrderMobile="3">
                     <FooterHeadline>Kontakt</FooterHeadline>

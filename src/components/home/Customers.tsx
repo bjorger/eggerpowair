@@ -39,7 +39,8 @@ export const Customers: React.FC = () => {
             autoplay={{
                 delay: 2000,
             }}
-            slidesPerView={currentWindowWidth >= 700 ? 3 : 2}
+            loop={true}
+            slidesPerView={currentWindowWidth >= 700 ? 8 : 2}
         >
             {customers.map((customer, index) => (
                 <SwiperSlide key={index}>
@@ -48,9 +49,10 @@ export const Customers: React.FC = () => {
                             <OverlayContent>
                                 <OverlayContentHeadline>
                                     <Gradient color={theme} />
-                                    <span>Unsere Kunden</span>
                                 </OverlayContentHeadline>
-                                <OverlayParagraph>{customer.name}</OverlayParagraph>
+                                <OverlayParagraph color="white" textAlign="left">
+                                    {customer.name}
+                                </OverlayParagraph>
                             </OverlayContent>
                         </Overlay>
                     </SwiperSlideContent>
@@ -67,11 +69,11 @@ interface SwiperSlideContentProps {
 const SwiperSlideContent = styled.div<SwiperSlideContentProps>`
     background: url(${({ imageUrl }) => imageUrl});
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
-    width: 200px;
+    width: 175px;
     position: relative;
-    height: 200px;
+    height: 150px;
 
     &:hover {
         div {
@@ -80,8 +82,8 @@ const SwiperSlideContent = styled.div<SwiperSlideContentProps>`
     }
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        height: 500px;
-        width: 100%;
+        height: 150px;
+        width: 200px;
     }
 `;
 
