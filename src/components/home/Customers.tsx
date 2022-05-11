@@ -74,6 +74,8 @@ const SwiperSlideContent = styled.div<SwiperSlideContentProps>`
     width: 175px;
     position: relative;
     height: 150px;
+    -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+    filter: grayscale(1);
 
     &:hover {
         div {
