@@ -1,8 +1,9 @@
-import Stage from "./HomeStage";
-import WhatWeDo from "./whatwedo/WhatWeDo";
-import Projects from "./projects/Projects";
-import WhereWeWork from "./WhereWeWork";
+import Stage from "./homestage/HomeStage";
+import WhatWeDo from "./whatwedo";
+import { Projects } from "./projects";
+import WhereWeWork from "./whereWeWork";
 import { WhyChooseUs, TruthInEngineering } from "./whychooseus";
 import BuildingTheFuture from "./buildingTheFuture";
+import Customers from "./customers";
 
-export { Stage, WhatWeDo, Projects, WhereWeWork, WhyChooseUs, TruthInEngineering, BuildingTheFuture };
+export { Stage, WhatWeDo, Projects, WhereWeWork, WhyChooseUs, TruthInEngineering, BuildingTheFuture, Customers };

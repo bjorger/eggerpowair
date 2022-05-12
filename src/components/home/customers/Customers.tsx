@@ -1,6 +1,6 @@
 import { Customer } from "api/storyblok";
 import React from "react";
-import { getCustomers } from "../../api/storyblok";
+import { getCustomers } from "../../../api/storyblok";
 import styled from "styled-components";
 import { useAppSelector } from "redux/hooks";
 import { Paragraph, Variants } from "components/Components.sc";
@@ -8,9 +8,9 @@ import { Paragraph, Variants } from "components/Components.sc";
 import "swiper/css";
 import "swiper/css/autoplay";
 import { SwiperSlide } from "swiper/react";
-import { CustomSwiper } from "./HomeStage";
+import { CustomSwiper } from "../homestage/HomeStage";
 
-export const Customers: React.FC = () => {
+const Customers: React.FC = () => {
     const [customers, setCustomers] = React.useState<Customer[]>([]);
     const theme = useAppSelector((state) => state.themeToggle.color);
     const [currentWindowWidth, setCurrentWindowWidth] = React.useState<number>(0);
@@ -61,6 +61,8 @@ export const Customers: React.FC = () => {
         </CustomSwiper>
     );
 };
+
+export default Customers;
 
 interface SwiperSlideContentProps {
     imageUrl: string;
