@@ -137,7 +137,7 @@ const ContactUs: React.FC = () => {
                                 sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY ? process.env.REACT_APP_RECAPTCHA_SITE_KEY : ""}
                                 onChange={(value) => setCaptchaValue(value)}
                             />
-                            <FormButton type="submit" colors={theme} gridarea="bottom">
+                            <FormButton disabled={!(captchaValue !== null && captchaValue.length > 0)} type="submit" colors={theme} gridarea="bottom">
                                 Absenden
                             </FormButton>
                         </Form>
@@ -158,6 +158,7 @@ const MapsWrapper = styled.div`
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         position: absolute;
         left: -13vw;
+        padding-top: 0;
     }
 `;
 
@@ -271,4 +272,9 @@ const Message = styled.p<MessageProps>`
     opacity: ${({ display }) => (display ? 1 : 0)};
     transition: 0.5s linear opacity;
     color: #77dd77;
+    margin: 30px 0;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
+        margin: 0;
+    }
 `;
