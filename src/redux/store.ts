@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import ThemeReducer from "./features/themeToggle/themeToggle";
+import CategoryReducer from "./features/categories/categories";
 
 const store = configureStore({
     reducer: {
         themeToggle: ThemeReducer,
+        contentCategories: CategoryReducer,
     },
 });
 

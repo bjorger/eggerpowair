@@ -28,6 +28,6 @@ export const themeSlice = createSlice({
 export const { toggleBlue, toggleOrange } = themeSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectCount = (state: RootState) => state.themeToggle.color;
+export const selectTheme = (state: RootState) => state.themeToggle.color;
 
 export default themeSlice.reducer;

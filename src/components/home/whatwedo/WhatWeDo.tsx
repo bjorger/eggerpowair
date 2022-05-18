@@ -29,7 +29,7 @@ const WhatWeDo: React.FC = () => {
             number: "03",
             title: "Mobil in ganz Europa",
             description:
-                "Egger PowAir Cleaning reinigt in ganz Europa, 24/7. Anruf oder E-Mail genügt: 00800-2538 64 64 (kostenfrei aus ganz Europa) oder office(a)eggerpowair.com.",
+                "Egger PowAir Cleaning reinigt in ganz Europa, 24/7. Anruf oder E-Mail genügt: 00800-2538 64 64 (kostenfrei aus ganz Europa) oder office@eggerpowair.com.",
         },
         {
             number: "04",

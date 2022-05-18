@@ -4,7 +4,7 @@ import { getPaginatedNewsArticles, NewsCategories } from "api/storyblok";
 import { NewsArticleType } from "api/storyblok";
 import styled from "styled-components";
 import NewsArticleGridItem from "./NewsArticleGridItem";
-import { useAppSelector } from "redux/hooks";
+import { useAppDispatch, useAppSelector } from "redux/hooks";
 import { BrowserView, MobileView, Variants } from "components/Components.sc";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { useSearchParams } from "react-router-dom";
@@ -12,9 +12,13 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import { InputLabel } from "@material-ui/core";
 import { MenuItem } from "@mui/material";
+import { setNewsCategories } from "redux/features/categories/categories";
 
 const NewsArticleGrid: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
+    const categories = useAppSelector((state) => state.contentCategories.news);
+    const dispatch = useAppDispatch();
+
     const [searchParams, setSearchParams] = useSearchParams();
     const [totalPages, setTotalPages] = React.useState<number>(1);
     const [currentPage, setCurrentPage] = React.useState<number>(1);
@@ -34,12 +38,19 @@ const NewsArticleGrid: React.FC = () => {
                 setCurrentCategory(_category);
             }
 
-            const { total, items: articles } = await getPaginatedNewsArticles(_category ? _category : "", _currentPage ? parseInt(_currentPage) : 1);
+            const { total, items, categories } = await getPaginatedNewsArticles(
+                _category ? _category : "",
+                _currentPage ? parseInt(_currentPage) : 1,
+            );
+
+            if (!_category) {
+                dispatch(setNewsCategories(categories));
+            }
 
             setTotalPages(total);
-            setContent(articles as NewsArticleType[]);
+            setContent(items as NewsArticleType[]);
         })();
-    }, [searchParams]);
+    }, [searchParams, dispatch]);
 
     const filterByCategory = async (category: string) => {
         const _category = category === "all" ? "" : category;
@@ -88,31 +99,33 @@ const NewsArticleGrid: React.FC = () => {
         <PageWrap variant="white">
             <BrowserView>
                 <Categories>
-                    {Object.keys(NewsCategories).map((key: string) => {
-                        if (key === "all") {
-                            return (
-                                <Category
-                                    variant={theme}
-                                    key={key}
-                                    className={"" === currentCategory || !currentCategory ? "active" : ""}
-                                    onClick={(event) => onCategoryClick(event, "")}
-                                >
-                                    Alle
-                                </Category>
-                            );
-                        } else {
-                            return (
-                                <Category
-                                    variant={theme}
-                                    key={key}
-                                    className={key === currentCategory ? "active" : ""}
-                                    onClick={(event) => onCategoryClick(event, key)}
-                                >
-                                    {NewsCategories[key as keyof typeof NewsCategories]}
-                                </Category>
-                            );
-                        }
-                    })}
+                    {Object.keys(NewsCategories)
+                        .filter((key) => key === "all" || key in categories)
+                        .map((key: string) => {
+                            if (key === "all") {
+                                return (
+                                    <Category
+                                        variant={theme}
+                                        key={key}
+                                        className={key === currentCategory || !currentCategory ? "active" : ""}
+                                        onClick={(event) => onCategoryClick(event, "")}
+                                    >
+                                        Alle
+                                    </Category>
+                                );
+                            } else {
+                                return (
+                                    <Category
+                                        variant={theme}
+                                        key={key}
+                                        className={key === currentCategory ? "active" : ""}
+                                        onClick={(event) => onCategoryClick(event, key)}
+                                    >
+                                        {NewsCategories[key as keyof typeof NewsCategories]}
+                                    </Category>
+                                );
+                            }
+                        })}
                 </Categories>
             </BrowserView>
             <MobileView>
@@ -125,21 +138,23 @@ const NewsArticleGrid: React.FC = () => {
                         label="category"
                         onChange={onDropdownSelect}
                     >
-                        {Object.keys(NewsCategories).map((key: string) => {
-                            if (key === "all") {
-                                return (
-                                    <MenuItem value={key} key={`${key}_mobile`}>
-                                        Alle
-                                    </MenuItem>
-                                );
-                            } else {
-                                return (
-                                    <MenuItem value={key} key={`${key}_mobile`}>
-                                        {NewsCategories[key as keyof typeof NewsCategories]}
-                                    </MenuItem>
-                                );
-                            }
-                        })}
+                        {Object.keys(NewsCategories)
+                            .filter((key) => key === "all" || key in categories)
+                            .map((key: string) => {
+                                if (key === "all") {
+                                    return (
+                                        <MenuItem value={key} key={`${key}_mobile`}>
+                                            Alle
+                                        </MenuItem>
+                                    );
+                                } else {
+                                    return (
+                                        <MenuItem value={key} key={`${key}_mobile`}>
+                                            {NewsCategories[key as keyof typeof NewsCategories]}
+                                        </MenuItem>
+                                    );
+                                }
+                            })}
                     </Select>
                 </FormControl>
             </MobileView>

@@ -1,3 +1,4 @@
+import { ContentCategories } from "redux/features/categories/categories";
 import StoryblokClient from "storyblok-js-client";
 
 export enum NewsCategories {
@@ -23,18 +24,21 @@ export interface NewsArticleType {
     preview_text: string;
     text: RichtextType;
     videoID?: string;
+    category: string;
 }
 
 export interface ProjectType {
     id: number;
     image: Image;
-    text: string;
+    text: RichtextType;
     company: string;
+    category: string;
 }
 
 interface Story {
     id: number;
     content: NewsArticleType | ProjectType;
+    full_slug: string;
 }
 
 export interface RichtextType {
@@ -45,6 +49,7 @@ export interface RichtextType {
 interface PaginatedResponse {
     total: number;
     items: Array<NewsArticleType | ProjectType>;
+    categories: ContentCategories;
 }
 
 export interface TeamMember {
@@ -83,28 +88,28 @@ let Storyblok = new StoryblokClient({
     },
 });
 
-const getPaginatedContent = async (
-    contentType: string,
-    category: string = "",
-    page: number = 1,
-    per_page: number = 12,
-): Promise<PaginatedResponse> => {
+export const getPaginatedNewsArticles = async (category: string = "", page: number = 1, per_page: number = 12): Promise<PaginatedResponse> => {
     try {
         const stories = await Storyblok.get("cdn/stories/", {
             version: "published",
             per_page,
             page,
-            starts_with: `${contentType}/${category}`,
+            starts_with: `news_articles/${category}`,
             sort_by: "first_published_at:desc",
         });
 
+        console.log(stories);
+
         const total = Math.ceil(stories.headers.total / per_page);
-        const articles: NewsArticleType[] = [];
+        const items: NewsArticleType[] = [];
+        let categories = {};
 
-        stories.data.stories.forEach(({ id, content }: Story) => {
+        stories.data.stories.forEach(({ id, content, full_slug }: Story) => {
             const { image, author, date, headline, preview_text, text, videoID } = content as NewsArticleType;
+            const category = full_slug.split("/")[1];
+            Object.assign(categories, { [category]: true });
 
-            articles.push({
+            items.push({
                 id,
                 image,
                 author,
@@ -113,20 +118,11 @@ const getPaginatedContent = async (
                 preview_text,
                 text,
                 videoID,
+                category,
             });
         });
 
-        return { total, items: articles };
-    } catch (e) {
-        throw new Error("Couldn't load story");
-    }
-};
-
-export const getPaginatedNewsArticles = async (category: string = "", page: number = 1, per_page: number = 12): Promise<PaginatedResponse> => {
-    try {
-        const res = await getPaginatedContent("news_articles", category, page, per_page);
-
-        return res;
+        return { total, items, categories };
     } catch (e) {
         throw new Error("Couldn't load story");
     }
@@ -134,9 +130,35 @@ export const getPaginatedNewsArticles = async (category: string = "", page: numb
 
 export const getPaginatedProjects = async (category: string = "", page: number = 1, per_page: number = 9): Promise<PaginatedResponse> => {
     try {
-        const res = await getPaginatedContent("projects", category, page, per_page);
+        const stories = await Storyblok.get("cdn/stories/", {
+            version: "published",
+            per_page,
+            page,
+            starts_with: `projects/${category}`,
+            sort_by: "first_published_at:desc",
+        });
 
-        return res;
+        const total = Math.ceil(stories.headers.total / per_page);
+        const items: ProjectType[] = [];
+        let categories = {};
+
+        stories.data.stories.forEach(({ id, content, full_slug }: Story) => {
+            const { image, company, text } = content as ProjectType;
+            const category = full_slug.split("/")[1];
+            Object.assign(categories, { [category]: true });
+
+            items.push({
+                id,
+                image,
+                text,
+                category,
+                company,
+            });
+        });
+
+        console.log(categories);
+
+        return { total, items, categories };
     } catch (e) {
         throw new Error("Couldn't load story");
     }

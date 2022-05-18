@@ -55,13 +55,11 @@ const ItemContainer = styled.div<ContainerProps>`
     box-shadow: ${({ theme, boxShadowVariant }) =>
         boxShadowVariant === "dark" ? `5px 5px 10px rgba(0, 0, 0, 0.2)` : `5px 5px 27px ${theme.palette[boxShadowVariant]}`};
     background: ${({ backgroundVariant, theme }) => theme.palette[backgroundVariant]};
-    max-height: 280px;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         padding: 20px 30px;
         border-radius: 36px;
         width: 400px;
-        max-height: 280px;
         box-shadow: ${({ theme, boxShadowVariant }) =>
             boxShadowVariant === "dark" ? `5px 5px 27px rgba(0, 0, 0, 0.2)` : `5px 5px 27px ${theme.palette[boxShadowVariant]}`};
     }
