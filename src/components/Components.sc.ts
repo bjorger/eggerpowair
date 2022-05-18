@@ -108,5 +108,5 @@ export const Paragraph = styled.p<ParagraphProps>`
     margin: ${({ margin }) => (margin ? margin : "10px 0")};
     color: ${({ theme, color }) => (color ? theme.palette[color] : theme.palette.black)};
     text-align: ${({ textAlign }) => (textAlign ? textAlign : "left")};
-    padding: ${({ padding }) => (padding ? padding : "inherit")};
+    padding: ${({ padding }) => (padding ? padding : "10px 0")};
 `;
