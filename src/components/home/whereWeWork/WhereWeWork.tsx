@@ -119,6 +119,10 @@ const WhereWeWork: React.FC = () => {
                 }
             });
         });
+
+        if (userPosition.lat === Infinity || userPosition.lng === Infinity) {
+            setUserPosition(locations[0].latLng);
+        }
     }, []);
 
     return (
