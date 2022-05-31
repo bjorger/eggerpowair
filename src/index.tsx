@@ -4,7 +4,7 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "components/header/Header";
 import { News, Contact, Home, Projects, Team } from "pages";
 import { Provider } from "react-redux";
@@ -24,7 +24,7 @@ ReactDOM.render(
         <Provider store={store}>
             <div id="outer-container">
                 <ThemeProvider theme={theme}>
-                    <HashRouter>
+                    <BrowserRouter>
                         <Header />
                         <ScrollToTop>
                             <Routes>
@@ -38,11 +38,12 @@ ReactDOM.render(
                                 <Route path="/agb" element={<AGB />} />
                                 <Route path="/impressum" element={<ImpressumPage />} />
                                 <Route path="/datasecurity" element={<DataSecurityPage />} />
+                                <Route path="*" element={<Navigate to="/" />} />
                             </Routes>
                         </ScrollToTop>
                         <Footer />
                         <CookieBanner />
-                    </HashRouter>
+                    </BrowserRouter>
                 </ThemeProvider>
             </div>
         </Provider>
