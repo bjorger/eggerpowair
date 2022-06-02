@@ -6,18 +6,14 @@ import { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "components/header/Header";
-import { News, Contact, Home, Projects, Team } from "pages";
+import { News, Contact, Home, Projects, Team, CodeOfConduct, AGB, ImpressumPage, DataSecurityPage, MissionStatementPage } from "pages";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import Footer from "./components/footer";
-import NewsArticle from "components/news/NewsArticle";
 import ScrollToTop from "utils/ScrollToTop";
-import CodeOfConduct from "pages/CodeOfConduct";
-import AGB from "pages/AGB";
-import ImpressumPage from "pages/Impressum";
 import CookieBanner from "components/cookieBanner/CookieBanner";
-import DataSecurityPage from "pages/DataSecurity";
 import GA4React from "ga-4-react";
+import NewsArticle from "components/news/NewsArticle";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -38,6 +34,7 @@ ReactDOM.render(
                                 <Route path="/agb" element={<AGB />} />
                                 <Route path="/impressum" element={<ImpressumPage />} />
                                 <Route path="/datasecurity" element={<DataSecurityPage />} />
+                                <Route path="/mission-statement" element={<MissionStatementPage />} />
                                 <Route path="*" element={<Navigate to="/" />} />
                             </Routes>
                         </ScrollToTop>

@@ -29,7 +29,8 @@ interface StickyThemeToggleContainerProps {
     variant: Variants;
 }
 
-const StickyThemeToggleContainer = styled.div<StickyThemeToggleContainerProps>`
+const StickyThemeToggleContainer = styled.button<StickyThemeToggleContainerProps>`
+    all: unset;
     display: flex;
     flex-direction: column;
     align-items: center;

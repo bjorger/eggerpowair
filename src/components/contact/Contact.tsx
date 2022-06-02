@@ -84,7 +84,7 @@ const ContactUs: React.FC = () => {
                             {marker && (
                                 <InfoWindow onCloseClick={() => setMarker(!marker)}>
                                     <InfoWindowContent>
-                                        <h3>Egger PowAir Cleaning GmBH</h3>
+                                        <h3>Egger PowAir Cleaning</h3>
                                         <p>Pebering Straß 21</p>
                                         <p>5301 Eugendorf bei Salzburg</p>
                                     </InfoWindowContent>
@@ -117,7 +117,7 @@ const ContactUs: React.FC = () => {
                         <Headline>Adresse</Headline>
                         <Paragraph>
                             Europazentrale <br />
-                            Egger PowAir Cleaning GmbH <br /> Pebering-Straß 21 5301 Eugendorf / <br /> Salzburg Österreich
+                            Egger PowAir Cleaning <br /> Pebering-Straß 21 5301 Eugendorf / <br /> Salzburg Österreich
                         </Paragraph>
                     </CallUsCard>
                 </LeftArea>

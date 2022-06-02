@@ -84,6 +84,10 @@ const Header: React.FC = () => {
                     <HeaderNavLink activecolor={theme} onClick={() => setIsMenuOpen(false)} to="/datasecurity">
                         Datenschutz
                     </HeaderNavLink>
+                    <HeaderNavLink activecolor={theme} onClick={() => setIsMenuOpen(false)} to="/mission-statement">
+                        Leitfaden
+                    </HeaderNavLink>
+
                     <img style={{ marginTop: "20px" }} src={Logo} alt="EggerpowAir" />
                 </Menu>
             </MobileView>
