@@ -15,7 +15,7 @@ const BuildingTheFuture: React.FC = () => {
     return (
         <PageWrap variant="white">
             <Headline>
-                <Eyebrow textColor="black"> Building the future</Eyebrow>
+                <Eyebrow textColor="black">Technologie</Eyebrow>
                 <HeadlineMain>
                     <Image loading="lazy" src={theme === "blue" ? ColdPowair : HotPowair} alt="" />
                 </HeadlineMain>

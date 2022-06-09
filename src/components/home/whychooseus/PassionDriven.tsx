@@ -8,7 +8,7 @@ const PassionDriven: React.FC = () => {
         <PageWrap variant="dark" paddingMobile="30px 0" padding="50px 0 0 0" margin="0">
             <HeadlineContainer>
                 <Headline>
-                    <Eyebrow textColor="white">Passion Driven</Eyebrow>
+                    <Eyebrow textColor="white">Wir arbeiten mit Leidenschaft</Eyebrow>
                     <HeadlineMain color="white">PowAir is in the Air</HeadlineMain>
                 </Headline>
             </HeadlineContainer>

@@ -12,7 +12,7 @@ const TruthInEngineering: React.FC = () => {
         <PageWrap variant="dark" paddingMobile="30px 0" padding="0 0 50px 0">
             <HeadlineContainer>
                 <Headline>
-                    <Eyebrow textColor="white">Truth in Engineering</Eyebrow>
+                    <Eyebrow textColor="white">Technologieführer</Eyebrow>
                     <HeadlineMain color="white">PowAir macht's vor</HeadlineMain>
                 </Headline>
                 <CustomButton bordervariant={theme} textcolor="white" variant="dark" to="/contact">

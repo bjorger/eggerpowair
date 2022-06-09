@@ -27,7 +27,7 @@ const Stage: React.FC = () => {
                         <HeadlineMain>
                             {theme === "orange"
                                 ? "Sandstrahlen war gestern- Egger Cold PowAir Cleaning ist heute Stand der Technik"
-                                : "Exceptional Service Exceeding Expectations"}
+                                : "Außergewöhnlicher Servicequalität für die Industrie"}
                         </HeadlineMain>
                         <StageParagraph color="white">
                             {theme === "orange"

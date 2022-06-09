@@ -79,7 +79,7 @@ const Projects: React.FC = () => {
                         slidesPerView={1}
                         spaceBetween={30}
                         autoplay={{
-                            delay: 2000,
+                            delay: 10000,
                         }}
                     >
                         <SwiperSlide>

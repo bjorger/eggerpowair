@@ -13,7 +13,7 @@ const NewsArticleGridItem: React.FC<NewsArticleGridItemProps> = ({ item }) => {
     const theme = useAppSelector((state) => state.themeToggle.color);
 
     return (
-        <Container>
+        <Container to={`/news-article?id=${item.id}`}>
             <Image imageUrl={item.image.filename} />
             <Headline>{item.headline}</Headline>
             <Date color="grey">{item.date}</Date>
@@ -29,11 +29,13 @@ const NewsArticleGridItem: React.FC<NewsArticleGridItemProps> = ({ item }) => {
 
 export default NewsArticleGridItem;
 
-const Container = styled.div`
+const Container = styled(Link)`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     max-width: 40vw;
+    text-decoration: inherit;
+    color: inherit;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         width: 100%;
