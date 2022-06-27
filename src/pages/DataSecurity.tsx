@@ -4,7 +4,7 @@ import DataSecurity from "components/dataSecurity/DataSecurity";
 
 const DataSecurityPage: React.FC = () => {
     return (
-        <PageContainer eyebrow="Verhalten" title="Datenschutz" hidePartyBus={true}>
+        <PageContainer eyebrow="Datenschutz" hidePartyBus={true}>
             <DataSecurity />
         </PageContainer>
     );

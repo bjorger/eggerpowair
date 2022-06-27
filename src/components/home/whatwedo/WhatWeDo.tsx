@@ -54,7 +54,7 @@ const WhatWeDo: React.FC = () => {
     return (
         <PageWrap variant="white">
             <Headline>
-                <Eyebrow textColor="black">What we do</Eyebrow>
+                <Eyebrow textColor="black">Was uns auszeichnet</Eyebrow>
                 <HeadlineMain>
                     6 gute Gründe für Egger <br />
                     PowAir Cleaning:

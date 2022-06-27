@@ -129,7 +129,7 @@ const WhereWeWork: React.FC = () => {
         <PageContainer>
             <HeadlineContainer>
                 <Headline>
-                    <Eyebrow textColor="black">Where we work</Eyebrow>
+                    <Eyebrow textColor="black">Unser Einzugsgebiet</Eyebrow>
                     <HeadlineMain>
                         Mobil in ganz EU-Europa.
                         <ColoredSpan variant={theme}>24/7</ColoredSpan>

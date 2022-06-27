@@ -4,7 +4,7 @@ import CoC from "components/codeOfConduct";
 
 const CodeOfConduct: React.FC = () => {
     return (
-        <PageContainer eyebrow="Verhalten" title="Code of Conduct" hidePartyBus={true}>
+        <PageContainer eyebrow="Code of Conduct" hidePartyBus={true}>
             <CoC />
         </PageContainer>
     );

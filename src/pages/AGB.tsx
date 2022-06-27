@@ -4,7 +4,7 @@ import AGB from "components/AGB";
 
 const AGBPage: React.FC = () => {
     return (
-        <PageContainer eyebrow="Erfahrung" title="AGB" hidePartyBus={true}>
+        <PageContainer eyebrow="Rechtliches" title="AGB" hidePartyBus={true}>
             <AGB />
         </PageContainer>
     );

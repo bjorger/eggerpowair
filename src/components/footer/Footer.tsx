@@ -29,8 +29,8 @@ const Footer: React.FC = () => {
                 <InnerContainer gridArea="contact" flexOrderMobile="3">
                     <FooterHeadline>Kontakt</FooterHeadline>
                     <ContactParagraph>
-                        +43- 12345 - 67890 <br />
-                        +43- 12345 - 67891 <br />
+                        00800-2538 64 64 <br />
+                        +43 06225 28810 <br />
                         Europazentrale <br />
                         Egger PowAir Cleaning <br />
                         Pebering-Straß 21 <br />
@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
                             <FooterLink to="/projects">Projekte</FooterLink>
                         </li>
                         <li>
-                            <FooterLink to="/team">Team</FooterLink>
+                            <FooterLink to="/team">Team & Jobs</FooterLink>
                         </li>
                         <li>
                             <FooterLink to="/news">News</FooterLink>
