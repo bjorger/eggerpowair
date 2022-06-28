@@ -4,7 +4,7 @@ import MissionStatement from "../components/missionStatement/MissionStatement";
 
 const MissionStatementPage: React.FC = () => {
     return (
-        <PageContainer eyebrow="Unternehmensleitbild" title="Leitfaden" hidePartyBus={true}>
+        <PageContainer eyebrow="Unternehmensleitbild" hidePartyBus={true}>
             <MissionStatement />
         </PageContainer>
     );

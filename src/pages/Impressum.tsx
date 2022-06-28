@@ -4,7 +4,7 @@ import Impressum from "components/Impressum/Impressum";
 
 const ImpressumPage: React.FC = () => {
     return (
-        <PageContainer eyebrow="Verhalten" title="Impressum" hidePartyBus={true}>
+        <PageContainer eyebrow="Impressum" hidePartyBus={true}>
             <Impressum />
         </PageContainer>
     );

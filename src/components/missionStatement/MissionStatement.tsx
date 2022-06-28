@@ -10,7 +10,7 @@ const MissionStatement: React.FC = () => {
 
     return (
         <PageWrap variant="white" padding="0" paddingMobile="0">
-            <Headline>Unternehmens Leitfaden</Headline>
+            <Headline>Unternehmensleitbild</Headline>
             <Paragraph margin="30px 0" textAlign="center">
                 Geschrieben von Gründer und Geschäftsführer <br /> Robert Egger
             </Paragraph>
@@ -63,7 +63,7 @@ const MissionStatement: React.FC = () => {
             </Paragraph>
             <ButtonContainer>
                 <DownloadButton download="UnternehmensLeitfaden.pdf" href={Unternehmensleitfaden} variant={theme}>
-                    Unternehmensleitfaden herunterladen
+                    Unternehmensleitbild herunterladen
                 </DownloadButton>
             </ButtonContainer>
         </PageWrap>

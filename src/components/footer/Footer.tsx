@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
                 <InnerContainer gridArea="contact" flexOrderMobile="3">
                     <FooterHeadline>Kontakt</FooterHeadline>
                     <ContactParagraph>
-                        00800-2538 64 64 <br />
+                        00 800 - 2538 64 64 <br />
                         +43 06225 28810 <br />
                         Europazentrale <br />
                         Egger PowAir Cleaning <br />
@@ -78,7 +78,7 @@ const Footer: React.FC = () => {
                         <FooterLink to="/coc">Code of Conduct</FooterLink>
                         <FooterLink to="/impressum">Impressum</FooterLink>
                         <FooterLink to="/datasecurity">Datenschutz</FooterLink>
-                        <FooterLink to="/mission-statement">Leitfaden</FooterLink>
+                        <FooterLink to="/mission-statement">Unternehmensleitbild</FooterLink>
                     </FooterBottomContainer>
                 </InnerContainer>
                 <InnerContainer></InnerContainer>

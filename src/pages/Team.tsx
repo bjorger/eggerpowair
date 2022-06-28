@@ -5,7 +5,7 @@ import Jobs from "components/team/Jobs";
 
 const Team: React.FC = () => {
     return (
-        <PageContainer eyebrow="EggerpowAir" title="Unser Team">
+        <PageContainer eyebrow="Egger PowAir" title="Unser Team">
             <TeamMemberGrid />
             <Jobs />
         </PageContainer>

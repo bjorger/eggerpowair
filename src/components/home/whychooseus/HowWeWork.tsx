@@ -55,7 +55,7 @@ const WhyChooseUs: React.FC = () => {
                 <>
                     <Headline>
                         <Eyebrow textColor="white" textColorMobile="black">
-                            How we work
+                            Wie wir arbeiten
                         </Eyebrow>
                         <HeadlineMain color="white" mobileColor="black">
                             <ColoredSpan variant={theme}>Unsere</ColoredSpan> Reinigungsmethoden

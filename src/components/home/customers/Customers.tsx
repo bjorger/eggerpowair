@@ -40,7 +40,7 @@ const Customers: React.FC = () => {
                 delay: 2000,
             }}
             loop={true}
-            slidesPerView={currentWindowWidth >= 1400 ? 8 : currentWindowWidth >= 900 ? 5 : 2}
+            slidesPerView={currentWindowWidth >= 1600 ? 8 : currentWindowWidth >= 900 ? 5 : 2}
         >
             {customers.map((customer, index) => (
                 <SwiperSlide key={index}>

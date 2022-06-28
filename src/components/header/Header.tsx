@@ -85,7 +85,7 @@ const Header: React.FC = () => {
                         Datenschutz
                     </HeaderNavLink>
                     <HeaderNavLink activecolor={theme} onClick={() => setIsMenuOpen(false)} to="/mission-statement">
-                        Leitfaden
+                        Unternehmensleitbild
                     </HeaderNavLink>
 
                     <img style={{ marginTop: "20px" }} src={Logo} alt="EggerpowAir" />
