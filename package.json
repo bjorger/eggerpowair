@@ -37,6 +37,7 @@
         "react-redux": "^7.2.6",
         "react-router-dom": "^6.2.1",
         "react-scripts": "5.0.0",
+        "react-visibility-sensor": "^5.1.1",
         "storyblok-js-client": "^4.2.1",
         "storyblok-rich-text-react-renderer": "^2.5.2",
         "styled-components": "^5.3.3",

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { BrowserView, MobileView, Paragraph, Variants } from "components/Components.sc";
+import { Paragraph, Variants } from "components/Components.sc";
+import VisibilitySensor from "react-visibility-sensor";
 
 export interface ItemProps {
     number: string;
@@ -15,24 +16,40 @@ interface GridItemProps {
     paragraphVariant: Variants;
     backgroundVariant: "dark" | "white";
     boxShadowVariant: "dark" | "white";
+    delay: number;
 }
 
-const GridItem: React.FC<GridItemProps> = ({ item, numberVariant, headlineVariant, paragraphVariant, backgroundVariant, boxShadowVariant }) => {
+const GridItem: React.FC<GridItemProps> = ({
+    item,
+    delay,
+    numberVariant,
+    headlineVariant,
+    paragraphVariant,
+    backgroundVariant,
+    boxShadowVariant,
+}) => {
+    const [isVisible, setIsVisible] = React.useState<boolean>(false);
+
+    const onChange = () => {
+        if (!isVisible) {
+            setIsVisible(true);
+        }
+    };
+
     return (
-        <ItemContainer boxShadowVariant={boxShadowVariant} backgroundVariant={backgroundVariant} key={item.number}>
-            <BrowserView>
+        <VisibilitySensor onChange={onChange}>
+            <ItemContainer
+                delay={delay}
+                isVisible={isVisible}
+                boxShadowVariant={boxShadowVariant}
+                backgroundVariant={backgroundVariant}
+                key={item.number}
+            >
                 <Number variant={numberVariant}>{item.number}</Number>
                 <Headline variant={headlineVariant}>{item.title}</Headline>
-                <Paragraph color={paragraphVariant}>{item.description}</Paragraph>
-            </BrowserView>
-            <MobileView>
-                <HeadlineContainer>
-                    <Number variant={numberVariant}>{item.number}</Number>
-                    <Headline variant={headlineVariant}>{item.title}</Headline>
-                </HeadlineContainer>
-                <Paragraph color={paragraphVariant}>{item.description}</Paragraph>
-            </MobileView>
-        </ItemContainer>
+                <ItemParagraph color={paragraphVariant}>{item.description}</ItemParagraph>
+            </ItemContainer>
+        </VisibilitySensor>
     );
 };
 
@@ -41,6 +58,8 @@ export default GridItem;
 interface ContainerProps {
     backgroundVariant: "dark" | "white";
     boxShadowVariant: "dark" | "white";
+    delay: number;
+    isVisible: boolean;
 }
 
 interface ComponentProps {
@@ -48,8 +67,10 @@ interface ComponentProps {
 }
 
 const ItemContainer = styled.div<ContainerProps>`
-    padding: 20px;
-    max-width: 75%;
+    opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
+    transform: translateY(${({ isVisible }) => (!isVisible ? "50px" : 0)});
+    transition: ${({ delay }) => `${delay}s`} ease opacity, ${({ delay }) => `${delay}s`} ease transform;
+    padding: 20px 10px;
     margin-left: 10px;
     border-radius: 10px;
     box-shadow: ${({ theme, boxShadowVariant }) =>
@@ -65,12 +86,6 @@ const ItemContainer = styled.div<ContainerProps>`
     }
 `;
 
-const HeadlineContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-`;
-
 const Number = styled.h1<ComponentProps>`
     ${({ theme }) => theme.fonts.gridItem.number};
     color: ${({ theme, variant }) => theme.palette[variant]};
@@ -81,6 +96,13 @@ const Number = styled.h1<ComponentProps>`
 `;
 
 const Headline = styled.h2<ComponentProps>`
-    font-size: ${({ theme }) => theme.fonts.h2};
+    ${({ theme }) => theme.fonts.h2};
     color: ${({ theme, variant }) => theme.palette[variant]};
+`;
+
+const ItemParagraph = styled(Paragraph)`
+    display: none;
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        display: block;
+    }
 `;

@@ -15,7 +15,7 @@ const BuildingTheFuture: React.FC = () => {
                 <Eyebrow textColor="black">Technologie </Eyebrow>
                 <HeadlineMain>{theme === "blue" ? "Cold PowAir" : "Hot PowAir"}</HeadlineMain>
             </Headline>
-            <Video src={theme === "blue" ? ColdPowair : HotPowair} autoPlay loop />
+            <Video src={theme === "blue" ? ColdPowair : HotPowair} autoPlay loop muted />
         </PageWrap>
     );
 };

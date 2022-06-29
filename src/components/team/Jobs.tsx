@@ -13,8 +13,6 @@ const Jobs: React.FC = () => {
     const [jobs, setJobs] = React.useState<Array<Job>>();
 
     function RichText(document: RichtextType) {
-        // document is the rich text object you receive from Storyblok,
-        // in the form { type: "doc", content: [ ... ] }
         return (
             <Paragraph>
                 {render(document)}
@@ -97,8 +95,7 @@ const JobContent = styled.div`
     display: flex;
     flex-direction: column;
     overflow: hidden;
-
-    max-height: 1500px;
+    max-height: 2000px;
     transition: 1s ease max-height;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {

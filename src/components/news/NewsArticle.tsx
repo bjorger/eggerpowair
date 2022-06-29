@@ -40,7 +40,7 @@ const NewsArticle: React.FC = () => {
     }, [searchParams]);
 
     return (
-        <PageContainer hideSwipeOnMobile={true} eyebrow="Erfahrung" title="News">
+        <PageContainer hideSwipeOnMobile={true} eyebrow="Was uns bewegt" title="News">
             <PageWrap variant="white">
                 <Wrapper>
                     {content?.videoID ? (

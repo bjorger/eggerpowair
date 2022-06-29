@@ -71,7 +71,7 @@ const WhyChooseUs: React.FC = () => {
                     </BrowserView>
                 </>
                 <Grid>
-                    {itemsToShow.map((item) => (
+                    {itemsToShow.map((item, index) => (
                         <GridItem
                             backgroundVariant="dark"
                             boxShadowVariant="white"
@@ -80,6 +80,7 @@ const WhyChooseUs: React.FC = () => {
                             paragraphVariant="white"
                             item={item}
                             key={item.title}
+                            delay={index + 1}
                         />
                     ))}
                 </Grid>

@@ -1,14 +1,11 @@
 import React from "react";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import { PageWrap } from "components/page";
-import { ItemProps, Grid, GridItem } from "components/grid";
+import { ItemProps, GridItem } from "components/grid";
 import { useAppSelector } from "redux/hooks";
-import { BrowserView, MobileView, Variants } from "components/Components.sc";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
 import styled from "styled-components";
 
 const WhatWeDo: React.FC = () => {
@@ -60,78 +57,34 @@ const WhatWeDo: React.FC = () => {
                     PowAir Cleaning:
                 </HeadlineMain>
             </Headline>
-            <BrowserView>
-                <Grid>
-                    {whatWeDoItems.map((item) => (
-                        <GridItem
-                            boxShadowVariant="dark"
-                            backgroundVariant="white"
-                            headlineVariant="black"
-                            numberVariant={theme}
-                            paragraphVariant="black"
-                            item={item}
-                            key={`${item.number}_${item.title}`}
-                        />
-                    ))}
-                </Grid>
-            </BrowserView>
-            <MobileView>
-                <CustomSwiper
-                    variant={theme}
-                    pagination={{
-                        dynamicBullets: false,
-                    }}
-                    modules={[Pagination]}
-                    slidesPerView={"auto"}
-                    spaceBetween={30}
-                >
-                    {whatWeDoItems.map((item, index) => (
-                        <SwiperSlide key={`${item.number}_${item.title}_mobile`}>
-                            <MobileSlidecontainer>
-                                <GridItem
-                                    boxShadowVariant="dark"
-                                    backgroundVariant="white"
-                                    headlineVariant="black"
-                                    numberVariant={theme}
-                                    paragraphVariant="black"
-                                    item={item}
-                                />
-                            </MobileSlidecontainer>
-                        </SwiperSlide>
-                    ))}
-                </CustomSwiper>
-            </MobileView>
+            <Grid>
+                {whatWeDoItems.map((item, index) => (
+                    <GridItem
+                        boxShadowVariant="dark"
+                        backgroundVariant="white"
+                        headlineVariant="black"
+                        numberVariant={theme}
+                        paragraphVariant="black"
+                        item={item}
+                        key={`${item.number}_${item.title}`}
+                        delay={index + 1}
+                    />
+                ))}
+            </Grid>
         </PageWrap>
     );
 };
 
 export default WhatWeDo;
 
-interface CustomSwiperProps {
-    variant: Variants;
-}
+const Grid = styled.div`
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 54px;
+    column-gap: 0px;
 
-const CustomSwiper = styled(Swiper)<CustomSwiperProps>`
-    position: relative;
-
-    .swiper-pagination-bullet-active {
-        background-color: ${({ theme, variant }) => theme.palette[variant]} !important;
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.xl}px`}) {
+        grid-template-columns: repeat(3, 1fr);
     }
-
-    .swiper-pagination-bullet {
-        border: 2px solid;
-        border-color: ${({ theme, variant }) => theme.palette[variant]};
-        background-color: transparent;
-    }
-
-    .swiper-slide {
-        padding: 50px 0;
-    }
-`;
-
-const MobileSlidecontainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 `;
