@@ -2,12 +2,9 @@ import React from "react";
 import { PageWrap } from "components/page";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import { useAppSelector } from "redux/hooks";
-import ColdPowair from "assets/cold-powair.png";
-import HotPowair from "assets/hot-powair.png";
-import { Grid } from "components/grid";
-import Hot from "./Hot";
-import Cold from "./Cold";
 import styled from "styled-components";
+import HotPowair from "assets/hotpowair.webm";
+import ColdPowair from "assets/coldpowair.webm";
 
 const BuildingTheFuture: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
@@ -15,21 +12,17 @@ const BuildingTheFuture: React.FC = () => {
     return (
         <PageWrap variant="white">
             <Headline>
-                <Eyebrow textColor="black">Technologie</Eyebrow>
-                <HeadlineMain>
-                    <Image loading="lazy" src={theme === "blue" ? ColdPowair : HotPowair} alt="" />
-                </HeadlineMain>
-                <Grid>{theme === "blue" ? <Cold /> : <Hot />}</Grid>
+                <Eyebrow textColor="black">Technologie </Eyebrow>
+                <HeadlineMain>{theme === "blue" ? "Cold PowAir" : "Hot PowAir"}</HeadlineMain>
             </Headline>
+            <Video src={theme === "blue" ? ColdPowair : HotPowair} autoPlay loop />
         </PageWrap>
     );
 };
 
 export default BuildingTheFuture;
 
-const Image = styled.img`
-    width: 80%;
-    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        width: auto;
-    }
+const Video = styled.video`
+    width: 100%;
+    margin-top: 20px;
 `;

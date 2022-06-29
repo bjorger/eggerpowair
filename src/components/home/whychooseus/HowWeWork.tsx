@@ -6,7 +6,7 @@ import { ColoredSpan, MobileView, BrowserView } from "../../Components.sc";
 import { Grid, GridItem, ItemProps } from "components/grid";
 import { useAppSelector } from "redux/hooks";
 import { Variants } from "components/Components.sc";
-import MobileTile, { Container as MobileTileContainer } from "./MobileTile";
+import MobileTile, { ParagraphContainer, Container as MobileTileContainer } from "./MobileTile";
 
 const WhyChooseUs: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
@@ -92,7 +92,7 @@ const WhyChooseUs: React.FC = () => {
                     </HeadlineMain>
                 </Headline>
                 <MobileContainer>
-                    {coldPowAir.map((item) => (
+                    {itemsToShow.map((item) => (
                         <MobileTile key={item.number} number={item.number} headline={item.title} paragraph={item.description} />
                     ))}
                 </MobileContainer>
@@ -127,7 +127,7 @@ const MobileContainer = styled.div`
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
     margin-top: 50px;
 
-    ${MobileTileContainer}:not(:last-of-type) {
+    ${MobileTileContainer}:not(:last-of-type) ${ParagraphContainer} {
         ${({ theme }) => theme.borderBottom};
     }
 `;

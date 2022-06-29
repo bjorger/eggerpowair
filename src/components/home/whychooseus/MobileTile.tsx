@@ -13,23 +13,14 @@ interface MobileTileProps {
 const MobileTile: React.FC<MobileTileProps> = ({ number, headline, paragraph }) => {
     const theme = useAppSelector((state) => state.themeToggle.color);
 
-    const expandContainer = (event: React.MouseEvent<HTMLDivElement>) => {
-        const target = event.currentTarget as HTMLDivElement;
-
-        if (target.classList.contains("expand")) {
-            target.classList.remove("expand");
-        } else {
-            target.classList.add("expand");
-        }
-    };
-
     return (
-        <Container onClick={(event) => expandContainer(event)}>
+        <Container>
             <HeadlineContainer>
                 <Number variant={theme}>{number}</Number>
                 <Headline>{headline}</Headline>
                 <CustomArrow variant={theme} />
             </HeadlineContainer>
+            <CollapseToggle type="checkbox" defaultChecked={true} />
             <ParagraphContainer>
                 <Paragraph>{paragraph}</Paragraph>
             </ParagraphContainer>
@@ -43,25 +34,30 @@ interface ComponentProps {
     variant: Variants;
 }
 
-export const Container = styled.div`
-    max-height: 50px;
-    overflow: hidden;
-    padding: 5px 20px 0;
-    transition: 1s ease max-height;
-
-    &.expand {
-        max-height: 120px;
-    }
-`;
+export const Container = styled.label``;
 
 export const HeadlineContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding: 5px 20px 0;
 `;
 
-const ParagraphContainer = styled.div``;
+export const ParagraphContainer = styled.div`
+    max-height: 120px;
+    transition: 1s ease max-height;
+    overflow: hidden;
+    padding: 5px 20px 0;
+`;
+
+const CollapseToggle = styled.input`
+    display: none;
+
+    &:checked + ${ParagraphContainer} {
+        max-height: 0px;
+    }
+`;
 
 const Number = styled.h1<ComponentProps>`
     ${({ theme }) => theme.fonts.mobileTile.number};

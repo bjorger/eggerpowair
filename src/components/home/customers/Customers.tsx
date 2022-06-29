@@ -73,11 +73,12 @@ const SwiperSlideContent = styled.div<SwiperSlideContentProps>`
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    width: 175px;
+    max-width: 175px;
     position: relative;
-    height: 150px;
+    max-height: 150px;
     -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
     filter: grayscale(1);
+    overflow: hidden;
 
     &:hover {
         div {
