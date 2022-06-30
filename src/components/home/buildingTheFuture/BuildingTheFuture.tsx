@@ -3,8 +3,8 @@ import { PageWrap } from "components/page";
 import { Headline, Eyebrow, HeadlineMain } from "components/headline";
 import { useAppSelector } from "redux/hooks";
 import styled from "styled-components";
-import HotPowair from "assets/hotpowair.webm";
-import ColdPowair from "assets/coldpowair.webm";
+import HotPowair from "assets/hotpowair.mp4";
+import ColdPowair from "assets/coldpowair.mp4";
 
 const BuildingTheFuture: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
