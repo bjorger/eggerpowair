@@ -9,7 +9,7 @@ const Headline: React.FC = ({ children }) => {
 export default Headline;
 
 const HeadlineContainer = styled.div`
-    grid-column: 3 / span 20;
+    grid-column: 4 / span 20;
 `;
 
 interface HeadlineMainProps {

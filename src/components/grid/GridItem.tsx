@@ -79,11 +79,11 @@ const ItemContainer = styled.div<ContainerProps>`
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         max-width: 75%;
+        border-radius: 36px;
     }
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.lg}px`}) {
         padding: 20px 30px;
-        border-radius: 36px;
         width: 400px;
         box-shadow: ${({ theme, boxShadowVariant }) =>
             boxShadowVariant === "dark" ? `5px 5px 27px rgba(0, 0, 0, 0.2)` : `5px 5px 27px ${theme.palette[boxShadowVariant]}`};

@@ -87,9 +87,9 @@ const WhyChooseUs: React.FC = () => {
             </BrowserView>
             <MobileView>
                 <Headline>
-                    <Eyebrow textColor="black">Why choose us</Eyebrow>
+                    <Eyebrow textColor="black">Wie wir arbeiten</Eyebrow>
                     <HeadlineMain color="black">
-                        <ColoredSpan variant={theme}>Designing</ColoredSpan> Future with Excellence
+                        Unsere <ColoredSpan variant={theme}>Reinigungsmethoden</ColoredSpan>
                     </HeadlineMain>
                 </Headline>
                 <MobileContainer>

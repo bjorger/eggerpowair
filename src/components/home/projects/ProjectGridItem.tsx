@@ -24,6 +24,11 @@ const ProjectGridItemContainer = styled.div`
 const Image = styled.img`
     border-radius: 36px;
     width: 100%;
+    height: 200px;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        height: 400px;
+    }
 `;
 
 const Headline = styled.h2`

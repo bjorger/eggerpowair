@@ -76,16 +76,12 @@ const NewsArticleGrid: React.FC = () => {
     };
 
     const loadNewArticles = async (direction: number = 1) => {
-        if (direction > 0) {
-            if (currentPage + direction > totalPages) {
-                return;
-            }
+        if (direction > 0 && currentPage + direction > totalPages) {
+            return;
         }
 
-        if (direction < 0) {
-            if (currentPage + direction < 1) {
-                return;
-            }
+        if (direction < 0 && currentPage + direction < 1) {
+            return;
         }
 
         const { items: articles } = await getPaginatedNewsArticles(currentCategory, currentPage + direction);

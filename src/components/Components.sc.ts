@@ -49,7 +49,7 @@ export const Content = styled.div`
     grid-column: 2 / span 22;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        grid-column: 4 / span 17;
+        grid-column: 4 / span 18;
     }
 `;
 

@@ -11,11 +11,13 @@ const BuildingTheFuture: React.FC = () => {
 
     return (
         <PageWrap variant="white">
-            <Headline>
-                <Eyebrow textColor="black">Technologie </Eyebrow>
-                <HeadlineMain>{theme === "blue" ? "Cold PowAir" : "Hot PowAir"}</HeadlineMain>
-            </Headline>
-            <Video src={theme === "blue" ? ColdPowair : HotPowair} autoPlay loop muted />
+            <div>
+                <Headline>
+                    <Eyebrow textColor="black">Technologie </Eyebrow>
+                    <HeadlineMain>{theme === "blue" ? "Cold PowAir" : "Hot PowAir"}</HeadlineMain>
+                </Headline>
+                <Video src={theme === "blue" ? ColdPowair : HotPowair} autoPlay loop muted />
+            </div>
         </PageWrap>
     );
 };

@@ -28,12 +28,12 @@ const Stage: React.FC = () => {
                             {theme === "orange"
                                 ? "Sandstrahlen war gestern- Egger Cold PowAir Cleaning ist heute Stand der Technik"
                                 : "Außergewöhnlicher Servicequalität für die Industrie"}
+                            <StageParagraph color="white">
+                                {theme === "orange"
+                                    ? "Abrasiv reinigen mit heißer Druckluft und PowAir-Granulate. Ohne Sand, ohne Staub, 100% Umweltfreundlich."
+                                    : "COLD PowAir Reinigung mit kalter Druckluft und sonst nichts. Non abrasiv, schnell und effizient, ohne Sekundär-Abfälle!"}
+                            </StageParagraph>
                         </HeadlineMain>
-                        <StageParagraph color="white">
-                            {theme === "orange"
-                                ? "Abrasiv reinigen mit heißer Druckluft und PowAir-Granulate. Ohne Sand, ohne Staub, 100% Umweltfreundlich."
-                                : "COLD PowAir Reinigung mit kalter Druckluft und sonst nichts. Non abrasiv, schnell und effizient, ohne Sekundär-Abfälle!"}
-                        </StageParagraph>
                         <Button bordervariant={theme} textcolor="white" to="/contact" variant={theme}>
                             jetzt kontaktieren
                         </Button>
@@ -56,12 +56,9 @@ const Stage: React.FC = () => {
                     >
                         <SwiperSlide>
                             <StageTextContainer>
-                                <Eyebrow>Professional. Innovative. Reliable.</Eyebrow>
+                                <Eyebrow>Mobil in ganz Europa. 24/7.</Eyebrow>
                                 <HeadlineMain>
-                                    Exceptional <br />
-                                    Service Exceeding
-                                    <br />
-                                    Expectations
+                                    {theme === "orange" ? "Sandstrahlen war gestern" : "Außergewöhnlicher Servicequalität für die Industrie"}
                                 </HeadlineMain>
                                 <Button style={{ marginTop: "20px" }} bordervariant={theme} textcolor="white" to="/contact" variant={theme}>
                                     jetzt kontaktieren

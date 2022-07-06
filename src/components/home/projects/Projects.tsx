@@ -8,14 +8,20 @@ import { ThemeToggle } from "components/themeToggle";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import Unterboden from "assets/projects/Unterboden.png";
-import Umspannwerke from "assets/projects/Umspannwerke.png";
-import Kuehlhaeuser from "assets/projects/Kuehlhaeuser.png";
-import Ziegelgewölbe from "assets/projects/Ziegelgewölbe.png";
-import Baumaschinen from "assets/projects/Baumaschinen.png";
-import Kraftwerksanlagen from "assets/projects/Kraftwerksanlagen.png";
-import Steuerungstechnik from "assets/projects/Stuerungstechnik.png";
-import Schaltschraenke from "assets/projects/Schaltschränke.png";
+import AluminiumErzeugung from "assets/applications/AluminiumErzeugung.webp";
+import BetonUndZementwerke from "assets/applications/BetonUndZementwerke.webp";
+import Biomassekraftwerke from "assets/applications/Biomassekraftwerke.webp";
+import ChemischeIndustrie from "assets/applications/ChemischeIndustrie.webp";
+import Holzerzeugnisse from "assets/applications/Holzerzeugnisse.webp";
+import LebensmittelIndustrie from "assets/applications/LebensmittelIndustrie.webp";
+import MaschinenUndAnlagenbau from "assets/applications/MaschinenUndAnlagenbau.webp";
+import Müllverbrennungsanlage from "assets/applications/Müllverbrennungsanlagen.webp";
+import PapierUndKartonVerpackungsIndustrie from "assets/applications/PapierUndKartonVerpackungsindustrie.webp";
+import PelletsTrocknerabgasreinigung from "assets/applications/PelletsTrocknerabgasreinigung.webp";
+import Schaltschrankreinigung from "assets/applications/Schaltschrankreinigung.webp";
+import Wasserkraftwerke from "assets/applications/Wasserkraftwerke.webp";
+import Ziegelwerke from "assets/applications/Ziegelwerke.webp";
+import Zugtechnik from "assets/applications/Zugtechnik.webp";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { BrowserView, MobileView, Variants } from "components/Components.sc";
@@ -25,38 +31,70 @@ import SwiperCore, { Autoplay, Pagination } from "swiper";
 SwiperCore.use([Autoplay]);
 
 const projects = [
-    {
-        img: Unterboden,
-        headline: "Unterboden Reinigung",
-    },
-    {
-        img: Umspannwerke,
-        headline: "Umspannwerke",
-    },
-    {
-        img: Kuehlhaeuser,
-        headline: "Kühlhäuser",
-    },
-    {
-        img: Ziegelgewölbe,
-        headline: "Ziegelgewölbe",
-    },
-    {
-        img: Baumaschinen,
-        headline: "Baumaschinen",
-    },
-    {
-        img: Kraftwerksanlagen,
-        headline: "Kraftwerksanlagen",
-    },
-    {
-        img: Steuerungstechnik,
-        headline: "Railjet Steuerungstechnik",
-    },
-    {
-        img: Schaltschraenke,
-        headline: "Schaltschränke",
-    },
+    [
+        {
+            img: AluminiumErzeugung,
+            headline: "Aluminium Erzeugung",
+        },
+        {
+            img: BetonUndZementwerke,
+            headline: "Beton und Zementwerke",
+        },
+        {
+            img: Biomassekraftwerke,
+            headline: "Biomassekraftwerke",
+        },
+        {
+            img: ChemischeIndustrie,
+            headline: "Chemische Industrie",
+        },
+    ],
+    [
+        {
+            img: Holzerzeugnisse,
+            headline: "Holzerzeugnisse",
+        },
+        {
+            img: LebensmittelIndustrie,
+            headline: "Lebensmittel Industrie",
+        },
+        {
+            img: MaschinenUndAnlagenbau,
+            headline: "Maschinen und Anlagenbau",
+        },
+        {
+            img: Müllverbrennungsanlage,
+            headline: "Müllverbrennungsanlage",
+        },
+    ],
+    [
+        {
+            img: PapierUndKartonVerpackungsIndustrie,
+            headline: "Papier und Karton Verpackungs Industrie",
+        },
+        {
+            img: PelletsTrocknerabgasreinigung,
+            headline: "Pellets-Trocknerabgasreinigung",
+        },
+        {
+            img: Schaltschrankreinigung,
+            headline: "Schaltschrankreinigung",
+        },
+        {
+            img: Wasserkraftwerke,
+            headline: "Wasserkraftwerke",
+        },
+    ],
+    [
+        {
+            img: Ziegelwerke,
+            headline: "Ziegelwerke",
+        },
+        {
+            img: Zugtechnik,
+            headline: "Zugtechnik",
+        },
+    ],
 ];
 
 const Projects: React.FC = () => {
@@ -82,24 +120,15 @@ const Projects: React.FC = () => {
                             delay: 10000,
                         }}
                     >
-                        <SwiperSlide>
-                            <ProjectGrid>
-                                {projects
-                                    .filter((item, index) => index < 4)
-                                    .map((item, index) => (
+                        {projects.map((items) => (
+                            <SwiperSlide>
+                                <ProjectGrid>
+                                    {items.map((item, index) => (
                                         <ProjectGridItem image={item.img} headline={item.headline} key={`${item.headline}_${index}`} />
                                     ))}
-                            </ProjectGrid>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <ProjectGrid>
-                                {projects
-                                    .filter((item, index) => index >= 4)
-                                    .map((item, index) => (
-                                        <ProjectGridItem image={item.img} headline={item.headline} key={`${item.headline}_${index}`} />
-                                    ))}
-                            </ProjectGrid>
-                        </SwiperSlide>
+                                </ProjectGrid>
+                            </SwiperSlide>
+                        ))}
                     </CustomSwiper>
                 </BrowserView>
                 <MobileView>
@@ -112,11 +141,15 @@ const Projects: React.FC = () => {
                         slidesPerView={1}
                         spaceBetween={30}
                     >
-                        {projects.map((item, index) => (
-                            <SwiperSlide key={`${item.headline}_${index}_mobile`}>
-                                <ProjectGridItem image={item.img} headline={item.headline} />
-                            </SwiperSlide>
-                        ))}
+                        {projects.map((items) =>
+                            items.map((item, index) => (
+                                <SwiperSlide>
+                                    <ProjectGrid>
+                                        <ProjectGridItem image={item.img} headline={item.headline} key={`${item.headline}_${index}`} />
+                                    </ProjectGrid>
+                                </SwiperSlide>
+                            )),
+                        )}
                     </CustomSwiper>
                 </MobileView>
             </Headline>

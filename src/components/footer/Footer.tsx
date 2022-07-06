@@ -29,6 +29,7 @@ const Footer: React.FC = () => {
                 <InnerContainer gridArea="contact" flexOrderMobile="3">
                     <FooterHeadline>Kontakt</FooterHeadline>
                     <ContactParagraph>
+                        Kostenlos aus ganz Europa <br />
                         00 800 - 2538 64 64 <br />
                         +43 06225 28810 <br />
                         Europazentrale <br />
