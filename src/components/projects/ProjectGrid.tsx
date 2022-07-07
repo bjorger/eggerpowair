@@ -8,7 +8,7 @@ import { useSearchParams } from "react-router-dom";
 import { Categories, Category, PageCountIndicatorContainer, PageIndicatorText } from "components/news/NewsArticleGrid";
 import { FormControl, InputLabel, MenuItem, SelectChangeEvent, Select } from "@mui/material";
 import { BrowserView, MobileView } from "components/Components.sc";
-import { setProjectCategories } from "redux/features/categories/categories";
+import { ProjectCategories, setProjectCategories } from "redux/features/categories/categories";
 
 const ProjectGrid: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
@@ -37,7 +37,7 @@ const ProjectGrid: React.FC = () => {
             const { total, items, categories } = await getPaginatedProjects(_category ? _category : "", _currentPage ? parseInt(_currentPage) : 1);
 
             if (!_category) {
-                dispatch(setProjectCategories(categories));
+                dispatch(setProjectCategories(categories as ProjectCategories));
             }
 
             setTotalPages(total);

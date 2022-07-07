@@ -12,7 +12,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import { InputLabel } from "@material-ui/core";
 import { MenuItem } from "@mui/material";
-import { setNewsCategories } from "redux/features/categories/categories";
+import { NewsStateCategories, setNewsCategories } from "redux/features/categories/categories";
 
 const NewsArticleGrid: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
@@ -44,7 +44,7 @@ const NewsArticleGrid: React.FC = () => {
             );
 
             if (!_category) {
-                dispatch(setNewsCategories(categories));
+                dispatch(setNewsCategories(categories as NewsStateCategories));
             }
 
             setTotalPages(total);
@@ -68,6 +68,7 @@ const NewsArticleGrid: React.FC = () => {
         document.querySelectorAll(".active").forEach((item) => item.classList.remove("active"));
         const target = event.target as HTMLButtonElement;
         target.classList.add("active");
+        console.log(category);
         filterByCategory(category);
     };
 
@@ -95,33 +96,31 @@ const NewsArticleGrid: React.FC = () => {
         <PageWrap variant="white">
             <BrowserView>
                 <Categories>
-                    {Object.keys(NewsCategories)
-                        .filter((key) => key === "all" || key in categories)
-                        .map((key: string) => {
-                            if (key === "all") {
-                                return (
-                                    <Category
-                                        variant={theme}
-                                        key={key}
-                                        className={key === currentCategory || !currentCategory ? "active" : ""}
-                                        onClick={(event) => onCategoryClick(event, "")}
-                                    >
-                                        Alle
-                                    </Category>
-                                );
-                            } else {
-                                return (
-                                    <Category
-                                        variant={theme}
-                                        key={key}
-                                        className={key === currentCategory ? "active" : ""}
-                                        onClick={(event) => onCategoryClick(event, key)}
-                                    >
-                                        {NewsCategories[key as keyof typeof NewsCategories]}
-                                    </Category>
-                                );
-                            }
-                        })}
+                    {Object.keys(NewsCategories).map((key: string) => {
+                        if (key === "all") {
+                            return (
+                                <Category
+                                    variant={theme}
+                                    key={key}
+                                    className={key === currentCategory || !currentCategory ? "active" : ""}
+                                    onClick={(event) => onCategoryClick(event, "")}
+                                >
+                                    Alle
+                                </Category>
+                            );
+                        } else {
+                            return (
+                                <Category
+                                    variant={theme}
+                                    key={key}
+                                    className={key === currentCategory ? "active" : ""}
+                                    onClick={(event) => onCategoryClick(event, key)}
+                                >
+                                    {NewsCategories[key as keyof typeof NewsCategories]}
+                                </Category>
+                            );
+                        }
+                    })}
                 </Categories>
             </BrowserView>
             <MobileView>
@@ -231,7 +230,7 @@ export const Category = styled.button<CategoryProps>`
     background: transparent;
     text-transform: uppercase;
     padding-bottom: 5px;
-    margin: 0px 10px;
+    margin: 0px 15px;
     cursor: pointer;
     color: ${({ theme }) => theme.palette.black};
 

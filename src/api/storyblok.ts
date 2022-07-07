@@ -1,13 +1,24 @@
-import { ContentCategories } from "redux/features/categories/categories";
+import { ProjectCategories } from "redux/features/categories/categories";
 import StoryblokClient from "storyblok-js-client";
 
 export enum NewsCategories {
     all = "",
-    power_plants = "Kraftwerke",
-    industrial_plants = "Industrieanlagen",
-    waste_incinerator = "Müllverbrennungsanlagen",
-    generators = "Generatoren",
-    conveyor_systems = "Förderanlagen",
+    paper = "Papier-Verpackungsindustrie",
+    wood = "Holzerzeugnisse",
+    gas = "Pellets - Trocknerabgasreinigung",
+    waterpowerplants = "Wasserkraftwerke",
+    waste = "Müllverbrennungsanlagen",
+    biopowerplants = "Biomassekraftwerke",
+    incinerators = "Nachverbrennungsanlagen",
+    aluminium = "Aluminium-Erzeugung",
+    cement = "Beton und Zementwerke",
+    brick = "Ziegelwerke",
+    mechanical = "Maschinen- und Anlagenbau",
+    trains = "Zugtechnik",
+    food = "Lebensmittel Industrie",
+    cabinet = "Schaltschrankreinigung",
+    education = "Weiterbildung",
+    press = "Pressemitteilung",
 }
 
 interface Image {
@@ -49,7 +60,7 @@ export interface RichtextType {
 interface PaginatedResponse {
     total: number;
     items: Array<NewsArticleType | ProjectType>;
-    categories: ContentCategories;
+    categories: ProjectCategories | NewsCategories;
 }
 
 export interface TeamMember {
@@ -90,15 +101,18 @@ let Storyblok = new StoryblokClient({
 
 export const getPaginatedNewsArticles = async (category: string = "", page: number = 1, per_page: number = 12): Promise<PaginatedResponse> => {
     try {
-        const stories = await Storyblok.get("cdn/stories/", {
+        const stories = await Storyblok.get(`cdn/stories/`, {
             version: "published",
             per_page,
             page,
-            starts_with: `news_articles/${category}`,
+            starts_with: `news_articles`,
             sort_by: "first_published_at:desc",
+            filter_query: {
+                category: {
+                    in_array: category,
+                },
+            },
         });
-
-        console.log(stories);
 
         const total = Math.ceil(stories.headers.total / per_page);
         const items: NewsArticleType[] = [];
