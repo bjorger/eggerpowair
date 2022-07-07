@@ -8,7 +8,7 @@ interface ItemProps {
 const ProjectGridItem: React.FC<ItemProps> = ({ image, headline }) => {
     return (
         <ProjectGridItemContainer>
-            <Image loading="lazy" src={image} alt="" />
+            <Image url={image} />
             <Headline>{headline}</Headline>
         </ProjectGridItemContainer>
     );
@@ -21,19 +21,31 @@ const ProjectGridItemContainer = styled.div`
     flex-direction: column;
 `;
 
-const Image = styled.img`
+interface ImageProps {
+    url: string;
+}
+
+const Image = styled.div<ImageProps>`
+    background: url(${({ url }) => url});
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     border-radius: 36px;
+    height: 300px;
     width: 100%;
-    height: 200px;
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        height: 400px;
+        height: 500px;
     }
 `;
 
 const Headline = styled.h2`
-    ${({ theme }) => theme.fonts.projectItem.headline};
+    font-size: 24px;
     ${({ theme }) => theme.borderBottom};
     padding-bottom: 10px;
     color: ${({ theme }) => theme.palette.white};
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        ${({ theme }) => theme.fonts.projectItem.headline};
+    }
 `;

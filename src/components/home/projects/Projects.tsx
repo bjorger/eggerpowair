@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Headline, HeadlineMain, Eyebrow } from "components/headline";
 import ProjectGridItem from "./ProjectGridItem";
 import { PageWrap } from "components/page";
-import { ThemeToggle } from "components/themeToggle";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -64,13 +63,13 @@ const projects = [
         },
         {
             img: Müllverbrennungsanlage,
-            headline: "Müllverbrennungsanlage",
+            headline: "Müllverbrennungsanlagen",
         },
     ],
     [
         {
             img: PapierUndKartonVerpackungsIndustrie,
-            headline: "Papier und Karton Verpackungs Industrie",
+            headline: "Papier-Verpackungsindustrie",
         },
         {
             img: PelletsTrocknerabgasreinigung,
@@ -103,9 +102,7 @@ const Projects: React.FC = () => {
     return (
         <PageWrap variant="dark">
             <Headline>
-                <Eyebrow textColor="white">
-                    <ThemeToggle />
-                </Eyebrow>
+                <Eyebrow textColor="white">Unsere Einsatzgebiete</Eyebrow>
                 <HeadlineMain color="white">Anwendungen</HeadlineMain>
                 <BrowserView>
                     <CustomSwiper

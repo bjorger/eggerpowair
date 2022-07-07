@@ -58,7 +58,9 @@ const Stage: React.FC = () => {
                             <StageTextContainer>
                                 <Eyebrow>Mobil in ganz Europa. 24/7.</Eyebrow>
                                 <HeadlineMain>
-                                    {theme === "orange" ? "Sandstrahlen war gestern" : "Außergewöhnlicher Servicequalität für die Industrie"}
+                                    {theme === "orange"
+                                        ? "Sandstrahlen war gestern - PowAir Cleaning ist heute"
+                                        : "Außergewöhnlicher Servicequalität für die Industrie"}
                                 </HeadlineMain>
                                 <Button style={{ marginTop: "20px" }} bordervariant={theme} textcolor="white" to="/contact" variant={theme}>
                                     jetzt kontaktieren
@@ -137,6 +139,7 @@ const Gradient = styled.div<GradientProps>`
 const StageTextContainer = styled.div`
     display: flex;
     flex-direction: column;
+    width: 100%;
 `;
 
 const Eyebrow = styled.h2`
@@ -150,7 +153,10 @@ const HeadlineMain = styled.h1`
     ${({ theme }) => theme.fonts.headline.main};
     color: ${({ theme }) => theme.palette.white};
     margin: 5px 0 5px -3px;
-    max-width: 50%;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        max-width: 50%;
+    }
 `;
 
 const StageParagraph = styled(Paragraph)`

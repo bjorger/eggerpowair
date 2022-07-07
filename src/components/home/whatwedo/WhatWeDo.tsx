@@ -53,7 +53,7 @@ const WhatWeDo: React.FC = () => {
             <Headline>
                 <Eyebrow textColor="black">Was uns auszeichnet</Eyebrow>
                 <HeadlineMain>
-                    6 gute Gründe für Egger <br />
+                    6 gute Gründe für <br />
                     PowAir Cleaning:
                 </HeadlineMain>
             </Headline>
