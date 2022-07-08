@@ -1,6 +1,6 @@
 import React from "react";
 import { PageWrap } from "components/page";
-import { getPaginatedProjects, NewsCategories, ProjectType } from "api/storyblok";
+import { getPaginatedProjects, ProjectCategories, ProjectType } from "api/storyblok";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
@@ -8,7 +8,7 @@ import { useSearchParams } from "react-router-dom";
 import { Categories, Category, PageCountIndicatorContainer, PageIndicatorText } from "components/news/NewsArticleGrid";
 import { FormControl, InputLabel, MenuItem, SelectChangeEvent, Select } from "@mui/material";
 import { BrowserView, MobileView } from "components/Components.sc";
-import { ProjectCategories, setProjectCategories } from "redux/features/categories/categories";
+import { ReduxProjectCategories, setProjectCategories } from "redux/features/categories/categories";
 
 const ProjectGrid: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
@@ -18,7 +18,7 @@ const ProjectGrid: React.FC = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [totalPages, setTotalPages] = React.useState<number>(1);
     const [currentPage, setCurrentPage] = React.useState<number>(1);
-    const [currentCategory, setCurrentCategory] = React.useState<string>();
+    const [currentCategory, setCurrentCategory] = React.useState<string>("");
     const [content, setContent] = React.useState<Array<ProjectType>>();
 
     React.useEffect(() => {
@@ -37,7 +37,7 @@ const ProjectGrid: React.FC = () => {
             const { total, items, categories } = await getPaginatedProjects(_category ? _category : "", _currentPage ? parseInt(_currentPage) : 1);
 
             if (!_category) {
-                dispatch(setProjectCategories(categories as ProjectCategories));
+                dispatch(setProjectCategories(categories as ReduxProjectCategories));
             }
 
             setTotalPages(total);
@@ -92,7 +92,7 @@ const ProjectGrid: React.FC = () => {
         <PageWrap variant="white">
             <BrowserView>
                 <Categories>
-                    {Object.keys(NewsCategories)
+                    {Object.keys(ProjectCategories)
                         .filter((key) => key === "all" || key in categories)
                         .map((key: string) => {
                             if (key === "all") {
@@ -114,7 +114,7 @@ const ProjectGrid: React.FC = () => {
                                         className={key === currentCategory ? "active" : ""}
                                         onClick={(event) => onCategoryClick(event, key)}
                                     >
-                                        {NewsCategories[key as keyof typeof NewsCategories]}
+                                        {ProjectCategories[key as keyof typeof ProjectCategories]}
                                     </Category>
                                 );
                             }
@@ -132,7 +132,7 @@ const ProjectGrid: React.FC = () => {
                         label="category"
                         onChange={onDropdownSelect}
                     >
-                        {Object.keys(NewsCategories)
+                        {Object.keys(ProjectCategories)
                             .filter((key) => key === "all" || key in categories)
                             .map((key: string) => {
                                 if (key === "all") {
@@ -144,7 +144,7 @@ const ProjectGrid: React.FC = () => {
                                 } else {
                                     return (
                                         <MenuItem value={key} key={`${key}_mobile`}>
-                                            {NewsCategories[key as keyof typeof NewsCategories]}
+                                            {ProjectCategories[key as keyof typeof ProjectCategories]}
                                         </MenuItem>
                                     );
                                 }

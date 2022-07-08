@@ -1,4 +1,4 @@
-import { ProjectCategories } from "redux/features/categories/categories";
+import { ReduxProjectCategories } from "redux/features/categories/categories";
 import StoryblokClient from "storyblok-js-client";
 
 export enum NewsCategories {
@@ -21,6 +21,15 @@ export enum NewsCategories {
     press = "Pressemitteilung",
 }
 
+export enum ProjectCategories {
+    all = "",
+    power_plants = "Kraftwerke",
+    industrial_plants = "Industrieanlagen",
+    waste_incinerator = "Müllverbrennungsanlagen",
+    generators = "Generatoren",
+    conveyor_systems = "Förderanlagen",
+}
+
 interface Image {
     filename: string;
     alt: string;
@@ -35,7 +44,7 @@ export interface NewsArticleType {
     preview_text: string;
     text: RichtextType;
     videoID?: string;
-    category: string;
+    category: string[];
 }
 
 export interface ProjectType {
@@ -60,7 +69,7 @@ export interface RichtextType {
 interface PaginatedResponse {
     total: number;
     items: Array<NewsArticleType | ProjectType>;
-    categories: ProjectCategories | NewsCategories;
+    categories: ReduxProjectCategories | NewsCategories;
 }
 
 export interface TeamMember {
@@ -119,9 +128,8 @@ export const getPaginatedNewsArticles = async (category: string = "", page: numb
         let categories = {};
 
         stories.data.stories.forEach(({ id, content, full_slug }: Story) => {
-            const { image, author, date, headline, preview_text, text, videoID } = content as NewsArticleType;
-            const category = full_slug.split("/")[1];
-            Object.assign(categories, { [category]: true });
+            const { image, author, date, headline, preview_text, text, videoID, category } = content as NewsArticleType;
+            category.forEach((cat) => Object.assign(categories, { [cat]: true }));
 
             items.push({
                 id,
@@ -169,8 +177,6 @@ export const getPaginatedProjects = async (category: string = "", page: number =
                 company,
             });
         });
-
-        console.log(categories);
 
         return { total, items, categories };
     } catch (e) {

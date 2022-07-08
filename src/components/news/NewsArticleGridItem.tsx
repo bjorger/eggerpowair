@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { NewsArticleType } from "api/storyblok";
 import { useAppSelector } from "redux/hooks";
 import { Paragraph, Variants } from "components/Components.sc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface NewsArticleGridItemProps {
     item: NewsArticleType;
@@ -11,9 +11,10 @@ interface NewsArticleGridItemProps {
 
 const NewsArticleGridItem: React.FC<NewsArticleGridItemProps> = ({ item }) => {
     const theme = useAppSelector((state) => state.themeToggle.color);
+    let navigate = useNavigate();
 
     return (
-        <Container to={`/news-article?id=${item.id}`}>
+        <Container onClick={() => navigate(`/news-article?id=${item.id}`, { replace: true })}>
             <Image imageUrl={item.image.filename} />
             <Headline>{item.headline}</Headline>
             <Date color="grey">{item.date}</Date>
@@ -29,7 +30,7 @@ const NewsArticleGridItem: React.FC<NewsArticleGridItemProps> = ({ item }) => {
 
 export default NewsArticleGridItem;
 
-const Container = styled(Link)`
+const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;

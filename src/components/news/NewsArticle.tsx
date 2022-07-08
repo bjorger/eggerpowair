@@ -91,6 +91,10 @@ const Wrapper = styled.div`
 const Image = styled.img`
     width: 80%;
     border-radius: 36px;
+
+    @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
+        width: 700px;
+    }
 `;
 
 const Headline = styled.h2`

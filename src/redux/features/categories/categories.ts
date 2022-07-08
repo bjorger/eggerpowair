@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../../store";
 
 // Define a type for the slice state
-export interface ProjectCategories {
+export interface ReduxProjectCategories {
     power_plants?: boolean;
     industrial_plants?: boolean;
     waste_incinerator?: boolean;
@@ -10,7 +10,7 @@ export interface ProjectCategories {
     conveyor_systems?: boolean;
 }
 
-export interface NewsStateCategories {
+export interface ReduxNewsStateCategories {
     paper?: boolean;
     wood?: boolean;
     gas?: boolean;
@@ -30,8 +30,8 @@ export interface NewsStateCategories {
 }
 
 interface ContentCategoriesState {
-    news: NewsStateCategories;
-    projects: ProjectCategories;
+    news: ReduxNewsStateCategories;
+    projects: ReduxProjectCategories;
 }
 
 // Define the initial state using that type
@@ -44,10 +44,10 @@ export const categoriesSlice = createSlice({
     name: "counter",
     initialState,
     reducers: {
-        setNewsCategories: (state, action: PayloadAction<NewsStateCategories>) => {
+        setNewsCategories: (state, action: PayloadAction<ReduxNewsStateCategories>) => {
             state.news = action.payload;
         },
-        setProjectCategories: (state, action: PayloadAction<ProjectCategories>) => {
+        setProjectCategories: (state, action: PayloadAction<ReduxProjectCategories>) => {
             state.projects = action.payload;
         },
     },

@@ -12,7 +12,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import { InputLabel } from "@material-ui/core";
 import { MenuItem } from "@mui/material";
-import { NewsStateCategories, setNewsCategories } from "redux/features/categories/categories";
+import { ReduxNewsStateCategories, setNewsCategories } from "redux/features/categories/categories";
 
 const NewsArticleGrid: React.FC = () => {
     const theme = useAppSelector((state) => state.themeToggle.color);
@@ -44,7 +44,7 @@ const NewsArticleGrid: React.FC = () => {
             );
 
             if (!_category) {
-                dispatch(setNewsCategories(categories as NewsStateCategories));
+                dispatch(setNewsCategories(categories as ReduxNewsStateCategories));
             }
 
             setTotalPages(total);
@@ -68,7 +68,6 @@ const NewsArticleGrid: React.FC = () => {
         document.querySelectorAll(".active").forEach((item) => item.classList.remove("active"));
         const target = event.target as HTMLButtonElement;
         target.classList.add("active");
-        console.log(category);
         filterByCategory(category);
     };
 
