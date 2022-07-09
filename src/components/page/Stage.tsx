@@ -81,7 +81,7 @@ const PartyBus = styled.img`
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         position: absolute;
-        width: 70%;
+        width: 900px;
         right: -150px;
         top: -150px;
         pointer-events: none;
@@ -96,11 +96,11 @@ interface ContainerProps {
 const Container = styled.div<ContainerProps>`
     display: grid;
     background: ${({ theme }) => theme.palette.dark};
-    padding: 120px 0 0 0;
+    padding: 120px 0 30px 0;
     grid-template-columns: repeat(24, 1fr);
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
-        padding: 75px 0;
+        padding: 75px 0 0 0;
         height: ${({ isBusHidden }) => (isBusHidden ? "100px" : "30vh")};
         overflow: hidden;
     }
