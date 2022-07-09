@@ -24,9 +24,6 @@ const Header: React.FC = () => {
                             <HeaderNavLink activecolor={theme} to="/">
                                 über uns
                             </HeaderNavLink>
-                            <HeaderNavLink activecolor={theme} to="/projects">
-                                Projekte
-                            </HeaderNavLink>
                             <HeaderNavLink activecolor={theme} to="/team">
                                 Team & Jobs
                             </HeaderNavLink>
@@ -59,9 +56,6 @@ const Header: React.FC = () => {
                 >
                     <HeaderNavLink activecolor={theme} onClick={() => setIsMenuOpen(false)} to="/">
                         über uns
-                    </HeaderNavLink>
-                    <HeaderNavLink activecolor={theme} onClick={() => setIsMenuOpen(false)} to="/projects">
-                        Projekte
                     </HeaderNavLink>
                     <HeaderNavLink activecolor={theme} onClick={() => setIsMenuOpen(false)} to="/team">
                         Team & Jobs

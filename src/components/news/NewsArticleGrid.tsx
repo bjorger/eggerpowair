@@ -5,7 +5,7 @@ import { NewsArticleType } from "api/storyblok";
 import styled from "styled-components";
 import NewsArticleGridItem from "./NewsArticleGridItem";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
-import { BrowserView, MobileView, Variants } from "components/Components.sc";
+import { Variants } from "components/Components.sc";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { useSearchParams } from "react-router-dom";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
@@ -64,13 +64,6 @@ const NewsArticleGrid: React.FC = () => {
         setSearchParams(searchParams);
     };
 
-    const onCategoryClick = async (event: React.MouseEvent<HTMLButtonElement>, category: string) => {
-        document.querySelectorAll(".active").forEach((item) => item.classList.remove("active"));
-        const target = event.target as HTMLButtonElement;
-        target.classList.add("active");
-        filterByCategory(category);
-    };
-
     const onDropdownSelect = async (event: SelectChangeEvent): Promise<void> => {
         filterByCategory(event.target.value as string);
     };
@@ -93,65 +86,34 @@ const NewsArticleGrid: React.FC = () => {
 
     return (
         <PageWrap variant="white">
-            <BrowserView>
-                <Categories>
-                    {Object.keys(NewsCategories).map((key: string) => {
-                        if (key === "all") {
-                            return (
-                                <Category
-                                    variant={theme}
-                                    key={key}
-                                    className={key === currentCategory || !currentCategory ? "active" : ""}
-                                    onClick={(event) => onCategoryClick(event, "")}
-                                >
-                                    Alle
-                                </Category>
-                            );
-                        } else {
-                            return (
-                                <Category
-                                    variant={theme}
-                                    key={key}
-                                    className={key === currentCategory ? "active" : ""}
-                                    onClick={(event) => onCategoryClick(event, key)}
-                                >
-                                    {NewsCategories[key as keyof typeof NewsCategories]}
-                                </Category>
-                            );
-                        }
-                    })}
-                </Categories>
-            </BrowserView>
-            <MobileView>
-                <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">Kategorie</InputLabel>
-                    <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={currentCategory}
-                        label="category"
-                        onChange={onDropdownSelect}
-                    >
-                        {Object.keys(NewsCategories)
-                            .filter((key) => key === "all" || key in categories)
-                            .map((key: string) => {
-                                if (key === "all") {
-                                    return (
-                                        <MenuItem value={key} key={`${key}_mobile`}>
-                                            Alle
-                                        </MenuItem>
-                                    );
-                                } else {
-                                    return (
-                                        <MenuItem value={key} key={`${key}_mobile`}>
-                                            {NewsCategories[key as keyof typeof NewsCategories]}
-                                        </MenuItem>
-                                    );
-                                }
-                            })}
-                    </Select>
-                </FormControl>
-            </MobileView>
+            <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Kategorie</InputLabel>
+                <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={currentCategory}
+                    label="category"
+                    onChange={onDropdownSelect}
+                >
+                    {Object.keys(NewsCategories)
+                        .filter((key) => key === "all" || key in categories)
+                        .map((key: string) => {
+                            if (key === "all") {
+                                return (
+                                    <MenuItem value={key} key={`${key}_mobile`}>
+                                        Alle
+                                    </MenuItem>
+                                );
+                            } else {
+                                return (
+                                    <MenuItem value={key} key={`${key}_mobile`}>
+                                        {NewsCategories[key as keyof typeof NewsCategories]}
+                                    </MenuItem>
+                                );
+                            }
+                        })}
+                </Select>
+            </FormControl>
             <NewsArticleItemGrid>
                 {content?.map((item, index) => (
                     <NewsArticleGridItem item={item} key={item.author + item.date + index} />

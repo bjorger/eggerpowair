@@ -6,7 +6,7 @@ const Impressum: React.FC = () => {
     return (
         <PageWrap variant="white">
             <Paragraph margin="0">
-                <b>Egger PowAir Cleaning GmbH</b>
+                <b>Egger PowAir Cleaning Österreich GmbH</b>
                 <br />
                 <br /> Telefon: +43 (0) 6225 28810
                 <br />
@@ -14,7 +14,7 @@ const Impressum: React.FC = () => {
                 <br />
                 <br /> <b>Firmenname</b> <br />
                 <br />
-                Egger PowAir Cleaning GmbH
+                Egger PowAir Cleaning Österreich GmbH
                 <br />
                 <br /> <b>Rechtsform</b>
                 <br />

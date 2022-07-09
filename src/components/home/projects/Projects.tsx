@@ -26,6 +26,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { BrowserView, MobileView, Variants } from "components/Components.sc";
 import { useAppSelector } from "redux/hooks";
 import SwiperCore, { Autoplay, Pagination } from "swiper";
+import { NewsCategories } from "api/storyblok";
 
 SwiperCore.use([Autoplay]);
 
@@ -34,64 +35,78 @@ const projects = [
         {
             img: AluminiumErzeugung,
             headline: "Aluminium Erzeugung",
+            category: "aluminium",
         },
         {
             img: BetonUndZementwerke,
             headline: "Beton und Zementwerke",
+            category: "cement",
         },
         {
             img: Biomassekraftwerke,
             headline: "Biomassekraftwerke",
+            category: "biopowerplants",
         },
         {
             img: ChemischeIndustrie,
             headline: "Chemische Industrie",
+            category: "waste",
         },
     ],
     [
         {
             img: Holzerzeugnisse,
             headline: "Holzerzeugnisse",
+            category: "wood",
         },
         {
             img: LebensmittelIndustrie,
             headline: "Lebensmittel Industrie",
+            category: "food",
         },
         {
             img: MaschinenUndAnlagenbau,
             headline: "Maschinen und Anlagenbau",
+            category: "mechanical",
         },
         {
             img: Müllverbrennungsanlage,
             headline: "Müllverbrennungsanlagen",
+            category: "incinerators",
         },
     ],
     [
         {
             img: PapierUndKartonVerpackungsIndustrie,
             headline: "Papier-Verpackungsindustrie",
+            category: "paper",
         },
         {
             img: PelletsTrocknerabgasreinigung,
             headline: "Pellets-Trocknerabgasreinigung",
+            category: "gas",
         },
         {
             img: Schaltschrankreinigung,
             headline: "Schaltschrankreinigung",
+            category: "cabinet",
         },
         {
             img: Wasserkraftwerke,
             headline: "Wasserkraftwerke",
+            category: "waterpowerplants",
         },
     ],
     [
         {
             img: Ziegelwerke,
             headline: "Ziegelwerke",
+            category: "brick",
         },
         {
             img: Zugtechnik,
             headline: "Zugtechnik",
+            category: "trains",
         },
     ],
 ];
@@ -121,7 +136,12 @@ const Projects: React.FC = () => {
                             <SwiperSlide>
                                 <ProjectGrid>
                                     {items.map((item, index) => (
-                                        <ProjectGridItem image={item.img} headline={item.headline} key={`${item.headline}_${index}`} />
+                                        <ProjectGridItem
+                                            category={item.category}
+                                            image={item.img}
+                                            headline={item.headline}
+                                            key={`${item.headline}_${index}`}
+                                        />
                                     ))}
                                 </ProjectGrid>
                             </SwiperSlide>
@@ -142,7 +162,12 @@ const Projects: React.FC = () => {
                             items.map((item, index) => (
                                 <SwiperSlide>
                                     <ProjectGrid>
-                                        <ProjectGridItem image={item.img} headline={item.headline} key={`${item.headline}_${index}`} />
+                                        <ProjectGridItem
+                                            category={item.category}
+                                            image={item.img}
+                                            headline={item.headline}
+                                            key={`${item.headline}_${index}`}
+                                        />
                                     </ProjectGrid>
                                 </SwiperSlide>
                             )),

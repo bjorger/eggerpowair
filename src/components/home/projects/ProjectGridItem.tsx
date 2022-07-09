@@ -1,13 +1,17 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 interface ItemProps {
     image: string;
     headline: string;
+    category: string;
 }
 
-const ProjectGridItem: React.FC<ItemProps> = ({ image, headline }) => {
+const ProjectGridItem: React.FC<ItemProps> = ({ image, headline, category }) => {
+    const navigate = useNavigate();
+
     return (
-        <ProjectGridItemContainer>
+        <ProjectGridItemContainer onClick={() => navigate(`/news?category=${category}&currentPage=1`, { replace: true })}>
             <Image url={image} />
             <Headline>{headline}</Headline>
         </ProjectGridItemContainer>
@@ -19,6 +23,7 @@ export default ProjectGridItem;
 const ProjectGridItemContainer = styled.div`
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 `;
 
 interface ImageProps {

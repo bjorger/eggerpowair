@@ -78,6 +78,7 @@ interface GradientProps {
 const PartyBus = styled.img`
     width: 100%;
     margin-top: 0px;
+
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
         position: absolute;
         width: 70%;
@@ -95,7 +96,7 @@ interface ContainerProps {
 const Container = styled.div<ContainerProps>`
     display: grid;
     background: ${({ theme }) => theme.palette.dark};
-    padding: 120px 0 30px 0;
+    padding: 120px 0 0 0;
     grid-template-columns: repeat(24, 1fr);
 
     @media screen and (min-width: ${({ theme }) => `${theme.breakpoints.md}px`}) {
